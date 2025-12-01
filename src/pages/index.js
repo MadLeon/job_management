@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <div>
       {/* 其他内容 */}
-      {/* <Design /> */}
+      
       {/* 其他内容 */}
     </div>
   );

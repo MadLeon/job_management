@@ -14,6 +14,18 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  typography: {
+    regularBold: {
+      fontFamily: 'Roboto',
+      fontWeight: 'bold',
+      fontSize: '16px',
+    },
+    grayCaption: {
+      fontFamily: 'Roboto',
+      fontSize: '12px',
+      color: '#888888',
+    },
+  },
 });
 
 export default theme;

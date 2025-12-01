@@ -6,7 +6,7 @@ const LeftNavPanel = () => {
   return (
     <Box
       sx={{
-        width: '200px',
+        width: '250px',
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
