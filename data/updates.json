@@ -1,0 +1,27 @@
+[
+  {
+    "description": [
+      "Create app header with Logo created",
+      "Add app sidebar with toggle functionality",
+      "Implement page redirection",
+      "Create Updates page"
+    ],
+    "updateTime": "2025-12-05"
+  },
+  {
+    "description": [
+      "Modify app header",
+      "Modify app sidebar",
+      "Modify page redirection",
+      "Modify Updates page"
+    ],
+    "updateTime": "2025-12-06"
+  },
+  {
+    "description": [
+      "Refactor UI components into separate component folders for better organization.",
+      "Update Active Jobs page to use real data. Now it will be always up to date with the latest jobs."
+    ],
+    "updateTime": "2025-12-13"
+  }
+]

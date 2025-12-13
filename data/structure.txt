@@ -1,0 +1,17 @@
+job_management/
+├── data/                          # 数据文件夹
+│   ├── jobs.db                   # SQLite 数据库文件（不要提交到 git）
+│   ├── schema/                    # 数据库 schema 定义
+│   │   ├── init.sql              # 初始化脚本
+│   │   └── migrations/           # 迁移脚本（未来版本升级用）
+│   │       ├── 001_create_tables.sql
+│   │       └── 002_add_columns.sql
+│   └── seeds/                     # 初始数据（可选）
+│       └── sample-jobs.json
+├── src/
+│   ├── lib/
+│   │   ├── db.js                 # 数据库连接配置
+│   │   └── migrations.js         # 迁移管理器
+│   └── ...
+├── .gitignore                     # 包含: *.db, data/jobs.db
+└── ...

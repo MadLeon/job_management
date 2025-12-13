@@ -1,14 +1,12 @@
 import * as React from 'react';
+import { useRouter } from 'next/router';
 
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import Collapse from '@mui/material/Collapse';
-import Grow from '@mui/material/Grow';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -28,11 +26,9 @@ function DashboardSidebarPageItem({
   nestedNavigation,
 }) {
   const sidebarContext = React.useContext(DashboardSidebarContext);
-
   if (!sidebarContext) {
     throw new Error('Sidebar context was used without a provider.');
   }
-
   const {
     onPageItemClick,
     mini = false,
@@ -40,13 +36,22 @@ function DashboardSidebarPageItem({
     fullyCollapsed = false,
   } = sidebarContext;
 
-  const [isHovered, setIsHovered] = React.useState(false);
+  const router = useRouter();
 
   const handleClick = React.useCallback(() => {
     if (onPageItemClick) {
       onPageItemClick(id, !!nestedNavigation);
     }
-  }, [onPageItemClick, id, nestedNavigation]);
+    if (!nestedNavigation) {
+      router.push(href); // 使用 router.push 进行导航
+    }
+  }, [onPageItemClick, id, nestedNavigation, href, router]);
+
+  // const handleClick = React.useCallback(() => {
+  //   if (onPageItemClick) {
+  //     onPageItemClick(id, !!nestedNavigation);
+  //   }
+  // }, [onPageItemClick, id, nestedNavigation]);
 
   let nestedNavigationCollapseSx = { display: 'none' };
   if (mini && fullyCollapsed) {
@@ -70,30 +75,10 @@ function DashboardSidebarPageItem({
     };
   }
 
-  const miniNestedNavigationSidebarContextValue = React.useMemo(() => {
-    return {
-      onPageItemClick: onPageItemClick ?? (() => { }),
-      mini: false,
-      fullyExpanded: true,
-      fullyCollapsed: false,
-      hasDrawerTransitions: false,
-    };
-  }, [onPageItemClick]);
-
   return (
     <React.Fragment>
       <ListItem
         disablePadding
-        {...(nestedNavigation && mini
-          ? {
-            onMouseEnter: () => {
-              setIsHovered(true);
-            },
-            onMouseLeave: () => {
-              setIsHovered(false);
-            },
-          }
-          : {})}
         sx={{
           display: 'block',
           py: 0,
@@ -114,7 +99,7 @@ function DashboardSidebarPageItem({
             : {})}
           {...(!nestedNavigation
             ? {
-              to: href,
+              // to: href,
               onClick: handleClick,
             }
             : {})}
@@ -127,6 +112,7 @@ function DashboardSidebarPageItem({
                     position: 'absolute',
                     left: '50%',
                     top: 'calc(50% - 6px)',
+                    // top: '50%',
                     transform: 'translate(-50%, -50%)',
                   }
                   : {}
@@ -191,38 +177,7 @@ function DashboardSidebarPageItem({
             <ExpandMoreIcon sx={nestedNavigationCollapseSx} />
           ) : null}
         </ListItemButton>
-        {nestedNavigation && mini ? (
-          <Grow in={isHovered}>
-            <Box
-              sx={{
-                position: 'fixed',
-                left: MINI_DRAWER_WIDTH - 2,
-                pl: '6px',
-              }}
-            >
-              <Paper
-                elevation={8}
-                sx={{
-                  pt: 0.2,
-                  pb: 0.2,
-                  transform: 'translateY(-50px)',
-                }}
-              >
-                <DashboardSidebarContext.Provider
-                  value={miniNestedNavigationSidebarContextValue}
-                >
-                  {nestedNavigation}
-                </DashboardSidebarContext.Provider>
-              </Paper>
-            </Box>
-          </Grow>
-        ) : null}
       </ListItem>
-      {nestedNavigation && !mini ? (
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          {nestedNavigation}
-        </Collapse>
-      ) : null}
     </React.Fragment>
   );
 }

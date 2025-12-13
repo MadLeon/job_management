@@ -6,9 +6,8 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import MenuIcon from '@mui/icons-material/Menu';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Stack from '@mui/material/Stack';
 import DateCard from './DateCard';
 import UserCard from './UserCard';
@@ -57,7 +56,7 @@ function AppHeader({ logo, title, menuOpen, onToggleMenu }) {
               aria-label={`${isExpanded ? collapseMenuActionText : expandMenuActionText} navigation menu`}
               onClick={handleMenuOpen}
             >
-              {isExpanded ? <ArrowBackIosIcon sx={{ fontSize: 18 }} /> : <MenuIcon sx={{ fontSize: 18 }} />}
+              {isExpanded ? <KeyboardArrowLeftIcon sx={{ fontSize: 20 }} /> : <KeyboardArrowRightIcon sx={{ fontSize: 20 }} />}
             </IconButton>
           </div>
         </Tooltip>
@@ -68,7 +67,7 @@ function AppHeader({ logo, title, menuOpen, onToggleMenu }) {
 
   return (
     <AppBar color="inherit" sx={{ displayPrint: 'none' }}>
-      <Toolbar sx={{ backgroundColor: 'inherit', py: 2 }}>
+      <Toolbar sx={{ backgroundColor: 'inherit' }}>
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -98,17 +97,11 @@ function AppHeader({ logo, title, menuOpen, onToggleMenu }) {
             </Stack>
             <Box display="inline-flex" alignItems="center">{getMenuIcon(menuOpen)}</Box>
           </Stack>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1}
-            sx={{ marginLeft: 'auto' }}
-          >
-            <Stack direction="row" alignItems="center" spacing={2}>
-              <DateCard />
-              <Divider orientation="vertical" flexItem />
-              <UserCard />
-            </Stack>
+
+          <Stack direction="row" alignItems="center" spacing={3}>
+            <DateCard />
+            <Divider orientation="vertical" flexItem />
+            <UserCard />
           </Stack>
         </Stack>
       </Toolbar>

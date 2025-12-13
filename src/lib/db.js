@@ -1,35 +1,70 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import Database from 'better-sqlite3';
 import path from 'path';
+import fs from 'fs';
 
-const dbPath = path.resolve('./data/jobs.db');
+// Resolve to project root's data directory
+// Get the actual project root from process.cwd() to avoid .next compilation issues
+const projectRoot = process.cwd();
+const dbPath = process.env.DB_PATH || path.join(projectRoot, 'data', 'jobs.db');
 
-async function initializeDatabase() {
+// 确保数据目录存在
+const dataDir = path.dirname(dbPath);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+let dbInstance = null;
+
+/**
+ * 初始化数据库并创建表
+ */
+function initializeDatabase() {
   try {
-    const db = await open({
-      filename: dbPath,
-      driver: sqlite3.Database
-    });
+    const db = new Database(dbPath);
+
+    // 启用外键约束和 WAL 模式（提高并发性能）
+    db.pragma('journal_mode = WAL');
+    db.pragma('foreign_keys = ON');
+
+    console.log('✓ Database initialized successfully at:', dbPath);
+
+    // 测试查询
+    const testCount = db.prepare('SELECT COUNT(*) as cnt FROM jobs').get();
+    console.log('✓ Database has', testCount.cnt, 'jobs');
 
     return db;
   } catch (error) {
-    console.error('Database initialization error:', error);
+    console.error('✗ Database initialization error:', error);
     throw error;
   }
 }
 
-let dbInstance;
-
-async function getDB() {
+/**
+ * 获取数据库实例（单例模式）
+ */
+function getDB() {
   if (!dbInstance) {
-    dbInstance = await initializeDatabase();
+    dbInstance = initializeDatabase();
   }
   return dbInstance;
 }
 
-export async function getJobNumbers() {
-  const db = await getDB();
-  return db.all("SELECT job_number FROM jobs");
+/**
+ * 关闭数据库连接
+ */
+function closeDB() {
+  if (dbInstance) {
+    dbInstance.close();
+    dbInstance = null;
+  }
+}
+
+// 导出查询方法
+
+export function getJobNumbers() {
+  const db = getDB();
+  return db.prepare("SELECT job_number FROM jobs").all();
 }
 
 export default getDB;
+export { closeDB };

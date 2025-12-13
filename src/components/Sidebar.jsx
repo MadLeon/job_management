@@ -1,37 +1,22 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
+import { useRouter } from 'next/router';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Toolbar from '@mui/material/Toolbar';
 import Stack from '@mui/material/Stack';
 
-
-import BarChartIcon from '@mui/icons-material/BarChart';
-import DescriptionIcon from '@mui/icons-material/Description';
 import DashboardSidebarContext from '../context/DashboardSidebarContext';
 
 import DashboardSidebarPageItem from './DashboardSidebarPageItem';
-import DashboardSidebarHeaderItem from './DashboardSidebarHeaderItem';
-import DashboardSidebarDividerItem from './DashboardSidebarDividerItem';
 import {
   getDrawerSxTransitionMixin,
   getDrawerWidthTransitionMixin,
 } from '../helpers/mixins';
 import { DRAWER_WIDTH, MINI_DRAWER_WIDTH } from '../context/constants';
-
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 
-import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
@@ -43,17 +28,24 @@ import InfoIcon from '@mui/icons-material/Info';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
+import { matchPath } from '../helpers/matchPath';
+
 function Sidebar({
   expanded = true,
   setExpanded,
-  disableCollapsibleSidebar = false,
+  disableCollapsibleSidebar = false,  // currently not used
 }) {
   const theme = useTheme();
+  const router = useRouter();
+  const { pathname } = router;
 
   const [expandedItemIds, setExpandedItemIds] = React.useState([]);
   const [isFullyExpanded, setIsFullyExpanded] = React.useState(expanded);
   const [isFullyCollapsed, setIsFullyCollapsed] = React.useState(!expanded);
 
+  // ----------------------------------------------------------------------
+  // Handle fully expanded/collapsed states after drawer width transition
+  // ----------------------------------------------------------------------
   React.useEffect(() => {
     if (expanded) {
       const drawerWidthTransitionTimeout = setTimeout(() => {
@@ -64,7 +56,6 @@ function Sidebar({
     setIsFullyExpanded(false);
     return () => { };
   }, [expanded, theme.transitions.duration.enteringScreen]);
-
   React.useEffect(() => {
     if (!expanded) {
       const drawerWidthTransitionTimeout = setTimeout(() => {
@@ -75,9 +66,11 @@ function Sidebar({
     setIsFullyCollapsed(false);
     return () => { };
   }, [expanded, theme.transitions.duration.leavingScreen]);
+  // ----------------------------------------------------------------------
 
   const mini = !disableCollapsibleSidebar && !expanded;
 
+  // Handle page item click
   const handlePageItemClick = React.useCallback(
     (itemId, hasNestedNavigation) => {
       if (hasNestedNavigation && !mini) {
@@ -95,12 +88,12 @@ function Sidebar({
     [mini, setExpanded],
   );
 
-  const hasDrawerTransitions = !disableCollapsibleSidebar;
+  const hasDrawerTransitions = !disableCollapsibleSidebar;  // currently always true
 
   const getDrawerContent = React.useCallback(
     () => (
       <React.Fragment>
-        <Toolbar sx={{ py: 5 }} />
+        <Toolbar />
         <Box
           component="nav"
           aria-label="Navigation"
@@ -110,48 +103,52 @@ function Sidebar({
             flexDirection: 'column',
             justifyContent: 'space-between',
             overflow: 'auto',
-            scrollbarGutter: mini ? 'stable' : 'auto',
+            // scrollbarGutter: mini ? 'stable' : 'auto',
             overflowX: 'hidden',
-            pt: !mini ? 0 : 2,
+            py: 2,
             ...(hasDrawerTransitions
               ? getDrawerSxTransitionMixin(isFullyExpanded, 'padding')
               : {}),
           }}
         >
-          <Box>
+          <Stack spacing={2}>
             <List
               sx={{
-                padding: mini ? 0 : 0.5,
+                // padding: mini ? 0 : 0.5,
                 width: mini ? MINI_DRAWER_WIDTH : 'auto',
               }}
             >
               {/* <DashboardSidebarHeaderItem>Main items</DashboardSidebarHeaderItem> */}
               <DashboardSidebarPageItem
-                id="Dashboard"
+                id="dashboard"
                 title="Dashboard"
                 icon={<HomeIcon />}
-                href="/Dashboard"
+                href="/dashboard"
+                selected={!!matchPath('/dashboard/*', pathname) || pathname === '/'}
               />
 
               <DashboardSidebarPageItem
                 id="activeJobs"
-                title="ActiveJobs"
+                title="Active Jobs"
                 icon={<ReceiptIcon />}
-                href="/activeJobs"
+                href="/active-jobs"
+                selected={!!matchPath('/active-jobs/*', pathname)}
               />
 
               <DashboardSidebarPageItem
                 id="watchlist"
                 title="Watchlist"
                 icon={<RemoveRedEyeIcon />}
-                href="/watchlist"
+                href="/watch-list"
+                selected={!!matchPath('/watch-list/*', pathname)}
               />
 
               <DashboardSidebarPageItem
                 id="taskScheduler"
-                title="TaskScheduler"
+                title="Task Scheduler"
                 icon={<CalendarTodayIcon />}
-                href="/taskScheduler"
+                href="/task-scheduler"
+                selected={!!matchPath('/task-scheduler/*', pathname)}
               />
 
             </List>
@@ -160,30 +157,33 @@ function Sidebar({
 
             <List
               sx={{
-                padding: mini ? 0 : 0.5,
+                // padding: mini ? 0 : 0.5,
                 width: mini ? MINI_DRAWER_WIDTH : 'auto',
               }}
             >
 
               <DashboardSidebarPageItem
                 id="allDrawings"
-                title="AllDrawings"
+                title="All Drawings"
                 icon={<PhotoLibraryIcon />}
-                href="/allDrawings"
+                href="/all-drawings"
+                selected={!!matchPath('/all-drawings/*', pathname)}
               />
 
               <DashboardSidebarPageItem
                 id="allJobs"
-                title="AllJobs"
+                title="All Jobs"
                 icon={<LayersIcon />}
-                href="/allJobs"
+                href="/all-jobs"
+                selected={!!matchPath('/all-jobs/*', pathname)}
               />
 
               <DashboardSidebarPageItem
                 id="allCustomers"
-                title="AllCustomers"
+                title="All Customers"
                 icon={<PeopleIcon />}
-                href="/allCustomers"
+                href="/all-customers"
+                selected={!!matchPath('/all-customers/*', pathname)}
               />
 
             </List>
@@ -192,7 +192,7 @@ function Sidebar({
 
             <List
               sx={{
-                padding: mini ? 0 : 0.5,
+                // padding: mini ? 0 : 0.5,
                 width: mini ? MINI_DRAWER_WIDTH : 'auto',
               }}
             >
@@ -202,6 +202,7 @@ function Sidebar({
                 title="Updates"
                 icon={<InfoIcon />}
                 href="/updates"
+                selected={!!matchPath('/updates/*', pathname)}
               />
 
               <DashboardSidebarPageItem
@@ -209,18 +210,17 @@ function Sidebar({
                 title="Settings"
                 icon={<SettingsIcon />}
                 href="/settings"
+                selected={!!matchPath('/settings/*', pathname)}
               />
 
             </List>
-          </Box>
+          </Stack>
 
-          <Stack>
-
-
+          <Stack spacing={2}>
             <Divider />
             <List
               sx={{
-                padding: mini ? 0 : 0.5,
+                // padding: mini ? 0 : 0.5,
                 width: mini ? MINI_DRAWER_WIDTH : 'auto',
               }}
             >
@@ -229,13 +229,14 @@ function Sidebar({
                 title="Logout"
                 icon={<LogoutIcon />}
                 href="/logout"
+                selected={!!matchPath('/logout/*', pathname)}
               />
             </List>
           </Stack>
         </Box>
       </React.Fragment>
     ),
-    [mini, hasDrawerTransitions, isFullyExpanded, expandedItemIds]
+    [mini, hasDrawerTransitions, isFullyExpanded, expandedItemIds, pathname]
   );
 
 
@@ -250,7 +251,7 @@ function Sidebar({
         ...getDrawerWidthTransitionMixin(expanded),
         ...(isTemporary ? { position: 'absolute' } : {}),
         [`& .MuiDrawer-paper`]: {
-          position: 'absolute',
+          // position: 'absolute',
           width: drawerWidth,
           boxSizing: 'border-box',
           backgroundImage: 'none',
@@ -287,43 +288,6 @@ function Sidebar({
       >
         {getDrawerContent()}
       </Drawer>
-      {/* <Drawer
-        variant="permanent"
-        sx={{
-          width: 240,
-          flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: 240, boxSizing: 'border-box' },
-        }}
-      >
-        <Toolbar sx={{ height: '100px' }} />
-        <Box sx={{ overflow: 'auto' }}>
-          <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Drawer> */}
     </DashboardSidebarContext.Provider>
   );
 }

@@ -1,15 +1,17 @@
 import React from 'react';
 import { CacheProvider } from '@emotion/react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/lib/queryClient';
+
 import createEmotionCache from '../createEmotionCache';
 import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../theme';
-import Appheader from '../components/AppHeader';
-import LeftNavPanel from '../components/LeftNavPanel';
-import RecordTechIcon from '../components/RecordTechIcon';
+import CssBaseline from '@mui/material/CssBaseline';
+import { Box, Divider, Toolbar } from '@mui/material';
 
-import { Box, Divider } from '@mui/material';
-import Sidebar from '@/components/Sidebar';
+import Appheader from '../components/layout/AppHeader';
+import RecordTechIcon from '../components/shared/RecordTechIcon';
+import Sidebar from '../components/layout/Sidebar';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -26,65 +28,78 @@ function MyApp(props) {
   );
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <Box
-          sx={{
-            display: 'flex',
-            // flexDirection: 'column',
-            height: '100vh',
-            width: '100%',
-            backgroundColor: '#eeeeee',
-          }}
-        >
-          <CssBaseline />
-          {/* Top Toolbar */}
-          <Appheader
-            position="fixed"
-            logo={<RecordTechIcon />}
-            title="Record Tech"
-            menuOpen={isNavigationExpanded}
-            onToggleMenu={handleToggleHeaderMenu}
-            sx={{
-              zIndex: (theme) => theme.zIndex.drawer + 1,
-            }}
-          />
-
-          {/* Left Nav Panel */}
-          <Sidebar />
-
-          <Divider orientation="horizontal" flexItem />
-
-          {/* Main Content Area */}
+    <QueryClientProvider client={queryClient}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
           <Box
-            component="main"
             sx={{
-              width: '100%',
-              height: '100%',
               display: 'flex',
-              flexDirection: 'row',
+              // flexDirection: 'column',
+              height: '100%',
+              minHeight: '100vh',
+              width: '100%',
+              backgroundColor: '#eeeeee',
             }}
           >
+            <CssBaseline />
+            {/* Top Toolbar */}
+            <Appheader
+              position="fixed"
+              logo={<RecordTechIcon />}
+              title="Record Tech"
+              menuOpen={isNavigationExpanded}
+              onToggleMenu={handleToggleHeaderMenu}
+              sx={{
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+              }}
+            />
 
-            <Divider orientation="vertical" flexItem />
+            {/* Side Bar */}
+            <Sidebar
+              expanded={isNavigationExpanded}
+              setExpanded={setIsNavigationExpanded}
+              sx={{
+                position: 'fixed', // Make the sidebar stick to the viewport
+                height: '100vh',    // Ensure it covers the full height
+              }}
+            />
 
-            {/* Main Content */}
+            <Divider orientation="horizontal" flexItem />
+
+            {/* Main Content Area */}
             <Box
               component="main"
               sx={{
-                flexGrow: 1,
+                width: '100%',
                 height: '100%',
-                p: 3,
-                // display: 'flex',
-                // flexDirection: 'column',
+                minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
-              <Component {...pageProps} />
+
+              {/* <Divider orientation="vertical" flexItem /> */}
+
+              {/* Main Content */}
+              <Box
+                component="main"
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  flex: 1,
+                  height: '100%',
+                  // minHeight: '100vh',
+                  p: 3,
+                }}
+              >
+                <Toolbar />
+                <Component {...pageProps} />
+              </Box>
             </Box>
           </Box>
-        </Box>
-      </ThemeProvider>
-    </CacheProvider>
+        </ThemeProvider>
+      </CacheProvider>
+    </QueryClientProvider>
   );
 }
 
