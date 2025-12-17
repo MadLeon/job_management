@@ -6,7 +6,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 
 /**
  * 删除确认对话框组件
@@ -22,7 +21,7 @@ export default function DeleteConfirmDialog({
   onClose,
   onConfirm,
   title = "Confirm Deletion",
-  message = "Are you sure you want to delete this item? This action cannot be undone.",
+  message = "Are you sure you want to delete this item?",
   itemName = null
 }) {
   const handleConfirm = () => {
@@ -37,25 +36,40 @@ export default function DeleteConfirmDialog({
       aria-labelledby="delete-dialog-title"
       aria-describedby="delete-dialog-description"
     >
-      <DialogTitle id="delete-dialog-title" sx={{ p: 3 }}>
+      <DialogTitle id="delete-dialog-title" component="div" sx={{ pt: 3 }}>
         <Typography variant="h2">
           {title}
         </Typography>
       </DialogTitle>
-      <DialogContent sx={{ p: 2 }}>
+      <DialogContent>
         <DialogContentText id="delete-dialog-description">
           {itemName ? `${message} (${itemName})` : message}
         </DialogContentText>
       </DialogContent>
-      <DialogActions sx={{ p: 2 }}>
-        <Button onClick={onClose} variant="text">
+      <DialogActions>
+        <Button
+          onClick={onClose}
+          variant="text"
+          size="large"
+          sx={{
+            '& .MuiButton-text': {
+              fontWeight: 'bold'
+            }
+          }}
+        >
           Cancel
         </Button>
         <Button
           onClick={handleConfirm}
           autoFocus
           variant="text"
-          sx={{ color: 'error.main' }}
+          size="large"
+          sx={{
+            color: 'error.main',
+            '& .MuiButton-text': {
+              fontWeight: 'bold'
+            }
+          }}
         >
           Delete
         </Button>
