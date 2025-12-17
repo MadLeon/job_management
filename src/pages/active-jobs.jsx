@@ -11,11 +11,13 @@ import PageTitle from '@/components/common/PageTitle';
 import ItemContainer from '@/components/ui/ItemContainer';
 import SearchBox from '@/components/common/SearchBox';
 import JobTable from '@/components/table/JobTable';
+import JobEditModal from '@/components/layout/JobEditModal';
 
 import { useJobs } from '@/lib/hooks/useJobs'
 
 function ActiveJobs() {
   const { data: jobs = [], isLoading } = useJobs();
+  const [createJobModalOpen, setCreateJobModalOpen] = React.useState(false);
 
   const configArea = (
     <Stack direction="row" width="100%" sx={{ px: 3, py: 2, justifyContent: 'space-between' }}>
@@ -36,7 +38,10 @@ function ActiveJobs() {
         <Button variant="text" startIcon={<FilterAltIcon />}>
           Refresh
         </Button>
-        <Button variant="contained">
+        <Button
+          variant="contained"
+          onClick={() => setCreateJobModalOpen(true)}
+        >
           New Job
         </Button>
         <IconButton
@@ -51,12 +56,24 @@ function ActiveJobs() {
 
   const jobsArea = (<JobTable data={jobs} isLoading={isLoading} />);
 
+  const handleCreateJobSubmit = (formData) => {
+    console.log('Create job form submitted:', formData);
+    // TODO: 调用API保存新工作
+  };
+
   return (
     <Stack spacing={3} >
       <Breadcrumb locationLayer={['All Jobs', 'Active Jobs']} href={["all-jobs", "active-jobs"]} />
       <PageTitle title="Active Jobs" />
       <ItemContainer content={configArea} />
       <ItemContainer title="All Active Jobs" content={jobsArea} />
+      <JobEditModal
+        open={createJobModalOpen}
+        onClose={() => setCreateJobModalOpen(false)}
+        jobData={null}
+        isCreateMode={true}
+        onSubmit={handleCreateJobSubmit}
+      />
     </Stack>
   );
 }

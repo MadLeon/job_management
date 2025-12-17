@@ -23,5 +23,11 @@
       "Update Active Jobs page to use real data. Now it will be always up to date with the latest jobs."
     ],
     "updateTime": "2025-12-13"
+  },
+  {
+    "description": [
+      "Update Active Jobs page to use real data. Now the detail part's info under assembly uses real data."
+    ],
+    "updateTime": "2025-12-15"
   }
 ]

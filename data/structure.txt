@@ -1,17 +1,82 @@
-job_management/
-├── data/                          # 数据文件夹
-│   ├── jobs.db                   # SQLite 数据库文件（不要提交到 git）
-│   ├── schema/                    # 数据库 schema 定义
-│   │   ├── init.sql              # 初始化脚本
-│   │   └── migrations/           # 迁移脚本（未来版本升级用）
-│   │       ├── 001_create_tables.sql
-│   │       └── 002_add_columns.sql
-│   └── seeds/                     # 初始数据（可选）
-│       └── sample-jobs.json
-├── src/
-│   ├── lib/
-│   │   ├── db.js                 # 数据库连接配置
-│   │   └── migrations.js         # 迁移管理器
-│   └── ...
-├── .gitignore                     # 包含: *.db, data/jobs.db
-└── ...
+CREATE TABLE jobs (job_id INTEGER PRIMARY KEY AUTOINCREMENT, oe_number TEXT, job_number TEXT, customer_name TEXT, job_quantity TEXT, part_number TEXT, revision TEXT, customer_contact TEXT, drawing_release TEXT, line_number TEXT, part_description TEXT, unit_price TEXT, po_number TEXT, packing_slip TEXT, packing_quantity TEXT, invoice_number TEXT, delivery_required_date TEXT, delivery_shipped_date TEXT, create_timestamp TEXT DEFAULT (datetime('now','localtime')), last_modified TEXT, unique_key TEXT, priority TEXT DEFAULT 'Normal');
+- the info of each jobs
+- the job number is not unique, the unique_key(job_number|line_number) is the one source to identify each job
+
+CREATE TABLE sqlite_sequence(name,seq);
+- not created by the user
+
+CREATE TABLE drawings (drawing_name TEXT, drawing_number TEXT, file_location TEXT);
+- to map a drawing to the location in file system
+
+CREATE TABLE assemblies (part_number TEXT, drawing_number TEXT, description TEXT, quantity TEXT);
+- original intended to make a map between part_number and drawing_number
+- research to use foreign key instead later
+- description, quantity can be removed later on, because now we have detail_drawing to store them.
+
+CREATE INDEX idx_drawing_name ON drawings(drawing_name);
+- make drawing_name a unique index
+
+CREATE TABLE customer_folder_map (folder_name TEXT, customer_name TEXT);
+- for location a drawing pdf is saved, the parent folder name should be the client name
+  however, the actual name might be different with the client name
+- this is a map for client name and the folder name
+
+CREATE UNIQUE INDEX idx_unique_key ON jobs(unique_key);
+- make unique_key a unique index
+
+CREATE TABLE job_history (
+    job_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    oe_number TEXT,
+    job_number TEXT,
+    customer_name TEXT,
+    job_quantity TEXT,
+    part_number TEXT,
+    revision TEXT,
+    customer_contact TEXT,
+    drawing_release TEXT,
+    line_number TEXT,
+    part_description TEXT,
+    unit_price TEXT,
+    po_number TEXT,
+    packing_slip TEXT,
+    packing_quantity TEXT,
+    invoice_number TEXT,
+    delivery_required_date TEXT,
+    delivery_shipped_date TEXT,
+    unique_key TEXT UNIQUE,
+    create_timestamp TEXT,
+    last_modified TEXT,
+    completed_timestamp TEXT DEFAULT (datetime('now','localtime'))
+);
+- the job_history is a place to store finished jobs information
+
+CREATE TABLE detail_drawing (
+    drawing_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    drawing_number TEXT UNIQUE,
+    description TEXT,
+    revision TEXT,
+    isAssembly INTEGER DEFAULT 0,
+    created_at TEXT DEFAULT (datetime('now','localtime')),
+    updated_at TEXT DEFAULT (datetime('now','localtime'))
+);
+- stores metadata for each drawing
+- drawing_number is unique identifier to link with other tables
+- isAssembly indicates if this is an assembly drawing
+- description and revision are drawing-specific info
+
+CREATE TABLE assembly_detail (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    part_number TEXT,
+    drawing_number TEXT,
+    quantity TEXT,
+    status TEXT,
+    file_location TEXT,
+    delivery_required_date TEXT,
+    created_at TEXT DEFAULT (datetime('now','localtime')),
+    updated_at TEXT DEFAULT (datetime('now','localtime'))
+);
+- stores detailed information for assembly parts that will be rendered in detail rows
+- part_number links to jobs.part_number
+- drawing_number links to detail_drawing.drawing_number
+- contains instance-specific data (quantity, status, file_location, delivery_required_date)
+- general drawing info (description, revision) comes from detail_drawing table

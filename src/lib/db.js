@@ -22,9 +22,10 @@ function initializeDatabase() {
   try {
     const db = new Database(dbPath);
 
-    // 启用外键约束和 WAL 模式（提高并发性能）
-    db.pragma('journal_mode = WAL');
+    // 禁用 WAL 模式，改为传统的 DELETE 日志模式，使用 IMMEDIATE 事务隔离
+    db.pragma('journal_mode = DELETE');
     db.pragma('foreign_keys = ON');
+    db.pragma('transaction_isolation = IMMEDIATE');
 
     console.log('✓ Database initialized successfully at:', dbPath);
 

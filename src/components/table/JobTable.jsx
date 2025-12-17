@@ -31,11 +31,10 @@ export default function JobTable({ data = [], isLoading = false }) {
       <Table aria-label="job-table" sx={{ tableLayout: 'fixed' }}>
         <JobTableHeader />
         <TableBody>
-          {data.map((row) => (
+          {data.map((row, index) => (
             <JobTableRow
-              key={row.job_number}
+              key={index}
               row={row}
-              detailData={data.slice(0, 5)}
               colWidths={colWidths}
             />
           ))}

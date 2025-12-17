@@ -5,6 +5,26 @@
     {
       "name": "001_add_priority_column_to_jobs_table",
       "appliedAt": "2025-12-13T16:44:04.664Z"
+    },
+    {
+      "name": "002_create_detail_drawing_and_assembly_detail_tables",
+      "appliedAt": "2025-12-15T17:48:09.487Z"
+    },
+    {
+      "name": "003_populate_detail_drawing_and_assembly_detail_from_assemblies",
+      "appliedAt": "2025-12-15T18:15:50.971Z"
+    },
+    {
+      "name": "004_add_file_location_to_jobs",
+      "appliedAt": "2025-12-15T20:08:59.072Z"
+    },
+    {
+      "name": "005_populate_file_location_in_jobs",
+      "appliedAt": "2025-12-15T20:09:29.697Z"
+    },
+    {
+      "name": "006_add_has_assembly_details_column_to_jobs",
+      "appliedAt": "2025-12-16T20:04:31.817Z"
     }
   ]
 }
