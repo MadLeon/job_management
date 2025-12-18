@@ -13,10 +13,6 @@ export default function SearchBox() {
           {...params}
           label="Search"
           placeholder="Job / Drawing / OE. / PO."
-        // slotProps={{
-        //   inputLabel: { sx: { fontSize: 14, textAlign: 'center' } },
-        //   input: { sx: { fontSize: 14 } }
-        // }}
         />
       }
     />

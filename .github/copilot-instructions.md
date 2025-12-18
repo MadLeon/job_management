@@ -4,8 +4,9 @@
 
 This is a **Next.js job management application** (Pages Router, not App Router) with a SQLite backend for tracking manufacturing jobs. The system manages job scheduling, customer data, assembly details, and production workflows.
 
-**Language:**
-- Response in Chinese Simplified, to assist Chinese-speaking developers.
+**Chat Language:**
+- All response messages are in Chinese Simplified.
+- Coding snippets use English for comments and identifiers.
 
 **Tech Stack:**
 - **Frontend**: React 19.2, Next.js 16, Material-UI (MUI 7), Emotion CSS-in-JS
@@ -134,3 +135,7 @@ npm run dev          # Start dev server on http://localhost:3000
 - **Database schema**: Migrations in `scripts/migrations/` - one per feature
 - **Configuration**: `next.config.mjs` (Next.js), `theme.js` (MUI), `queryClient.js` (React Query)
 - **Database structure**: `data/structure.txt`
+
+## Commenting Standards
+
+- **Functions**: JSDoc style comments for all exported functions

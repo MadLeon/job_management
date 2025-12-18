@@ -12,6 +12,7 @@ import { Box, Divider, Toolbar } from '@mui/material';
 import Appheader from '../components/layout/AppHeader';
 import RecordTechIcon from '../components/shared/RecordTechIcon';
 import Sidebar from '../components/layout/Sidebar';
+import { FilterProvider } from '@/context/FilterContext';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -31,72 +32,74 @@ function MyApp(props) {
     <QueryClientProvider client={queryClient}>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <Box
-            sx={{
-              display: 'flex',
-              // flexDirection: 'column',
-              height: '100%',
-              minHeight: '100vh',
-              width: '100%',
-              backgroundColor: '#eeeeee',
-            }}
-          >
-            <CssBaseline />
-            {/* Top Toolbar */}
-            <Appheader
-              position="fixed"
-              logo={<RecordTechIcon />}
-              title="Record Tech"
-              menuOpen={isNavigationExpanded}
-              onToggleMenu={handleToggleHeaderMenu}
-              sx={{
-                zIndex: (theme) => theme.zIndex.drawer + 1,
-              }}
-            />
-
-            {/* Side Bar */}
-            <Sidebar
-              expanded={isNavigationExpanded}
-              setExpanded={setIsNavigationExpanded}
-              sx={{
-                position: 'fixed', // Make the sidebar stick to the viewport
-                height: '100vh',    // Ensure it covers the full height
-              }}
-            />
-
-            <Divider orientation="horizontal" flexItem />
-
-            {/* Main Content Area */}
+          <FilterProvider>
             <Box
-              component="main"
               sx={{
-                width: '100%',
+                display: 'flex',
+                // flexDirection: 'column',
                 height: '100%',
                 minHeight: '100vh',
-                display: 'flex',
-                flexDirection: 'column',
+                width: '100%',
+                backgroundColor: '#eeeeee',
               }}
             >
+              <CssBaseline />
+              {/* Top Toolbar */}
+              <Appheader
+                position="fixed"
+                logo={<RecordTechIcon />}
+                title="Record Tech"
+                menuOpen={isNavigationExpanded}
+                onToggleMenu={handleToggleHeaderMenu}
+                sx={{
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
+                }}
+              />
 
-              {/* <Divider orientation="vertical" flexItem /> */}
+              {/* Side Bar */}
+              <Sidebar
+                expanded={isNavigationExpanded}
+                setExpanded={setIsNavigationExpanded}
+                sx={{
+                  position: 'fixed', // Make the sidebar stick to the viewport
+                  height: '100vh',    // Ensure it covers the full height
+                }}
+              />
 
-              {/* Main Content */}
+              <Divider orientation="horizontal" flexItem />
+
+              {/* Main Content Area */}
               <Box
                 component="main"
                 sx={{
+                  width: '100%',
+                  height: '100%',
+                  minHeight: '100vh',
                   display: 'flex',
                   flexDirection: 'column',
-                  flex: 1,
-                  height: '100%',
-                  // minHeight: '100vh',
-                  p: 3,
                 }}
               >
-                <Toolbar />
-                <Component {...pageProps} />
+
+                {/* <Divider orientation="vertical" flexItem /> */}
+
+                {/* Main Content */}
+                <Box
+                  component="main"
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    flex: 1,
+                    height: '100%',
+                    // minHeight: '100vh',
+                    p: 3,
+                  }}
+                >
+                  <Toolbar />
+                  <Component {...pageProps} />
+                </Box>
               </Box>
             </Box>
-          </Box>
+          </FilterProvider>
         </ThemeProvider>
       </CacheProvider>
     </QueryClientProvider>
