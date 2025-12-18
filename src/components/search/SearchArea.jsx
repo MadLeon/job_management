@@ -5,7 +5,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import SearchBox from './SearchBox';
 import FilterPopover from './FilterPopover';
 
-function SearchArea({ onCreateJobClick }) {
+function SearchArea({ onCreateJobClick, onSearchSelect }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -20,7 +20,7 @@ function SearchArea({ onCreateJobClick }) {
   return (
     <Stack direction="row" width="100%" sx={{ px: 3, py: 2, justifyContent: 'space-between' }}>
       <Stack direction="row" spacing={2}>
-        <SearchBox />
+        <SearchBox onSelect={onSearchSelect} />
         <Button aria-describedby={id} variant="text" startIcon={<FilterAltIcon />} onClick={handleClick}>
           Filter
         </Button>

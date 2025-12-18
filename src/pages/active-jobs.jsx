@@ -15,10 +15,24 @@ function ActiveJobs() {
   const { data: jobs = [], isLoading } = useJobs();
   const { appliedFilters } = useFilters();
   const [createJobModalOpen, setCreateJobModalOpen] = React.useState(false);
+  const [searchFilter, setSearchFilter] = React.useState(null);
+
+  // 处理搜索框选择
+  const handleSearchSelect = React.useCallback((selectedJob) => {
+    console.log('[ActiveJobs] 搜索选择回调:', selectedJob);
+    setSearchFilter(selectedJob);
+  }, []);
 
   // Filter jobs based on applied filters
   const filteredJobs = React.useMemo(() => {
     return jobs.filter(job => {
+      // 搜索过滤：如果用户选择了搜索结果，则仅显示匹配的记录
+      if (searchFilter) {
+        if (job.unique_key !== searchFilter.unique_key) {
+          return false;
+        }
+      }
+
       // Filter by clients
       if (appliedFilters.clients.length > 0 && !appliedFilters.clients.includes(job.customer_name)) {
         return false;
@@ -45,7 +59,7 @@ function ActiveJobs() {
 
       return true;
     });
-  }, [jobs, appliedFilters]);
+  }, [jobs, appliedFilters, searchFilter]);
 
   const jobsArea = (<JobTable data={filteredJobs} isLoading={isLoading} />);
 
@@ -58,7 +72,7 @@ function ActiveJobs() {
     <Stack spacing={3} >
       <Breadcrumb locationLayer={['All Jobs', 'Active Jobs']} href={["all-jobs", "active-jobs"]} />
       <PageTitle title="Active Jobs" />
-      <ItemContainer content={<SearchArea onCreateJobClick={() => setCreateJobModalOpen(true)} />} />
+      <ItemContainer content={<SearchArea onCreateJobClick={() => setCreateJobModalOpen(true)} onSearchSelect={handleSearchSelect} />} />
       <ItemContainer title="All Active Jobs" content={jobsArea} />
       <JobEditModal
         open={createJobModalOpen}
