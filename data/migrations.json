@@ -25,6 +25,18 @@
     {
       "name": "006_add_has_assembly_details_column_to_jobs",
       "appliedAt": "2025-12-16T20:04:31.817Z"
+    },
+    {
+      "name": "007_normalize_date_formats_in_jobs",
+      "appliedAt": "2025-12-18T19:28:58.819Z"
+    },
+    {
+      "name": "008_normalize_date_formats_in_job_history",
+      "appliedAt": "2025-12-18T19:31:23.357Z"
+    },
+    {
+      "name": "009_normalize_date_formats_in_assembly_detail",
+      "appliedAt": "2025-12-18T19:32:59.560Z"
     }
   ]
 }
