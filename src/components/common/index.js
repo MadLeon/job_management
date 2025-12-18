@@ -2,4 +2,3 @@
 export { default as PageTitle } from './PageTitle';
 export { default as ContainerTitle } from './ContainerTitle';
 export { default as Breadcrumbs } from './Breadcrumbs';
-export { default as SearchBox } from './SearchBox';
