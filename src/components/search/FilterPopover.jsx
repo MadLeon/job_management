@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
-import { Paper, Stack, Divider } from '@mui/material';
+import { Paper, Stack, Divider, Typography } from '@mui/material';
 import { useState } from 'react';
 import ClientAutocomplete from './ClientAutocomplete';
 import ContactAutocomplete from './ContactAutocomplete';
@@ -8,6 +8,7 @@ import DateRange from './DateRange';
 import PriorityFilter from './PriorityFilter';
 import BottomButtonGroup from '../common/BottomButtonGroup';
 import { useFilters } from '@/context/FilterContext';
+import { ContainerTitle } from '../common';
 
 export default function FilterPopover({ id, open, anchorEl, handleClose }) {
   const { applyFilters } = useFilters();
@@ -56,6 +57,7 @@ export default function FilterPopover({ id, open, anchorEl, handleClose }) {
       }}
     >
       <Stack spacing={2} sx={{ p: 2 }}>
+        <Typography variant="h2" sx={{ py: 1 }}>Filter Options</Typography>
         <ClientAutocomplete value={clients} onChange={setClients} />
         <Divider />
         <PriorityFilter value={priorities} onChange={setPriorities} />

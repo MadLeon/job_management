@@ -1,4 +1,4 @@
-import { Stack, FormControlLabel, Checkbox } from "@mui/material";
+import { Box, FormControlLabel, Checkbox } from "@mui/material";
 import { priorityOptions } from "@/../data/data";
 
 export default function PriorityFilter({ value = {}, onChange }) {
@@ -11,8 +11,14 @@ export default function PriorityFilter({ value = {}, onChange }) {
   };
 
   return (
-    <Stack spacing={1} direction="row" flexWrap="wrap">
-      {Object.keys(priorityOptions).map((priority, index) => (
+    <Box
+      sx={{
+        display: "grid",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: 1,
+      }}
+    >
+      {Object.keys(priorityOptions).map((priority) => (
         <FormControlLabel
           key={priority}
           control={
@@ -22,12 +28,8 @@ export default function PriorityFilter({ value = {}, onChange }) {
             />
           }
           label={priority}
-          sx={{
-            width: "calc(33.333% - 16px)",
-            marginLeft: 1,
-          }}
         />
       ))}
-    </Stack>
+    </Box>
   );
 }
