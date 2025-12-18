@@ -29,5 +29,13 @@
       "Update Active Jobs page to use real data. Now the detail part's info under assembly uses real data."
     ],
     "updateTime": "2025-12-15"
+  },
+  {
+    "description": [
+      "Implement virtual scrolling in JobTable using @tanstack/react-virtual for better performance.",
+      "Only visible rows are rendered to reduce DOM nodes and improve loading speed.",
+      "Active Jobs page loading time reduced from 150ms to ~20-30ms."
+    ],
+    "updateTime": "2025-12-18"
   }
 ]
