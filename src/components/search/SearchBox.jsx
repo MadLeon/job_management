@@ -100,7 +100,7 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
   // 处理输入值变化，使用reason参数判断是否是用户主动清空
   const handleInputChange = useCallback((event, newInputValue, reason) => {
     setInputValue(newInputValue);
-    
+
     // 仅当用户主动清空输入框时（reason为'clear'）才清除过滤
     if (reason === 'clear' && onSelect) {
       console.log('[SearchBox] 用户清空了输入框，清除搜索过滤');
