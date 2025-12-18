@@ -21,13 +21,6 @@ function SearchArea({ onCreateJobClick }) {
     <Stack direction="row" width="100%" sx={{ px: 3, py: 2, justifyContent: 'space-between' }}>
       <Stack direction="row" spacing={2}>
         <SearchBox />
-        <Autocomplete
-          disablePortal
-          size='small'
-          options={['The Shawshank Redemption', 'The Godfather', 'The Dark Knight', 'Pulp Fiction']}
-          sx={{ width: 150 }}
-          renderInput={(params) => <TextField {...params} label="Sort By" />}
-        />
         <Button aria-describedby={id} variant="text" startIcon={<FilterAltIcon />} onClick={handleClick}>
           Filter
         </Button>

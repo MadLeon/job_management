@@ -23,12 +23,12 @@ function ActiveJobs() {
       if (appliedFilters.clients.length > 0 && !appliedFilters.clients.includes(job.customer_name)) {
         return false;
       }
-      
+
       // Filter by contacts
       if (appliedFilters.contacts.length > 0 && !appliedFilters.contacts.includes(job.customer_contact)) {
         return false;
       }
-      
+
       // Filter by date range
       if (appliedFilters.startDate && new Date(job.date) < new Date(appliedFilters.startDate)) {
         return false;
@@ -36,13 +36,13 @@ function ActiveJobs() {
       if (appliedFilters.endDate && new Date(job.date) > new Date(appliedFilters.endDate)) {
         return false;
       }
-      
+
       // Filter by priorities
       const selectedPriorities = Object.keys(appliedFilters.priorities).filter(p => appliedFilters.priorities[p]);
       if (selectedPriorities.length > 0 && !selectedPriorities.includes(job.priority)) {
         return false;
       }
-      
+
       return true;
     });
   }, [jobs, appliedFilters]);
