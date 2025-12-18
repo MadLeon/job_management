@@ -1,2 +1,4 @@
 update the updates.json file based on today's commits, keep the words simple, understandable, and concise.
 update the structure.txt with the current database structure.
+
+follows the copilot instruction, especially use chinese and perform JSDoc comment style.
