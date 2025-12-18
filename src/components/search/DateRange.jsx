@@ -6,6 +6,7 @@ export default function DateRange({ startDate = "", endDate = "", onStartDateCha
       <TextField
         label="Start Date"
         type="date"
+        size="small"
         value={startDate}
         onChange={(e) => onStartDateChange(e.target.value)}
         InputLabelProps={{
@@ -16,6 +17,7 @@ export default function DateRange({ startDate = "", endDate = "", onStartDateCha
       <TextField
         label="End Date"
         type="date"
+        size="small"
         value={endDate}
         onChange={(e) => onEndDateChange(e.target.value)}
         InputLabelProps={{

@@ -27,7 +27,7 @@ export default function ContactAutocomplete({ value = [], onChange }) {
       multiple
       disableCloseOnSelect
       limitTags={2}
-      size="medium"
+      size="small"
       options={contactOptions}
       value={value}
       onChange={(event, newValue) => onChange(newValue)}

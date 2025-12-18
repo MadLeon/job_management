@@ -55,7 +55,7 @@ export default function FilterPopover({ id, open, anchorEl, handleClose }) {
         }
       }}
     >
-      <Stack spacing={3} sx={{ p: 2 }}>
+      <Stack spacing={2} sx={{ p: 2 }}>
         <ClientAutocomplete value={clients} onChange={setClients} />
         <Divider />
         <PriorityFilter value={priorities} onChange={setPriorities} />

@@ -4,8 +4,8 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 import { customerList } from '@/../data/data';
 
-const icon = <CheckBoxOutlineBlankIcon fontSize="medium" />;
-const checkedIcon = <CheckBoxIcon fontSize="medium" />;
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
+const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 export default function ClientAutocomplete({ value = [], onChange }) {
   return (
@@ -14,7 +14,7 @@ export default function ClientAutocomplete({ value = [], onChange }) {
       multiple
       disableCloseOnSelect
       limitTags={2}
-      size="medium"
+      size="small"
       options={customerList}
       value={value}
       onChange={(event, newValue) => onChange(newValue)}
