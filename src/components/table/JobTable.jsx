@@ -4,14 +4,25 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import Paper from '@mui/material/Paper';
+import { useVirtualizer } from '@tanstack/react-virtual';
 import JobTableHeader from './JobTableHeader';
 import JobTableRow from './JobTableRow';
 
+/**
+ * 虚拟化表格组件，使用 TanStack React Virtual 实现高性能渲染
+ * 支持排序，只渲染可见的行来优化大数据集的性能
+ * 
+ * @component
+ * @param {Array} data - 待渲染的job数据数组
+ * @param {Boolean} isLoading - 加载状态标志
+ * @returns {JSX.Element} 虚拟化的表格组件
+ */
 export default function JobTable({ data = [], isLoading = false }) {
   const cellRefs = React.useRef([]);
   const [colWidths, setColWidths] = React.useState([]);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('job_number');
+  const parentRef = React.useRef(null);
 
   // Update column widths on render and window resize
   React.useEffect(() => {
@@ -93,9 +104,32 @@ export default function JobTable({ data = [], isLoading = false }) {
     return [...data].sort(getComparator(order, orderBy));
   }, [data, order, orderBy]);
 
+  // 初始化虚拟化器
+  const virtualizer = useVirtualizer({
+    count: sortedData.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => 57, // 默认行高（48px + 9px border）
+    overscan: 10, // 在可见范围外预加载10行
+  });
+
+  const virtualItems = virtualizer.getVirtualItems();
+  const totalSize = virtualizer.getTotalSize();
+
+  const paddingTop = virtualItems.length > 0 ? virtualItems?.[0]?.start || 0 : 0;
+  const paddingBottom = virtualItems.length > 0
+    ? totalSize - (virtualItems?.[virtualItems.length - 1]?.end || 0)
+    : 0;
+
   return (
     <Paper sx={{ width: '100%' }}>
-      <TableContainer sx={{ maxHeight: 'calc(100vh - 300px)', overflow: 'auto' }}>
+      <TableContainer
+        ref={parentRef}
+        sx={{
+          maxHeight: 'calc(100vh - 300px)',
+          overflow: 'auto',
+          position: 'relative'
+        }}
+      >
         <Table
           aria-label="job-table"
           sx={{
@@ -114,13 +148,28 @@ export default function JobTable({ data = [], isLoading = false }) {
             onRequestSort={handleRequestSort}
           />
           <TableBody>
-            {sortedData.map((row, index) => (
+            {/* 上方空白占位 */}
+            {paddingTop > 0 && (
+              <tr>
+                <td style={{ height: `${paddingTop}px` }} />
+              </tr>
+            )}
+
+            {/* 虚拟化渲染的行 */}
+            {virtualItems.map((virtualItem) => (
               <JobTableRow
-                key={index}
-                row={row}
+                key={virtualItem.index}
+                row={sortedData[virtualItem.index]}
                 colWidths={colWidths}
               />
             ))}
+
+            {/* 下方空白占位 */}
+            {paddingBottom > 0 && (
+              <tr>
+                <td style={{ height: `${paddingBottom}px` }} />
+              </tr>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
