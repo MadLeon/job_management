@@ -2,69 +2,92 @@
 
 ## Architecture Overview
 
-This is a **Next.js job management application** (Pages Router, not App Router) with a SQLite backend for tracking manufacturing jobs. The system manages job scheduling, customer data, assembly details, and production workflows.
+This is a **Next.js 16 manufacturing job management application** (Pages Router only) with SQLite database for tracking jobs, customers, assemblies, and production workflows. The system uses server-side database operations via API routes and client-side React Query for state synchronization.
 
 **Chat Language:**
 - All response messages are in Chinese Simplified.
 - Coding snippets use English for comments and identifiers.
 
 **Tech Stack:**
-- **Frontend**: React 19.2, Next.js 16, Material-UI (MUI 7), Emotion CSS-in-JS
-- **Backend**: Next.js API Routes, better-sqlite3 for database
-- **State Management**: TanStack React Query v5 for server state, React local state for UI
-- **Database**: SQLite with migration system in `scripts/migrations/`
+- **Frontend**: React 19.2, Next.js 16 (Pages Router), Material-UI v7, Emotion CSS-in-JS
+- **Backend**: Next.js API Routes (Node.js runtime), better-sqlite3 v12.5 for SQLite
+- **State Management**: TanStack React Query v5 (5min staleTime, 10min gcTime), local React state for UI
+- **Database**: SQLite at `data/jobs.db`, versioned migrations in `scripts/migrations/`
 
 ## Key Architectural Patterns
 
-### Database Layer (`src/lib/db.js`)
-- **Singleton pattern**: `getDB()` returns a cached database instance
-- **Database path**: Resolves to `data/jobs.db` from project root (uses `process.cwd()` for correct path resolution in Next.js)
-- **Pragmas**: `journal_mode = DELETE`, `foreign_keys = ON`, `transaction_isolation = IMMEDIATE`
-- Always ensure DB operations handle errors gracefully and log database state changes
+### Database Layer ([src/lib/db.js](src/lib/db.js))
+- **Singleton Pattern**: `getDB()` returns cached instance; must be imported in all API routes
+- **Database Path**: Uses `process.env.DB_PATH || path.join(process.cwd(), 'data', 'jobs.db')`
+  - ⚠️ **Critical**: Use `process.cwd()` not `__dirname` (Next.js compilation quirk)
+- **Pragmas** configured: `journal_mode = DELETE`, `foreign_keys = ON`, `transaction_isolation = IMMEDIATE`
+- **Database initialization** in `src/lib/db.js` runs automatically on first `getDB()` call
+- All queries use `.prepare().all()`, `.run()`, or `.get()` - synchronous only
 
-### API Routes (`src/pages/api/jobs/`)
-- Standard Next.js API handler pattern: `export default function handler(req, res)`
-- **Routing structure**: `/api/jobs/index.js` → GET all jobs
-- Related routes: `/jobs/update.js`, `/jobs/assemblies.js`, `/jobs/assembly-detail-create.js|update.js|delete.js`, `/jobs/drawing-file-location.js`, `/jobs/next-numbers.js`, `/jobs/pdf.js`
-- All routes directly import `getDB()` and use prepared statements with `.prepare()` and `.all()/.run()/.get()`
-- Error handling: Wrap in try-catch and respond with `{ error: message }`
+### API Routes Pattern ([src/pages/api/jobs/](src/pages/api/jobs/))
+- **Handler function**: `export default function handler(req, res)` in each file
+- **Database import**: `import getDB from '@/lib/db'` at the top
+- **Structure**: GET in `index.js`, mutations in `update.js`, detailed operations in `*-create.js|update.js|delete.js`
+- **Error handling**: `try-catch` wrapping all DB operations, respond with `{ error: message }` and status 500
+- **Method validation**: Check `req.method` and respond with 405 for unsupported methods
+- **Response format**: JSON with status code (200 OK, 405 Method Not Allowed, 500 Server Error)
 
 ### Frontend State Management
-- **React Query**: Configure in `src/lib/queryClient.js` with `staleTime: 5min, gcTime: 10min`
-- **Local UI state**: Use React hooks for drawer expansion, form visibility, etc.
-- **Theme**: Centralized in `src/theme.js` with custom palette colors and typography variants
+- **React Query**: Configure stale/gc times in [src/lib/queryClient.js](src/lib/queryClient.js)
+  - Default: `staleTime: 5min, gcTime: 10min`
+  - Import `queryClient` in `_app.js` wrapped with `QueryClientProvider`
+- **Local UI State**: React hooks for drawer expansion, form visibility, modal open/close
+- **Data Fetching**: Use `useQuery` for reads, `useMutation` for writes
+- **Cache Invalidation**: After mutations, call `queryClient.invalidateQueries()` to refresh
 
-### Component Structure
-- **Layout**: `src/components/layout/` contains `AppHeader.jsx`, `Sidebar.jsx`, modals for job/part editing
-- **Forms**: `src/components/forms/` has `JobForm.jsx` and `PartEditForm.jsx`; use Material-UI components
-- **Table Components**: `src/components/table/` for job display with detail rows
-- **Shared**: `src/components/shared/` for reusable UI like `BadgeAvata`, `DateCard`, `PriorityChip`
-- **Legacy**: Old component versions in `src/components/legacy/` - prefer new versions in `table/` and `shared/`
+### Component Architecture
+- **Layout** ([src/components/layout/](src/components/layout/)): `AppHeader`, `Sidebar`, modals (`JobEditModal`, `CreateJobModal`, `PartEditModal`)
+- **Forms** ([src/components/forms/](src/components/forms/)): `JobForm` (reusable create/edit), `PartEditForm`
+- **Tables** ([src/components/table/](src/components/table/)): `JobTable`, `JobTableRow`, `JobDetailRow` for expandable details
+- **Shared UI** ([src/components/shared/](src/components/shared/)): Reusable components like badges, chips, cards
+- **Legacy** ([src/components/legacy/](src/components/legacy/)): Old versions - avoid; use `table/` and `shared/` instead
 
-### Sidebar Navigation
-- Drawer-based collapsible sidebar in `Sidebar.jsx`
-- Uses transition mixins from `src/helpers/mixins.js` (`getDrawerSxTransitionMixin`, `getDrawerWidthTransitionMixin`)
-- Routes matched via `matchPath()` helper from `src/helpers/matchPath.js`
-- Context: `DashboardSidebarContext.js` for sidebar state
+### Sidebar Navigation Pattern
+- **Component**: [src/components/layout/Sidebar.jsx](src/components/layout/Sidebar.jsx) with collapsible drawer
+- **State Tracking**: `DashboardSidebarContext.js` stores expanded/collapsed state
+- **Route Matching**: Use `matchPath()` helper from [src/helpers/matchPath.js](src/helpers/matchPath.js)
+- **Animations**: Transition mixins from [src/helpers/mixins.js](src/helpers/mixins.js)
+  - Use `getDrawerSxTransitionMixin(isExpanded, property)` for smooth drawer transitions
 
 ## Database & Migrations
 
-### Migration System (`scripts/migrate.js`)
-- Run migrations: `npm run db:migrate` (up), `npm run db:migrate:down` (down), `npm run db:migrate:status`
-- Migration files in `scripts/migrations/NNN_description.js` (numbered sequentially)
-- Applied migrations tracked in `data/migrations.json` with timestamps
-- Each migration file must export `up(db)` and `down(db)` functions that use prepared statements
+### Migration System ([scripts/migrate.js](scripts/migrate.js))
+- **Commands**: 
+  - `npm run db:migrate` - Apply all pending migrations (up)
+  - `npm run db:migrate:down` - Rollback last migration
+  - `npm run db:migrate:status` - Show migration status
+- **File structure**: `scripts/migrations/NNN_description.js` (numbered sequentially, 001-009 exist)
+- **Migration tracking**: Applied migrations stored in `data/migrations.json` with timestamps
+- **Pattern**: Each migration exports `name`, `up(db)`, and `down(db)` functions
+  - Check for table/column existence before creating to allow re-running
+  - Use `db.pragma('table_info(table_name)')` to check columns
+  - Use `db.prepare().get()` for existence checks
 
-### Current Tables
-Based on applied migrations:
-- `jobs` - core job table with `priority` column
-- `detail_drawing` - drawing details linked to jobs
-- `assembly_detail` - assembly information with file locations
-- All tables have `file_location` column and `has_assembly_details` boolean flag
+**Current Migrations** (in order):
+1. `001_add_priority_column_to_jobs_table` - Added priority column with 'Normal' default
+2. `002_create_detail_drawing_and_assembly_detail_tables` - Created drawing and assembly metadata tables
+3. `003_populate_detail_drawing_and_assembly_detail_from_assemblies` - Migrated legacy assembly data
+4. `004_add_file_location_to_jobs` - Added file path tracking
+5. `005_populate_file_location_in_jobs` - Backfilled file locations
+6. `006_add_has_assembly_details_column_to_jobs` - Flag for assembly presence
+7. `007-009_normalize_date_formats` - Standardized date handling in multiple tables
+
+### Table Structure
+- **jobs**: Main table with `priority` (TEXT), `file_location` (TEXT), `has_assembly_details` (INTEGER)
+- **detail_drawing**: Metadata for drawings (drawing_number, description, revision, isAssembly)
+- **assembly_detail**: Assembly line details (linked to jobs via job_id)
+- All tables: `created_at`, `updated_at` with default `datetime('now','localtime')`
+- Date format: **YYYY-MM-DD** for consistency (see normalization migrations 007-009)
 
 ### Database Initialization
-- `npm run db:init` - creates fresh database from `scripts/db-init.js`
-- Script generates initial schema and can extract CREATE TABLE statements from existing databases
+- **`npm run db:init`**: Creates fresh database from [scripts/db-init.js](scripts/db-init.js)
+- **Never manually edit** `data/migrations.json` - migration system is the source of truth
+- Test database state with helper scripts: `check-db.js`, `test-db.js`, `check-sqlite-version.js`
 
 ## Development Workflow
 
@@ -77,38 +100,52 @@ npm run dev          # Start dev server on http://localhost:3000
 ```
 
 ### Key Commands
-- `npm run dev` - Development server with hot reload
-- `npm run build` - Production build
-- `npm run lint` - Run ESLint (configured in `eslint.config.mjs`)
-- Database commands: `npm run db:migrate`, `npm run db:migrate:down`, `npm run db:migrate:status`
+- **`npm run dev`** - Development server with hot reload (http://localhost:3000)
+- **`npm run build`** - Production build
+- **`npm run lint`** - Run ESLint (configured in `eslint.config.mjs`)
+- **Database commands**:
+  - `npm run db:migrate` - Apply pending migrations
+  - `npm run db:migrate:down` - Rollback last migration
+  - `npm run db:migrate:status` - Show migration status
+  - `npm run db:init` - Reinitialize database from scratch
 
-### Database Debugging
-- Check database directly: Use better-sqlite3 CLI tools or scripts in `check-db.js`, `test-db.js`, `check-sqlite-version.js`
-- Never manually edit `data/migrations.json` - it's managed by the migration system
+### Testing & Debugging
+- **Database inspection**: Use `check-db.js` for quick schema check
+- **Database manipulation**: Use `test-db.js` for data testing
+- **Version check**: `check-sqlite-version.js` validates better-sqlite3 setup
+- Run with `node scripts/check-db.js` from project root
+
+### Common Development Tasks
+- **Add a new field to jobs**: Create migration in `scripts/migrations/` with sequential number, use `ALTER TABLE jobs ADD COLUMN...`
+- **Add a new API endpoint**: Create `src/pages/api/jobs/[name].js` with handler, import `getDB()`, validate method
+- **Add a new page**: Create component in `src/pages/[name].jsx` with layout (Sidebar, AppHeader from `_app.js`)
+- **Create/Edit Job modal**: Use `JobEditModal.jsx` which wraps `JobForm.jsx` for reusable form logic
 
 ## Project-Specific Conventions
 
 ### Data Models
-- **Customer options**: `['Candu', 'Kinectrics', 'ATI']` hardcoded in `JobForm.jsx`
-- **Priorities**: Imported from `data/data.js` as `priorityOptions` object
-- **Date formatting**: Use `YYYY-MM-DD` format internally (see `formatDateForInput()` in `JobForm.jsx`)
+- **Customer options**: `['Candu', 'Kinectrics', 'ATI']` hardcoded in [JobForm.jsx](src/components/forms/JobForm.jsx#L17) (also expanded list in [data/data.js](data/data.js))
+- **Priorities**: Imported from [data/data.js](data/data.js) as `priorityOptions` object: `Critical`, `Urgent`, `Important`, `Normal`, `Minor`, `Hold`
+- **Date formatting**: Use **YYYY-MM-DD** format internally (see `formatDateForInput()` in `JobForm.jsx`)
+- **API responses**: Always return JSON; use consistent error shape: `{ error: string }` with appropriate HTTP status
 
 ### Form Patterns
-- Forms use MUI `TextField`, `MenuItem` (for selects), `Button`, `Stack`, `Grid`
-- File upload inputs use `ref` to trigger hidden file input elements
-- Buttons: "Save" (submit), "Cancel" (close), "Delete" (with confirmation dialog)
-- Confirmation dialogs: `DeleteConfirmDialog.jsx` component
+- Forms use MUI components: `TextField`, `MenuItem` (for selects), `Button`, `Stack`, `Grid`
+- File upload inputs use `ref` to trigger hidden file input elements (see [JobForm.jsx](src/components/forms/JobForm.jsx) pattern)
+- Buttons follow pattern: "Save" (submit), "Cancel" (close), "Delete" (with confirmation)
+- Confirmation dialogs use `DeleteConfirmDialog.jsx` component from [src/components/common/](src/components/common/)
 
 ### UI/Styling
 - **Spacing**: Material-UI spacing system (theme breakpoints, sx prop)
-- **Colors**: Primary blue `#03229F`, custom dark red/orange from palette
-- **Typography variants**: `regularBold`, `grayCaption`, `h1`, `h2` defined in theme
+- **Colors**: Primary blue `#03229F`, custom dark red/orange from palette defined in [src/theme.js](src/theme.js)
+- **Typography variants**: `regularBold`, `grayCaption`, `h1`, `h2` defined in theme (see [src/theme.js](src/theme.js))
 - Use Emotion CSS-in-JS via `sx` prop on MUI components, not separate CSS files
 
 ### Error Handling
-- API routes: Always wrap database calls in try-catch, return status codes (200, 405, 500)
-- Frontend: React Query handles async errors, show toast/dialog to user
-- Log errors with context: `console.error('Operation:', error)`
+- **API routes**: Always wrap database calls in try-catch, return status codes (200, 405, 500)
+- **Frontend**: React Query handles async errors, show toast/dialog to user
+- **Logging**: Log errors with context: `console.error('Operation:', error)`
+- **Database**: Connection failures handled in `getDB()` with console logging
 
 ## Critical Integration Points
 
@@ -125,6 +162,8 @@ npm run dev          # Start dev server on http://localhost:3000
 - **React Query stale time**: 5 minutes by default - consider when data needs fresh refresh
 - **Migration ordering**: Sequential number prefixes matter; if adding migration, increment from last applied
 - **Theme provider**: Wrapped in `_app.js` with `CacheProvider` for Emotion SSR support
+- **Database singleton**: Never create multiple Database instances; always use `getDB()`
+- **Drawer animations**: Use `getDrawerSxTransitionMixin()` helper for consistent transitions
 
 ## File Structure Reference
 
