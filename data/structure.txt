@@ -1,6 +1,13 @@
 ================================================================================
-DATABASE STRUCTURE - 数据库架构 (Updated: 2025-12-18)
+DATABASE STRUCTURE - 数据库架构 (Updated: 2025-12-19)
 ================================================================================
+
+/**
+ * 数据库包含8个表，用于管理制造工作的完整生命周期。
+ * 核心表: jobs(活跃工作), job_history(历史记录), detail_drawing(图纸元数据), assembly_detail(装配细节)
+ * 辅助表: drawings(图纸库), assemblies(装配库), customer_folder_map(客户文件夹映射)
+ * 总工作数: 332条记录
+ */
 
 TABLE: jobs (主工作表)
 ================================================================================
@@ -37,7 +44,9 @@ TABLE: jobs (主工作表)
 - unique_key 是真正的唯一标识符（job_number + line_number组合）
 - job_number 可能有重复，但 unique_key 唯一
 - 日期格式：YYYY-MM-DD（ISO 8601标准）
-- 有些字段带有 _old 后缀，是历史迁移字段，可稍后清理
+- 字段带有 _old 后缀，是历史迁移字段（drawing_release_old, delivery_required_date_old, delivery_shipped_date_old）
+- 新字段（drawing_release, delivery_required_date, delivery_shipped_date）为规范化后的数据
+- 总记录数：332条
 
 
 TABLE: job_history (已完成工作存档)
@@ -98,6 +107,50 @@ TABLE: assembly_detail (装配细节)
   - delivery_required_date (TEXT) - 所需交货日期 (YYYY-MM-DD)
   - delivery_required_date_old (TEXT) - 旧字段
   - created_at (TEXT) - 创建时间
+  - updated_at (TEXT) - 更新时间
+
+
+TABLE: drawings (图纸库)
+================================================================================
+存储所有图纸记录
+  - drawing_id (INTEGER) PRIMARY KEY
+  - drawing_number (TEXT) - 图纸号
+  - name (TEXT) - 名称
+  - description (TEXT) - 描述
+
+
+TABLE: assemblies (装配库)
+================================================================================
+存储装配记录和关联信息
+  - assembly_id (INTEGER) PRIMARY KEY
+  - assembly_number (TEXT) - 装配号
+  - description (TEXT) - 描述
+
+
+TABLE: customer_folder_map (客户文件夹映射)
+================================================================================
+存储客户名称与文件夹路径的映射关系
+  - customer_name (TEXT) PRIMARY KEY - 客户名称
+  - folder_path (TEXT) - 对应的文件夹路径
+
+
+================================================================================
+数据库访问
+================================================================================
+/**
+ * 数据库单例模式 - 所有API路由必须通过getDB()方法访问
+ * 路径: src/lib/db.js
+ * 优化配置:
+ *   - journal_mode: DELETE
+ *   - foreign_keys: ON
+ *   - transaction_isolation: IMMEDIATE
+ * 
+ * API路由结构:
+ *   GET    /api/jobs/ - 获取所有工作
+ *   POST   /api/jobs/update.js - 更新工作
+ *   POST   /api/jobs/*-create.js - 创建记录
+ *   POST   /api/jobs/*-delete.js - 删除记录
+ */
   - updated_at (TEXT) - 更新时间
 
 说明：

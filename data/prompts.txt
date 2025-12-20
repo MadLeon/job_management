@@ -1,4 +1,5 @@
 update the updates.json file based on today's commits, keep the words simple, understandable, and concise.
-update the structure.txt with the current database structure, using check-structure.js to gather info of the db.
+update the structure.txt with the current database structure, using node check-db.js to gather info of the db.
 
 follows the copilot instruction, especially use chinese and perform JSDoc comment style.
+read structure.txt and run check-db.js for better understanding for the database.

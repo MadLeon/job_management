@@ -37,6 +37,18 @@
     {
       "name": "009_normalize_date_formats_in_assembly_detail",
       "appliedAt": "2025-12-18T19:32:59.560Z"
+    },
+    {
+      "name": "010_ensure_all_jobs_assemblies_in_assemblies_table",
+      "appliedAt": "2025-12-19T15:38:20.518Z"
+    },
+    {
+      "name": "011_populate_detail_drawing_and_assembly_detail_from_complete_assemblies",
+      "appliedAt": "2025-12-19T15:38:24.920Z"
+    },
+    {
+      "name": "012_ensure_assembly_self_reference",
+      "appliedAt": "2025-12-19T15:38:24.946Z"
     }
   ]
 }
