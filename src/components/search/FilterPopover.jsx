@@ -8,7 +8,7 @@ import DateRange from './DateRange';
 import PriorityFilter from './PriorityFilter';
 import BottomButtonGroup from '../common/BottomButtonGroup';
 import { useFilters } from '@/context/FilterContext';
-import { ContainerTitle } from '../common';
+import ContainerTitle from '../itemContainer/ContainerTitle';
 
 export default function FilterPopover({ id, open, anchorEl, handleClose }) {
   const { applyFilters } = useFilters();

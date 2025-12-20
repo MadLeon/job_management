@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Stack, useTheme } from '@mui/material';
+import { useRouter } from 'next/router';
 import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
@@ -19,6 +20,7 @@ export default function ActionButtonList({
   onPartSubmit = null
 }) {
   const theme = useTheme();
+  const router = useRouter();
   const location = fileLocation ?? "#";
   const [jobModalOpen, setJobModalOpen] = React.useState(false);
   const [partModalOpen, setPartModalOpen] = React.useState(false);
@@ -236,8 +238,12 @@ export default function ActionButtonList({
             </IconButton>
             <IconButton
               size="small"
-              aria-label={"EditIcon button"}
-              onClick={() => console.log("EditIcon button clicked")}
+              aria-label={"Open job details button"}
+              onClick={() => {
+                if (jobData && jobData.job_number) {
+                  router.push(`/active-jobs/${jobData.job_number}`);
+                }
+              }}
             >
               <OpenInNewIcon color="primary" sx={{ fontSize: 20 }} />
             </IconButton>

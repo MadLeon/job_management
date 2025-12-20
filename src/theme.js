@@ -34,7 +34,12 @@ const theme = createTheme({
       fontFamily: 'Roboto',
       fontWeight: '700',
       fontSize: '20px',
-    }
+    },
+    h3: {
+      fontFamily: 'Roboto',
+      fontWeight: '600',
+      fontSize: '18px',
+    },
   },
 });
 
