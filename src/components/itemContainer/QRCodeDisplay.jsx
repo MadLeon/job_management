@@ -11,7 +11,7 @@ import Image from 'next/image';
  */
 export default function QRCodeDisplay({ size = 200 }) {
   return (
-    <Paper
+    <Box
       sx={{
         width: size,
         height: size,
@@ -30,6 +30,6 @@ export default function QRCodeDisplay({ size = 200 }) {
         height={size - 16}
         priority
       />
-    </Paper>
+    </Box>
   );
 }

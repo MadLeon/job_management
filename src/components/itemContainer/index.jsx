@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Divider, Stack } from '@mui/material';
 
 import ContainerTitle from './ContainerTitle';
@@ -11,11 +12,12 @@ import ContainerTitle from './ContainerTitle';
  * @param {JSX.Element} content - 容器内容
  * @param {JSX.Element} [component] - 可选的标题右侧组件
  * @param {Object} [sx] - 自定义样式对象
+ * @param {React.Ref} [ref] - 转发引用用于访问底层 DOM 元素
  * @returns {JSX.Element} 项目容器
  */
-export default function ItemContainer({ title, content, component, width = '100%', sx = {} }) {
+const ItemContainer = React.forwardRef(({ title, content, component, width = '100%', sx = {} }, ref) => {
   return (
-    <Stack width={width} sx={{ backgroundColor: '#FFFFFF', borderRadius: '10px', ...sx }}>
+    <Stack ref={ref} width={width} sx={{ backgroundColor: '#FFFFFF', borderRadius: '10px', ...sx }}>
       {title ? (
         <Box>
           <ContainerTitle title={title} component={component} />
@@ -28,4 +30,8 @@ export default function ItemContainer({ title, content, component, width = '100%
       </Stack>
     </Stack >
   );
-}
+});
+
+ItemContainer.displayName = 'ItemContainer';
+
+export default ItemContainer;

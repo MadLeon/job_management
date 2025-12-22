@@ -13,7 +13,7 @@ import { Box, Stack } from '@mui/material';
  */
 export default function ContainerTitle({ title, component }) {
   return (
-    <Box sx={{ px: 3, py: 2 }}>
+    <Box sx={{ p: 2.5 }}>
       {component ? (
         <Stack direction="row" justifyContent="space-between" alignItems="center">
           <Typography variant='h2'>

@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
+    "@mui/x-charts": "^8.0.0",
     "@mui/x-data-grid": "^8.22.1",
     "@mui/x-date-pickers": "^8.19.0",
     "@tanstack/react-query": "^5.90.12",

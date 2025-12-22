@@ -12,7 +12,7 @@ import { Stack, Typography } from '@mui/material';
  */
 export default function InfoField({ label, value, align = 'center' }) {
   return (
-    <Stack spacing={2} sx={{ alignItems: align === 'left' ? 'flex-start' : 'center' }}>
+    <Stack spacing={1} sx={{ alignItems: align === 'left' ? 'flex-start' : 'center' }}>
       <Typography
         variant="caption"
         sx={{

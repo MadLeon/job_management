@@ -26,7 +26,7 @@ export default function JobInformation({ jobData }) {
       direction="row"
       width="100%"
       sx={{
-        p: 3,
+        p: 2.5,
         justifyContent: 'space-between',
         alignItems: 'center',
       }}

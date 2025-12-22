@@ -32,16 +32,11 @@
   },
   {
     "description": [
-      "Refactor ActiveJobs component with SearchArea for improved UI organization.",
       "Implement filtering functionality for jobs by customer, contact, date range, and priority.",
-      "Add JobTableHeader with sorting capability for all columns.",
       "Implement job sorting in JobTable component with comparator functions for numeric and string values.",
       "Add job search functionality with API endpoint (/api/jobs/search) for quick job lookup.",
-      "Implement SearchBox component with autocomplete suggestions and search input validation.",
-      "Add FilterPopover component for advanced filtering options with date range and priority selection.",
       "Normalize date formats across jobs, job_history, and assembly_detail tables to YYYY-MM-DD standard.",
-      "Implement virtual scrolling in JobTable using @tanstack/react-virtual for better performance.",
-      "Only visible rows are rendered to reduce DOM nodes and improve loading speed from 150ms to ~20-30ms."
+      "Implement virtual scrolling for better performance, improving loading speed from 150ms to ~20-30ms."
     ],
     "updateTime": "2025-12-18"
   },

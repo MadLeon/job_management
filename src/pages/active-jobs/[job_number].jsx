@@ -9,6 +9,7 @@ import JobInformation from '@/components/itemContainer/JobInformation';
 import AdditionalJobInfo from '@/components/itemContainer/AdditionalJobInfo';
 import QRCodeDisplay from '@/components/itemContainer/QRCodeDisplay';
 import { useJobs } from '@/lib/hooks/useJobs';
+import JobCompletionChart from '@/components/itemContainer/JobCompletionChart';
 
 /**
  * 工作详情页面
@@ -22,6 +23,8 @@ export default function JobDetailPage() {
   const router = useRouter();
   const { job_number } = router.query;
   const { data: jobs = [] } = useJobs();
+  const basicInfoRef = React.useRef(null);
+  const [containerHeight, setContainerHeight] = React.useState(0);
 
   /**
    * 根据 job_number 查找对应的工作记录
@@ -30,6 +33,22 @@ export default function JobDetailPage() {
     return jobs.find(job => job.job_number === job_number);
   }, [jobs, job_number]);
 
+  /**
+   * 监测 BasicInformation 容器的高度变化
+   * 并同步更新 QR 码尺寸
+   */
+  React.useEffect(() => {
+    if (basicInfoRef.current) {
+      const observer = new ResizeObserver(() => {
+        setContainerHeight(basicInfoRef.current?.offsetHeight || 0);
+      });
+      observer.observe(basicInfoRef.current);
+      // 初始化高度
+      setContainerHeight(basicInfoRef.current.offsetHeight);
+      return () => observer.disconnect();
+    }
+  }, []);
+
   return (
     <Stack spacing={3}>
       <Breadcrumb
@@ -37,20 +56,32 @@ export default function JobDetailPage() {
         href={["/all-jobs", "/active-jobs", `/active-jobs/${job_number}`]}
       />
       <PageTitle title={`Job Overview - # ${job_number || 'Loading...'}`} />
-      <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+      <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <ItemContainer
+          ref={basicInfoRef}
           title="Basic Information"
           content={<JobInformation jobData={currentJob} />}
           component={currentJob ? <PriorityChip priority={currentJob.priority} /> : null}
           sx={{ width: '60%' }}
         />
-        <Box><QRCodeDisplay size={170} /></Box>
+        <QRCodeDisplay size={containerHeight} />
       </Stack>
-      <ItemContainer
-        title="Job Information"
-        content={<AdditionalJobInfo jobData={currentJob} />}
-        width="25%"
-      />
+      <Stack direction={"row"} spacing={3}>
+        <Stack spacing={3}>
+          <ItemContainer
+            title="Job Information"
+            content={<AdditionalJobInfo jobData={currentJob} />}
+            width="100%"
+          />
+          <ItemContainer
+            title="Job Completion"
+            content={
+              <JobCompletionChart jobData={currentJob} />}
+            width="100%"
+          />
+        </Stack>
+        <ItemContainer title="Drawing Tracker" />
+      </Stack>
     </Stack>
   );
 }
