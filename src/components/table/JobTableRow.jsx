@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import ActionButtonList from '../ui/ActionButtonList';
+import ActionButtonList from '../common/ActionButtonList';
 import PriorityChip from '../shared/PriorityChip';
 import JobDetailTable from './JobDetailTable';
 import { useAssemblies } from '../../lib/hooks/useAssemblies';

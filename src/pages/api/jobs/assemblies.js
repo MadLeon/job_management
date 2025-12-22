@@ -52,6 +52,7 @@ export default function handler(req, res) {
           ad.quantity,
           ad.status,
           ad.file_location,
+          ad.updated_at,
           ad.delivery_required_date
         FROM assembly_detail ad
         LEFT JOIN detail_drawing dd ON ad.drawing_number = dd.drawing_number

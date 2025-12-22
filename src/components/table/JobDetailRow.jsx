@@ -1,7 +1,7 @@
 import React from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
-import ActionButtonList from '../ui/ActionButtonList';
+import ActionButtonList from '../common/ActionButtonList';
 
 export default function JobDetailRow({ row, index, onPartEditSubmit }) {
   return (

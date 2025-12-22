@@ -9,7 +9,9 @@ import JobInformation from '@/components/itemContainer/JobInformation';
 import AdditionalJobInfo from '@/components/itemContainer/AdditionalJobInfo';
 import QRCodeDisplay from '@/components/itemContainer/QRCodeDisplay';
 import { useJobs } from '@/lib/hooks/useJobs';
+import { useAssemblies } from '@/lib/hooks/useAssemblies';
 import JobCompletionChart from '@/components/itemContainer/JobCompletionChart';
+import { DrawingsTable } from '@/components/table';
 
 /**
  * 工作详情页面
@@ -32,6 +34,11 @@ export default function JobDetailPage() {
   const currentJob = React.useMemo(() => {
     return jobs.find(job => job.job_number === job_number);
   }, [jobs, job_number]);
+
+  /**
+   * 使用 useAssemblies 钩子获取当前工作的装配数据
+   */
+  const { data: assemblies = [], isLoading: assembliesLoading } = useAssemblies(currentJob?.part_number);
 
   /**
    * 监测 BasicInformation 容器的高度变化
@@ -62,12 +69,12 @@ export default function JobDetailPage() {
           title="Basic Information"
           content={<JobInformation jobData={currentJob} />}
           component={currentJob ? <PriorityChip priority={currentJob.priority} /> : null}
-          sx={{ width: '60%' }}
+          sx={{ width: '80%' }}
         />
         <QRCodeDisplay size={containerHeight} />
       </Stack>
       <Stack direction={"row"} spacing={3}>
-        <Stack spacing={3}>
+        <Stack spacing={3} width="40%">
           <ItemContainer
             title="Job Information"
             content={<AdditionalJobInfo jobData={currentJob} />}
@@ -80,7 +87,7 @@ export default function JobDetailPage() {
             width="100%"
           />
         </Stack>
-        <ItemContainer title="Drawing Tracker" />
+        <ItemContainer title="Drawing Tracker" align="normal" content={<DrawingsTable drawings={assemblies} isLoading={assembliesLoading} />} />
       </Stack>
     </Stack>
   );

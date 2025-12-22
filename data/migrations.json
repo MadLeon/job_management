@@ -49,6 +49,10 @@
     {
       "name": "012_ensure_assembly_self_reference",
       "appliedAt": "2025-12-19T15:38:24.946Z"
+    },
+    {
+      "name": "013_populate_file_location_in_assembly_detail",
+      "appliedAt": "2025-12-22T17:42:52.837Z"
     }
   ]
 }

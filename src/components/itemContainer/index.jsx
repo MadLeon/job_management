@@ -15,7 +15,7 @@ import ContainerTitle from './ContainerTitle';
  * @param {React.Ref} [ref] - 转发引用用于访问底层 DOM 元素
  * @returns {JSX.Element} 项目容器
  */
-const ItemContainer = React.forwardRef(({ title, content, component, width = '100%', sx = {} }, ref) => {
+const ItemContainer = React.forwardRef(({ title, content, component, width = '100%', align = 'center', sx = {} }, ref) => {
   return (
     <Stack ref={ref} width={width} sx={{ backgroundColor: '#FFFFFF', borderRadius: '10px', ...sx }}>
       {title ? (
@@ -25,7 +25,7 @@ const ItemContainer = React.forwardRef(({ title, content, component, width = '10
         </Box>
       ) : null}
 
-      <Stack direction="row" sx={{ flex: 1, alignItems: 'center' }}>
+      <Stack direction="row" sx={{ flex: 1, alignItems: align }}>
         {content}
       </Stack>
     </Stack >
