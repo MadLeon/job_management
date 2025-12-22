@@ -40,7 +40,7 @@ export const up = (db) => {
     // 步骤 2: 如果直接匹配未找到，则按 part_number 或 drawing_number 进行模糊匹配
     if (!fileLocation) {
       const searchNumber = detail.drawing_number || detail.part_number;
-      
+
       if (searchNumber && detail.customer_name) {
         // 获取 customer 的 folder_name（如果存在）
         const folderMapResult = db.prepare(
