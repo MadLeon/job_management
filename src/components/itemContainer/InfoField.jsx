@@ -15,12 +15,6 @@ export default function InfoField({ label, value, align = 'center' }) {
     <Stack spacing={1} sx={{ alignItems: align === 'left' ? 'flex-start' : 'center' }}>
       <Typography
         variant="caption"
-        sx={{
-          color: "text.secondary",
-          fontSize: '14px',
-          fontWeight: 500,
-          letterSpacing: '0.5px',
-        }}
       >
         {label}
       </Typography>

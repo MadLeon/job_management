@@ -25,6 +25,13 @@ const theme = createTheme({
       fontSize: '12px',
       color: '#888888',
     },
+    caption: {
+      fontFamily: 'Roboto',
+      fontWeight: 500,
+      fontSize: '14px',
+      letterSpacing: '0.5px',
+      color: "rgba(0, 0, 0, 0.6)",
+    },
     h1: {
       fontFamily: 'Roboto',
       fontWeight: 'bold',

@@ -8,17 +8,17 @@ import BadgeAvatars from './BadgeAvatars';
  * @component
  * @returns {JSX.Element} 用户卡片组件
  */
-function UserCard() {
+function UserCard({ name = "Leon Liu", position = "Position" }) {
   return (
     <Stack direction="row" alignItems="center" spacing={2}>
       {/* <BadgeAvatars name="Leon Liu" imgSrc="/static/images/avatar/1.jpg" /> */}
-      <BadgeAvatars name="Leon Liu" />
+      <BadgeAvatars name={name} />
       <Stack direction="column">
         <Typography variant='regularBold'>
-          Leon Liu
+          {name.split(' ')[0]}
         </Typography>
         <Typography variant='grayCaption'>
-          QA Clerk
+          {position}
         </Typography>
       </Stack>
     </Stack >

@@ -127,7 +127,7 @@ export default function DrawingDetailPage() {
           ref={basicInfoRef}
           title="Basic Information"
           content={<JobInformation jobData={currentJob} assemblyData={currentDrawing} type="detail" />}
-          component={<OpenInNewLink url={`/active-jobs/${job_number}`} text="Job Overview" />}
+          component={<OpenInNewLink url={`/active-jobs/${job_number}`} text="Drawing History" />}
           sx={{ width: '80%' }}
         />
         <QRCodeDisplay size={containerHeight} />
@@ -144,19 +144,19 @@ export default function DrawingDetailPage() {
             title="Drawing Documentation"
             align="normal"
             content={<DrawingDocumentation jobData={currentDrawing} />}
-            component={<OpenInNewLink text="History Files" />}
+            component={<Typography variant="regularBold">In Progress</Typography>}
             width="100%"
             sx={{ flex: 1, minHeight: 0 }}
           />
         </Stack>
-        {/* Add Note section here */}
         <ItemContainer
           title="Notes"
           align="normal"
-          width="30%"
+          width="40%"
           content={
             <Notes notes={currentDrawing?.notes} />
           }
+          component={<Typography variant="regularBold">In Progress</Typography>}
         />
         <ItemContainer
           title="Drawing Tracker"

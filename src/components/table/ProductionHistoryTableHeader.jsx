@@ -3,14 +3,15 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableCell from '@mui/material/TableCell';
 
-export default function DrawingsTableHeader() {
+export default function ProductionHistoryTableHeader() {
   const columns = [
-    { id: 'drawing_number', label: 'Drawing Number', width: '35%' },
-    { id: 'status', label: 'Status', width: '10%' },
-    { id: 'last_seen', label: 'Last Seen', width: '15%' },
-    { id: 'last_seen_date', label: 'Date', width: '12.5%' },
-    { id: 'last_seen_time', label: 'Time', width: '7.5%' },
-    { id: 'actions', label: 'Actions', width: '15%' },
+    { id: 'po_number', label: 'PO Number', width: '35%' },
+    { id: 'revision', label: 'Rev Number', width: '15%' },
+    { id: 'quantity', label: 'Qty', width: '12.5%' },
+    { id: 'working_time', label: 'Working Time', width: '7.5%' },
+    { id: 'author', label: 'Author', width: '7.5%' },
+    { id: 'created_at', label: 'Create Time', width: '10%' },
+    { id: 'updated_at', label: 'Update Time', width: '10%' },
   ];
 
   return (
@@ -19,10 +20,10 @@ export default function DrawingsTableHeader() {
         {columns.map((column) => (
           <TableCell
             key={column.id}
-            size="medium"
+            size="small"
             align={column.align}
             sx={{
-              ...(column.id === 'drawing_number' && { pl: 3, pt: 3 }),
+              ...(column.id === 'po_number' && { pl: 3, pt: 3 }),
               typography: 'regularBold',
               width: column.width,
               backgroundColor: 'background.paper',
