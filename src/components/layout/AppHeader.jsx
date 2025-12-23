@@ -11,7 +11,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import Stack from '@mui/material/Stack';
 import { Divider } from '@mui/material';
 import DateCard from '../shared/DateCard';
-import UserCard from '../shared/UserCard';
+import UserCard from '../common/UserCard';
 import { DRAWER_WIDTH } from '../../context/constants';
 
 const AppBar = styled(MuiAppBar)(({ theme }) => ({

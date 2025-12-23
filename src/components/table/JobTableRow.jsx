@@ -6,12 +6,14 @@ import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { useRouter } from 'next/router';
 import ActionButtonList from '../common/ActionButtonList';
 import PriorityChip from '../shared/PriorityChip';
 import JobDetailTable from './JobDetailTable';
 import { useAssemblies } from '../../lib/hooks/useAssemblies';
 
 export default function JobTableRow({ row, colWidths = [] }) {
+  const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [dynamicColWidths, setDynamicColWidths] = React.useState(colWidths);
   const cellRefs = React.useRef([]);
@@ -33,6 +35,63 @@ export default function JobTableRow({ row, colWidths = [] }) {
 
     updateWidths();
   }, [colWidths]);
+
+  /**
+   * 打开 PDF 文件
+   * @param {string} fileLocation - 文件位置
+   */
+  const handleOpenPDF = async (fileLocation) => {
+    if (!fileLocation) return;
+    try {
+      const response = await fetch(`/api/jobs/pdf?fileLocation=${encodeURIComponent(fileLocation)}`);
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, '_blank');
+        // 清理对象 URL（在文件加载后）
+        setTimeout(() => window.URL.revokeObjectURL(url), 100);
+      } else {
+        console.error('Failed to fetch file for preview');
+      }
+    } catch (error) {
+      console.error('Error opening file preview:', error);
+    }
+  };
+
+  /**
+   * 编辑工作
+   * @param {object} row - 工作数据
+   */
+  const handleEdit = (row) => {
+    // TODO: 实现编辑逻辑，例如打开编辑模态框
+    console.log('Edit job:', row.job_number);
+  };
+
+  /**
+   * 删除工作
+   * @param {number} id - 工作ID
+   */
+  const handleDelete = (id) => {
+    // TODO: 实现删除逻辑，例如显示确认对话框
+    console.log('Delete job:', id);
+  };
+
+  /**
+   * 添加部件
+   * @param {object} row - 工作数据
+   */
+  const handleAddPart = (row) => {
+    // TODO: 实现添加部件逻辑，例如打开添加模态框
+    console.log('Add part to job:', row.job_number);
+  };
+
+  /**
+   * 打开工作详情
+   * @param {string} jobNumber - 工作号
+   */
+  const handleOpenJob = (jobNumber) => {
+    router.push(`/active-jobs/${jobNumber}`);
+  };
 
   return (
     <React.Fragment>
@@ -89,12 +148,16 @@ export default function JobTableRow({ row, colWidths = [] }) {
         </TableCell>
         <TableCell ref={(el) => (cellRefs.current[9] = el)} sx={{ borderBottom: 'unset' }}>
           <ActionButtonList
-            type="assembly"
-            fileLocation={row.file_location}
-            jobData={row}
-            onJobSubmit={(formData) => {
-              // TODO: 在这里处理表单提交逻辑，例如更新API
-              console.log("Job updated:", formData);
+            buttons={['pdf', 'edit', 'delete', 'add', 'openNew']}
+            handlers={{
+              onPdfClick: () => handleOpenPDF(row.file_location),
+              onEditClick: () => handleEdit(row),
+              onDeleteClick: () => handleDelete(row.id),
+              onAddClick: () => handleAddPart(row),
+              onOpenNewClick: () => handleOpenJob(row.job_number),
+            }}
+            disabledButtons={{
+              pdf: !row.file_location,
             }}
           />
         </TableCell>

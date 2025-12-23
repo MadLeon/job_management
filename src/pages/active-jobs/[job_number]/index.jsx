@@ -62,7 +62,7 @@ export default function JobDetailPage() {
         locationLayer={['All Jobs', 'Active Jobs', job_number || 'Detail']}
         href={["/all-jobs", "/active-jobs", `/active-jobs/${job_number}`]}
       />
-      <PageTitle title={`Job Overview - # ${job_number || 'Loading...'}`} />
+      <PageTitle title="Job Overview" />
       <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <ItemContainer
           ref={basicInfoRef}
@@ -87,7 +87,17 @@ export default function JobDetailPage() {
             width="100%"
           />
         </Stack>
-        <ItemContainer title="Drawing Tracker" align="normal" content={<DrawingsTable drawings={assemblies} isLoading={assembliesLoading} />} />
+        <ItemContainer
+          title="Drawing Tracker"
+          align="normal"
+          content={
+            <DrawingsTable
+              drawings={assemblies}
+              isLoading={assembliesLoading}
+              jobNumber={job_number}
+            />
+          }
+        />
       </Stack>
     </Stack>
   );

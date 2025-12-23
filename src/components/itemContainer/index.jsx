@@ -25,7 +25,7 @@ const ItemContainer = React.forwardRef(({ title, content, component, width = '10
         </Box>
       ) : null}
 
-      <Stack direction="row" sx={{ flex: 1, alignItems: align }}>
+      <Stack direction="row" sx={{ display: 'flex', flex: 1, alignItems: align }}>
         {content}
       </Stack>
     </Stack >

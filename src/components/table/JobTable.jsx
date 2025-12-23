@@ -2,11 +2,10 @@ import React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import Paper from '@mui/material/Paper';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import JobTableHeader from './JobTableHeader';
 import JobTableRow from './JobTableRow';
+import { Box } from '@mui/material';
 
 /**
  * 虚拟化表格组件，使用 TanStack React Virtual 实现高性能渲染
@@ -121,7 +120,7 @@ export default function JobTable({ data = [], isLoading = false }) {
     : 0;
 
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%' }}>
       <TableContainer
         ref={parentRef}
         sx={{
@@ -173,6 +172,6 @@ export default function JobTable({ data = [], isLoading = false }) {
           </TableBody>
         </Table>
       </TableContainer>
-    </Paper>
+    </Box>
   );
 }

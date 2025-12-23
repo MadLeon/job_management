@@ -1,337 +1,137 @@
-import * as React from 'react';
-import { Stack, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
-import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
-import RemoveCircleOutlineOutlinedIcon from '@mui/icons-material/RemoveCircleOutlineOutlined';
-import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import JobEditModal from '../layout/JobEditModal';
-import PartEditModal from '../layout/PartEditModal';
-import DeleteConfirmDialog from './DeleteConfirmDialog';
+import React from 'react';
+import { Stack, IconButton, useTheme } from '@mui/material';
+import { BUTTON_CONFIGS } from './actionButtonConfig';
 
 /**
- * 操作按钮列表组件
- * 根据不同的 type 显示相应的操作按钮
+ * 操作按钮列表组件（重构版本）
+ * 
+ * 配置驱动的按钮列表，可以灵活组合任意按钮
+ * 通过 buttons 数组指定需要的按钮，通过 handlers 对象提供回调函数
  * 
  * @component
- * @param {string} [type='assembly'] - 按钮类型 ('assembly'|'detail'|'drawing')
- *   - 'assembly': 显示完整的按钮集合（图片、编辑、删除、添加、打开）
- *   - 'detail': 显示图片、编辑、删除按钮
- *   - 'drawing': 显示图片和打开按钮（用于绘图追踪器）
- * @param {string} [fileLocation=null] - 文件位置路径
- * @param {Object} [jobData=null] - 工作数据对象
- * @param {Object} [partData=null] - 零件数据对象
- * @param {Function} [onJobSubmit=null] - 工作提交回调
- * @param {Function} [onPartSubmit=null] - 零件提交回调
- * @returns {JSX.Element} 操作按钮组件
+ * @param {Array<string>} [buttons=[]] - 要显示的按钮列表
+ *   可选值: 'pdf', 'edit', 'delete', 'add', 'openNew'
+ * @param {Object} [handlers={}] - 按钮事件处理器对象
+ *   - handlers.onPdfClick - PDF 按钮点击事件
+ *   - handlers.onEditClick - 编辑按钮点击事件
+ *   - handlers.onDeleteClick - 删除按钮点击事件
+ *   - handlers.onAddClick - 添加按钮点击事件
+ *   - handlers.onOpenNewClick - 打开新窗口按钮点击事件
+ * @param {Object} [disabledButtons={}] - 禁用的按钮状态对象
+ *   - disabledButtons.pdf - PDF 按钮是否禁用
+ *   - disabledButtons.edit - 编辑按钮是否禁用
+ *   - disabledButtons.delete - 删除按钮是否禁用
+ *   - disabledButtons.add - 添加按钮是否禁用
+ *   - disabledButtons.openNew - 打开新窗口按钮是否禁用
+ * @param {string} [align='left'] - 按钮对齐方式 ('left'|'center'|'right')
+ * @returns {JSX.Element} 操作按钮列表
+ * 
+ * @example
+ * // 基础使用
+ * <ActionButtonList 
+ *   buttons={['pdf', 'edit', 'delete']}
+ *   handlers={{
+ *     onPdfClick: () => console.log('open pdf'),
+ *     onEditClick: () => setEditOpen(true),
+ *     onDeleteClick: () => handleDelete(),
+ *   }}
+ * />
+ * 
+ * @example
+ * // 带禁用状态
+ * <ActionButtonList 
+ *   buttons={['pdf', 'edit']}
+ *   handlers={{
+ *     onPdfClick: () => openPDF(),
+ *     onEditClick: () => setEditOpen(true),
+ *   }}
+ *   disabledButtons={{ pdf: !fileLocation }}
+ *   align="right"
+ * />
  */
 export default function ActionButtonList({
-  type = "assembly",
-  fileLocation = null,
-  jobData = null,
-  partData = null,
-  onJobSubmit = null,
-  onPartSubmit = null
+  buttons = [],
+  handlers = {},
+  disabledButtons = {},
+  align = 'left',
 }) {
   const theme = useTheme();
-  const router = useRouter();
-  const location = fileLocation ?? "#";
-  const [jobModalOpen, setJobModalOpen] = React.useState(false);
-  const [partModalOpen, setPartModalOpen] = React.useState(false);
-  const [createPartModalOpen, setCreatePartModalOpen] = React.useState(false);
-  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
 
-  const handleOpenPDF = async () => {
-    if (location && location !== "#") {
-      try {
-        const response = await fetch(`/api/jobs/pdf?fileLocation=${encodeURIComponent(location)}`);
-        if (response.ok) {
-          const blob = await response.blob();
-          const url = window.URL.createObjectURL(blob);
-          window.open(url, '_blank');
-          // 清理对象 URL（在文件加载后）
-          setTimeout(() => window.URL.revokeObjectURL(url), 100);
-        } else {
-          console.error('Failed to fetch PDF');
-        }
-      } catch (error) {
-        console.error('Error opening PDF:', error);
-      }
+  /**
+   * 获取按钮的颜色值
+   * @param {string} colorKey - 颜色键名
+   * @returns {string} 颜色值
+   */
+  const getColorValue = (colorKey) => {
+    if (colorKey === 'darkRed') {
+      return theme.palette.darkRed?.main || '#d32f2f';
     }
+    if (colorKey === 'secondary') {
+      return theme.palette.secondary?.main || '#1976d2';
+    }
+    return theme.palette.primary?.main || '#1976d2';
   };
 
-  const handleEditClick = () => {
-    if (type === 'detail') {
-      // 部件编辑
-      setPartModalOpen(true);
-    } else {
-      // 工作编辑
-      setJobModalOpen(true);
-    }
+  /**
+   * 处理器映射表
+   */
+  const handlersMap = {
+    pdf: handlers.onPdfClick,
+    edit: handlers.onEditClick,
+    delete: handlers.onDeleteClick,
+    add: handlers.onAddClick,
+    openNew: handlers.onOpenNewClick,
   };
 
-  const handleJobModalSubmit = async (formData) => {
-    // 如果jobData中有job_id，说明是编辑现有记录
-    if (jobData && jobData.job_id) {
-      try {
-        const response = await fetch('/api/jobs/update', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            job_id: jobData.job_id,
-            ...formData,
-          }),
-        });
+  /**
+   * 渲染单个按钮
+   * @param {string} buttonKey - 按钮键名
+   * @returns {JSX.Element|null} 按钮组件或 null
+   */
+  const renderButton = (buttonKey) => {
+    const config = BUTTON_CONFIGS[buttonKey];
+    const handler = handlersMap[buttonKey];
+    const isDisabled = disabledButtons[buttonKey] || false;
 
-        if (!response.ok) {
-          throw new Error('Failed to update job');
-        }
-
-        const result = await response.json();
-        console.log('Job updated successfully:', result);
-
-        if (onJobSubmit) {
-          onJobSubmit(formData);
-        }
-      } catch (error) {
-        console.error('Error updating job:', error);
-      }
-    } else {
-      // 创建新job的逻辑
-      if (onJobSubmit) {
-        onJobSubmit(formData);
-      } else {
-        console.log("Job form submitted:", formData);
-      }
+    if (!config) {
+      console.warn(`Button config not found for: ${buttonKey}`);
+      return null;
     }
-  };
 
-  const handlePartModalSubmit = async (formData, partNumber) => {
-    // 如果partData中有id，说明是编辑现有记录
-    if (partData && partData.id) {
-      try {
-        const response = await fetch('/api/jobs/assembly-detail-update', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            id: partData.id,
-            drawing_number: formData.drawing_number,
-            quantity: formData.quantity,
-            status: formData.status,
-            file_location: formData.file_location,
-            revision: formData.revision,
-          }),
-        });
+    const IconComponent = config.icon;
 
-        if (!response.ok) {
-          throw new Error('Failed to update assembly detail');
-        }
-
-        const result = await response.json();
-        console.log('Assembly detail updated successfully:', result);
-
-        if (onPartSubmit) {
-          onPartSubmit(formData);
-        }
-      } catch (error) {
-        console.error('Error updating assembly detail:', error);
-      }
-    } else if (partNumber) {
-      // 创建新的assembly detail记录
-      try {
-        const response = await fetch('/api/jobs/assembly-detail-create', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            part_number: partNumber,
-            drawing_number: formData.drawing_number,
-            quantity: formData.quantity,
-            status: formData.status,
-            file_location: formData.file_location,
-            delivery_required_date: formData.delivery_required_date,
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to create assembly detail');
-        }
-
-        const result = await response.json();
-        console.log('Assembly detail created successfully:', result);
-
-        if (onPartSubmit) {
-          onPartSubmit(formData);
-        }
-      } catch (error) {
-        console.error('Error creating assembly detail:', error);
-      }
-    } else {
-      // 备用逻辑
-      if (onPartSubmit) {
-        onPartSubmit(formData);
-      } else {
-        console.log("Part form submitted:", formData);
-      }
-    }
-  };
-
-  const handleAddPartClick = () => {
-    setCreatePartModalOpen(true);
-  };
-
-  const handleDeleteClick = async () => {
-    // 仅对detail类型（assembly detail）的删除
-    if (type === 'detail' && partData && partData.id) {
-      setDeleteDialogOpen(true);
-    }
-  };
-
-  const handleDeleteConfirm = async () => {
-    try {
-      const response = await fetch(`/api/jobs/assembly-detail-delete?id=${partData.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to delete assembly detail');
-      }
-
-      const result = await response.json();
-      console.log('Assembly detail deleted successfully:', result);
-
-      if (onPartSubmit) {
-        onPartSubmit({ deleted: true });
-      }
-    } catch (error) {
-      console.error('Error deleting assembly detail:', error);
-    }
+    return (
+      <IconButton
+        key={buttonKey}
+        size="small"
+        aria-label={config.ariaLabel}
+        onClick={handler}
+        disabled={isDisabled}
+        sx={{
+          p: 0.5,
+        }}
+      >
+        <IconComponent
+          sx={{
+            fontSize: config.fontSize,
+            color: isDisabled ? 'grey' : getColorValue(config.color),
+          }}
+        />
+      </IconButton>
+    );
   };
 
   return (
-    <>
-      <Stack direction="row" spacing={0} padding="0">
-        {/* Image Button - shown in all types */}
-        <IconButton
-          size="small"
-          aria-label={"Open PDF button"}
-          onClick={handleOpenPDF}
-          disabled={location === "#"}
-        >
-          <ImageOutlinedIcon color={location === "#" ? "grey" : "primary"} sx={{ fontSize: 20 }} />
-        </IconButton>
-
-        {/* Assembly and Detail type buttons */}
-        {type !== 'drawing' && (
-          <>
-            <IconButton
-              size="small"
-              aria-label={"EditIcon button"}
-              onClick={handleEditClick}
-            >
-              <EditIcon color="primary" sx={{ fontSize: 20 }} />
-            </IconButton>
-            <IconButton
-              size="small"
-              aria-label={"Remove button"}
-              onClick={handleDeleteClick}
-            >
-              <RemoveCircleOutlineOutlinedIcon sx={{ fontSize: 20, color: theme.palette.darkRed.main }} />
-            </IconButton>
-          </>
-        )}
-
-        {/* Assembly type only buttons */}
-        {type === "assembly" && (
-          <>
-            <IconButton
-              size="small"
-              aria-label={"Add Part button"}
-              onClick={handleAddPartClick}
-            >
-              <AddCircleOutlineIcon color="secondary" sx={{ fontSize: 20 }} />
-            </IconButton>
-            <IconButton
-              size="small"
-              aria-label={"Open job details button"}
-              onClick={() => {
-                if (jobData && jobData.job_number) {
-                  router.push(`/active-jobs/${jobData.job_number}`);
-                }
-              }}
-            >
-              <OpenInNewIcon color="primary" sx={{ fontSize: 20 }} />
-            </IconButton>
-          </>
-        )}
-
-        {/* Drawing type - Open New button */}
-        {type === 'drawing' && (
-          <IconButton
-            size="small"
-            aria-label={"Open in new window button"}
-            onClick={() => {
-              if (jobData && jobData.job_number) {
-                router.push(`/active-jobs/${jobData.job_number}`);
-              }
-            }}
-          >
-            <OpenInNewIcon color="primary" sx={{ fontSize: 20 }} />
-          </IconButton>
-        )}
-      </Stack>
-
-      {/* Job Edit Modal - For job level editing */}
-      {type !== 'detail' && (
-        <JobEditModal
-          open={jobModalOpen}
-          onClose={() => setJobModalOpen(false)}
-          jobData={jobData}
-          onSubmit={handleJobModalSubmit}
-        />
-      )}
-
-      {/* Part Edit Modal - For assembly detail items */}
-      {type === 'detail' && (
-        <PartEditModal
-          open={partModalOpen}
-          onClose={() => setPartModalOpen(false)}
-          partData={partData}
-          onSubmit={handlePartModalSubmit}
-        />
-      )}
-
-      {/* Create Part Modal - For adding new assembly details */}
-      {type === 'assembly' && (
-        <PartEditModal
-          open={createPartModalOpen}
-          onClose={() => setCreatePartModalOpen(false)}
-          partData={null}
-          onSubmit={handlePartModalSubmit}
-          customTitle="Create Part Detail"
-          partNumber={jobData?.part_number}
-        />
-      )}
-
-      {/* Delete Confirmation Dialog */}
-      <DeleteConfirmDialog
-        open={deleteDialogOpen}
-        onClose={() => setDeleteDialogOpen(false)}
-        onConfirm={handleDeleteConfirm}
-        title="Delete Assembly Detail"
-        message="Are you sure you want to delete this assembly detail? This action cannot be undone."
-        itemName={partData?.drawing_number}
-      />
-    </>
+    <Stack
+      direction="row"
+      spacing={0}
+      padding="0"
+      sx={{
+        justifyContent:
+          align === 'right' ? 'flex-end' : align === 'center' ? 'center' : 'flex-start',
+      }}
+    >
+      {buttons.map((buttonKey) => renderButton(buttonKey))}
+    </Stack>
   );
 }

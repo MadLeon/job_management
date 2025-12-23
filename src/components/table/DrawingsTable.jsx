@@ -9,7 +9,10 @@ import {
   Paper,
   Typography,
   Stack,
+  Link as MuiLink,
 } from '@mui/material';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import ActionButtonList from '../common/ActionButtonList';
 import DrawingsTableHeader from './DrawingsTableHeader';
 
@@ -21,6 +24,7 @@ import DrawingsTableHeader from './DrawingsTableHeader';
  * @param {Array} drawings - 图纸/装配数据数组，数据结构来自 assembly_detail 表，包含:
  *   {id, drawing_number, status, updated_at, file_location, description, revision, quantity, ...}
  * @param {string} [jobId] - 当前工作ID（可选，用于后续操作）
+ * @param {string} [jobNumber] - 当前工作号（用于导航到详情页面）
  * @param {string} [type='assembly'] - 图纸类型（'assembly'|'detail'）
  * @param {boolean} [isLoading=false] - 加载状态标志
  * @returns {JSX.Element} 图纸表格组件
@@ -28,9 +32,44 @@ import DrawingsTableHeader from './DrawingsTableHeader';
 export default function DrawingsTable({
   drawings = [],
   jobId = null,
+  jobNumber = null,
   type = 'drawing',
   isLoading = false,
 }) {
+  const router = useRouter();
+
+  /**
+   * 打开 PDF 文件
+   * @param {string} fileLocation - 文件位置
+   */
+  const handleOpenPDF = async (fileLocation) => {
+    if (!fileLocation) return;
+    try {
+      const response = await fetch(`/api/jobs/pdf?fileLocation=${encodeURIComponent(fileLocation)}`);
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        window.open(url, '_blank');
+        // 清理对象 URL（在文件加载后）
+        setTimeout(() => window.URL.revokeObjectURL(url), 100);
+      } else {
+        console.error('Failed to fetch file for preview');
+      }
+    } catch (error) {
+      console.error('Error opening file preview:', error);
+    }
+  };
+
+  /**
+   * 打开图纸详情
+   * @param {string} jobNumber - 工作号
+   * @param {string} drawingNumber - 图纸号
+   */
+  const handleOpenDrawingDetail = (jobNumber, drawingNumber) => {
+    if (!jobNumber || !drawingNumber) return;
+    router.push(`/active-jobs/${jobNumber}/${drawingNumber}`);
+  };
+
   /**
    * 格式化日期为 "Mon. dd, yy" 格式
    * 例如: "Dec. 19, 25"
@@ -104,9 +143,34 @@ export default function DrawingsTable({
               >
                 {/* Drawing Number */}
                 <TableCell sx={{ pl: 3 }}>
-                  <Typography variant="caption" sx={cellTypographySx}>
-                    {drawing.drawing_number || '-'}
-                  </Typography>
+                  {jobNumber ? (
+                    <Link
+                      href={`/active-jobs/${jobNumber}/${drawing.drawing_number}`}
+                      passHref
+                      legacyBehavior
+                    >
+                      <MuiLink
+                        component="a"
+                        sx={{
+                          color: '#03229F',
+                          textDecoration: 'none',
+                          cursor: 'pointer',
+                          fontSize: '14px',
+                          fontWeight: 500,
+                          letterSpacing: '0.5px',
+                          '&:hover': {
+                            textDecoration: 'underline',
+                          },
+                        }}
+                      >
+                        {drawing.drawing_number || '-'}
+                      </MuiLink>
+                    </Link>
+                  ) : (
+                    <Typography variant="caption" sx={cellTypographySx}>
+                      {drawing.drawing_number || '-'}
+                    </Typography>
+                  )}
                 </TableCell>
 
                 {/* Status */}
@@ -140,10 +204,15 @@ export default function DrawingsTable({
                 {/* Action */}
                 <TableCell align="center">
                   <ActionButtonList
-                    type={type}
-                    fileLocation={drawing.file_location}
-                    jobData={jobId ? { job_id: jobId } : null}
-                    partData={drawing.id ? { id: drawing.id } : null}
+                    buttons={['pdf', 'openNew']}
+                    handlers={{
+                      onPdfClick: () => handleOpenPDF(drawing.file_location),
+                      onOpenNewClick: () => handleOpenDrawingDetail(jobNumber, drawing.drawing_number),
+                    }}
+                    disabledButtons={{
+                      pdf: !drawing.file_location,
+                      openNew: !jobNumber || !drawing.drawing_number,
+                    }}
                   />
                 </TableCell>
               </TableRow>
