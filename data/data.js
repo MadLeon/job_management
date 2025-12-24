@@ -7,6 +7,12 @@ export const priorityOptions = {
   'Hold': { color: 'grey' },
 }
 
+export const dummyProductionData = [
+  { po_number: "PO12345", time: ["2024-06-01 10:00 AM", "2024-06-05 10:00 PM"], revision: "A", qty: 10, working_hours: 5.5 },
+  { po_number: "PO67890", time: ["2024-06-02 09:00 AM", "2024-06-06 11:00 PM"], revision: "B", qty: 20, working_hours: 8.0 },
+  { po_number: "PO54321", time: ["2024-06-03 08:30 AM", "2024-06-07 09:30 PM"], revision: "C", qty: 15, working_hours: 6.75 },
+];
+
 export const dummyEvents = [
   {
     task_name: "Manufacturing Process",
