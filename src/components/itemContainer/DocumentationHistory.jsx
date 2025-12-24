@@ -20,8 +20,10 @@ export default function DocumentationHistory() {
           <Typography component="span">Drawing PDF</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          {dummyDocumentationData?.map((item, index) => (
+            item.type === 'pdf' &&
+            <DocumentationRow key={index} item={item} />
+          ))}
         </AccordionDetails>
       </Accordion>
       <Accordion>
