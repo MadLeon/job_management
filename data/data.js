@@ -7,6 +7,133 @@ export const priorityOptions = {
   'Hold': { color: 'grey' },
 }
 
+export const dummyDocumentationData = [
+  {
+    "manufacturing_process": [
+      { 
+        id: 1,
+        type: "manufacturing_process",
+        author: "Lester", 
+        filename: "drawing_v1.doc",
+        drawing_number: "DRW-001",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 2,
+        type: "manufacturing_process",
+        author: "Lester", 
+        filename: "drawing_v2.doc",
+        drawing_number: "DRW-002",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 3,
+        type: "manufacturing_process",
+        author: "Lester", 
+        filename: "drawing_v3.doc",
+        drawing_number: "DRW-003",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+    ]
+  },
+  {
+    "pdf": [
+      { 
+        id: 1,
+        type: "pdf",
+        author: "Steve", 
+        filename: "drawing_v1.pdf",
+        drawing_number: "DRW-001",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 2,
+        type: "pdf",
+        author: "Steve", 
+        filename: "drawing_v2.pdf",
+        drawing_number: "DRW-002",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 3,
+        type: "pdf",
+        author: "Steve", 
+        filename: "drawing_v3.pdf",
+        drawing_number: "DRW-003",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+    ]
+  },
+  {
+    "mtr": [
+      { 
+        id: 1,
+        type: "mtr",
+        author: "Lester", 
+        filename: "drawing_v1.doc",
+        drawing_number: "DRW-001",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 2,
+        type: "mtr",
+        author: "Lester", 
+        filename: "drawing_v2.doc",
+        drawing_number: "DRW-002",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 3,
+        type: "mtr",
+        author: "Lester", 
+        filename: "drawing_v3.doc",
+        drawing_number: "DRW-003",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+    ]
+  },
+  {
+    "ddr": [
+      { 
+        id: 1,
+        type: "ddr",
+        author: "Lester", 
+        filename: "ddr_v1.doc",
+        drawing_number: "DRW-001",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 2,
+        type: "ddr",
+        author: "Lester", 
+        filename: "ddr_v2.doc",
+        drawing_number: "DRW-002",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+      { 
+        id: 3,
+        type: "ddr",
+        author: "Lester", 
+        filename: "ddr_v3.doc",
+        drawing_number: "DRW-003",
+        created_at: "2024-06-01 10:00 AM", 
+        updated_at: "2024-06-01 10:00 AM", 
+      },
+    ]
+  }
+];
+
 export const dummyProductionData = [
   { po_number: "PO12345", time: ["2024-06-01 10:00 AM", "2024-06-05 10:00 PM"], revision: "A", qty: 10, working_hours: 5.5 },
   { po_number: "PO67890", time: ["2024-06-02 09:00 AM", "2024-06-06 11:00 PM"], revision: "B", qty: 20, working_hours: 8.0 },
