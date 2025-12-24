@@ -15,6 +15,7 @@ import { PriorityChip } from '@/components/shared';
 import DrawingDocumentation from '@/components/itemContainer/DrawingDocumentation';
 import { DrawingsTable } from '@/components/table';
 import Notes from '@/components/itemContainer/Notes';
+import Timeline from '@/components/itemContainer/Timeline';
 
 /**
  * 图纸详情页面
@@ -122,18 +123,19 @@ export default function DrawingDetailPage() {
         href={["/all-jobs", "/active-jobs", `/active-jobs/${job_number}`, '#']}
       />
       <PageTitle title="Drawing Details" />
-      <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <Stack direction="row" spacing={3} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <ItemContainer
           ref={basicInfoRef}
           title="Basic Information"
           content={<JobInformation jobData={currentJob} assemblyData={currentDrawing} type="detail" />}
-          component={<OpenInNewLink url={`/active-jobs/${job_number}`} text="Drawing History" />}
-          sx={{ width: '80%' }}
+          component={<OpenInNewLink url={`/all-drawings/${drawing_number}`} text="Drawing History" />}
+        // sx={{ width: '80%' }}
         />
         <QRCodeDisplay size={containerHeight} />
       </Stack>
+
       <Stack direction={"row"} spacing={3} sx={{ display: 'flex', flex: 1, minHeight: 0 }}>
-        <Stack spacing={3} width="40%" sx={{ display: 'flex', flexDirection: 'column', minHeight: 0 }}>
+        <Stack spacing={3} sx={{ display: 'flex', flexDirection: 'column', minHeight: 0, width: "100%" }}>
           <ItemContainer
             title="Drawing Information"
             content={<AdditionalJobInfo jobData={currentJob} />}
@@ -152,22 +154,16 @@ export default function DrawingDetailPage() {
         <ItemContainer
           title="Notes"
           align="normal"
-          width="40%"
           content={
             <Notes notes={currentDrawing?.notes} />
           }
           component={<Typography variant="regularBold">In Progress</Typography>}
         />
         <ItemContainer
-          title="Drawing Tracker"
+          title="Timeline"
           align="normal"
-          content={
-            <DrawingsTable
-              drawings={assemblies}
-              isLoading={assembliesLoading}
-              jobNumber={job_number}
-            />
-          }
+          content={<Timeline />}
+          component={<Typography variant="regularBold">In Progress</Typography>}
         />
       </Stack>
     </Stack>

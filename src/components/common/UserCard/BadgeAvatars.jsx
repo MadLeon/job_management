@@ -2,6 +2,8 @@ import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
@@ -60,11 +62,22 @@ function stringToColor(string) {
 
 /**
  * 根据用户名生成头像对象（包含背景色和首字母）
- * @param {string} name - 用户全名
+ * 支持全名或仅首名的情况：
+ *   - 全名（包含空格）: 取第一个和第二个名字的首字母 (e.g., "John Doe" → "JD")
+ *   - 仅首名: 取该名字的首字母 (e.g., "John" → "J")
+ * 
+ * @param {string} name - 用户名称（全名或首名）
  * @param {number} [size=30] - 头像尺寸（像素）
  * @returns {Object} 包含sx和children的头像配置对象
  */
 function stringAvatar(name, size = 30) {
+  const names = name.trim().split(' ').filter(Boolean);
+  
+  // 生成首字母：全名取两个首字母，单名取一个首字母
+  const initials = names.length > 1
+    ? `${names[0][0]}${names[1][0]}`.toUpperCase()
+    : `${names[0][0]}`.toUpperCase();
+
   return {
     sx: {
       bgcolor: stringToColor(name),
@@ -72,7 +85,7 @@ function stringAvatar(name, size = 30) {
       height: size,
       fontSize: size / 2,
     },
-    children: `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`,
+    children: initials,
   };
 }
 
@@ -94,8 +107,19 @@ export default function BadgeAvatars({ name, imgSrc }) {
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
         variant="dot"
       >
-        <Avatar alt={name} src={imgSrc} {...stringAvatar(name)} />
+        <Tooltip
+        title={name}
+        slots={{
+          transition: Fade,
+        }}
+        slotProps={{
+          transition: { timeout: 600 },
+        }}
+        >
+          <Avatar alt={name} src={imgSrc} {...stringAvatar(name)} />
+        </Tooltip>
       </StyledBadge>
     </Stack>
   );
 }
+

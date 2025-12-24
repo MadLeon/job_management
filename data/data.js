@@ -7,6 +7,57 @@ export const priorityOptions = {
   'Hold': { color: 'grey' },
 }
 
+export const dummyEvents = [
+  {
+    task_name: "Manufacturing Process",
+    operator: "Lester",
+    time: "2024-06-01 10:00 AM",
+    status: "completed"
+  },
+  {
+    task_name: "Material Received",
+    operator: "Vanbo",
+    time: "2024-06-02 02:00 PM",
+    status: "completed"
+  },
+  {
+    task_name: "Task Assigned",
+    operator: "Gus",
+    time: "2024-06-03 09:30 AM",
+    status: "completed"
+  },
+  {
+    task_name: "Turn",
+    operator: "Carlos",
+    time: "2024-06-04 11:15 AM",
+    status: "completed"
+  },
+  {
+    task_name: "Mill",
+    operator: "Carlos",
+    time: "2024-06-05 01:00 PM",
+    status: "in-progress"
+  },
+  {
+    task_name: "Drill & Bore Dia. 0.5",
+    operator: "Carlos",
+    time: "2024-06-06 03:45 PM",
+    status: "pending"
+  },
+  {
+    task_name: "Deburr & Clean",
+    operator: "Kelvin",
+    time: "2024-06-07 10:30 AM",
+    status: "pending"
+  },
+  {
+    task_name: "Inspect",
+    operator: "Franco",
+    time: "2024-06-08 02:15 PM",
+    status: "pending"
+  }
+];
+
 export const customerList = [
   'AB Sciex',
   'ABI Ltd',
