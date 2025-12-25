@@ -9,6 +9,7 @@ import PriorityFilter from './PriorityFilter';
 import BottomButtonGroup from './BottomButtonGroup';
 import { useFilters } from '@/context/FilterContext';
 import ItemContainer from '../itemContainer';
+import { FieldLabel } from '../common';
 
 export default function FilterPopover({ id, open, anchorEl, handleClose }) {
   const { applyFilters } = useFilters();
@@ -39,11 +40,19 @@ export default function FilterPopover({ id, open, anchorEl, handleClose }) {
 
   const filterContent = (
     <Stack>
-      <Stack spacing={2} sx={{ p: 2, width: '100%' }}>
-        <ClientAutocomplete value={clients} onChange={setClients} />
-        <PriorityFilter value={priorities} onChange={setPriorities} />
-        <DateRange startDate={startDate} endDate={endDate} onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
-        <ContactAutocomplete value={contacts} onChange={setContacts} />
+      <Stack spacing={3} sx={{ p: 3, width: '100%' }}>
+        <FieldLabel label="Client">
+          <ClientAutocomplete value={clients} onChange={setClients} />
+        </FieldLabel>
+        <FieldLabel label="Priority">
+          <PriorityFilter value={priorities} onChange={setPriorities} />
+        </FieldLabel>
+        <FieldLabel label="Delivery Required Date">
+          <DateRange startDate={startDate} endDate={endDate} onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
+        </FieldLabel>
+        <FieldLabel label="Contact">
+          <ContactAutocomplete value={contacts} onChange={setContacts} />
+        </FieldLabel>
       </Stack>
       <Divider />
       <Box >
@@ -73,7 +82,7 @@ export default function FilterPopover({ id, open, anchorEl, handleClose }) {
         }
       }}
     >
-      <ItemContainer 
+      <ItemContainer
         title="Filter Options"
         content={filterContent}
         align="flex-start"

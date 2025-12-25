@@ -2,9 +2,9 @@ import { TextField, Stack } from "@mui/material";
 
 export default function DateRange({ startDate = "", endDate = "", onStartDateChange, onEndDateChange }) {
   return (
-    <Stack spacing={2} direction="row" sx={{ width: "100%" }}>
+    <Stack spacing={3} direction="row" sx={{ py: 1, minWidth: '400px' }}>
       <TextField
-        label="Del. Req'd Start"
+        label="Start Date"
         type="date"
         size="small"
         value={startDate}
@@ -17,7 +17,7 @@ export default function DateRange({ startDate = "", endDate = "", onStartDateCha
         sx={{ flex: 1 }}
       />
       <TextField
-        label="Del. Req'd End"
+        label="End Date"
         type="date"
         size="small"
         value={endDate}

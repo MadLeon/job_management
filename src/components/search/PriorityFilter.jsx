@@ -1,35 +1,26 @@
-import { Box, FormControlLabel, Checkbox } from "@mui/material";
+import { ToggleButtonGroup } from "@/components/common";
 import { priorityOptions } from "@/../data/data";
 
+/**
+ * 优先级过滤器组件
+ * 使用切换按钮组显示优先级选项
+ * 
+ * @param {Object} value - 当前选中的优先级对象
+ * @param {Function} onChange - 优先级变化时的回调函数
+ */
 export default function PriorityFilter({ value = {}, onChange }) {
-  const handlePriorityChange = (priority) => {
-    const newValue = {
-      ...value,
-      [priority]: !value[priority],
-    };
-    onChange(newValue);
-  };
+  // 将 priorityOptions 转换为选项数组
+  const options = Object.keys(priorityOptions).map((priority) => ({
+    value: priority,
+    label: priority,
+  }));
 
   return (
-    <Box
-      sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-        gap: 1,
-      }}
-    >
-      {Object.keys(priorityOptions).map((priority) => (
-        <FormControlLabel
-          key={priority}
-          control={
-            <Checkbox
-              checked={value[priority] || false}
-              onChange={() => handlePriorityChange(priority)}
-            />
-          }
-          label={priority}
-        />
-      ))}
-    </Box>
+    <ToggleButtonGroup 
+      value={value} 
+      onChange={onChange} 
+      options={options} 
+      columns={3} 
+    />
   );
 }
