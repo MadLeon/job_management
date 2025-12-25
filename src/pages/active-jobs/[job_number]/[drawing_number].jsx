@@ -119,8 +119,8 @@ export default function DrawingDetailPage() {
   return (
     <Stack spacing={3} sx={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
       <Breadcrumb
-        locationLayer={['All Jobs', 'Active Jobs', job_number || 'Loading...', breadcrumbLabel || 'Detail']}
-        href={["/all-jobs", "/active-jobs", `/active-jobs/${job_number}`, '#']}
+        locationLayer={['Active Jobs', job_number || 'Loading...', breadcrumbLabel || 'Detail']}
+        href={["/active-jobs", `/active-jobs/${job_number}`, '#']}
       />
       <PageTitle title="Drawing Details" />
       <Stack direction="row" spacing={3} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>

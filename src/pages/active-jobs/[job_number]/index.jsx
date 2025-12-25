@@ -59,8 +59,8 @@ export default function JobDetailPage() {
   return (
     <Stack spacing={3}>
       <Breadcrumb
-        locationLayer={['All Jobs', 'Active Jobs', job_number || 'Detail']}
-        href={["/all-jobs", "/active-jobs", `/active-jobs/${job_number}`]}
+        locationLayer={['Active Jobs', job_number || 'Detail']}
+        href={["/active-jobs", `/active-jobs/${job_number}`]}
       />
       <PageTitle title="Job Overview" />
       <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>

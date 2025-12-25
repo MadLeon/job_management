@@ -87,7 +87,7 @@ function ActiveJobs() {
 
   return (
     <Stack spacing={3} >
-      <Breadcrumb locationLayer={['All Jobs', 'Active Jobs']} href={["all-jobs", "active-jobs"]} />
+      <Breadcrumb locationLayer={['Active Jobs']} href={["active-jobs"]} />
       <PageTitle title="Active Jobs" />
       <ItemContainer content={<SearchArea onCreateJobClick={() => setCreateJobModalOpen(true)} onSearchSelect={handleSearchSelect} />} />
       <ItemContainer title="All Active Jobs" content={jobsArea} />
