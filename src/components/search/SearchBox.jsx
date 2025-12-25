@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useJobSearch } from '@/lib/hooks/useJobSearch';
 
 /**
- * 搜索框组件 - 支持按job_number, po_number, part_number, drawing_number搜索
+ * 搜索框组件 - 支持按job_number, po_number, part_number, drawing_number(detail number)搜索
  * 使用MUI Autocomplete和React Query进行实时搜索
  * 
  * @param {Function} [onSelect] - 用户选择一条记录时的回调函数，接收选中的job记录
@@ -23,6 +23,7 @@ import { useJobSearch } from '@/lib/hooks/useJobSearch';
 export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
   const [inputValue, setInputValue] = useState('');
   const [open, setOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(null);
 
   // 使用自定义hook获取搜索结果
   const { data: searchResults = [], isLoading, isFetching, isError, error } = useJobSearch(
@@ -30,24 +31,6 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
     limit,
     open // 仅在dropdown打开时执行搜索
   );
-
-  // 调试：监听搜索结果变化
-  // React.useEffect(() => {
-  //   if (inputValue) {
-  //     console.log('[SearchBox] 搜索关键词:', inputValue);
-  //     console.log('[SearchBox] 搜索结果数量:', searchResults.length);
-  //     if (searchResults.length > 0) {
-  //       console.log('[SearchBox] 搜索结果样本:', searchResults[0]);
-  //     }
-  //   }
-  // }, [inputValue, searchResults]);
-
-  // // 调试：监听错误
-  // React.useEffect(() => {
-  //   if (isError) {
-  //     console.error('[SearchBox] 搜索错误:', error);
-  //   }
-  // }, [isError, error]);
 
   // 格式化选项标签（用于搜索和文本显示）
   const formatOptionLabel = useCallback((job) => {
@@ -142,33 +125,61 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
   // 处理选项选择
   const handleOptionSelect = useCallback((event, value) => {
     if (value) {
-      console.log('[SearchBox] 用户选择了:', {
-        job_number: value.job_number,
-        line_number: value.line_number,
-        po_number: value.po_number,
-        part_number: value.part_number,
-        unique_key: value.unique_key,
-      });
+      // 设置选中的值
+      setSelectedValue(value);
+      
       // 调用父组件回调
       if (onSelect) {
         onSelect(value);
       }
-      // 清空输入框
-      setInputValue('');
+      // 关闭下拉列表，但不清空 inputValue（让 Autocomplete 自动显示选中项的 label）
       setOpen(false);
+    } else {
+      // 清除选中的值
+      setSelectedValue(null);
+      if (onSelect) {
+        onSelect(null);
+      }
     }
   }, [onSelect]);
 
   // 处理输入值变化，使用reason参数判断是否是用户主动清空
   const handleInputChange = useCallback((event, newInputValue, reason) => {
+    // 当原因是 'blur' 或 'reset' 时，不更新 inputValue，保持当前搜索状态
+    // 这些事件会在失去焦点时被触发，但我们希望保持搜索结果可见
+    if (reason === 'blur' || reason === 'reset') {
+      return;
+    }
+    
+    // 只有在用户真正输入时才清除选中的值
+    if (reason === 'input') {
+      setSelectedValue(null);
+    }
+    
     setInputValue(newInputValue);
 
     // 仅当用户主动清空输入框时（reason为'clear'）才清除过滤
-    if (reason === 'clear' && onSelect) {
-      console.log('[SearchBox] 用户清空了输入框，清除搜索过滤');
-      onSelect(null);
+    if (reason === 'clear') {
+      setSelectedValue(null);
+      if (onSelect) {
+        onSelect(null);
+      }
     }
-  }, [onSelect]);
+  }, [onSelect, inputValue]);
+
+  // 处理下拉列表关闭，只在特定情况下关闭
+  const handleClose = useCallback((event, reason) => {
+    // 只有在以下情况下才关闭下拉列表：
+    // - 'toggleInput': 用户点击下拉按钮
+    // - 'escape': 用户按ESC键
+    // 不响应 'blur'（点击外部区域）和 'selectOption'（已在 handleOptionSelect 中处理）
+    if (reason === 'toggleInput' || reason === 'escape') {
+      setOpen(false);
+      // 关闭时清空搜索状态
+      setInputValue('');
+      setSelectedValue(null);
+    }
+  }, []);
 
   return (
     <Autocomplete
@@ -176,7 +187,8 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
       size="small"
       open={open}
       onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
+      value={selectedValue}
+      onClose={handleClose}
       options={options}
       getOptionLabel={(option) => option.label || ''}
       inputValue={inputValue}
@@ -184,6 +196,7 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
       onChange={handleOptionSelect}
       isOptionEqualToValue={(option, value) => option.unique_key === value.unique_key}
       loading={isLoading || isFetching}
+      filterOptions={(x) => x}
       noOptionsText={
         isError ? (
           <Typography color="error" variant="body2">
