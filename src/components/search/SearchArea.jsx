@@ -27,21 +27,18 @@ function SearchArea({ onCreateJobClick, onSearchSelect }) {
         <FilterPopover id={id} open={open} anchorEl={anchorEl} handleClose={handleClose} />
       </Stack>
       <Stack direction="row" spacing={2}>
-        <Button variant="text" startIcon={<FilterAltIcon />}>
-          Refresh
-        </Button>
         <Button
           variant="contained"
           onClick={onCreateJobClick}
         >
           New Job
         </Button>
-        <IconButton
+        {/* <IconButton
           size="large"
           aria-label="option menu"
         >
           <SettingsIcon sx={{ fontSize: 20 }} />
-        </IconButton>
+        </IconButton> */}
       </Stack>
     </Stack>
   );

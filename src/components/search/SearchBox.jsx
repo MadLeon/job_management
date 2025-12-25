@@ -32,24 +32,24 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
   );
 
   // 调试：监听搜索结果变化
-  React.useEffect(() => {
-    if (inputValue) {
-      console.log('[SearchBox] 搜索关键词:', inputValue);
-      console.log('[SearchBox] 搜索结果数量:', searchResults.length);
-      if (searchResults.length > 0) {
-        console.log('[SearchBox] 搜索结果样本:', searchResults[0]);
-      }
-    }
-  }, [inputValue, searchResults]);
+  // React.useEffect(() => {
+  //   if (inputValue) {
+  //     console.log('[SearchBox] 搜索关键词:', inputValue);
+  //     console.log('[SearchBox] 搜索结果数量:', searchResults.length);
+  //     if (searchResults.length > 0) {
+  //       console.log('[SearchBox] 搜索结果样本:', searchResults[0]);
+  //     }
+  //   }
+  // }, [inputValue, searchResults]);
 
-  // 调试：监听错误
-  React.useEffect(() => {
-    if (isError) {
-      console.error('[SearchBox] 搜索错误:', error);
-    }
-  }, [isError, error]);
+  // // 调试：监听错误
+  // React.useEffect(() => {
+  //   if (isError) {
+  //     console.error('[SearchBox] 搜索错误:', error);
+  //   }
+  // }, [isError, error]);
 
-  // 格式化选项标签
+  // 格式化选项标签（用于搜索和文本显示）
   const formatOptionLabel = useCallback((job) => {
     const parts = [];
 
@@ -67,6 +67,68 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
     }
 
     return parts.join(' | ');
+  }, []);
+
+  // 格式化选项显示（返回JSX片段，支持自定义样式）
+  const formatOptionDisplay = useCallback((job) => {
+    const firstLineFields = [];
+    
+    if (job.job_number) {
+      firstLineFields.push({ label: 'Job:', value: job.job_number });
+    }
+    if (job.line_number) {
+      firstLineFields.push({ label: 'Line:', value: job.line_number });
+    }
+    
+    return (
+      <Box>
+        {/* 第一行：Job（左）, Line（右） */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {job.line_number && (
+            <Box>
+              <Typography component="span" variant="body2" fontWeight="bold">
+                Line:{' '}
+              </Typography>
+              <Typography component="span" variant="caption">
+                {job.line_number}
+              </Typography>
+            </Box>
+          )}
+          {job.job_number && (
+            <Box>
+              <Typography component="span" variant="body2" fontWeight="bold">
+                Job:{' '}
+              </Typography>
+              <Typography component="span" variant="caption">
+                {job.job_number}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+        {/* 第二行：PO */}
+        {job.po_number && (
+          <Box>
+            <Typography component="span" variant="body2" fontWeight="bold">
+              PO:{' '}
+            </Typography>
+            <Typography component="span" variant="caption">
+              {job.po_number}
+            </Typography>
+          </Box>
+        )}
+        {/* 第三行：Part */}
+        {job.part_number && (
+          <Box>
+            <Typography component="span" variant="body2" fontWeight="bold">
+              Part:{' '}
+            </Typography>
+            <Typography component="span" variant="caption">
+              {job.part_number}
+            </Typography>
+          </Box>
+        )}
+      </Box>
+    );
   }, []);
 
   // 创建选项数组，添加格式化标签
@@ -153,13 +215,8 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
       )}
       renderOption={(props, option) => (
         <Box component="li" {...props} key={option.unique_key}>
-          <Box>
-            <Typography variant="body2" fontWeight="bold">
-              {option.label}
-            </Typography>
-            <Typography variant="caption" color="textSecondary">
-              Customer: {option.customer_name} | Priority: {option.priority}
-            </Typography>
+          <Box sx={{ width: '100%' }}>
+            {formatOptionDisplay(option)}
           </Box>
         </Box>
       )}
