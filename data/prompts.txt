@@ -3,3 +3,6 @@ update the structure.txt with the current database structure, using node check-d
 
 follows the copilot instruction, especially use chinese and perform JSDoc comment style.
 read structure.txt and run check-db.js for better understanding for the database.
+
+有哪些设计选择, 可以添加哪些很酷的功能
+什么是 Plan mode

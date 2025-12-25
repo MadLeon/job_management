@@ -83,7 +83,9 @@ export default function JobDetailPage() {
           <ItemContainer
             title="Job Completion"
             content={
-              <JobCompletionChart jobData={currentJob} />}
+              <JobCompletionChart jobData={currentJob} />
+            }
+            component={<Typography variant="h3">In Progress</Typography>}
             width="100%"
           />
         </Stack>

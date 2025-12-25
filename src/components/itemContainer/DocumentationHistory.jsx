@@ -6,12 +6,13 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 
-import dummyDocumentationData from "../../../data/data";
+import ActionButtonList from "../common/ActionButtonList";
+import { dummyDocumentationData } from "../../../data/data";
 
 export default function DocumentationHistory() {
   return (
     <Stack sx={{ width: "100%", height: "100%" }}>
-      <Accordion defaultExpanded>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -19,11 +20,13 @@ export default function DocumentationHistory() {
         >
           <Typography component="span">Drawing PDF</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          {dummyDocumentationData?.map((item, index) => (
-            item.type === 'pdf' &&
-            <DocumentationRow key={index} item={item} />
-          ))}
+        <AccordionDetails>          
+          <Stack spacing={1}>
+            {dummyDocumentationData?.map((item, index) => (
+              item.type === 'pdf' &&
+              <DocumentationRow key={index} item={item} />
+            ))}
+          </Stack>
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -35,26 +38,64 @@ export default function DocumentationHistory() {
           <Typography component="span">Manufacturing Process</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <Stack spacing={1}>
+            {dummyDocumentationData?.map((item, index) => (
+              item.type === "manufacturing_process" &&
+              <DocumentationRow key={index} item={item} />
+            ))}
+          </Stack>
         </AccordionDetails>
       </Accordion>
-      <Accordion defaultExpanded>
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3-content"
           id="panel3-header"
         >
-          <Typography component="span">Accordion Actions</Typography>
+          <Typography component="span">MTR</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <Stack spacing={1}>
+            {dummyDocumentationData?.map((item, index) => (
+              item.type === "mtr" &&
+              <DocumentationRow key={index} item={item} />
+            ))}
+          </Stack>
         </AccordionDetails>
-        <AccordionActions>
-          <Button>Cancel</Button>
-          <Button>Agree</Button>
-        </AccordionActions>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3-content"
+          id="panel3-header"
+        >
+          <Typography component="span">DDR</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Stack spacing={1}>
+            {dummyDocumentationData?.map((item, index) => (
+              item.type === "ddr" &&
+              <DocumentationRow key={index} item={item} />
+            ))}
+          </Stack>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel3-content"
+          id="panel3-header"
+        >
+          <Typography component="span">DIR</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Stack spacing={1}>
+            {dummyDocumentationData?.map((item, index) => (
+              item.type === "dir" &&
+              <DocumentationRow key={index} item={item} />
+            ))}
+          </Stack>
+        </AccordionDetails>
       </Accordion>
     </Stack >
   );
@@ -62,10 +103,13 @@ export default function DocumentationHistory() {
 
 function DocumentationRow({ item }) {
   return (
-    <Stack sx={{ display: 'grid', gridTemplateColumns: '1fr auto auto auto auto', alignItems: 'center',p: 3 }}>
+    <Stack sx={{ display: 'grid', gridTemplateColumns: 'auto auto auto auto', alignItems: 'center' }}>
+      <Typography variant="caption">{item.filename || '-'}</Typography>
       <Typography variant="caption">{item.author || '-'}</Typography>
-      <Typography variant="caption">{item.time || '-'}</Typography>
-      <ActionButtonList actions={["opennew", "delete"]} />
+      <Typography variant="caption">{`${item.created_at} - ${item.updated_at}` || '-'}</Typography>
+      <Box sx={{ justifySelf: 'end' }}>
+        <ActionButtonList buttons={["openNew", "delete"]} />
+      </Box>
     </Stack>
   );
 }

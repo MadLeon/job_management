@@ -1,12 +1,10 @@
-import React from 'react';
-
-import Design from '../design';
+import React from "react";
 
 function HomePage() {
   return (
     <div>
       {/* 其他内容 */}
-      
+
       {/* 其他内容 */}
     </div>
   );
