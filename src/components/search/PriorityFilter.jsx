@@ -16,11 +16,11 @@ export default function PriorityFilter({ value = {}, onChange }) {
   }));
 
   return (
-    <ToggleButtonGroup 
-      value={value} 
-      onChange={onChange} 
-      options={options} 
-      columns={3} 
+    <ToggleButtonGroup
+      value={value}
+      onChange={onChange}
+      options={options}
+      columns={3}
     />
   );
 }
