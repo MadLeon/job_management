@@ -74,3 +74,27 @@
 - **数据库模式**: `scripts/migrations/` 中的迁移 - 每个功能一个
 - **配置**: `next.config.mjs` (Next.js), `theme.js` (MUI), `queryClient.js` (React Query)
 - **数据库结构**: `data/structure.txt`
+
+---
+
+## 进行中项目：客户和联系人数据库重构
+
+**现状与目标**：
+
+- 当前：客户列表使用硬编码数组 (`data/data.js` → `customerList`)，联系人从 jobs 表动态抽取
+- 目标：将客户和联系人迁移到独立数据库表，支持动态管理、多种排序方式、使用统计
+
+**采用方案**：方案一（独立表结构）+ 方案二（usage_count 统计）
+
+**库表设计**：
+
+- `customers` (customer_id, customer_name, pdf_folder_path, is_active, usage_count, last_used, created_at, updated_at)
+- `contacts` (contact_id, contact_name, customer_name, usage_count, last_used, is_active, created_at, updated_at)
+
+**执行策略**：
+
+1. 先在 [tasks/todo.md](tasks/todo.md) 中规划所有需修改的部分（数据库、API、前端组件等）
+2. 集中执行所有数据库迁移、API 开发、前端更新
+3. 最后统一更新 structure.txt 和相关文档
+
+**详见** [tasks/todo.md](tasks/todo.md) 获取完整任务清单

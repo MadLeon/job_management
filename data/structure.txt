@@ -1,5 +1,5 @@
 ================================================================================
-DATABASE STRUCTURE - 数据库架构 (Updated: 2025-12-19)
+DATABASE STRUCTURE - 数据库架构 (Updated: 2025-12-25)
 ================================================================================
 
 /**
@@ -7,6 +7,11 @@ DATABASE STRUCTURE - 数据库架构 (Updated: 2025-12-19)
  * 核心表: jobs(活跃工作), job_history(历史记录), detail_drawing(图纸元数据), assembly_detail(装配细节)
  * 辅助表: drawings(图纸库), assemblies(装配库), customer_folder_map(客户文件夹映射)
  * 总工作数: 332条记录
+ * 
+ * 进行中的重构项目:
+ * - 计划将客户和联系人管理迁移到数据库表(customers, contacts)
+ * - 移除硬编码的 customerList 数组，改用动态数据库查询
+ * - 增加使用统计和排序功能
  */
 
 TABLE: jobs (主工作表)
