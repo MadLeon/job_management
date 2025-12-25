@@ -55,14 +55,14 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
   // 格式化选项显示（返回JSX片段，支持自定义样式）
   const formatOptionDisplay = useCallback((job) => {
     const firstLineFields = [];
-    
+
     if (job.job_number) {
       firstLineFields.push({ label: 'Job:', value: job.job_number });
     }
     if (job.line_number) {
       firstLineFields.push({ label: 'Line:', value: job.line_number });
     }
-    
+
     return (
       <Box>
         {/* 第一行：Job（左）, Line（右） */}
@@ -127,7 +127,7 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
     if (value) {
       // 设置选中的值
       setSelectedValue(value);
-      
+
       // 调用父组件回调
       if (onSelect) {
         onSelect(value);
@@ -150,12 +150,12 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
     if (reason === 'blur' || reason === 'reset') {
       return;
     }
-    
+
     // 只有在用户真正输入时才清除选中的值
     if (reason === 'input') {
       setSelectedValue(null);
     }
-    
+
     setInputValue(newInputValue);
 
     // 仅当用户主动清空输入框时（reason为'clear'）才清除过滤
@@ -167,17 +167,19 @@ export default function SearchBox({ onSelect, limit = 20, sx = {} }) {
     }
   }, [onSelect, inputValue]);
 
-  // 处理下拉列表关闭，只在特定情况下关闭
+  // 处理下拉列表关闭
   const handleClose = useCallback((event, reason) => {
-    // 只有在以下情况下才关闭下拉列表：
-    // - 'toggleInput': 用户点击下拉按钮
-    // - 'escape': 用户按ESC键
-    // 不响应 'blur'（点击外部区域）和 'selectOption'（已在 handleOptionSelect 中处理）
+    // 'toggleInput': 用户点击下拉按钮 → 关闭并清空数据
+    // 'escape': 用户按ESC键 → 关闭并清空数据
+    // 'blur': 用户点击外部区域 → 关闭但不清空数据
+    // 'selectOption': 已在 handleOptionSelect 中处理
     if (reason === 'toggleInput' || reason === 'escape') {
       setOpen(false);
-      // 关闭时清空搜索状态
       setInputValue('');
       setSelectedValue(null);
+    } else if (reason === 'blur') {
+      // 点击空白区域时，仅关闭下拉列表，保留输入和选中的值
+      setOpen(false);
     }
   }, []);
 
