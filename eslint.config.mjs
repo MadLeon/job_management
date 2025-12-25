@@ -10,6 +10,14 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Additional ignores for performance:
+    "node_modules/**",
+    "data/**",
+    "scripts/**",
+    "public/**",
+    ".git/**",
+    "*.db",
+    "*.json",
   ]),
 ]);
 

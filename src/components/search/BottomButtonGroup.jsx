@@ -17,11 +17,11 @@ export default function BottomButtonGroup({
   onApply,
 }) {
   return (
-    <Stack direction="row" spacing={2} justifyContent="space-between">
+    <Stack direction="row" spacing={2} justifyContent="space-between" sx={{ p: 2 }}>
       <Button
         onClick={onClear}
         variant="text"
-        size="large"
+        size="medium"
         sx={{
           color: "error.main",
           '& .MuiButton-text': {
@@ -34,8 +34,8 @@ export default function BottomButtonGroup({
       <Stack direction="row" spacing={2}>
         <Button
           onClick={onClose}
-          variant="text"
-          size="large"
+          variant="outlined"
+          size="medium"
           sx={{
             color: 'text.secondary',
             '& .MuiButton-text': {
@@ -48,14 +48,14 @@ export default function BottomButtonGroup({
         <Button
           onClick={onApply}
           autoFocus
-          variant="text"
-          size="large"
-          sx={{
-            color: 'primary.main',
-            '& .MuiButton-text': {
-              fontWeight: 700
-            }
-          }}
+          variant="contained"
+          size="medium"
+        // sx={{
+        //   color: 'primary.main',
+        //   '& .MuiButton-text': {
+        //     fontWeight: 700
+        //   }
+        // }}
         >
           Apply
         </Button>

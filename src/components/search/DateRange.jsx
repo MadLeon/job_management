@@ -4,24 +4,28 @@ export default function DateRange({ startDate = "", endDate = "", onStartDateCha
   return (
     <Stack spacing={2} direction="row" sx={{ width: "100%" }}>
       <TextField
-        label="Start Date"
+        label="Del. Req'd Start"
         type="date"
         size="small"
         value={startDate}
         onChange={(e) => onStartDateChange(e.target.value)}
-        InputLabelProps={{
-          shrink: true,
+        slotProps={{
+          inputLabel: {
+            shrink: true,
+          }
         }}
         sx={{ flex: 1 }}
       />
       <TextField
-        label="End Date"
+        label="Del. Req'd End"
         type="date"
         size="small"
         value={endDate}
         onChange={(e) => onEndDateChange(e.target.value)}
-        InputLabelProps={{
-          shrink: true,
+        slotProps={{
+          inputLabel: {
+            shrink: true,
+          }
         }}
         sx={{ flex: 1 }}
       />

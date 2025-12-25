@@ -1,14 +1,14 @@
 import * as React from 'react';
 import Popover from '@mui/material/Popover';
-import { Paper, Stack, Divider, Typography } from '@mui/material';
+import { Stack, Divider, Box } from '@mui/material';
 import { useState } from 'react';
 import ClientAutocomplete from './ClientAutocomplete';
 import ContactAutocomplete from './ContactAutocomplete';
 import DateRange from './DateRange';
 import PriorityFilter from './PriorityFilter';
-import BottomButtonGroup from '../common/BottomButtonGroup';
+import BottomButtonGroup from './BottomButtonGroup';
 import { useFilters } from '@/context/FilterContext';
-import ContainerTitle from '../itemContainer/ContainerTitle';
+import ItemContainer from '../itemContainer';
 
 export default function FilterPopover({ id, open, anchorEl, handleClose }) {
   const { applyFilters } = useFilters();
@@ -37,6 +37,21 @@ export default function FilterPopover({ id, open, anchorEl, handleClose }) {
     handleClose();
   };
 
+  const filterContent = (
+    <Stack>
+      <Stack spacing={2} sx={{ p: 2, width: '100%' }}>
+        <ClientAutocomplete value={clients} onChange={setClients} />
+        <PriorityFilter value={priorities} onChange={setPriorities} />
+        <DateRange startDate={startDate} endDate={endDate} onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
+        <ContactAutocomplete value={contacts} onChange={setContacts} />
+      </Stack>
+      <Divider />
+      <Box >
+        <BottomButtonGroup onClear={handleClear} onClose={handleClose} onApply={handleApply} />
+      </Box>
+    </Stack>
+  );
+
   return (
     <Popover
       id={id}
@@ -49,24 +64,20 @@ export default function FilterPopover({ id, open, anchorEl, handleClose }) {
       }}
       slotProps={{
         paper: {
+          elevation: 4,
           sx: {
             height: "auto",
             overflow: "visible",
+            borderRadius: '10px',
           }
         }
       }}
     >
-      <Stack spacing={2} sx={{ p: 2 }}>
-        <Typography variant="h2" sx={{ py: 1 }}>Filter Options</Typography>
-        <ClientAutocomplete value={clients} onChange={setClients} />
-        <Divider />
-        <PriorityFilter value={priorities} onChange={setPriorities} />
-        <Divider />
-        <DateRange startDate={startDate} endDate={endDate} onStartDateChange={setStartDate} onEndDateChange={setEndDate} />
-        <Divider />
-        <ContactAutocomplete value={contacts} onChange={setContacts} />
-        <BottomButtonGroup onClear={handleClear} onClose={handleClose} onApply={handleApply} />
-      </Stack>
+      <ItemContainer 
+        title="Filter Options"
+        content={filterContent}
+        align="flex-start"
+      />
     </Popover>
   );
 }
