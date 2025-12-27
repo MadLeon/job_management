@@ -8,6 +8,7 @@ import {
   MenuItem,
   Grid,
   IconButton,
+  CircularProgress,
 } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -38,6 +39,7 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
   const fileInputRef = React.useRef(null);
 
   const [formData, setFormData] = useState(initialData);
+  const [isLoadingFileLocation, setIsLoadingFileLocation] = useState(false);
   const [selectedCustomer, setSelectedCustomer] = useState(initialData.customer_name || null);
 
   const handleChange = (e) => {
@@ -126,6 +128,38 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
     return fileName || '';
   };
 
+  /**
+   * 在 part_number 字段失焦时自动检索图纸文件位置
+   * 调用后端 `/api/jobs/drawing-file-location` API，优先返回最新版本
+   * 若检索失败或无结果，保持静默并允许用户继续手动输入
+   */
+  const handlePartNumberBlur = async () => {
+    const partNumber = (formData.part_number || '').trim();
+    if (!partNumber) return;
+
+    setIsLoadingFileLocation(true);
+    try {
+      const params = new URLSearchParams({
+        drawingNumber: partNumber,
+        customerName: (formData.customer_name || '').trim(),
+      });
+      const resp = await fetch(`/api/jobs/drawing-file-location?${params.toString()}`);
+      if (resp.ok) {
+        const data = await resp.json();
+        if (data && data.fileLocation) {
+          setFormData(prev => ({
+            ...prev,
+            file_location: data.fileLocation,
+          }));
+        }
+      }
+    } catch (err) {
+      console.error('Failed to auto-fetch drawing file location:', err);
+    } finally {
+      setIsLoadingFileLocation(false);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
@@ -195,6 +229,7 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
             name="part_number"
             value={formData.part_number}
             onChange={handleChange}
+            onBlur={handlePartNumberBlur}
             size="small"
           />
         </Grid>
@@ -320,13 +355,20 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
         </Grid>
       </Grid>
 
-      <Stack direction="row" spacing={2} sx={{ mt: 4, justifyContent: 'flex-end' }}>
-        <Button variant="outlined" onClick={onCancel}>
-          Cancel
-        </Button>
-        <Button variant="contained" type="submit">
-          {isEditMode ? 'Save' : 'Create'}
-        </Button>
+      <Stack direction="row" spacing={2} sx={{ mt: 2, alignItems: 'center', justifyContent: 'space-between' }}>
+        {isLoadingFileLocation ? (
+          <CircularProgress size={24} />
+        ) : (
+          <Box sx={{ width: 24, height: 24 }} />
+        )}
+        <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between' }}>
+          <Button variant="outlined" onClick={onCancel}>
+            Cancel
+          </Button>
+          <Button variant="contained" type="submit">
+            {isEditMode ? 'Save' : 'Create'}
+          </Button>
+        </Stack>
       </Stack>
     </Box>
   );

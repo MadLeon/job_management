@@ -45,7 +45,7 @@ export default function handler(req, res) {
       // 步骤 1: 在 drawings 表中按 drawing_number 直接匹配
       // 当 drawing_number 存在时，这是最精确的查找方式
       const directMatch = db.prepare(
-        'SELECT file_location FROM drawings WHERE drawing_number = ?'
+        'SELECT file_location FROM drawings WHERE drawing_number = ? ORDER BY updated_at IS NULL, updated_at DESC LIMIT 1'
       ).get(drawingNumber);
 
       if (directMatch && directMatch.file_location) {
@@ -66,7 +66,7 @@ export default function handler(req, res) {
         // 查询所有 drawing_name 包含 drawingNumber 的图纸
         // 按 drawing_name 排序以保证顺序一致
         const fuzzyMatches = db.prepare(
-          'SELECT file_location FROM drawings WHERE drawing_name LIKE ? ORDER BY drawing_name'
+          'SELECT file_location FROM drawings WHERE drawing_name LIKE ? ORDER BY updated_at IS NULL, updated_at DESC'
         ).all(`%${drawingNumber}%`);
 
         // 查找第一个与客户路径匹配的有效 file_location
@@ -91,7 +91,7 @@ export default function handler(req, res) {
         // 仅提供图纸号时使用
 
         const fuzzyMatches = db.prepare(
-          'SELECT file_location FROM drawings WHERE drawing_name LIKE ? ORDER BY drawing_name LIMIT 1'
+          'SELECT file_location FROM drawings WHERE drawing_name LIKE ? ORDER BY updated_at IS NULL, updated_at DESC LIMIT 1'
         ).get(`%${drawingNumber}%`);
 
         if (fuzzyMatches && fuzzyMatches.file_location) {

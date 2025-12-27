@@ -122,6 +122,7 @@ TABLE: drawings (图纸库)
   - drawing_number (TEXT) - 图纸号
   - name (TEXT) - 名称
   - description (TEXT) - 描述
+  - updated_at (TEXT) - 更新时间（触发器在插入/更新时写入 CURRENT_TIMESTAMP；旧数据可为 NULL）
 
 
 TABLE: assemblies (装配库)
@@ -170,6 +171,7 @@ TABLE: drawings (图纸映射)
   - drawing_name (TEXT) - 图纸名称
   - drawing_number (TEXT) - 图纸号
   - file_location (TEXT) - 文件系统路径
+  - updated_at (TEXT) - 更新时间（插入/更新触发器自动填充；NULL 表示旧数据未补全）
 
 说明：
 - 用于快速定位图纸文件

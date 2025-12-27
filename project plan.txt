@@ -1,7 +1,10 @@
-drawing release 改为 date type
-customer name, customer contact 改为与 filter 中 customer 与 contact 相同的 autocomplete, 逻辑也相同
-add multiple 的实现
-pdf 检索的逻辑
+1. 为createjobmodal的表单添加require的前端和后端的双重确认逻辑. required属性的表单元素包括:
+job number, line number, oe number, po number, select client, select contact, job quantity, delivery required date, priority
+2. 为create按钮添加业务逻辑. 在点击该按钮后, 表单数据应该通过一个新建的post api被存储在jobs表中. 在此过程中, 应该更新数据库如下:
+- client与contact表中相应条目的usage_count
+- 更新drawing表, 在drawing_name列中找到file location那一列, 更新drawing_number列的值为当前的part number.
+- 
+3. add multiple 的实现
 
 
 数据集成
