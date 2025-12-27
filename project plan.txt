@@ -1,3 +1,9 @@
+drawing release 改为 date type
+customer name, customer contact 改为与 filter 中 customer 与 contact 相同的 autocomplete, 逻辑也相同
+add multiple 的实现
+pdf 检索的逻辑
+
+
 数据集成
 
 1. 完善所有 UI 问题

@@ -1,6 +1,6 @@
 import React from 'react';
 import GeneralModal from './Modal';
-import PartEditForm from '../forms/PartEditForm';
+import PartEditForm from './PartEditForm';
 
 /**
  * 部件编辑模态框

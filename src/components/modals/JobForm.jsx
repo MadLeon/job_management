@@ -12,8 +12,8 @@ import {
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { priorityOptions } from '../../../data/data';
-
-const CUSTOMER_OPTIONS = ['Candu', 'Kinectrics', 'ATI'];
+import ClientAutocomplete from '../search/ClientAutocomplete';
+import ContactAutocomplete from '../search/ContactAutocomplete';
 
 const formatDateForInput = (dateValue) => {
   if (!dateValue) return '';
@@ -38,12 +38,35 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
   const fileInputRef = React.useRef(null);
 
   const [formData, setFormData] = useState(initialData);
+  const [selectedCustomer, setSelectedCustomer] = useState(initialData.customer_name || null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  /**
+   * 处理 customer_name 改变
+   */
+  const handleCustomerNameChange = (newValue) => {
+    setFormData(prev => ({
+      ...prev,
+      customer_name: newValue || '',
+      customer_contact: '', // 重置 contact
+    }));
+    setSelectedCustomer(newValue);
+  };
+
+  /**
+   * 处理 customer_contact 改变
+   */
+  const handleCustomerContactChange = (newValue) => {
+    setFormData(prev => ({
+      ...prev,
+      customer_contact: newValue || '',
     }));
   };
 
@@ -125,9 +148,9 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
-            label="PO Number"
-            name="po_number"
-            value={formData.po_number}
+            label="Line Number"
+            name="line_number"
+            value={formData.line_number}
             onChange={handleChange}
             size="small"
           />
@@ -145,38 +168,24 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
-            label="Customer Name"
-            name="customer_name"
-            value={formData.customer_name}
-            onChange={handleChange}
-            select
-            size="small"
-          >
-            {CUSTOMER_OPTIONS.map((option) => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            fullWidth
-            label="Customer Contact"
-            name="customer_contact"
-            value={formData.customer_contact}
+            label="PO Number"
+            name="po_number"
+            value={formData.po_number}
             onChange={handleChange}
             size="small"
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
-          <TextField
-            fullWidth
-            label="Line Number"
-            name="line_number"
-            value={formData.line_number}
-            onChange={handleChange}
-            size="small"
+          <ClientAutocomplete
+            value={formData.customer_name ? [formData.customer_name] : []}
+            onChange={(value) => handleCustomerNameChange(value[0] || '')}
+          />
+        </Grid>
+        <Grid size={{ xs: 12, sm: 6 }}>
+          <ContactAutocomplete
+            value={formData.customer_contact ? [formData.customer_contact] : []}
+            onChange={(value) => handleCustomerContactChange(value[0] || '')}
+            selectedCustomer={selectedCustomer}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
@@ -214,9 +223,11 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
             fullWidth
             label="Drawing Release"
             name="drawing_release"
+            type="date"
             value={formData.drawing_release}
             onChange={handleChange}
             size="small"
+            InputLabelProps={{ shrink: true }}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6 }}>
@@ -351,6 +362,7 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
       ...jobData,
       priority,
       delivery_required_date: formatDateForInput(jobData.delivery_required_date),
+      drawing_release: formatDateForInput(jobData.drawing_release),
     };
   }, [jobData]);
 
