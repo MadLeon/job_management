@@ -53,6 +53,18 @@
     {
       "name": "013_populate_file_location_in_assembly_detail",
       "appliedAt": "2025-12-22T17:42:52.837Z"
+    },
+    {
+      "name": "014_create_customers_table",
+      "appliedAt": "2025-12-27T18:05:21.804Z"
+    },
+    {
+      "name": "015_create_contacts_table",
+      "appliedAt": "2025-12-27T18:05:22.040Z"
+    },
+    {
+      "name": "016_populate_usage_counts",
+      "appliedAt": "2025-12-27T18:05:22.278Z"
     }
   ]
 }
