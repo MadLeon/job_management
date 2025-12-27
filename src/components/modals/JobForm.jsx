@@ -72,7 +72,24 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
     }));
   };
 
-  const handleBrowseClick = () => {
+  /**
+   * 点击浏览按钮时，提取文件夹路径并复制到剪切板，然后打开文件选择对话框
+   * 例如：G:\Candu\123.pdf → 复制 G:\Candu 到剪切板
+   */
+  const handleBrowseClick = async () => {
+    const fileLocation = (formData.file_location || '').trim();
+
+    // 如果有文件路径，提取文件夹路径并复制到剪切板
+    if (fileLocation) {
+      const folderPath = fileLocation.replace(/[\\\/][^\\\/]*$/, '');
+      try {
+        await navigator.clipboard.writeText(folderPath);
+        console.log('Folder path copied to clipboard:', folderPath);
+      } catch (err) {
+        console.error('Failed to copy to clipboard:', err);
+      }
+    }
+
     fileInputRef.current?.click();
   };
 
@@ -138,6 +155,9 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
     if (!partNumber) return;
 
     setIsLoadingFileLocation(true);
+    const trimmedRevision = (formData.revision || '').trim();
+    const trimmedDescription = (formData.part_description || '').trim();
+
     try {
       const params = new URLSearchParams({
         drawingNumber: partNumber,
@@ -155,6 +175,23 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
       }
     } catch (err) {
       console.error('Failed to auto-fetch drawing file location:', err);
+    }
+
+    try {
+      if (!trimmedRevision || !trimmedDescription) {
+        const detailParams = new URLSearchParams({ drawing_number: partNumber });
+        const detailResp = await fetch(`/api/drawings/detail?${detailParams.toString()}`);
+        if (detailResp.ok) {
+          const detail = await detailResp.json();
+          setFormData(prev => ({
+            ...prev,
+            revision: prev.revision ? prev.revision : (detail.revision || prev.revision),
+            part_description: prev.part_description ? prev.part_description : (detail.description || prev.part_description),
+          }));
+        }
+      }
+    } catch (err) {
+      console.error('Failed to auto-fetch drawing detail:', err);
     } finally {
       setIsLoadingFileLocation(false);
     }
