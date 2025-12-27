@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Box,
   TextField,
@@ -18,12 +18,10 @@ const CUSTOMER_OPTIONS = ['Candu', 'Kinectrics', 'ATI'];
 const formatDateForInput = (dateValue) => {
   if (!dateValue) return '';
 
-  // If it's already in YYYY-MM-DD format, return as is
   if (typeof dateValue === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
     return dateValue;
   }
 
-  // Try to parse and format the date
   const date = new Date(dateValue);
   if (!isNaN(date.getTime())) {
     const year = date.getFullYear();
@@ -35,50 +33,11 @@ const formatDateForInput = (dateValue) => {
   return '';
 };
 
-export default function JobForm({ jobData = null, isCreateMode = false, onSubmit, onCancel }) {
+function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
   const validPriorities = Object.keys(priorityOptions);
   const fileInputRef = React.useRef(null);
 
-  const [formData, setFormData] = useState({
-    job_number: '',
-    po_number: '',
-    oe_number: '',
-    customer_name: '',
-    customer_contact: '',
-    line_number: '',
-    part_number: '',
-    part_description: '',
-    revision: '',
-    job_quantity: '',
-    delivery_required_date: '',
-    priority: 'Normal',
-    file_location: '',
-    drawing_release: '',
-    unit_price: '',
-  });
-
-  useEffect(() => {
-    if (jobData) {
-      const priority = jobData.priority && validPriorities.includes(jobData.priority)
-        ? jobData.priority
-        : 'Normal';
-
-      const formattedData = {
-        ...jobData,
-        priority,
-        delivery_required_date: formatDateForInput(jobData.delivery_required_date),
-      };
-
-      setFormData(formattedData);
-      console.log('JobForm - formatted jobData:', formattedData);
-    }
-  }, [jobData]);
-
-  useEffect(() => {
-    console.log('JobForm - formData:', formData);
-    console.log('JobForm - delivery_required_date:', formData.delivery_required_date);
-    console.log('JobForm - file_location:', formData.file_location);
-  }, [formData]);
+  const [formData, setFormData] = useState(initialData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -101,7 +60,6 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
           const blob = await response.blob();
           const url = window.URL.createObjectURL(blob);
           window.open(url, '_blank');
-          // Clean up the object URL after loading
           setTimeout(() => window.URL.revokeObjectURL(url), 100);
         } else {
           console.error('Failed to fetch file for preview');
@@ -118,8 +76,6 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
     const file = e.target.files?.[0];
     if (file) {
       const fileName = file.name;
-      // In browsers, we can only get the filename due to security restrictions
-      // webkitRelativePath only works with directory input
       const fileLocation = `${fileName}`;
 
       setFormData(prev => ({
@@ -136,7 +92,6 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
       });
     }
 
-    // Reset the file input
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
@@ -144,7 +99,6 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
 
   const extractFileName = (filePath) => {
     if (!filePath) return '';
-    // Extract the part after the last backslash or forward slash
     const fileName = filePath.split(/[\\\/]/).pop();
     return fileName || '';
   };
@@ -153,8 +107,6 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
     e.preventDefault();
     onSubmit(formData);
   };
-
-  const isEditMode = jobData !== null && !isCreateMode;
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
@@ -300,7 +252,7 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
             onChange={handleChange}
             size="small"
           >
-            {validPriorities.map((priority) => (
+            {Object.keys(priorityOptions).map((priority) => (
               <MenuItem key={priority} value={priority}>
                 {priority}
               </MenuItem>
@@ -366,5 +318,54 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
         </Button>
       </Stack>
     </Box>
+  );
+}
+
+export default function JobForm({ jobData = null, isCreateMode = false, onSubmit, onCancel }) {
+  const initialData = useMemo(() => {
+    const base = {
+      job_number: '',
+      po_number: '',
+      oe_number: '',
+      customer_name: '',
+      customer_contact: '',
+      line_number: '',
+      part_number: '',
+      part_description: '',
+      revision: '',
+      job_quantity: '',
+      delivery_required_date: '',
+      priority: 'Normal',
+      file_location: '',
+      drawing_release: '',
+      unit_price: '',
+    };
+
+    if (!jobData) return base;
+    const priority = jobData.priority && Object.keys(priorityOptions).includes(jobData.priority)
+      ? jobData.priority
+      : 'Normal';
+
+    return {
+      ...base,
+      ...jobData,
+      priority,
+      delivery_required_date: formatDateForInput(jobData.delivery_required_date),
+    };
+  }, [jobData]);
+
+  const isEditMode = jobData !== null && !isCreateMode;
+  const formKey = useMemo(() => {
+    return jobData ? `${jobData.job_number || ''}|${jobData.oe_number || ''}` : 'create';
+  }, [jobData]);
+
+  return (
+    <JobFormInner
+      key={formKey}
+      initialData={initialData}
+      isEditMode={isEditMode}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+    />
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import GeneralModal from './Modal';
-import JobForm from '../forms/JobForm';
+import JobForm from './JobForm';
 
 /**
  * 创建工作模态框

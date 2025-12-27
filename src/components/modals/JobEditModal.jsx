@@ -3,7 +3,7 @@ import { Box, Typography, Stack, FormControlLabel, Switch } from '@mui/material'
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import JobForm from '../forms/JobForm';
+import JobForm from './JobForm';
 
 const style = {
   position: 'absolute',

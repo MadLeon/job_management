@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Box,
   TextField,
@@ -15,37 +15,15 @@ const statusOptions = ['N/A', 'Pending', 'In Progress', 'Completed', 'On Hold', 
 
 const extractFileName = (filePath) => {
   if (!filePath) return '';
-  // Extract the part after the last backslash or forward slash
   const fileName = filePath.split(/[\\\/]/).pop();
   return fileName || '';
 };
 
-export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
+function PartEditFormInner({ initialData, onSubmit, onCancel }) {
   const fileInputRef = React.useRef(null);
 
-  const [formData, setFormData] = useState({
-    drawing_number: '',
-    revision: '',
-    quantity: '',
-    status: 'N/A',
-    file_name: '',
-    file_location: '',
-  });
-
+  const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    if (partData) {
-      setFormData({
-        drawing_number: partData.drawing_number || '',
-        revision: partData.revision || '',
-        quantity: partData.quantity || '',
-        status: partData.status || 'N/A',
-        file_name: partData.file_name || '',
-        file_location: partData.file_location || '',
-      });
-    }
-  }, [partData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +31,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
       ...prev,
       [name]: value,
     }));
-    // Clear error for this field when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -63,7 +40,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
   };
 
   const handleDrawingNumberBlur = async () => {
-    // 当drawing_number失焦且有值时，查询file_location
     if (formData.drawing_number.trim() && !formData.file_location) {
       try {
         const queryParams = new URLSearchParams({
@@ -130,7 +106,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
           const blob = await response.blob();
           const url = window.URL.createObjectURL(blob);
           window.open(url, '_blank');
-          // 清理对象 URL（在文件加载后）
           setTimeout(() => window.URL.revokeObjectURL(url), 100);
         } else {
           console.error('Failed to fetch file');
@@ -144,7 +119,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ width: '100%' }}>
       <Grid container spacing={2}>
-        {/* Drawing Number */}
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
@@ -158,8 +132,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
             size="small"
           />
         </Grid>
-
-        {/* Revision */}
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
@@ -170,8 +142,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
             size="small"
           />
         </Grid>
-
-        {/* Quantity */}
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
@@ -186,8 +156,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
             inputProps={{ min: 0, step: 1 }}
           />
         </Grid>
-
-        {/* Status */}
         <Grid size={{ xs: 12, sm: 6 }}>
           <TextField
             fullWidth
@@ -207,8 +175,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
             ))}
           </TextField>
         </Grid>
-
-        {/* File Name */}
         <Grid size={{ xs: 12 }}>
           <TextField
             fullWidth
@@ -220,8 +186,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
             disabled
           />
         </Grid>
-
-        {/* File Location with Browse Button */}
         <Grid size={{ xs: 12 }}>
           <Stack direction="row" spacing={0} sx={{ alignItems: 'flex-end', gap: 0 }}>
             <TextField
@@ -261,7 +225,6 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
         </Grid>
       </Grid>
 
-      {/* Action Buttons */}
       <Stack direction="row" spacing={2} sx={{ mt: 4, justifyContent: 'flex-end' }}>
         <Button variant="outlined" onClick={onCancel}>
           Cancel
@@ -271,5 +234,29 @@ export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
         </Button>
       </Stack>
     </Box>
+  );
+}
+
+export default function PartEditForm({ partData = null, onSubmit, onCancel }) {
+  const initialData = useMemo(() => ({
+    drawing_number: partData?.drawing_number || '',
+    revision: partData?.revision || '',
+    quantity: partData?.quantity || '',
+    status: partData?.status || 'N/A',
+    file_name: partData?.file_name || '',
+    file_location: partData?.file_location || '',
+  }), [partData]);
+
+  const formKey = useMemo(() => {
+    return partData ? `${partData.drawing_number || ''}|${partData.revision || ''}` : 'new-part';
+  }, [partData]);
+
+  return (
+    <PartEditFormInner
+      key={formKey}
+      initialData={initialData}
+      onSubmit={onSubmit}
+      onCancel={onCancel}
+    />
   );
 }
