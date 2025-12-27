@@ -6,7 +6,7 @@ import PageTitle from '@/components/common/PageTitle';
 import ItemContainer from '@/components/itemContainer';
 import SearchArea from '@/components/search/SearchArea';
 import JobTable from '@/components/table/JobTable';
-import JobEditModal from '@/components/layout/JobEditModal';
+import JobEditModal from '@/components/modals/JobEditModal';
 
 import { useJobs } from '@/lib/hooks/useJobs'
 import { useFilters } from '@/context/FilterContext';

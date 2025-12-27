@@ -1,5 +1,26 @@
 # 客户和联系人数据库重构 - 任务清单
 
+---
+
+## 组件重构：将 layout 中的 modal 移至 components/modals
+
+- [x] 确认目标文件：Modal.jsx, PartEditModal.jsx, JobEditModal.jsx, CreateJobModal.jsx（位于 src/components/layout）
+- [x] 创建目录：src/components/modals
+- [x] 复制并迁移 4 个文件到新目录
+- [x] 更新外部导入：将所有 `@/components/layout/JobEditModal` 更新为 `@/components/modals/JobEditModal`
+- [x] 为旧文件添加兼容性导出（layout/Modal.jsx, layout/PartEditModal.jsx, layout/CreateJobModal.jsx）
+- [x] 运行错误检查，确保无编译/导入错误
+
+### Review（本次改动）
+
+- 更改文件：
+  - 新增：[src/components/modals/Modal.jsx](src/components/modals/Modal.jsx), [src/components/modals/PartEditModal.jsx](src/components/modals/PartEditModal.jsx), [src/components/modals/JobEditModal.jsx](src/components/modals/JobEditModal.jsx), [src/components/modals/CreateJobModal.jsx](src/components/modals/CreateJobModal.jsx)
+  - 更新导入：[src/pages/active-jobs/index.jsx](src/pages/active-jobs/index.jsx#L9)
+  - 兼容性导出：更新 [src/components/layout/Modal.jsx](src/components/layout/Modal.jsx), [src/components/layout/PartEditModal.jsx](src/components/layout/PartEditModal.jsx), [src/components/layout/CreateJobModal.jsx](src/components/layout/CreateJobModal.jsx)
+- 说明：保留 `layout/JobEditModal.jsx` 原文件未改动以避免大范围补丁失败；当前页面已改为使用新路径，旧文件可后续清理。
+
+---
+
 ## 项目概述
 
 将客户和联系人管理从硬编码的 `customerList` 数组迁移到数据库系统，采用方案一（独立表）+ 方案二的 `usage_count` 字段。

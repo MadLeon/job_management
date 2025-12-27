@@ -123,8 +123,6 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
   };
 
   const title = isCreateMode ? 'Create New Job' : (jobData ? 'Edit Job' : 'Create New Job');
-
-  // 只有在非创建模式或创建模式且数据加载完成时，才显示Fade动画
   const shouldShowContent = !isCreateMode || (isCreateMode && !isLoading);
 
   return (
@@ -142,7 +140,6 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
     >
       <Fade in={open && shouldShowContent}>
         <Box sx={style}>
-          {/* Header with title and toggle */}
           <Stack
             direction="row"
             justifyContent="space-between"

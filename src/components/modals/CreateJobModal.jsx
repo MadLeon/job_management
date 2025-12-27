@@ -14,7 +14,6 @@ export default function CreateJobModal({ open, onClose, onSubmit }) {
 
   useEffect(() => {
     if (open) {
-      // 获取最大的job number和oe number
       fetchNextNumbers();
     }
   }, [open]);
@@ -45,7 +44,6 @@ export default function CreateJobModal({ open, onClose, onSubmit }) {
         });
       } else {
         console.error('Failed to fetch next numbers');
-        // 如果API失败，使用空的初始值
         setInitialJobData({
           job_number: '',
           oe_number: '',
