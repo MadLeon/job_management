@@ -69,6 +69,14 @@
     {
       "name": "017_add_updated_at_to_drawings",
       "appliedAt": "2025-12-27T20:00:20.168Z"
+    },
+    {
+      "name": "018_add_unique_key_to_assembly_detail",
+      "appliedAt": "2025-12-28T22:20:04.575Z"
+    },
+    {
+      "name": "019_populate_unique_key_in_assembly_detail",
+      "appliedAt": "2025-12-28T22:20:35.533Z"
     }
   ]
 }

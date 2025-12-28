@@ -83,6 +83,11 @@ TABLE: job_history (已完成工作存档)
   - last_modified (TEXT)
   - completed_timestamp (TEXT) - 完成时间戳
 
+开发者注: (AI不要修改)
+  - 目前尚无内容
+  - 只是保留历史 job 用于归档
+  - 将在 all-jobs 中使用
+
 
 TABLE: detail_drawing (图纸元数据)
 ================================================================================
@@ -114,23 +119,34 @@ TABLE: assembly_detail (装配细节)
   - created_at (TEXT) - 创建时间
   - updated_at (TEXT) - 更新时间
 
+开发者注: (AI不要修改)
+  - 当前活跃的总装图, 其父子关系
+  - 存在漏洞, 即有多个相同的 part_number 与 drawing_number 的组合时, 无法进行区分
+
 
 TABLE: drawings (图纸库)
 ================================================================================
 存储所有图纸记录
-  - drawing_id (INTEGER) PRIMARY KEY
+  - drawing_name (TEXT)
   - drawing_number (TEXT) - 图纸号
-  - name (TEXT) - 名称
-  - description (TEXT) - 描述
+  - file_location (TEXT) - 名称
   - updated_at (TEXT) - 更新时间（触发器在插入/更新时写入 CURRENT_TIMESTAMP；旧数据可为 NULL）
 
+开发者注: (AI不要修改)
+  - 单纯记录 drawing_number 在系统中的位置
+  - 有问题的设计, 命名易引起混乱
 
 TABLE: assemblies (装配库)
 ================================================================================
 存储装配记录和关联信息
-  - assembly_id (INTEGER) PRIMARY KEY
-  - assembly_number (TEXT) - 装配号
+  - part_number (TEXT) - 总装图号
+  - drawing_number (TEXT) - 装配体号
   - description (TEXT) - 描述
+  - quantity (TEXT) - 数量
+
+开发者注: (AI不要修改)
+  - 记录 part_number 和 drawing_number 的关联关系
+  - 只记录大体关系, 针对具体 job 内容, 需要手动设置 (因为每次的对应关系可能改变)
 
 
 TABLE: customer_folder_map (客户文件夹映射)
@@ -138,6 +154,11 @@ TABLE: customer_folder_map (客户文件夹映射)
 存储客户名称与文件夹路径的映射关系
   - customer_name (TEXT) PRIMARY KEY - 客户名称
   - folder_path (TEXT) - 对应的文件夹路径
+
+开发者注: (AI不要修改)
+  - 客户名与其在文件系统中文件夹名的映射
+  - 当前系统文件夹命名混乱
+- 未来可根据情况进行优化
 
 
 ================================================================================

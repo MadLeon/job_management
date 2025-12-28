@@ -3,6 +3,7 @@ import getDB from '@/lib/db';
 export default function handler(req, res) {
   if (req.method === 'PUT') {
     try {
+
       const {
         id,
         drawing_number,
@@ -10,6 +11,7 @@ export default function handler(req, res) {
         status,
         file_location,
         revision,
+        unique_key
       } = req.body;
 
       if (!id) {
@@ -23,18 +25,18 @@ export default function handler(req, res) {
       const db = getDB();
 
       // 使用SQLite的日期时间函数更新assembly_detail
-      const stmt = db.prepare(`
-        UPDATE assembly_detail
-        SET 
-          drawing_number = ?,
-          quantity = ?,
-          status = ?,
-          file_location = ?,
-          updated_at = datetime('now','localtime')
-        WHERE id = ?
-      `);
 
-      stmt.run(drawing_number, quantity, status, file_location || null, id);
+      // 支持 unique_key 字段的更新（如有传递）
+      let sql = `UPDATE assembly_detail SET drawing_number = ?, quantity = ?, status = ?, file_location = ?, updated_at = datetime('now','localtime')`;
+      const params = [drawing_number, quantity, status, file_location || null];
+      if (unique_key !== undefined) {
+        sql += ', unique_key = ?';
+        params.push(unique_key);
+      }
+      sql += ' WHERE id = ?';
+      params.push(id);
+      const stmt = db.prepare(sql);
+      stmt.run(...params);
 
       // 如果提供了revision，也更新对应的detail_drawing记录
       if (revision !== undefined && revision !== null) {

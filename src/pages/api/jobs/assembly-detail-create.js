@@ -20,9 +20,14 @@ export default function handler(req, res) {
         return res.status(400).json({ error: 'drawing_number, quantity, and status are required' });
       }
 
+
       const db = getDB();
 
-      // 插入新的assembly_detail记录
+      // 查找 jobs 表中对应 part_number 的 unique_key
+      const job = db.prepare('SELECT unique_key FROM jobs WHERE part_number = ? LIMIT 1').get(part_number);
+      const unique_key = job && job.unique_key ? job.unique_key : null;
+
+      // 插入新的 assembly_detail 记录，补全 unique_key 字段
       const stmt = db.prepare(`
         INSERT INTO assembly_detail (
           part_number,
@@ -31,9 +36,10 @@ export default function handler(req, res) {
           status,
           file_location,
           delivery_required_date,
+          unique_key,
           created_at,
           updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, datetime('now','localtime'), datetime('now','localtime'))
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now','localtime'), datetime('now','localtime'))
       `);
 
       const result = stmt.run(
@@ -42,16 +48,16 @@ export default function handler(req, res) {
         quantity,
         status,
         file_location || null,
-        delivery_required_date || null
+        delivery_required_date || null,
+        unique_key
       );
 
-      // 更新对应job的has_assembly_details字段为1
+      // 更新对应 job 的 has_assembly_details 字段为 1
       const updateJobStmt = db.prepare(`
         UPDATE jobs
         SET has_assembly_details = 1
         WHERE part_number = ?
       `);
-
       updateJobStmt.run(part_number);
 
       res.status(201).json({

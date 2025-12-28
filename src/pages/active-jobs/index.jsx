@@ -106,7 +106,6 @@ function ActiveJobs() {
         jobData={null}
         isCreateMode={true}
         onSubmit={handleCreateJobSubmit}
-        onCopyPathSuccess={handleCopyPathSuccess}
       />
     </Stack>
   );

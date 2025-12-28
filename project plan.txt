@@ -1,12 +1,19 @@
-- 在modal中添加snackbar, 当点击资源管理器时, 显示路径已被复制
-1. 为createjobmodal的表单添加require的前端和后端的双重确认逻辑. required属性的表单元素包括:
+/openspec-proposal
+为为create按钮添加业务逻辑. 在点击该按钮后, 表单数据应该通过一个新建的api, 将新建的job数据存储在jobs表中. 在此过程中, 应该更新数据库如下:
+1. 查看表单中是否包含file location的信息. 
+  - 如果不包含则跳过
+  - 如果包含, 则查看该地址与drawing表中的地址是否一致, 如果一致则跳过; 如果不一致, 则更新drawing表
+2. 检查customer, contact是否为为新数据(因为autocomplete允许用户自行输入).
+  - 如果数据已存在, 更新customers和contacts表中的usage_count, last_used, updated_at等
+  - 如果数据不存在, 则创建新数据行, 使用新数据
+3. 添加新数据jobs表格. 然后查询part_number是否存在于assemblies表
+  - 存在于assemlies表, 则根据asseblies表和drawings表, 在assembly_detail建立新行, 并填入数据
+4. 查询detail_drawing中是否包含该part_number, 如果包含则跳过, 不包含则添加该数据
+
+1. add multiple 的实现
+2. 为createjobmodal的表单添加require的前端和后端的双重确认逻辑. required属性的表单元素包括:
 job number, line number, oe number, po number, select client, select contact, job quantity, delivery required date, priority
-2. 为该表单禁用浏览器端的自动提示
-2. 为create按钮添加业务逻辑. 在点击该按钮后, 表单数据应该通过一个新建的post api被存储在jobs表中. 在此过程中, 应该更新数据库如下:
-- client与contact表中相应条目的usage_count
-- 更新drawing表, 在drawing_name列中找到file location那一列, 更新drawing_number列的值为当前的part number.
-- 
-3. add multiple 的实现
+3. *为该表单禁用浏览器端的自动提示
 
 
 数据集成
