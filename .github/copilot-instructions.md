@@ -23,7 +23,7 @@
 
 ## 数据库与迁移
 
-### 迁移系统 ([scripts/migrate.js](scripts/migrate.js))
+### 迁移系统 ([scripts/migrate.js](../scripts/migrate.js))
 
 **命令**:
 
@@ -38,7 +38,13 @@
 - 已应用迁移记录在 `data/migrations.json`
 - 创建表/列前检查是否存在，使用 `db.pragma('table_info(table_name)')`
 
+
 ### 测试与调试
+
+**推荐测试框架**:
+
+- 本项目采用 [Jest](https://jestjs.io/) 作为主测试框架，配合 [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) 进行 React 组件测试。
+- 建议所有新代码和重要逻辑均编写对应的 Jest 测试用例，提升覆盖率。
 
 **数据库检查**:
 
@@ -48,10 +54,15 @@
 **测试用例创建**:
 
 - 当用户选择代码并请求测试时，创建针对性测试用例
-- API 路由测试：模拟 req/res 对象，验证响应格式和状态码
-- 组件测试：使用 React Testing Library 测试渲染和交互
+- API 路由测试：使用 Jest，模拟 req/res 对象，验证响应格式和状态码
+- 组件测试：使用 React Testing Library + Jest，测试渲染、交互、UI 逻辑
 - 数据库操作测试：使用临时测试数据库，测试后清理
-- 辅助函数测试：单元测试输入/输出和边界情况
+- 辅助函数测试：Jest 单元测试输入/输出和边界情况
+
+**测试运行**:
+
+- `npm test` 或 `npx jest` 运行所有测试
+- 推荐在 PR 或主分支合并前确保所有测试通过
 
 **调试工具**:
 
@@ -63,7 +74,7 @@
 
 ### 数据模型
 
-- 在 [data/data.js](data/data.js) 中包含 priorityOptions, customerList 以及其他以 dummy 开头的临时数据
+- 在 [data/data.js](../data/data.js) 中包含 priorityOptions, customerList 以及其他以 dummy 开头的临时数据
 
 ## 文件结构参考
 
