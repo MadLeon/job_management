@@ -35,9 +35,9 @@ const style = {
  * @param {object} jobData - 作业数据
  * @param {function} onSubmit - 提交回调
  * @param {boolean} isCreateMode - 是否创建模式
- * @param {function} [onCopyPathSuccess] - 路径复制成功时的回调
+ * @deprecated onCopyPathSuccess 已废弃，直接全局 useSnackbar
  */
-export default function JobEditModal({ open, onClose, jobData = null, onSubmit, isCreateMode = false, onCopyPathSuccess }) {
+export default function JobEditModal({ open, onClose, jobData = null, onSubmit, isCreateMode = false }) {
   const [initialJobData, setInitialJobData] = useState(jobData);
   const [isLoading, setIsLoading] = useState(false);
   const [addMultiple, setAddMultiple] = useState(false);
@@ -177,7 +177,6 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
               isCreateMode={isCreateMode}
               onSubmit={handleSubmit}
               onCancel={handleCancel}
-              onCopyPathSuccess={onCopyPathSuccess}
             />
           )}
         </Box>

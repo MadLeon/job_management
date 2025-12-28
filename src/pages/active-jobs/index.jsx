@@ -1,6 +1,5 @@
 import React from 'react';
-import { Stack, Snackbar, Alert, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Stack } from '@mui/material';
 
 import Breadcrumb from '@/components/common/Breadcrumbs';
 import PageTitle from '@/components/common/PageTitle';
@@ -11,6 +10,7 @@ import JobEditModal from '@/components/modals/JobEditModal';
 
 import { useJobs } from '@/lib/hooks/useJobs'
 import { useFilters } from '@/context/FilterContext';
+import { useSnackbar } from '@/context/SnackbarContext';
 
 /**
  * 活跃工作列表页面
@@ -23,25 +23,9 @@ import { useFilters } from '@/context/FilterContext';
 function ActiveJobs() {
   const { data: jobs = [], isLoading } = useJobs();
   const { appliedFilters } = useFilters();
+  const { showSnackbar } = useSnackbar();
   const [createJobModalOpen, setCreateJobModalOpen] = React.useState(false);
   const [searchFilter, setSearchFilter] = React.useState(null);
-
-  // 全局 Snackbar 状态
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
-
-  /**
-   * 显示全局 Snackbar
-   */
-  const showSnackbar = React.useCallback(() => {
-    setSnackbarOpen(true);
-  }, []);
-
-  /**
-   * 关闭全局 Snackbar
-   */
-  const handleSnackbarClose = React.useCallback(() => {
-    setSnackbarOpen(false);
-  }, []);
 
   /**
    * 处理搜索框选择回调
@@ -103,6 +87,13 @@ function ActiveJobs() {
     // TODO: 调用API保存新工作
   };
 
+  /**
+   * 复制路径成功时弹出 snackbar
+   */
+  const handleCopyPathSuccess = React.useCallback(() => {
+    showSnackbar({ message: 'Drawing file path copied to clipboard!' });
+  }, [showSnackbar]);
+
   return (
     <Stack spacing={3} >
       <Breadcrumb locationLayer={['Active Jobs']} href={["active-jobs"]} />
@@ -115,20 +106,7 @@ function ActiveJobs() {
         jobData={null}
         isCreateMode={true}
         onSubmit={handleCreateJobSubmit}
-        onCopyPathSuccess={showSnackbar}
-      />
-      {/* 全局 Snackbar，底部居中 */}
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={3000}
-        onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-        message="Drawing file path copied to clipboard!"
-        action={
-          <IconButton size="small" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
-            <CloseIcon fontSize="small" />
-          </IconButton>
-        }
+        onCopyPathSuccess={handleCopyPathSuccess}
       />
     </Stack>
   );

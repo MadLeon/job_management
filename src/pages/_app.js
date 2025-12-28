@@ -13,6 +13,7 @@ import Appheader from '../components/layout/AppHeader';
 import RecordTechIcon from '../components/shared/RecordTechIcon';
 import Sidebar from '../components/layout/Sidebar';
 import { FilterProvider } from '@/context/FilterContext';
+import { SnackbarProvider } from '@/context/SnackbarContext';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -33,6 +34,7 @@ function MyApp(props) {
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <FilterProvider>
+            <SnackbarProvider>
             <Box
               sx={{
                 display: 'flex',
@@ -99,6 +101,7 @@ function MyApp(props) {
                 </Box>
               </Box>
             </Box>
+            </SnackbarProvider>
           </FilterProvider>
         </ThemeProvider>
       </CacheProvider>
