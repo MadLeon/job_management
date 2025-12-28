@@ -1,3 +1,4 @@
+- 在modal中添加snackbar, 当点击资源管理器时, 显示路径已被复制
 1. 为createjobmodal的表单添加require的前端和后端的双重确认逻辑. required属性的表单元素包括:
 job number, line number, oe number, po number, select client, select contact, job quantity, delivery required date, priority
 2. 为该表单禁用浏览器端的自动提示

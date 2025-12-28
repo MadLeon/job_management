@@ -7,6 +7,8 @@ import {
   MenuItem,
   Grid,
   IconButton,
+  Snackbar,
+  Alert,
 } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -24,6 +26,12 @@ function PartEditFormInner({ initialData, onSubmit, onCancel }) {
 
   const [formData, setFormData] = useState(initialData);
   const [errors, setErrors] = useState({});
+  /**
+   * Snackbar 打开状态
+   * 在成功复制路径至剪切板后显示
+   * @type {boolean}
+   */
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,8 +92,32 @@ function PartEditFormInner({ initialData, onSubmit, onCancel }) {
     }
   };
 
-  const handleBrowse = () => {
+  /**
+   * 点击浏览按钮时，若存在文件路径则复制文件夹路径到剪切板，并打开文件选择框
+   * 例如：D:\\Projects\\drawing.pdf → 复制 D:\\Projects
+   * @returns {void}
+   */
+  const handleBrowse = async () => {
+    const fileLocation = (formData.file_location || '').trim();
+    if (fileLocation) {
+      const folderPath = fileLocation.replace(/[\\\/][^\\\/]*$/, '');
+      try {
+        await navigator.clipboard.writeText(folderPath);
+        // 成功复制后显示 Snackbar 提示
+        setSnackbarOpen(true);
+      } catch (err) {
+        console.error('Failed to copy to clipboard:', err);
+      }
+    }
     fileInputRef.current?.click();
+  };
+
+  /**
+   * 关闭 Snackbar
+   * @returns {void}
+   */
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
   };
 
   const handleFileSelect = (e) => {
@@ -233,6 +265,17 @@ function PartEditFormInner({ initialData, onSubmit, onCancel }) {
           Save Changes
         </Button>
       </Stack>
+      {/* Snackbar：路径复制成功提示 */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleSnackbarClose} severity="success" sx={{ width: '100%' }}>
+          路径已复制
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

@@ -28,7 +28,16 @@ const style = {
  * @param {function} onSubmit - 提交表单的回调函数
  * @param {boolean} isCreateMode - 是否为创建模式（可选）
  */
-export default function JobEditModal({ open, onClose, jobData = null, onSubmit, isCreateMode = false }) {
+/**
+ * 作业编辑/创建模态框
+ * @param {boolean} open - 是否打开
+ * @param {function} onClose - 关闭回调
+ * @param {object} jobData - 作业数据
+ * @param {function} onSubmit - 提交回调
+ * @param {boolean} isCreateMode - 是否创建模式
+ * @param {function} [onCopyPathSuccess] - 路径复制成功时的回调
+ */
+export default function JobEditModal({ open, onClose, jobData = null, onSubmit, isCreateMode = false, onCopyPathSuccess }) {
   const [initialJobData, setInitialJobData] = useState(jobData);
   const [isLoading, setIsLoading] = useState(false);
   const [addMultiple, setAddMultiple] = useState(false);
@@ -168,6 +177,7 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
               isCreateMode={isCreateMode}
               onSubmit={handleSubmit}
               onCancel={handleCancel}
+              onCopyPathSuccess={onCopyPathSuccess}
             />
           )}
         </Box>

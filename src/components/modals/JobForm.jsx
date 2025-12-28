@@ -9,6 +9,8 @@ import {
   Grid,
   IconButton,
   CircularProgress,
+  Snackbar,
+  Alert,
 } from '@mui/material';
 import FolderOpenIcon from '@mui/icons-material/FolderOpen';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -34,7 +36,16 @@ const formatDateForInput = (dateValue) => {
   return '';
 };
 
-function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
+/**
+ * 作业表单组件
+ * @param {object} props
+ * @param {object} props.initialData - 初始表单数据
+ * @param {boolean} props.isEditMode - 是否编辑模式
+ * @param {function} props.onSubmit - 提交回调
+ * @param {function} props.onCancel - 取消回调
+ * @param {function} [props.onCopyPathSuccess] - 路径复制成功时的回调（用于全局 Snackbar）
+ */
+function JobFormInner({ initialData, isEditMode, onSubmit, onCancel, onCopyPathSuccess }) {
   const validPriorities = Object.keys(priorityOptions);
   const fileInputRef = React.useRef(null);
 
@@ -74,7 +85,10 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
 
   /**
    * 点击浏览按钮时，提取文件夹路径并复制到剪切板，然后打开文件选择对话框
-   * 例如：G:\Candu\123.pdf → 复制 G:\Candu 到剪切板
+   * 例如：G:\\Candu\\123.pdf → 复制 G:\\Candu 到剪切板
+   */
+  /**
+   * 处理点击资源管理器图标，复制路径并通知页面显示 Snackbar
    */
   const handleBrowseClick = async () => {
     const fileLocation = (formData.file_location || '').trim();
@@ -85,6 +99,10 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
       try {
         await navigator.clipboard.writeText(folderPath);
         console.log('Folder path copied to clipboard:', folderPath);
+        // 通知页面显示全局 Snackbar
+        if (typeof onCopyPathSuccess === 'function') {
+          onCopyPathSuccess();
+        }
       } catch (err) {
         console.error('Failed to copy to clipboard:', err);
       }
@@ -411,7 +429,16 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
   );
 }
 
-export default function JobForm({ jobData = null, isCreateMode = false, onSubmit, onCancel }) {
+/**
+ * 作业表单外层组件
+ * @param {object} props
+ * @param {object} [props.jobData]
+ * @param {boolean} [props.isCreateMode]
+ * @param {function} props.onSubmit
+ * @param {function} props.onCancel
+ * @param {function} [props.onCopyPathSuccess]
+ */
+export default function JobForm({ jobData = null, isCreateMode = false, onSubmit, onCancel, onCopyPathSuccess }) {
   const initialData = useMemo(() => {
     const base = {
       job_number: '',
@@ -457,6 +484,7 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
       isEditMode={isEditMode}
       onSubmit={onSubmit}
       onCancel={onCancel}
+      onCopyPathSuccess={onCopyPathSuccess}
     />
   );
 }

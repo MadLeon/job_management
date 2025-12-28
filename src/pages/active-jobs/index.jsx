@@ -1,5 +1,6 @@
 import React from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Snackbar, Alert, IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 import Breadcrumb from '@/components/common/Breadcrumbs';
 import PageTitle from '@/components/common/PageTitle';
@@ -24,6 +25,23 @@ function ActiveJobs() {
   const { appliedFilters } = useFilters();
   const [createJobModalOpen, setCreateJobModalOpen] = React.useState(false);
   const [searchFilter, setSearchFilter] = React.useState(null);
+
+  // 全局 Snackbar 状态
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+
+  /**
+   * 显示全局 Snackbar
+   */
+  const showSnackbar = React.useCallback(() => {
+    setSnackbarOpen(true);
+  }, []);
+
+  /**
+   * 关闭全局 Snackbar
+   */
+  const handleSnackbarClose = React.useCallback(() => {
+    setSnackbarOpen(false);
+  }, []);
 
   /**
    * 处理搜索框选择回调
@@ -97,6 +115,20 @@ function ActiveJobs() {
         jobData={null}
         isCreateMode={true}
         onSubmit={handleCreateJobSubmit}
+        onCopyPathSuccess={showSnackbar}
+      />
+      {/* 全局 Snackbar，底部居中 */}
+      <Snackbar
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        message="Drawing file path copied to clipboard!"
+        action={
+          <IconButton size="small" aria-label="close" color="inherit" onClick={handleSnackbarClose}>
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        }
       />
     </Stack>
   );
