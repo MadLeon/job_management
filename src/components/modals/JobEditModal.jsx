@@ -4,6 +4,7 @@ import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import JobForm from './JobForm';
+import ConfirmJobCreationModal from './ConfirmJobModal';
 
 const style = {
   position: 'absolute',
@@ -41,6 +42,8 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
   const [initialJobData, setInitialJobData] = useState(jobData);
   const [isLoading, setIsLoading] = useState(false);
   const [addMultiple, setAddMultiple] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [formData, setFormData] = useState(initialJobData);
 
   useEffect(() => {
     if (open && isCreateMode) {
@@ -71,9 +74,6 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
           revision: '',
           job_quantity: '',
           delivery_required_date: '',
-          material_specification: '',
-          drawing_notes: '',
-          manufacturing_notes: '',
           file_location: '',
         });
       } else {
@@ -91,9 +91,6 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
           revision: '',
           job_quantity: '',
           delivery_required_date: '',
-          material_specification: '',
-          drawing_notes: '',
-          manufacturing_notes: '',
           file_location: '',
         });
       }
@@ -112,9 +109,6 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
         revision: '',
         job_quantity: '',
         delivery_required_date: '',
-        material_specification: '',
-        drawing_notes: '',
-        manufacturing_notes: '',
         file_location: '',
       });
     } finally {
@@ -122,9 +116,19 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
     }
   };
 
-  const handleSubmit = (formData) => {
+  const handleSubmit = (data) => {
+    setFormData(data);
+    setShowConfirmModal(true);
+  };
+
+  const handleConfirm = () => {
     onSubmit(formData);
+    setShowConfirmModal(false);
     onClose();
+  };
+
+  const handleCancelConfirm = () => {
+    setShowConfirmModal(false);
   };
 
   const handleCancel = () => {
@@ -135,52 +139,61 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
   const shouldShowContent = !isCreateMode || (isCreateMode && !isLoading);
 
   return (
-    <Modal
-      aria-labelledby="job-modal-title"
-      open={open}
-      onClose={onClose}
-      closeAfterTransition
-      slots={{ backdrop: Backdrop }}
-      slotProps={{
-        backdrop: {
-          timeout: 500,
-        },
-      }}
-    >
-      <Fade in={open && shouldShowContent}>
-        <Box sx={style}>
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            sx={{ mb: 3 }}
-          >
-            <Typography id="job-modal-title" variant="h1">
-              {title}
-            </Typography>
-            {isCreateMode && (
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={addMultiple}
-                    onChange={(e) => setAddMultiple(e.target.checked)}
-                  />
-                }
-                label="Add Multiple"
+    <>
+      <Modal
+        aria-labelledby="job-modal-title"
+        open={open}
+        onClose={onClose}
+        closeAfterTransition
+        slots={{ backdrop: Backdrop }}
+        slotProps={{
+          backdrop: {
+            timeout: 500,
+          },
+        }}
+      >
+        <Fade in={open && shouldShowContent}>
+          <Box sx={style}>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{ mb: 3 }}
+            >
+              <Typography id="job-modal-title" variant="h1">
+                {title}
+              </Typography>
+              {isCreateMode && (
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={addMultiple}
+                      onChange={(e) => setAddMultiple(e.target.checked)}
+                    />
+                  }
+                  label="Add Multiple"
+                />
+              )}
+            </Stack>
+
+            {!isLoading && initialJobData && (
+              <JobForm
+                jobData={initialJobData}
+                isCreateMode={isCreateMode}
+                onSubmit={handleSubmit}
+                onCancel={handleCancel}
               />
             )}
-          </Stack>
+          </Box>
+        </Fade>
+      </Modal>
 
-          {!isLoading && initialJobData && (
-            <JobForm
-              jobData={initialJobData}
-              isCreateMode={isCreateMode}
-              onSubmit={handleSubmit}
-              onCancel={handleCancel}
-            />
-          )}
-        </Box>
-      </Fade>
-    </Modal>
+      <ConfirmJobCreationModal
+        open={showConfirmModal}
+        onConfirm={handleConfirm}
+        onCancel={handleCancelConfirm}
+        jobData={formData}
+      />
+    </>
   );
 }

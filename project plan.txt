@@ -1,5 +1,10 @@
 /openspec-proposal
-为为create按钮添加业务逻辑. 在点击该按钮后, 表单数据应该通过一个新建的api, 将新建的job数据存储在jobs表中. 在此过程中, 应该更新数据库如下:
+After clicking Create button, the current modal should be dismissed, and a new confirm modal should pop out to ask confirmation of the user.
+there should be 2 buttons in the new modal: confirm - trigger crud of db. we will implement this later, make a debug print for now; cancel will dismiss the new modal, and go back to the previous createjobmodal.
+the new modal should use Modal component as a template. make modification based on Modal component. you should also create a confirmjobcreationmodal, then a confirmjobcreationform just like the createjob structure for that.
+the confirmjobcreationmodal should have the same level with createjobmodal, not within it.
+
+为create按钮添加业务逻辑. 在点击该按钮后, 表单数据应该通过一个新建的api, 将新建的job数据存储在jobs表中. 在此过程中, 应该更新数据库如下:
 1. 查看表单中是否包含file location的信息. 
   - 如果不包含则跳过
   - 如果包含, 则查看该地址与drawing表中的地址是否一致, 如果一致则跳过; 如果不一致, 则更新drawing表

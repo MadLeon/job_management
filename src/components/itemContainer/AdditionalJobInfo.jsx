@@ -20,10 +20,12 @@ export default function AdditionalJobInfo({ jobData }) {
   const InfoRow = ({ label, value, icon }) => (
     <Stack
       direction="row"
-      justifyContent="space-between"
       alignItems="center"
       sx={{
         px: 3,
+        display: 'grid',
+        gridTemplateColumns: '1fr 1fr',
+        gap: 2,
       }}
     >
       <Typography
@@ -37,7 +39,7 @@ export default function AdditionalJobInfo({ jobData }) {
       >
         {label}
       </Typography>
-      <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" justifyContent="flex-end" spacing={1}>
         <Typography
           variant="caption"
           sx={{
