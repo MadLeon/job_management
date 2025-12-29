@@ -5,7 +5,7 @@ import { Box, Typography, Stack } from '@mui/material';
  * 确认作业创建表单
  * @param {object} jobData - 作业数据
  */
-export default function ConfirmJobCreationForm({ jobData }) {
+export default function ConfirmJobCreationForm({ jobData, isChanged = [] }) {
   /**
    * 首字母大写工具函数
    * @param {string} str - 输入字符串
@@ -47,9 +47,17 @@ export default function ConfirmJobCreationForm({ jobData }) {
             <Typography variant="body">
               {capitalizeWords(key.replace(/_/g, ' '))}:
             </Typography>
-            <Typography variant="body" noWrap={true} sx={{
-              maxWidth: '250px',
-            }}>{jobData[key] || 'N/A'}</Typography>
+            <Typography
+              variant="body"
+              noWrap={true}
+              sx={{
+                maxWidth: '250px',
+                color: isChanged.includes(key) ? 'red' : 'inherit', // 高亮显示更改的字段
+                fontWeight: isChanged.includes(key) ? 'bold' : 'normal',
+              }}
+            >
+              {jobData[key] || 'N/A'}
+            </Typography>
           </Stack>
         ))}
       </Stack>

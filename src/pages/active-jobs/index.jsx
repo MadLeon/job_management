@@ -24,7 +24,9 @@ function ActiveJobs() {
   const { data: jobs = [], isLoading } = useJobs();
   const { appliedFilters } = useFilters();
   const { showSnackbar } = useSnackbar();
-  const [createJobModalOpen, setCreateJobModalOpen] = React.useState(false);
+  const [jobModalOpen, setJobModalOpen] = React.useState(false);
+  const [isCreateMode, setIsCreateMode] = React.useState(true);
+  const [passedJobData, setPassedJobData] = React.useState(null);
   const [searchFilter, setSearchFilter] = React.useState(null);
 
   /**
@@ -76,15 +78,25 @@ function ActiveJobs() {
     });
   }, [jobs, appliedFilters, searchFilter]);
 
-  const jobsArea = (<JobTable data={filteredJobs} isLoading={isLoading} />);
+  const jobsArea = (
+    <JobTable
+      onEditJobClick={
+        (jobData) => {
+          setJobModalOpen(true);
+          setIsCreateMode(false);
+          setPassedJobData(jobData);
+        }
+      }
+      data={filteredJobs}
+      isLoading={isLoading} />
+  );
 
   /**
    * 处理创建新工作的表单提交
    * @param {Object} formData - 表单数据
    */
-  const handleCreateJobSubmit = (formData) => {
-    console.log('Create job form submitted:', formData);
-    // TODO: 调用API保存新工作
+  const handleJobSubmit = (formData) => {
+    console.log(`${isCreateMode ? 'Create' : 'Edit'} job form submitted:`, formData);
   };
 
   /**
@@ -98,14 +110,24 @@ function ActiveJobs() {
     <Stack spacing={3} >
       <Breadcrumb locationLayer={['Active Jobs']} href={["active-jobs"]} />
       <PageTitle title="Active Jobs" />
-      <ItemContainer content={<SearchArea onCreateJobClick={() => setCreateJobModalOpen(true)} onSearchSelect={handleSearchSelect} />} />
+      <ItemContainer
+        content={
+          <SearchArea onCreateJobClick={
+            () => {
+              setJobModalOpen(true)
+              setIsCreateMode(true)
+            }
+          }
+            onSearchSelect={handleSearchSelect} />
+        }
+      />
       <ItemContainer title="All Active Jobs" content={jobsArea} />
       <JobEditModal
-        open={createJobModalOpen}
-        onClose={() => setCreateJobModalOpen(false)}
-        jobData={null}
-        isCreateMode={true}
-        onSubmit={handleCreateJobSubmit}
+        open={jobModalOpen}
+        onClose={() => setJobModalOpen(false)}
+        jobData={passedJobData}
+        isCreateMode={isCreateMode}
+        onSubmit={handleJobSubmit}
       />
     </Stack>
   );

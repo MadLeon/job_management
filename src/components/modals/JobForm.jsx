@@ -43,7 +43,7 @@ const formatDateForInput = (dateValue) => {
  * @param {function} props.onSubmit - 提交回调
  * @param {function} props.onCancel - 取消回调
  */
-function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
+function JobFormInner({ initialData, isEditMode, onSubmit, onCancel, onFieldChange }) {
   const { showSnackbar } = useSnackbar();
   const validPriorities = Object.keys(priorityOptions);
   const fileInputRef = React.useRef(null);
@@ -54,21 +54,31 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => {
+      const updatedData = {
+        ...prev,
+        [name]: value,
+      };
+      if (onFieldChange) {
+        onFieldChange(name, value); // Notify parent about the field change
+      }
+      return updatedData;
+    });
   };
 
   /**
    * 处理 customer_name 改变
    */
   const handleCustomerNameChange = (newValue) => {
-    setFormData(prev => ({
-      ...prev,
-      customer_name: newValue || '',
-      customer_contact: '', // 重置 contact
-    }));
+    setFormData((prev) => {
+      const updatedData = {
+        ...prev,
+        customer_name: newValue || '',
+        customer_contact: '', // 重置 contact
+      };
+      onFieldChange('customer_name', newValue || ''); // Notify parent about the field change
+      return updatedData;
+    });
     setSelectedCustomer(newValue);
   };
 
@@ -76,10 +86,14 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
    * 处理 customer_contact 改变
    */
   const handleCustomerContactChange = (newValue) => {
-    setFormData(prev => ({
-      ...prev,
-      customer_contact: newValue || '',
-    }));
+    setFormData((prev) => {
+      const updatedData = {
+        ...prev,
+        customer_contact: newValue || '',
+      };
+      onFieldChange('customer_contact', newValue || ''); // Notify parent about the field change
+      return updatedData;
+    });
   };
 
   /**
@@ -180,10 +194,16 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
       if (resp.ok) {
         const data = await resp.json();
         if (data && data.fileLocation) {
-          setFormData(prev => ({
-            ...prev,
-            file_location: data.fileLocation,
-          }));
+          setFormData((prev) => {
+            const updatedData = {
+              ...prev,
+              file_location: data.fileLocation,
+            };
+            if (onFieldChange) {
+              onFieldChange('file_location', data.fileLocation); // Notify parent about the field change
+            }
+            return updatedData;
+          });
         }
       }
     } catch (err) {
@@ -196,11 +216,22 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
         const detailResp = await fetch(`/api/drawings/detail?${detailParams.toString()}`);
         if (detailResp.ok) {
           const detail = await detailResp.json();
-          setFormData(prev => ({
-            ...prev,
-            revision: prev.revision ? prev.revision : (detail.revision || prev.revision),
-            part_description: prev.part_description ? prev.part_description : (detail.description || prev.part_description),
-          }));
+          setFormData((prev) => {
+            const updatedData = {
+              ...prev,
+              revision: prev.revision ? prev.revision : detail.revision,
+              part_description: prev.part_description ? prev.part_description : detail.description,
+            };
+            if (onFieldChange) {
+              if (!prev.revision && detail.revision) {
+                onFieldChange('revision', detail.revision);
+              }
+              if (!prev.part_description && detail.description) {
+                onFieldChange('part_description', detail.description);
+              }
+            }
+            return updatedData;
+          });
         }
       }
     } catch (err) {
@@ -360,10 +391,9 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
             fullWidth
             label="Unit Price"
             name="unit_price"
-            type="number"
             value={formData.unit_price}
             onChange={handleChange}
-            size="small"
+            type="text" // Changed type to text to avoid parsing errors
           />
         </Grid>
         <Grid size={{ xs: 12 }}>
@@ -433,7 +463,7 @@ function JobFormInner({ initialData, isEditMode, onSubmit, onCancel }) {
  * @param {function} props.onCancel
  * @param {function} [props.onCopyPathSuccess]
  */
-export default function JobForm({ jobData = null, isCreateMode = false, onSubmit, onCancel }) {
+export default function JobForm({ jobData = null, isCreateMode = false, onSubmit, onCancel, onFieldChange }) {
   const initialData = useMemo(() => {
     const base = {
       job_number: '',
@@ -479,6 +509,7 @@ export default function JobForm({ jobData = null, isCreateMode = false, onSubmit
       isEditMode={isEditMode}
       onSubmit={onSubmit}
       onCancel={onCancel}
+      onFieldChange={onFieldChange}
     />
   );
 }

@@ -3,7 +3,7 @@ import { Box, Typography, Stack, Button } from '@mui/material';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import ConfirmJobCreationForm from './ConfirmJobForm';
+import ConfirmJobForm from './ConfirmJobForm';
 
 const style = {
   position: 'absolute',
@@ -27,7 +27,7 @@ const style = {
  * @param {function} onCancel - 取消回调
  * @param {object} jobData - 作业数据
  */
-export default function ConfirmJobCreationModal({ open, onConfirm, onCancel, jobData }) {
+export default function ConfirmJobCreationModal({ open, onConfirm, onCancel, jobData, isChanged }) {
   return (
     <Modal
       aria-labelledby="confirm-job-modal-title"
@@ -44,10 +44,10 @@ export default function ConfirmJobCreationModal({ open, onConfirm, onCancel, job
       <Fade in={open}>
         <Box sx={style}>
           <Typography id="confirm-job-modal-title" variant="h1" sx={{ mb: 3 }}>
-            Confirm Job Creation
+            Confirm Job Details
           </Typography>
 
-          <ConfirmJobCreationForm jobData={jobData} />
+          <ConfirmJobForm jobData={jobData} isChanged={isChanged} />
 
           <Stack direction="row" justifyContent="flex-end" spacing={2} sx={{ mt: 3 }}>
             <Button variant="outlined" onClick={onCancel}>

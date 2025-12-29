@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Box, Typography, Stack, FormControlLabel, Switch } from '@mui/material';
 import Backdrop from '@mui/material/Backdrop';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import JobForm from './JobForm';
-import ConfirmJobCreationModal from './ConfirmJobModal';
+import ConfirmJobModal from './ConfirmJobModal';
 
 const style = {
   position: 'absolute',
@@ -36,11 +36,11 @@ const style = {
  * @param {object} jobData - 作业数据
  * @param {function} onSubmit - 提交回调
  * @param {boolean} isCreateMode - 是否创建模式
- * @deprecated onCopyPathSuccess 已废弃，直接全局 useSnackbar
  */
 export default function JobEditModal({ open, onClose, jobData = null, onSubmit, isCreateMode = false }) {
   const [initialJobData, setInitialJobData] = useState(jobData);
   const [isLoading, setIsLoading] = useState(false);
+  const [isChanged, setIsChanged] = useState([]);
   const [addMultiple, setAddMultiple] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [formData, setFormData] = useState(initialJobData);
@@ -52,6 +52,8 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
     } else if (open && jobData) {
       // 编辑模式：使用传入的jobData
       setInitialJobData(jobData);
+      setFormData(jobData);
+      setIsChanged([]); // Reset isChanged when modal opens
     }
   }, [open, isCreateMode, jobData]);
 
@@ -116,6 +118,19 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
     }
   };
 
+  const handleFieldChange = useCallback((key, value) => {
+    setFormData((prevData) => {
+      const updatedData = { ...prevData, [key]: value };
+      if (initialJobData[key] !== value && !isChanged.includes(key)) {
+        setIsChanged((prevChanged) => [...prevChanged, key]);
+        console.log(`Field changed: ${key}, New Value: ${value}`); // Log field change
+      } else if (initialJobData[key] === value && isChanged.includes(key)) {
+        setIsChanged((prevChanged) => prevChanged.filter((changedKey) => changedKey !== key));
+      }
+      return updatedData;
+    });
+  }, [initialJobData, isChanged]);
+
   const handleSubmit = (data) => {
     setFormData(data);
     setShowConfirmModal(true);
@@ -135,7 +150,7 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
     onClose();
   };
 
-  const title = isCreateMode ? 'Create New Job' : (jobData ? 'Edit Job' : 'Create New Job');
+  const title = isCreateMode ? 'Create New Job' : 'Edit Job';
   const shouldShowContent = !isCreateMode || (isCreateMode && !isLoading);
 
   return (
@@ -178,21 +193,23 @@ export default function JobEditModal({ open, onClose, jobData = null, onSubmit, 
 
             {!isLoading && initialJobData && (
               <JobForm
-                jobData={initialJobData}
+                jobData={formData}
                 isCreateMode={isCreateMode}
                 onSubmit={handleSubmit}
                 onCancel={handleCancel}
+                onFieldChange={handleFieldChange} // Pass field change handler
               />
             )}
           </Box>
         </Fade>
       </Modal>
 
-      <ConfirmJobCreationModal
+      <ConfirmJobModal
         open={showConfirmModal}
         onConfirm={handleConfirm}
         onCancel={handleCancelConfirm}
         jobData={formData}
+        isChanged={isChanged} // Pass isChanged state
       />
     </>
   );

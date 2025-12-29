@@ -12,7 +12,7 @@ import PriorityChip from '../shared/PriorityChip';
 import JobDetailTable from './JobDetailTable';
 import { useAssemblies } from '../../lib/hooks/useAssemblies';
 
-export default function JobTableRow({ row, colWidths = [] }) {
+export default function JobTableRow({ row, onEditJobClick, colWidths = [] }) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [dynamicColWidths, setDynamicColWidths] = React.useState(colWidths);
@@ -63,8 +63,7 @@ export default function JobTableRow({ row, colWidths = [] }) {
    * @param {object} row - 工作数据
    */
   const handleEdit = (row) => {
-    // TODO: 实现编辑逻辑，例如打开编辑模态框
-    console.log('Edit job:', row.job_number);
+    onEditJobClick(row);
   };
 
   /**
