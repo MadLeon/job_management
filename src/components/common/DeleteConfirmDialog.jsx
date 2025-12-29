@@ -62,8 +62,8 @@ export default function DeleteConfirmDialog({
         <Button
           onClick={handleConfirm}
           autoFocus
-          variant="text"
-          size="large"
+          variant="contained"
+          size="medium"
           sx={{
             color: 'error.main',
             '& .MuiButton-text': {
