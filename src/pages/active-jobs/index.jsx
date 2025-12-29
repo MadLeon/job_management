@@ -11,6 +11,7 @@ import JobEditModal from '@/components/modals/JobEditModal';
 import { useJobs } from '@/lib/hooks/useJobs'
 import { useFilters } from '@/context/FilterContext';
 import { useSnackbar } from '@/context/SnackbarContext';
+import DeleteConfirmDialog from '@/components/common/DeleteConfirmDialog';
 
 /**
  * 活跃工作列表页面
@@ -28,6 +29,13 @@ function ActiveJobs() {
   const [isCreateMode, setIsCreateMode] = React.useState(true);
   const [passedJobData, setPassedJobData] = React.useState(null);
   const [searchFilter, setSearchFilter] = React.useState(null);
+  const [deleteDialogState, setDeleteDialogState] = React.useState({
+    open: false,
+    title: '',
+    message: '',
+    itemName: '',
+    jobNumber: null
+  });
 
   /**
    * 处理搜索框选择回调
@@ -87,6 +95,17 @@ function ActiveJobs() {
           setPassedJobData(jobData);
         }
       }
+      onDeleteJobClick={
+        (passedJobData) => {
+          setDeleteDialogState({
+            open: true,
+            title: passedJobData.title || 'Deletion Confirm',
+            message: passedJobData.message || 'Are you sure you want to delete this job?',
+            itemName: passedJobData.job_number,
+            jobNumber: passedJobData.job_number
+          });
+        }
+      }
       data={filteredJobs}
       isLoading={isLoading} />
   );
@@ -105,6 +124,15 @@ function ActiveJobs() {
   const handleCopyPathSuccess = React.useCallback(() => {
     showSnackbar({ message: 'Drawing file path copied to clipboard!' });
   }, [showSnackbar]);
+
+  const handleCloseDeleteDialog = () => {
+    setDeleteDialogState((prevState) => ({ ...prevState, open: false }));
+  };
+
+  const handleConfirmDelete = (deleteData) => {
+    console.log('[DeleteConfirmDialog] Job Data:', deleteData);
+    // Additional logic can be added here in the future
+  };
 
   return (
     <Stack spacing={3} >
@@ -128,6 +156,14 @@ function ActiveJobs() {
         jobData={passedJobData}
         isCreateMode={isCreateMode}
         onSubmit={handleJobSubmit}
+      />
+      <DeleteConfirmDialog
+        open={deleteDialogState.open}
+        onClose={handleCloseDeleteDialog}
+        onConfirm={() => handleConfirmDelete(deleteDialogState)}
+        title={deleteDialogState.title}
+        message={deleteDialogState.message}
+        itemName={deleteDialogState.itemName}
       />
     </Stack>
   );

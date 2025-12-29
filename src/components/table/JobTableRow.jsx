@@ -12,7 +12,7 @@ import PriorityChip from '../shared/PriorityChip';
 import JobDetailTable from './JobDetailTable';
 import { useAssemblies } from '../../lib/hooks/useAssemblies';
 
-export default function JobTableRow({ row, onEditJobClick, colWidths = [] }) {
+export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDeleteConfirm }) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const [dynamicColWidths, setDynamicColWidths] = React.useState(colWidths);
@@ -73,6 +73,10 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [] }) {
   const handleDelete = (id) => {
     // TODO: 实现删除逻辑，例如显示确认对话框
     console.log('Delete job:', id);
+  };
+
+  const handleDeleteClick = (deleteData) => {
+    onDeleteConfirm(deleteData);
   };
 
   /**
@@ -151,7 +155,7 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [] }) {
             handlers={{
               onPdfClick: () => handleOpenPDF(row.file_location),
               onEditClick: () => handleEdit(row),
-              onDeleteClick: () => handleDelete(row.id),
+              onDeleteClick: () => handleDeleteClick({ title: 'Deletion Confirm', message: 'Are you sure you want to delete this job?', itemName: row.job_number, jobNumber: row.job_number }),
               onAddClick: () => handleAddPart(row),
               onOpenNewClick: () => handleOpenJob(row.job_number),
             }}

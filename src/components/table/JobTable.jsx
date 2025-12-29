@@ -16,7 +16,7 @@ import { Box } from '@mui/material';
  * @param {Boolean} isLoading - 加载状态标志
  * @returns {JSX.Element} 虚拟化的表格组件
  */
-export default function JobTable({ onEditJobClick, data = [], isLoading = false }) {
+export default function JobTable({ onEditJobClick, onDeleteJobClick, data = [], isLoading = false }) {
   const cellRefs = React.useRef([]);
   const [colWidths, setColWidths] = React.useState([]);
   const [order, setOrder] = React.useState('asc');
@@ -160,6 +160,7 @@ export default function JobTable({ onEditJobClick, data = [], isLoading = false 
                 key={virtualItem.index}
                 row={sortedData[virtualItem.index]}
                 onEditJobClick={onEditJobClick}
+                onDeleteConfirm={onDeleteJobClick}
                 colWidths={colWidths}
               />
             ))}
