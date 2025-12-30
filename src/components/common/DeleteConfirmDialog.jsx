@@ -49,8 +49,8 @@ export default function DeleteConfirmDialog({
       <DialogActions>
         <Button
           onClick={onClose}
-          variant="text"
-          size="large"
+          variant="outlined"
+          size="medium"
           sx={{
             '& .MuiButton-text': {
               fontWeight: 'bold'
@@ -65,7 +65,10 @@ export default function DeleteConfirmDialog({
           variant="contained"
           size="medium"
           sx={{
-            color: 'error.main',
+            backgroundColor: 'error.main',
+            '&:hover': {
+              backgroundColor: 'error.dark'
+            },
             '& .MuiButton-text': {
               fontWeight: 'bold'
             }
