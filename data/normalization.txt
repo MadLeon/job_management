@@ -1,0 +1,67 @@
+TABLE: jobs (主工作表)
+================================================================================
+主要工作记录表，存储所有制造作业的信息
+  - oe_number - 订单录入号
+  - job_number - 作业号
+  - customer_name - 客户名称
+  - job_quantity - 作业数量
+  - drawing_number - 零件号
+  - revision - 修订版本
+  - customer_contact - 客户联系方式
+  - drawing_release - 图纸发布
+  - line_number - 订单录入行号
+  - part_description - 零件描述
+  - unit_price - 单价
+  - po_number - 采购订单号
+  - packing_slip - 装箱单
+  - packing_quantity - 装箱数量
+  - invoice_number - 发票号
+  - delivery_required_date - 所需交货日期 (YYYY-MM-DD)
+  - delivery_shipped_date - 发货日期 (YYYY-MM-DD)
+  - create_timestamp - 创建时间戳
+  - last_modified - 最后修改时间
+  - unique_key UNIQUE - 唯一键 (job_number|line_number)
+  - priority DEFAULT 'Normal' - 优先级（Critical|Urgent|Important|Normal|Minor|Hold）
+
+UNF
+JOBS
+[
+  oe_number, po_number, line_number, 
+  job_number, job_quantity, drawing_release, unit_price, priority
+  customer_name, customer_contact
+  drawing_number, revision, part_description
+  (packing_slip, packing_quantity, invoice_number, delivery_required_date, delivery_shipped_date)
+  create_timestamp, last_modified
+]
+
+1NF
+JOBS
+[
+  PK po_number, line_number, 
+  oe_number, job_number, job_quantity, drawing_release, unit_price, priority
+  customer_name, customer_contact
+  drawing_number, revision, part_description
+  create_timestamp, last_modified
+]
+DELIVERY
+[
+  PK (po_number, line_number, delivery_required_date) 
+  FK (po_number, line_number) 
+  invoice_number, packing_slip, packing_quantity, delivery_required_date, delivery_shipped_date
+]
+
+2NF
+PARTS
+PK = drawing_number
+Attributes:
+  revision
+  part_description
+
+DELIVERY
+PK = po_number, line_number, delivery_required_date
+Attributes:
+  invoice_number
+  packing_slip
+  packing_quantity
+  delivery_required_date
+  delivery_shipped_date
