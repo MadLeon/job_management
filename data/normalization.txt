@@ -1,6 +1,6 @@
 TABLE: jobs (主工作表)
 ================================================================================
-主要工作记录表，存储所有制造作业的信息
+主要工作原始信息记录表，存储所有制造作业的信息
   - oe_number - 订单录入号
   - job_number - 作业号
   - customer_name - 客户名称
@@ -24,44 +24,46 @@ TABLE: jobs (主工作表)
   - priority DEFAULT 'Normal' - 优先级（Critical|Urgent|Important|Normal|Minor|Hold）
 
 UNF
-JOBS
-[
-  oe_number, po_number, line_number, 
-  job_number, job_quantity, drawing_release, unit_price, priority
-  customer_name, customer_contact
-  drawing_number, revision, part_description
-  (packing_slip, packing_quantity, invoice_number, delivery_required_date, delivery_shipped_date)
-  create_timestamp, last_modified
-]
+JOB
+PK = po_number
+Attributes:
+  oe_number, customer_name, customer_contact,
+  (
+    job_number, 
+    (
+      line_number, 
+      drawing_number, revision, part_description,
+      job_quantity, drawing_release, unit_price, priority,    
+      delivery_required_date, delivery_shipped_date, packing_slip, packing_quantity, invoice_number
+      (
+        note
+      )
+    )
+  )
 
 1NF
-JOBS
-[
-  PK po_number, line_number, 
-  oe_number, job_number, job_quantity, drawing_release, unit_price, priority
-  customer_name, customer_contact
-  drawing_number, revision, part_description
-  create_timestamp, last_modified
-]
-DELIVERY
-[
-  PK (po_number, line_number, delivery_required_date) 
-  FK (po_number, line_number) 
-  invoice_number, packing_slip, packing_quantity, delivery_required_date, delivery_shipped_date
-]
+ORDER
+PK = po_number
+Attributes: 
+  oe_number, customer_name, customer_contact,
 
-2NF
-PARTS
-PK = drawing_number
-Attributes:
-  revision
-  part_description
+JOB
+PK = job_number
+FK = po_number
+Attributes: 
 
-DELIVERY
-PK = po_number, line_number, delivery_required_date
+LINE
+PK = job_number, line_number, 
+FK = job_number
 Attributes:
-  invoice_number
-  packing_slip
-  packing_quantity
-  delivery_required_date
-  delivery_shipped_date
+  drawing_number, revision, part_description,
+  job_quantity, drawing_release_date, unit_price, priority,    
+  delivery_required_date, delivery_shipped_date, packing_slip, packing_quantity, invoice_number
+
+NOTE
+PK = note_id
+FK = job_number, line_number
+Attributes:
+  note_content
+
+2NF (知道整个主键就能知道 A)
