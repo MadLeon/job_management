@@ -1,191 +1,107 @@
 ###### **customer**
 
 id (PK)
-customer\_name
-
-usage\_count
-
-last\_used
-created\_at
-updated\_at
-
-
-
-```sql
-
-
+customer_name
+usage_count
+last_used
+created_at
+updated_at
 
 CREATE TABLE customer (
-
-&nbsp;   id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-&nbsp;   customer\_name TEXT NOT NULL,
-
-&nbsp;   usage\_count INTEGER DEFAULT 0,
-
-&nbsp;   last\_used TEXT DEFAULT '',
-
-&nbsp;   created\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   updated\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
-
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_name TEXT NOT NULL,
+  usage_count INTEGER DEFAULT 0,
+  last_used TEXT DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime'))
 );
-
-
-
-```
-
-
 
 note:
+1. update usage_count with updated_at
 
 
-
-1. update usage\_count with updated\_at
-
-
-
-###### **customer\_contact**
+###### **customer_contact**
 
 id (PK)
-customer\_id (FK -> customer.id)
-contact\_name
-contact\_email
-usage\_count
-last\_used
-created\_at
-updated\_at
+customer_id (FK -> customer.id)
+contact_name
+contact_email
+usage_count
+last_used
+created_at
+updated_at
 
+CREATE TABLE customer_contact (
 
-
-```sql
-
-
-
-CREATE TABLE customer\_contact (
-
-&nbsp;   id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-&nbsp;   customer\_id INTEGER NOT NULL,
-
-&nbsp;   contact\_name TEXT NOT NULL,
-
-&nbsp;   contact\_email TEXT,
-
-&nbsp;   usage\_count INTEGER DEFAULT 0,
-
-&nbsp;   last\_used TEXT DEFAULT '',
-
-&nbsp;   created\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   updated\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   FOREIGN KEY (customer\_id) REFERENCES customer(id) ON DELETE CASCADE
-
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_id INTEGER NOT NULL,
+  contact_name TEXT NOT NULL,
+  contact_email TEXT,
+  usage_count INTEGER DEFAULT 0,
+  last_used TEXT DEFAULT '',
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  FOREIGN KEY (customer_id) REFERENCES customer(id) ON DELETE CASCADE
 );
 
-
-
-```
-
-
-
-###### **purchase\_order**
+###### **purchase_order**
 
 id (PK)
-po\_number
-oe\_number
-contact\_id (FK -> customer\_contact.id)
+po_number
+oe_number
+contact_id (FK -> customer_contact.id)
+is_archived
+closed_at
+created_at
+updated_at
 
-is\_archived
-
-closed\_at
-created\_at
-updated\_at
-
-
-
-```sql
-
-CREATE TABLE purchase\_order (
-
-&nbsp;   id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-&nbsp;   po\_number TEXT NOT NULL,
-
-&nbsp;   oe\_number TEXT,
-
-&nbsp;   contact\_id INTEGER NOT NULL,
-
-&nbsp;   is\_active INTEGER DEFAULT 1, -- 0: Archived, 1: Active
-
-&nbsp;   closed\_at TEXT,
-
-&nbsp;   created\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   updated\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   FOREIGN KEY (contact\_id) REFERENCES customer\_contact(id)
-
+CREATE TABLE purchase_order (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  po_number TEXT NOT NULL,
+  oe_number TEXT,
+  contact_id INTEGER NOT NULL,
+  is_active INTEGER DEFAULT 1, -- 0: Archived, 1: Active
+  closed_at TEXT,
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  FOREIGN KEY (contact_id) REFERENCES customer_contact(id)
 );
-
-```
-
-
 
 ###### **job**
 
 id (PK)
-job\_number (UK)
-po\_id (FK -> purchase\_order.id)
+job_number (UK)
+po_id (FK -> purchase_order.id)
 priorit
-created\_at
-updated\_at
-
-
-
-```sql
+created_at
+updated_at
 
 CREATE TABLE job (
-
-&nbsp;   id INTEGER PRIMARY KEY AUTOINCREMENT,
-
-&nbsp;   job\_number TEXT UNIQUE NOT NULL,
-
-&nbsp;   po\_id INTEGER NOT NULL,
-
-&nbsp;   priority TEXT DEFAULT 'Normal',
-
-&nbsp;   created\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   updated\_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
-
-&nbsp;   FOREIGN KEY (po\_id) REFERENCES purchase\_order(id) ON DELETE CASCADE
-
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  job_number TEXT UNIQUE NOT NULL,
+  po_id INTEGER NOT NULL,
+  priority TEXT DEFAULT 'Normal',
+  created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
+  FOREIGN KEY (po_id) REFERENCES purchase_order(id) ON DELETE CASCADE
 );
 
-```
-
-
-
-###### **order\_item**
+###### **order_item**
 
 id (PK)
-job\_id (FK -> production\_job.id)
-part\_id (FK ->part.id)
-line\_number
-order\_quantity
+job_id (FK -> production_job.id)
+part_id (FK ->part.id)
+line_number
+order_quantity
+actual_price
 
-actual\_price
-
-\* *production\_hour*
-\* *administrative\_hour*
-
-*\* status*
-drawing\_release\_date
-delivery\_required\_date
-created\_at
-updated\_at
+* *production_hour*
+* *administrative_hour*
+* *status*
+drawing_release_date
+delivery_required_date
+created_at
+updated_at
 
 
 
@@ -204,11 +120,11 @@ updated\_at
 ###### **shipment**
 
 id (PK)
-packing\_slip\_number (unique)
-invoice\_number
-delivery\_shipped\_date
-created\_at
-updated\_at
+packing_slip_number (unique)
+invoice_number
+delivery_shipped_date
+created_at
+updated_at
 
 
 
@@ -224,15 +140,15 @@ updated\_at
 
 
 
-###### **shipment\_item**
+###### **shipment_item**
 
 id (PK)
-order\_item\_id (FK -> order\_item.id)
-shipment\_id (FK -> shipment.id)
-shipped\_quantity
+order_item_id (FK -> order_item.id)
+shipment_id (FK -> shipment.id)
+shipped_quantity
 note: text
-created\_at
-updated\_at
+created_at
+updated_at
 
 
 
@@ -252,18 +168,18 @@ updated\_at
 
 id (PK)
 
-previous\_id (FK -> part.id)
-drawing\_number
+previous_id (FK -> part.id)
+drawing_number
 revision
 description
 
-is\_assembly
-\* *production\_count*
-\* *total\_production\_hour*
-\* *total\_administrative\_hour*
-unit\_price
-created\_at
-updated\_at
+is_assembly
+\* *production_count*
+\* *total_production_hour*
+\* *total_administrative_hour*
+unit_price
+created_at
+updated_at
 
 
 
@@ -279,18 +195,18 @@ updated\_at
 
 
 
-###### **part\_tree**
+###### **part_tree**
 
 id (PK)
 
-parent\_id (FK -> part.id)
+parent_id (FK -> part.id)
 
-child\_id (FK -> part.id)
+child_id (FK -> part.id)
 
 quantity
 
-created\_at
-updated\_at
+created_at
+updated_at
 
 
 
@@ -306,59 +222,27 @@ updated\_at
 
 
 
-###### **part\_attachment**
+###### **part_attachment**
 
 id (PK)
 
-part\_id (FK -> part.id)
+part_id (FK -> part.id)
 
-order\_item\_id (FK -> order\_item.id)
+order_item_id (FK -> order_item.id)
 
 type
 
-file\_name
+file_name
 
-file\_path
+file_path
 
-is\_active
+is_active
 
-last\_modified\_at
+last_modified_at
 
-created\_at
+created_at
 
-updated\_at
-
-
-
-```sql
-
-
-
-
-
-
-
-```
-
-
-
-###### **drawing\_file**
-
-id (PK)
-
-part\_id (FK -> part.id)
-
-file\_name
-
-file\_path
-
-is\_active
-
-last\_modified\_at
-
-created\_at
-
-updated\_at
+updated_at
 
 
 
@@ -374,19 +258,23 @@ updated\_at
 
 
 
-###### **folder\_mapping**
+###### **drawing_file**
 
 id (PK)
 
-customer\_id (FK -> customer.id)
+part_id (FK -> part.id)
 
-folder\_name
+file_name
 
-is\_verified
+file_path
 
-created\_at
+is_active
 
-updated\_at
+last_modified_at
+
+created_at
+
+updated_at
 
 
 
@@ -402,23 +290,51 @@ updated\_at
 
 
 
-###### **process\_template**
+###### **folder_mapping**
 
 id (PK)
 
-part\_id (FK -> part.id)
+customer_id (FK -> customer.id)
 
-row\_number
+folder_name
 
-shop\_code
+is_verified
+
+created_at
+
+updated_at
+
+
+
+```sql
+
+
+
+
+
+
+
+```
+
+
+
+###### **process_template**
+
+id (PK)
+
+part_id (FK -> part.id)
+
+row_number
+
+shop_code
 
 description
 
 remark
 
-created\_at
+created_at
 
-updated\_at
+updated_at
 
 
 
@@ -434,23 +350,23 @@ updated\_at
 
 
 
-###### **step\_tracker**
+###### **step_tracker**
 
 id (PK)
 
-order\_item\_id (FK -> order\_item.id)
+order_item_id (FK -> order_item.id)
 
-process\_template\_id (FK -> process\_template.id)
+process_template_id (FK -> process_template.id)
 
-operator\_id
+operator_id
 
-machine\_id
+machine_id
 
 status
 
-start\_time
+start_time
 
-end\_time
+end_time
 
 
 
