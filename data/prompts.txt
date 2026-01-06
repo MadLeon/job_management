@@ -6,3 +6,11 @@ read structure.txt and run check-db.js for better understanding for the database
 
 有哪些设计选择, 可以添加哪些很酷的功能
 什么是 Plan mode
+
+refactor
+/openspec-proposal 
+我在开发的过程中发现当前数据库设计存在很大问题, 主要原因是已有的设计不符合三范式. 随着app的开发, 我发现数据的维护变得困难, 在没有外键和大量冗余的情况下. 我设计了新的数据库结构, 该数据库应该已符合三范式. 你可以在refactor.md中看到.
+老的数据结构你可以借助structure.txt和check-db.js这两个文件来获得.
+我希望你首先再协助我完善新数据结构. 在我同意后, 帮我设计数据库迁移方案. 最终我希望得到一个新的数据库, 其结构符合经过我同意的新的数据库结构.
+新的数据库不需要兼容之前的任何结构, 我将在后续重构当前的app, 让他按照新的数据逻辑进行工作.
+已经存在的migration脚本将不适用于新数据库. 你会发现我已经完全回滚了数据库到其初始状态. 你可以安全的删除所有migration脚本并且重置migration.json. 我们从头开始建立一个新的数据源.

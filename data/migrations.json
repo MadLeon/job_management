@@ -77,6 +77,22 @@
     {
       "name": "019_populate_unique_key_in_assembly_detail",
       "appliedAt": "2025-12-28T22:20:35.533Z"
+    },
+    {
+      "name": "020_create_normalized_core_tables",
+      "appliedAt": "2026-01-06T22:33:24.359Z"
+    },
+    {
+      "name": "021_create_note_tables",
+      "appliedAt": "2026-01-06T22:33:24.372Z"
+    },
+    {
+      "name": "022_migrate_old_data_to_normalized_schema",
+      "appliedAt": "2026-01-06T22:33:26.325Z"
+    },
+    {
+      "name": "023_create_indices_for_performance",
+      "appliedAt": "2026-01-06T22:33:26.403Z"
     }
   ]
 }
