@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const projectRoot = process.cwd();
-const dbPath = path.join(projectRoot, 'data', 'jobs.db');
+const dbPath = path.join(projectRoot, 'data', 'record.db');  // ✅ 改为 record.db
 const migrationsDir = path.join(__dirname, 'migrations');
 const migrationsRecordPath = path.join(projectRoot, 'data', 'migrations.json');
 
