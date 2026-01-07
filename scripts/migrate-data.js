@@ -448,10 +448,11 @@ try {
   console.log(`  ✓ 共插入 ${stats.orderItem} 个订单明细 (合并 ${stats.orderItemMerged} 个)\n`);
 
   // =====================================================
-  // 步骤 7: 迁移 shipment 表
+  // 步骤 7: 迁移 shipment 表和 shipment_item 表
   // =====================================================
-  console.log('📌 步骤 7: 迁移发货单数据...');
+  console.log('📌 步骤 7: 迁移发货单数据（shipment + shipment_item）...');
 
+  // 第一步：创建 shipment 表（一次发货）
   const shipments = oldDb.prepare(`
     SELECT DISTINCT packing_slip, invoice_number, delivery_shipped_date
     FROM jobs
@@ -459,7 +460,9 @@ try {
     ORDER BY packing_slip
   `).all();
 
-  const shipmentMap = new Map();
+  console.log(`  📊 找到 ${shipments.length} 个不同的发货单\n`);
+
+  const shipmentMap = new Map(); // 映射：packing_slip → shipment_id
   const insertShipment = newDb.prepare(`
     INSERT INTO shipment (packing_slip_number, invoice_number, delivery_shipped_date)
     VALUES (?, ?, ?)
@@ -476,18 +479,80 @@ try {
       shipmentMap.set(packing_slip, result.lastInsertRowid);
       stats.shipment++;
     } catch (error) {
+      console.error(`  ✗ 插入发货单失败: ${packing_slip} - ${error.message}`);
       if (!error.message.includes('UNIQUE constraint failed')) {
         stats.warnings.push(`✗ 插入发货单失败: ${packing_slip} - ${error.message}`);
       }
     }
   }
+
   console.log(`  ✓ 共插入 ${stats.shipment} 个发货单\n`);
 
-  // =====================================================
-  // 关闭数据库
-  // =====================================================
-  oldDb.close();
-  newDb.close();
+  // 第二步：创建 shipment_item 表（每个 order_item 对应一个 shipment_item）
+  const insertShipmentItem = newDb.prepare(`
+    INSERT INTO shipment_item (order_item_id, shipment_id, quantity)
+    VALUES (?, ?, ?)
+  `);
+
+  let shipmentItemCount = 0;
+
+  // 直接从源数据查询有发货单的订单
+  const oldOrderItemsForShipment = oldDb.prepare(`
+    SELECT 
+      job_number,
+      line_number,
+      job_quantity,
+      packing_slip,
+      part_number,
+      revision
+    FROM jobs
+    WHERE packing_slip IS NOT NULL AND packing_slip != ''
+    ORDER BY job_number, line_number
+  `).all();
+
+  console.log(`  📊 找到 ${oldOrderItemsForShipment.length} 个有发货单的订单\n`);
+
+  for (const oldItem of oldOrderItemsForShipment) {
+    try {
+      const { job_number, line_number, job_quantity, packing_slip } = oldItem;
+
+      // 查找对应的 order_item
+      const orderItem = newDb.prepare(`
+        SELECT oi.id FROM order_item oi
+        JOIN job j ON oi.job_id = j.id
+        WHERE j.job_number = ? AND oi.line_number = ?
+        LIMIT 1
+      `).get(job_number, parseInt(line_number) || 1);
+
+      if (!orderItem) {
+        stats.warnings.push(`⚠ 找不到 order_item: job=${job_number}, line=${line_number}`);
+        continue;
+      }
+
+      const shipmentId = shipmentMap.get(packing_slip);
+      if (!shipmentId) {
+        stats.warnings.push(`⚠ 找不到 shipment: packing_slip=${packing_slip}`);
+        continue;
+      }
+
+      const quantity = parseInt(job_quantity) || 0;
+
+      insertShipmentItem.run(
+        orderItem.id,
+        shipmentId,
+        quantity
+      );
+
+      shipmentItemCount++;
+    } catch (error) {
+      console.error(`  ✗ 插入 shipment_item 失败: ${oldItem.job_number}|${oldItem.line_number} - ${error.message}`);
+      if (!error.message.includes('UNIQUE constraint failed')) {
+        stats.warnings.push(`✗ 插入 shipment_item 失败: ${oldItem.job_number}|${oldItem.line_number} - ${error.message}`);
+      }
+    }
+  }
+
+  console.log(`  ✓ 共插入 ${shipmentItemCount} 个发货明细\n`);
 
   // =====================================================
   // 迁移总结
@@ -501,17 +566,19 @@ try {
   console.log(`  • 零件: ${stats.part} (检测到 ${stats.assemblyDetected} 个 Assembly)`);
   console.log(`  • 订单明细: ${stats.orderItem} (合并 ${stats.orderItemMerged} 条)`);
   console.log(`  • 发货单: ${stats.shipment}`);
+  console.log(`  • 发货明细: ${shipmentItemCount}`);
   console.log('');
 
-  // 验证数据完整性
-  const newDb2 = new Database(newDbPath, { readonly: true });
+  // 验证数据完整性（在关闭数据库之前）
   const oldJobsCount = oldDb.prepare('SELECT COUNT(*) as cnt FROM jobs').get().cnt;
-  const newOrderItemCount = newDb2.prepare('SELECT COUNT(*) as cnt FROM order_item').get().cnt;
+  const newOrderItemCount = newDb.prepare('SELECT COUNT(*) as cnt FROM order_item').get().cnt;
+  const newShipmentItemCount = newDb.prepare('SELECT COUNT(*) as cnt FROM shipment_item').get().cnt;
   const dataIntegrity = (newOrderItemCount / oldJobsCount * 100).toFixed(2);
 
   console.log('🔍 数据完整性检查：');
   console.log(`  • 旧数据库 jobs 记录: ${oldJobsCount}`);
   console.log(`  • 新数据库 order_item 记录: ${newOrderItemCount}`);
+  console.log(`  • 新数据库 shipment_item 记录: ${newShipmentItemCount}`);
   console.log(`  • 数据保留率: ${dataIntegrity}%`);
 
   if (newOrderItemCount === oldJobsCount) {
@@ -522,7 +589,11 @@ try {
     console.log(`  ⚠ 缺失 ${oldJobsCount - newOrderItemCount} 条记录`);
   }
 
-  newDb2.close();
+  // =====================================================
+  // 关闭数据库
+  // =====================================================
+  oldDb.close();
+  newDb.close();
 
   // 警告信息
   if (stats.warnings.length > 0) {

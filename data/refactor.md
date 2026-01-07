@@ -382,7 +382,7 @@ CREATE TABLE step_tracker (
 );
 
 ```
-###### **step_tracker**
+###### **note**
 通用备注表 (管理所有对象的注释)
 
 ```sql

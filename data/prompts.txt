@@ -15,6 +15,37 @@ refactor
 新的数据库不需要兼容之前的任何结构, 我将在后续重构当前的app, 让他按照新的数据逻辑进行工作.
 已经存在的migration脚本将不适用于新数据库. 你会发现我已经完全回滚了数据库到其初始状态. 你可以安全的删除所有migration脚本并且重置migration.json. 我们从头开始建立一个新的数据源.
 
-1: 为什么po表中147行到182行没有oenumber? 原始数据就没有还是你的迁移逻辑有误?
-2: 为什么job_number会出现-1, -2等后缀
-3. 对于part表, 当drawing_number中包含-GA-时, 其属于assembly drawing, 更新is assembly 为1, 同时unit price填写line中的价格.
+在数据库迁移的过程中发现了问题. 针对你的分析报告, 我对于4个问题的解答是: 1. 我需要确保后续的内容不被跳过, 如果发现重复的po, 则将后续的line并入已存在的该po下. 2. 在po为空, 为NPO, 或为verbal时生成临时PO. 格式为: NPO-{today}-{cust_name}-{count + 1:02d} (NPO-YYYYMMDD-CUSTOMER-SEQ).
+3. 确保后续内容不被跳过. 你可以自己决定采用何种方式.
+4. 解决方法同2, 自动生成临时po.
+你可以适当修改数据库的结构, 让这些问题消失.
+需要注意的问题: 1. 当生成临时po时, 仍然保留其oenumber, 并在purchase order表中填上 2. 生成临时po时, 查看是否有已经存在的临时po与本条order item具有相同的job number, 如果存在, 则放弃生成新的临时po, 将本条信息合并到该po下 3. 对于part表, 当drawing_number中包含-GA-时, 其属于assembly drawing, 更新is assembly 为1, 同时unit price填写line中的价格.
+4. 按照customer与contact在jobs表中的出现次数更新usage_count
+首先请回滚数据库, 然后根据上面的讨论修改迁移脚本, 最后重新运行一次, 最好能够确保所有数据行都能够保留.
+这些步骤完成后, 不论是结果是否完美, 都停止修复, 生成一个总结给我, 我会给你后续的指令.
+最后, 为了确保以后有别的数据库需要走同样的流程而不出错, 在迁移时打印合适的输出, 为未来的迁移提供验证和信息. 因为你的记忆不会被保留, 而未来我进行类似操作时需要得知迁移后所有的数据都得到了妥善的保留.
+
+输出一个总结文件, 我将另开一个session, 接下来的工作交给他, 确保它知道你目前都干了什么.
+先阅读上个session的记忆
+然后进行如下操作: 
+- 删除record.db
+- 将migrate_data.js修改为一个具体的006迁移
+- 修改drawing_file表结构, part_id
+- 从新创建一个新的record.db, 然后进行所有迁移
+
+先阅读上个session的记忆
+背景: jobs.db的drawing表基于scanandbuilddb.ps1获取信息. 但是与之对标的目前的drawing_file表拥有更多字段, 主要差别在于最后修改时间(windows提供). 
+你的todo list: 
+- 删除record.db
+- 将migrate_data.js修改为一个具体的006迁移
+- 在迁移脚本中修改drawing_file表结构, 将part_id设置为非必填
+- 从新创建一个新的record.db, 然后再次进行一次所有迁移
+- 设计一个node.js驱动的多线程程序, 每个线程spawn一个powershell脚本, 对整个g盘进行一次全盘扫描. 要求尽量减少对于带宽的占用, 不影响其他人员访问g盘的资源. 非常重要: 使用只读模式, 不要再扫描的过程中有任何机会修改, 删除任何文件. 与我讨论是否应该产生一个csv文件或者json文件用来存放扫描的数据, 然后在另行将数据导入db.
+- 设计一个在未来的增量扫描脚本, 也可以使用node驱动. 注意在上面的首次扫描中产生一个中间文件, csv或者json, 在增量扫描时可以使用.
+最后, 注意上面的list, 在你每完成一个todo后, 暂停, 我将进行验收, 同意后再继续下一个.
+
+先阅读上个session的记忆
+
+移除在本session所产生的所有临时脚本和文件
+总结当前session的内容, 尽量简短, 说明修改内容, 目标, 和你做了什么即可
+将该总结并入 session_summary/summary.md, 合并覆盖类似的表述, 尽量简短

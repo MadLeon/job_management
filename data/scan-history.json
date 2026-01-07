@@ -1,0 +1,50 @@
+{
+  "scans": [
+    {
+      "scan_date": "2026-01-07T20:03:20.478Z",
+      "file_count": 16,
+      "scan_file": "data/scan-results.json",
+      "timestamp": "2026-01-07T20:04:51.684Z"
+    },
+    {
+      "scan_date": "2026-01-07T20:03:20.478Z",
+      "file_count": 16,
+      "scan_file": "data/scan-results.json",
+      "timestamp": "2026-01-07T20:04:51.684Z"
+    },
+    {
+      "scan_date": "2026-01-07T20:03:20.478Z",
+      "file_count": 16,
+      "scan_file": "data/scan-results.json",
+      "timestamp": "2026-01-07T20:04:51.684Z"
+    },
+    {
+      "scan_date": "2026-01-07T20:03:20.478Z",
+      "file_count": 16,
+      "scan_file": "data/scan-results.json",
+      "timestamp": "2026-01-07T20:04:51.684Z"
+    },
+    {
+      "scan_date": "2026-01-07T21:05:13.430Z",
+      "file_count": 78544,
+      "pdf_count": 78544,
+      "scan_mode": "full",
+      "test_dir": null,
+      "scan_duration_seconds": 32,
+      "worker_count": 4,
+      "scan_file": "data/scan-results.json",
+      "timestamp": "2026-01-07T21:05:13.540Z"
+    },
+    {
+      "scan_date": "2026-01-07T21:21:10.431Z",
+      "file_count": 137399,
+      "pdf_count": 137399,
+      "scan_mode": "full",
+      "test_dir": null,
+      "scan_duration_seconds": 36,
+      "worker_count": 4,
+      "scan_file": "data/scan-results.json",
+      "timestamp": "2026-01-07T21:21:10.661Z"
+    }
+  ]
+}

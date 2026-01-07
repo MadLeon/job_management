@@ -58,7 +58,7 @@ export function up(db) {
   db.exec(`
     CREATE TABLE drawing_file (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      part_id INTEGER NOT NULL,
+      part_id INTEGER,
       file_name TEXT NOT NULL,
       file_path TEXT NOT NULL UNIQUE,
       is_active INTEGER DEFAULT 1,

@@ -3,23 +3,27 @@
   "migrations": [
     {
       "name": "001_create_core_tables",
-      "appliedAt": "2026-01-07T16:39:15.573Z"
+      "appliedAt": "2026-01-07T18:52:38.482Z"
     },
     {
       "name": "002_create_part_tables",
-      "appliedAt": "2026-01-07T16:39:15.581Z"
+      "appliedAt": "2026-01-07T18:52:38.491Z"
     },
     {
       "name": "003_create_shipment_and_process_tables",
-      "appliedAt": "2026-01-07T16:39:15.591Z"
+      "appliedAt": "2026-01-07T18:52:38.503Z"
     },
     {
       "name": "004_create_note_tables",
-      "appliedAt": "2026-01-07T16:39:15.603Z"
+      "appliedAt": "2026-01-07T18:52:38.515Z"
     },
     {
       "name": "005_create_indices",
-      "appliedAt": "2026-01-07T16:39:15.674Z"
+      "appliedAt": "2026-01-07T18:52:38.591Z"
+    },
+    {
+      "name": "006_migrate_data_from_jobs_db",
+      "appliedAt": "2026-01-07T18:52:41.001Z"
     }
   ]
 }

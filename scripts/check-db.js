@@ -1,6 +1,6 @@
 import Database from 'better-sqlite3';
 
-const db = new Database('./data/jobs.db');
+const db = new Database('./data/record.db');
 const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table'").all();
 console.log('Tables:', tables);
 
