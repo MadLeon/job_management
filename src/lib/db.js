@@ -5,7 +5,7 @@ import fs from 'fs';
 // Resolve to project root's data directory
 // Get the actual project root from process.cwd() to avoid .next compilation issues
 const projectRoot = process.cwd();
-const dbPath = process.env.DB_PATH || path.join(projectRoot, 'data', 'jobs.db');
+const dbPath = process.env.DB_PATH || path.join(projectRoot, 'data', 'record.db');
 
 // 确保数据目录存在
 const dataDir = path.dirname(dbPath);
@@ -16,7 +16,8 @@ if (!fs.existsSync(dataDir)) {
 let dbInstance = null;
 
 /**
- * 初始化数据库并创建表
+ * 初始化数据库连接
+ * 注意：表结构由迁移系统创建（scripts/migrate.js）
  */
 function initializeDatabase() {
   try {
@@ -27,11 +28,7 @@ function initializeDatabase() {
     db.pragma('foreign_keys = ON');
     db.pragma('transaction_isolation = IMMEDIATE');
 
-    console.log('✓ Database initialized successfully at:', dbPath);
-
-    // 测试查询
-    const testCount = db.prepare('SELECT COUNT(*) as cnt FROM jobs').get();
-    console.log('✓ Database has', testCount.cnt, 'jobs');
+    console.log('✓ Database connection established at:', dbPath);
 
     return db;
   } catch (error) {
@@ -62,9 +59,18 @@ function closeDB() {
 
 // 导出查询方法
 
+/**
+ * 获取所有作业编号（示例方法）
+ * 注意：依赖于迁移系统创建的表结构
+ */
 export function getJobNumbers() {
-  const db = getDB();
-  return db.prepare("SELECT job_number FROM jobs").all();
+  try {
+    const db = getDB();
+    return db.prepare("SELECT job_number FROM job").all();
+  } catch (error) {
+    console.warn('⚠ Could not fetch job numbers. Database may not be initialized:', error.message);
+    return [];
+  }
 }
 
 export default getDB;
