@@ -61,7 +61,7 @@ export function up(db) {
       part_id INTEGER,
       file_name TEXT NOT NULL,
       file_path TEXT NOT NULL UNIQUE,
-      is_active INTEGER DEFAULT 1,
+      is_active INTEGER DEFAULT 0,
       last_modified_at TEXT,
       created_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),
       updated_at TEXT NOT NULL DEFAULT (datetime('now', 'localtime')),

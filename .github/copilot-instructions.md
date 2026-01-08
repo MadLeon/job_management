@@ -26,6 +26,11 @@
 
 ## 数据库与迁移
 
+### 数据库
+
+- 旧数据库: `data/jobs.db` (SQLite3)
+- 新数据库: `data/record.db` (SQLite3) 
+
 ### 迁移系统 ([scripts/migrate.js](../scripts/migrate.js))
 
 **命令**:
@@ -52,7 +57,6 @@
 **数据库检查**:
 
 - `node scripts/check-db.js` - 快速查看表结构、记录数和样本数据
-- `node scripts/test-db.js` - 执行数据库操作测试
 
 **测试用例创建**:
 
