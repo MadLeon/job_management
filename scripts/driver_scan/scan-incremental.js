@@ -125,7 +125,7 @@ function detectChanges(historyScan, currentScan) {
       delta.added.push(currentFile);
     } else {
       // 检查是否修改（比较修改时间和大小）
-      const modified = 
+      const modified =
         currentFile.last_modified_utc !== historyFile.last_modified_utc ||
         currentFile.file_size_bytes !== historyFile.file_size_bytes;
 

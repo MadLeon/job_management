@@ -45,7 +45,19 @@ refactor
 最后, 注意上面的list, 在你每完成一个todo后, 暂停, 我将进行验收, 同意后再继续下一个.
 
 先阅读上个session的记忆
+本session主要任务:
+
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
 
 移除在本session所产生的所有临时脚本和文件
-总结当前session的内容, 尽量简短, 说明修改内容, 目标, 和你做了什么即可
-将该总结并入 session_summary/summary.md, 合并覆盖类似的表述, 尽量简短
+
+
+记忆相关
+总结当前session的内容, 尽量简短, 格式如下:
+本session主要任务:
+本session todos包括:
+操作及变更细节:
+未来注意:
+将该总结并入 session_summary/summary.md, 尽量简短
+
+对 session_summary/summary.md 文件进行压缩处理, 只保留重要信息
