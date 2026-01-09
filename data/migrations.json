@@ -28,6 +28,18 @@
     {
       "name": "007_import_drawing_files",
       "appliedAt": "2026-01-08T20:47:06.791Z"
+    },
+    {
+      "name": "007_import_missing_parts_from_assemblies",
+      "appliedAt": "2026-01-09T21:29:24.514Z"
+    },
+    {
+      "name": "008_migrate_assemblies_to_part_tree",
+      "appliedAt": "2026-01-09T21:29:27.196Z"
+    },
+    {
+      "name": "009_add_revision_to_drawing_file",
+      "appliedAt": "2026-01-09T21:41:22.235Z"
     }
   ]
 }

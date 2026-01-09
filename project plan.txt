@@ -19,33 +19,3 @@ the confirmjobcreationmodal should have the same level with createjobmodal, not 
 2. 为createjobmodal的表单添加require的前端和后端的双重确认逻辑. required属性的表单元素包括:
 job number, line number, oe number, po number, select client, select contact, job quantity, delivery required date, priority
 3. *为该表单禁用浏览器端的自动提示
-
-
-数据集成
-
-1. 完善所有 UI 问题
-2. 根据现有 UI 总结数据库的修改需求, 并在此时询问 AI 是否合理, 并给出优化建议. 注意应考虑日后二维码模块的应用
-3. 根据需求修改数据库
-4. 编写数据获取脚本, 并尝试获取部分数据
-5. 将相应的 UI 与真实数据交互
-
-二维码模块
-
-1. 决定二维码库
-2. 实现二维码生成逻辑
-3. 探究图片识别 OCR, 期待可以使用二维码扫描仪对图片进行识别的可能性
-4. 探究开发手机应用, 以识别现有 Job/Line number
-5. 研究二维码扫描仪与 Next.js 的数据交互方式
-6. 决定在扫描仪扫描后的业务逻辑
-7. 实现从 Manufacturing Process 获取图纸 Task 的业务逻辑
-8. 探究二维码应用的方式: Red Tag / MP / 直接打印在图纸上, 对以上三种方式均进行研究, 并确认其可行性
-9. 与相关人员进行讨论确定使用何种方式
-10. 实现二维码的初步应用
-
-未来方向
-
-- Excel 表格网页化: 取代 Excel 文件方案; 调用 Excel 方案
-- DIR 自主生成模块
-- DDR 自主生成模块
-- MP 简化模块
-- AI 协助文本生成模块
