@@ -13,10 +13,6 @@ read structure.txt and run check-db.js for better understanding for the database
 本session todos包括:
 先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
 
-移除在本session所产生的所有临时脚本和文件
-
-
-记忆相关
 感谢你在本session中的工作. 下面请使用中文总结当前session的内容, 尽量简短, 格式如下:
 总结本session主要任务 (一句话总结)
 本session todos包括 (简单bullet points)
@@ -25,3 +21,4 @@ read structure.txt and run check-db.js for better understanding for the database
 将该总结并入 session_summary/summary.md, 尽量简短
 
 对 session_summary/summary.md 文件进行压缩处理, 只保留重要信息
+移除在本session所产生的所有临时脚本和文件

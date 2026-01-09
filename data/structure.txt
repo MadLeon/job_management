@@ -1,0 +1,417 @@
+# 数据库结构文档 - record.db
+
+**更新时间**: 2026-01-09  
+**数据库**: SQLite3 (data/record.db)  
+**总表数**: 20 个 | **总记录数**: 141,493 条
+
+---
+
+## 📊 表状态统计
+
+### 已填充表 (9 个)
+
+| 表名 | 记录数 | 说明 |
+|------|--------|------|
+| customer | 24 | 客户信息 |
+| customer_contact | 69 | 联系人 |
+| purchase_order | 172 | 采购订单 |
+| job | 339 | 作业 |
+| order_item | 358 | 订单明细 |
+| part | 1,657 | 零件 (含 Assembly) |
+| part_tree | 1,460 | BOM 结构 |
+| drawing_file | 137,399 | 图纸文件 (G盘扫描) |
+| shipment / shipment_item | 5 / 10 | 发货单 |
+
+### 空表 (11 个)
+
+| 表名 | 说明 |
+|------|------|
+| part_attachment | 零件附件 |
+| folder_mapping | 客户文件夹映射 |
+| process_template | 工艺模板 |
+| step_tracker | 步骤追踪 |
+| po_note / job_note / order_item_note | 备注表 |
+| part_note / shipment_note / attachment_note | 备注表 |
+
+---
+
+## 🛢️ 核心表结构
+
+###### **customer**
+
+```
+字段: 6
+记录: 24
+
+id (PK, INTEGER)
+customer_name (TEXT NOT NULL)
+usage_count (INTEGER DEFAULT 0)
+last_used (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **customer_contact**
+
+```
+字段: 8
+记录: 69
+
+id (PK, INTEGER)
+customer_id (INTEGER NOT NULL) -> customer.id
+contact_name (TEXT NOT NULL)
+contact_email (TEXT)
+usage_count (INTEGER DEFAULT 0)
+last_used (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **purchase_order**
+
+```
+字段: 8
+记录: 172
+
+id (PK, INTEGER)
+po_number (TEXT NOT NULL)
+oe_number (TEXT)
+contact_id (INTEGER) -> customer_contact.id
+is_active (INTEGER DEFAULT 1)
+closed_at (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **job**
+
+```
+字段: 6
+记录: 339
+
+id (PK, INTEGER)
+job_number (TEXT NOT NULL UNIQUE)
+po_id (INTEGER NOT NULL) -> purchase_order.id
+priority (TEXT DEFAULT 'Normal')
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **order_item**
+
+```
+字段: 13
+记录: 358
+
+id (PK, INTEGER)
+job_id (INTEGER NOT NULL) -> job.id
+part_id (INTEGER) -> part.id
+line_number (INTEGER NOT NULL)
+quantity (INTEGER NOT NULL DEFAULT 0)
+actual_price (REAL)
+production_hour (REAL DEFAULT 0)
+administrative_hour (REAL DEFAULT 0)
+status (TEXT DEFAULT 'PENDING')
+drawing_release_date (TEXT)
+delivery_required_date (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **part**
+
+```
+字段: 13
+记录: 1,657
+
+id (PK, INTEGER)
+previous_id (INTEGER) -> part.id (历史版本链)
+next_id (INTEGER) -> part.id (历史版本链)
+drawing_number (TEXT NOT NULL)
+revision (TEXT NOT NULL DEFAULT '-')
+description (TEXT)
+is_assembly (INTEGER DEFAULT 0)
+production_count (INTEGER DEFAULT 0)
+total_production_hour (REAL DEFAULT 0)
+total_administrative_hour (REAL DEFAULT 0)
+unit_price (REAL DEFAULT 0)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+备注: UNIQUE(drawing_number, revision)
+```
+
+###### **part_tree**
+
+```
+字段: 6
+记录: 1,460
+
+id (PK, INTEGER)
+parent_id (INTEGER NOT NULL) -> part.id
+child_id (INTEGER NOT NULL) -> part.id
+quantity (INTEGER DEFAULT 1)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+说明: BOM 结构，记录零件组成关系
+```
+
+###### **drawing_file**
+
+```
+字段: 9
+记录: 137,399
+
+id (PK, INTEGER)
+part_id (INTEGER) -> part.id
+file_name (TEXT NOT NULL)
+file_path (TEXT NOT NULL UNIQUE)
+is_active (INTEGER DEFAULT 1)
+last_modified_at (TEXT)
+revision (TEXT NOT NULL DEFAULT '-')
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+说明: G 盘扫描结果，part_id 可为空（后期手工匹配）
+```
+
+###### **part_attachment**
+
+```
+字段: 10
+记录: 0
+
+id (PK, INTEGER)
+part_id (INTEGER) -> part.id
+order_item_id (INTEGER) -> order_item.id
+file_type (TEXT NOT NULL)  -- INSPECTION, MTR, DEVIATION
+file_name (TEXT NOT NULL)
+file_path (TEXT NOT NULL UNIQUE)
+is_active (INTEGER DEFAULT 1)
+last_modified_at (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+说明: 零件附件表（质检报告、MTR等）
+```
+
+###### **shipment**
+
+```
+字段: 6
+记录: 5
+
+id (PK, INTEGER)
+packing_slip_number (TEXT NOT NULL UNIQUE)
+invoice_number (TEXT)
+delivery_shipped_date (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **shipment_item**
+
+```
+字段: 6
+记录: 10
+
+id (PK, INTEGER)
+order_item_id (INTEGER NOT NULL) -> order_item.id
+shipment_id (INTEGER NOT NULL) -> shipment.id
+quantity (INTEGER NOT NULL DEFAULT 0)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **folder_mapping**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+customer_id (INTEGER NOT NULL) -> customer.id
+folder_name (TEXT NOT NULL)
+is_verified (INTEGER DEFAULT 0)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+说明: 客户 G 盘文件夹映射
+```
+
+###### **process_template**
+
+```
+字段: 8
+记录: 0
+
+id (PK, INTEGER)
+part_id (INTEGER NOT NULL) -> part.id
+row_number (INTEGER NOT NULL)
+shop_code (TEXT NOT NULL)
+description (TEXT)
+remark (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+说明: 生产工艺模板
+```
+
+###### **step_tracker**
+
+```
+字段: 10
+记录: 0
+
+id (PK, INTEGER)
+order_item_id (INTEGER NOT NULL) -> order_item.id
+process_template_id (INTEGER NOT NULL) -> process_template.id
+operator_id (TEXT)
+machine_id (TEXT)
+status (TEXT DEFAULT 'PENDING')
+start_time (TEXT)
+end_time (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+
+说明: 生产步骤追踪（条码扫描记录）
+```
+
+---
+
+## 📝 备注表
+
+所有备注表遵循统一模式，支持多表关联：
+
+###### **po_note**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+po_id (INTEGER NOT NULL) -> purchase_order.id
+content (TEXT NOT NULL)
+author (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **job_note**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+job_id (INTEGER NOT NULL) -> job.id
+content (TEXT NOT NULL)
+author (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **order_item_note**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+order_item_id (INTEGER NOT NULL) -> order_item.id
+content (TEXT NOT NULL)
+author (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **part_note**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+part_id (INTEGER NOT NULL) -> part.id
+content (TEXT NOT NULL)
+author (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **shipment_note**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+shipment_id (INTEGER NOT NULL) -> shipment.id
+content (TEXT NOT NULL)
+author (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+###### **attachment_note**
+
+```
+字段: 6
+记录: 0
+
+id (PK, INTEGER)
+attachment_id (INTEGER NOT NULL) -> part_attachment.id
+content (TEXT NOT NULL)
+author (TEXT)
+created_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+updated_at (TEXT NOT NULL DEFAULT datetime('now', 'localtime'))
+```
+
+---
+
+## 🔗 关键关系
+
+```
+customer
+├── customer_contact (1:N)
+│   └── purchase_order (1:N)
+│       └── job (1:N)
+│           └── order_item (1:N)
+│               ├── shipment_item (1:N)
+│               │   └── shipment (N:1)
+│               └── part (1:1)
+│                   ├── part_tree (parent:children 1:N)
+│                   ├── drawing_file (1:N)
+│                   ├── part_attachment (1:N)
+│                   └── process_template (1:N)
+│                       └── step_tracker (1:N)
+```
+
+---
+
+## 📈 数据统计
+
+| 指标 | 值 |
+|------|-----|
+| 客户 | 24 |
+| 联系人 | 69 |
+| 采购订单 | 172 |
+| 作业 | 339 |
+| 订单明细 | 358 |
+| 零件 | 1,657 |
+| BOM 关系 | 1,460 |
+| 图纸文件 | 137,399 |
+| 发货单 | 5 |
+| 发货明细 | 10 |
+
+---
+
+## ⚠️ 特殊说明
+
+1. **drawing_file 数据量大** (137,399) - 来自 G 盘全量扫描，part_id 大多为 NULL，需后期匹配
+2. **part_tree 自动生成** (1,460) - 从 part.previous_id / next_id 链推导的 BOM 关系
+3. **order_item.part_id 可为空** - 有 3 条订单明细未关联零件
+4. **所有时间戳** - 使用本地时间格式 (datetime('now', 'localtime'))
+5. **软删除** - 使用 is_active 标志而非硬删除
+

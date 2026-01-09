@@ -1,6 +1,15 @@
 [
   {
     "description": [
+      "Fix check-db.js script to work with record.db instead of old jobs.db.",
+      "Create structure.txt documentation with complete database schema and statistics.",
+      "Update refactor.md with actual database state (137,399 drawing files, 1,657 parts, 1,460 BOM records).",
+      "Confirm part_id can be NULL in drawing_file and part_attachment tables."
+    ],
+    "updateTime": "2026-01-09"
+  },
+  {
+    "description": [
       "Create app header with Logo created",
       "Add app sidebar with toggle functionality",
       "Implement page redirection",
