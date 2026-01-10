@@ -12,7 +12,7 @@ export default function handler(req, res) {
   if (req.method === 'POST') {
     // 创建新联系人
     try {
-      const { contact_name, customer_name } = req.body;
+      const { contact_name, contact_email, customer_id } = req.body;
 
       if (!contact_name || typeof contact_name !== 'string') {
         return res.status(400).json({ error: 'contact_name is required' });
@@ -20,17 +20,17 @@ export default function handler(req, res) {
 
       const db = getDB();
       const insert = db.prepare(`
-        INSERT INTO contacts (contact_name, customer_name, is_active, usage_count, last_used, created_at, updated_at)
-        VALUES (?, ?, 1, 0, NULL, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+        INSERT INTO customer_contact (customer_id, contact_name, contact_email, usage_count, last_used, created_at, updated_at)
+        VALUES (?, ?, ?, 0, NULL, datetime('now', 'localtime'), datetime('now', 'localtime'))
       `);
 
-      const result = insert.run(contact_name, customer_name || null);
+      const result = insert.run(customer_id || null, contact_name, contact_email || null);
 
       res.status(201).json({
         contact_id: result.lastInsertRowid,
+        customer_id: customer_id || null,
         contact_name,
-        customer_name: customer_name || null,
-        is_active: 1,
+        contact_email: contact_email || null,
         usage_count: 0,
         last_used: null
       });
@@ -41,7 +41,7 @@ export default function handler(req, res) {
   } else if (req.method === 'PUT') {
     // 更新联系人信息
     try {
-      const { contact_name, customer_name, is_active } = req.body;
+      const { contact_name, contact_email, customer_id } = req.body;
 
       if (!id) {
         return res.status(400).json({ error: 'contact_id is required' });
@@ -49,22 +49,22 @@ export default function handler(req, res) {
 
       const db = getDB();
       const update = db.prepare(`
-        UPDATE contacts
+        UPDATE customer_contact
         SET contact_name = COALESCE(?, contact_name),
-            customer_name = COALESCE(?, customer_name),
-            is_active = COALESCE(?, is_active),
-            updated_at = CURRENT_TIMESTAMP
-        WHERE contact_id = ?
+            contact_email = COALESCE(?, contact_email),
+            customer_id = COALESCE(?, customer_id),
+            updated_at = datetime('now', 'localtime')
+        WHERE id = ?
       `);
 
       update.run(
         contact_name || null,
-        customer_name !== undefined ? customer_name : null,
-        is_active !== undefined ? is_active : null,
+        contact_email !== undefined ? contact_email : null,
+        customer_id !== undefined ? customer_id : null,
         id
       );
 
-      const updated = db.prepare('SELECT * FROM contacts WHERE contact_id = ?').get(id);
+      const updated = db.prepare('SELECT id as contact_id, customer_id, contact_name, contact_email, usage_count, last_used, created_at, updated_at FROM customer_contact WHERE id = ?').get(id);
       res.status(200).json(updated);
     } catch (error) {
       console.error('API Error (PUT /api/contacts/:id):', error);

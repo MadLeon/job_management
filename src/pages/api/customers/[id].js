@@ -20,8 +20,8 @@ export default function handler(req, res) {
 
       const db = getDB();
       const insert = db.prepare(`
-        INSERT INTO customers (customer_name, is_active, usage_count, created_at, updated_at)
-        VALUES (?, 1, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+        INSERT INTO customer (customer_name, usage_count, created_at, updated_at)
+        VALUES (?, 0, datetime('now', 'localtime'), datetime('now', 'localtime'))
       `);
 
       const result = insert.run(customer_name);
@@ -29,7 +29,6 @@ export default function handler(req, res) {
       res.status(201).json({
         customer_id: result.lastInsertRowid,
         customer_name,
-        is_active: 1,
         usage_count: 0,
         last_used: null
       });
@@ -48,20 +47,18 @@ export default function handler(req, res) {
 
       const db = getDB();
       const update = db.prepare(`
-        UPDATE customers
+        UPDATE customer
         SET customer_name = COALESCE(?, customer_name),
-            is_active = COALESCE(?, is_active),
-            updated_at = CURRENT_TIMESTAMP
-        WHERE customer_id = ?
+            updated_at = datetime('now', 'localtime')
+        WHERE id = ?
       `);
 
       update.run(
         customer_name || null,
-        is_active !== undefined ? is_active : null,
         id
       );
 
-      const updated = db.prepare('SELECT * FROM customers WHERE customer_id = ?').get(id);
+      const updated = db.prepare('SELECT id as customer_id, customer_name, usage_count, last_used, created_at, updated_at FROM customer WHERE id = ?').get(id);
       res.status(200).json(updated);
     } catch (error) {
       console.error('API Error (PUT /api/customers/:id):', error);

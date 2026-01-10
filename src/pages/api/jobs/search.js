@@ -1,16 +1,17 @@
-import getDB from "@/lib/db";
-
 /**
- * 搜索任务和相关信息
+ * API: GET /api/jobs/search
+ * 
+ * 搜索作业和相关信息
  * 支持按以下字段搜索：
- * - job_number: 任务编号
+ * - job_number: 作业编号
  * - po_number: PO编号
- * - part_number: 零件号
- * - drawing_number (detail number): 图纸编号（通过assembly_detail表搜索）
+ * - drawing_number: 图纸编号
+ * - customer_name: 客户名称
  *
- * @param {string} query - 搜索关键词
- * @returns {Array} 匹配的任务记录列表
+ * @param {string} q - 搜索关键词
+ * @returns {Array} 匹配的作业记录列表
  */
+
 export default function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method Not Allowed" });
@@ -24,7 +25,7 @@ export default function handler(req, res) {
   }
 
   try {
-    const db = getDB();
+    const db = require('@/lib/db').default();
     const searchTerm = `%${q.trim()}%`;
     const limitNum = parseInt(limit);
 
@@ -32,83 +33,38 @@ export default function handler(req, res) {
       `[Search API] 搜索关键词: "${q.trim()}", searchTerm: "${searchTerm}"`
     );
 
-    // 从jobs表中搜索：job_number, po_number, part_number
-    // 注意：同一个job_number可能对应多条记录（不同line_number），不进行去重
+    // 从job+order_item+part表中搜索：job_number, po_number, drawing_number
     const jobResults = db
       .prepare(
         `
       SELECT
-        j.job_id,
+        j.id as job_id,
         j.job_number,
-        j.po_number,
-        j.part_number,
-        j.customer_name,
-        j.line_number,
-        j.unique_key,
+        po.po_number,
+        p.drawing_number,
+        c.customer_name,
+        oi.line_number,
         j.priority,
-        j.create_timestamp,
-        'job_number' as matched_field
-      FROM jobs j
+        j.created_at
+      FROM job j
+      LEFT JOIN purchase_order po ON j.po_id = po.id
+      LEFT JOIN order_item oi ON j.id = oi.job_id
+      LEFT JOIN part p ON oi.part_id = p.id
+      LEFT JOIN customer_contact cc ON po.contact_id = cc.id
+      LEFT JOIN customer c ON cc.customer_id = c.id
       WHERE 
         j.job_number LIKE ? 
-        OR j.po_number LIKE ? 
-        OR j.part_number LIKE ?
+        OR po.po_number LIKE ? 
+        OR p.drawing_number LIKE ?
+        OR c.customer_name LIKE ?
+      LIMIT ?
     `
       )
-      .all(searchTerm, searchTerm, searchTerm);
+      .all(searchTerm, searchTerm, searchTerm, searchTerm, limitNum);
 
     console.log(`[Search API] Job results: ${jobResults.length}`);
 
-    // 从assembly_detail表搜索drawing_number（即detail number），通过part_number与jobs关联
-    const drawingResults = db
-      .prepare(
-        `
-      SELECT DISTINCT
-        j.job_id,
-        j.job_number,
-        j.po_number,
-        j.part_number,
-        j.customer_name,
-        j.line_number,
-        j.unique_key,
-        j.priority,
-        j.create_timestamp,
-        'drawing_number' as matched_field
-      FROM jobs j
-      INNER JOIN assembly_detail ad ON j.part_number = ad.part_number
-      WHERE ad.drawing_number LIKE ?
-    `
-      )
-      .all(searchTerm);
-
-    console.log(`[Search API] Drawing results: ${drawingResults.length}`);
-
-    // 合并结果，避免unique_key重复（同一记录不会重复出现）
-    const mergedResults = [];
-    const seenUniqueKeys = new Set();
-
-    // 先加入job搜索结果
-    for (const result of jobResults) {
-      if (!seenUniqueKeys.has(result.unique_key)) {
-        seenUniqueKeys.add(result.unique_key);
-        mergedResults.push(result);
-      }
-    }
-
-    // 再加入drawing搜索结果（避免相同unique_key）
-    for (const result of drawingResults) {
-      if (!seenUniqueKeys.has(result.unique_key)) {
-        seenUniqueKeys.add(result.unique_key);
-        mergedResults.push(result);
-      }
-    }
-
-    const finalResults = mergedResults.slice(0, limitNum);
-    console.log(
-      `[Search API] 合并后总结果: ${mergedResults.length}, 返回: ${finalResults.length}`
-    );
-
-    res.status(200).json(finalResults);
+    res.status(200).json(jobResults);
   } catch (error) {
     console.error("Search API error:", error);
     res.status(500).json({ error: error.message });

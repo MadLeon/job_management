@@ -14,28 +14,28 @@ export default function handler(req, res) {
   }
 
   try {
-    const { customer_name } = req.query;
+    const { customer_id } = req.query;
     const db = getDB();
 
     let query = `
       SELECT 
-        contact_id,
+        id as contact_id,
+        customer_id,
         contact_name,
-        customer_name,
-        is_active,
+        contact_email,
         usage_count,
         last_used,
         created_at,
         updated_at
-      FROM contacts
-      WHERE is_active = 1
+      FROM customer_contact
+      WHERE 1=1
     `;
 
     const params = [];
 
-    if (customer_name) {
-      query += ` AND customer_name = ?`;
-      params.push(customer_name);
+    if (customer_id) {
+      query += ` AND customer_id = ?`;
+      params.push(customer_id);
     }
 
     query += ` ORDER BY usage_count DESC, LOWER(contact_name) ASC`;

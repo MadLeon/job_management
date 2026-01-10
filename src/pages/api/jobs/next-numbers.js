@@ -7,21 +7,21 @@ export default function handler(req, res) {
 
       // 获取最大的job_number
       const jobNumberResult = db.prepare(
-        'SELECT MAX(CAST(job_number AS INTEGER)) as max_job_number FROM jobs'
+        'SELECT MAX(CAST(job_number AS INTEGER)) as max_job_number FROM job'
       ).get();
       const maxJobNumber = jobNumberResult?.max_job_number || 0;
       const nextJobNumber = String(maxJobNumber + 1);
 
-      // 获取最大的oe_number
-      const oeNumberResult = db.prepare(
-        'SELECT MAX(CAST(oe_number AS INTEGER)) as max_oe_number FROM jobs'
+      // 获取最大的po编号 (从purchase_order表)
+      const poNumberResult = db.prepare(
+        "SELECT MAX(CAST(SUBSTR(po_number, -6) AS INTEGER)) as max_po_number FROM purchase_order WHERE po_number LIKE 'PO%'"
       ).get();
-      const maxOENumber = oeNumberResult?.max_oe_number || 0;
-      const nextOENumber = String(maxOENumber + 1);
+      const maxPONumber = poNumberResult?.max_po_number || 0;
+      const nextPONumber = 'PO' + String(maxPONumber + 1).padStart(6, '0');
 
       res.status(200).json({
         nextJobNumber,
-        nextOENumber,
+        nextPONumber,
       });
     } catch (error) {
       console.error('API Error:', error);

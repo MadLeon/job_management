@@ -1,17 +1,14 @@
-import getDB from '@/lib/db';
-
 /**
  * GET /api/jobs/drawing-file-location
  * 
  * 根据图纸号和可选的客户名称获取图纸的文件位置。
- * 使用三步匹配策略：
- * 1. 在 drawings 表中按 drawing_number 直接匹配
- * 2. 如果提供了 customerName，按 drawing_name 进行模糊匹配，并使用客户文件夹映射
- * 3. 如果未提供 customerName，仅按 drawing_name 进行模糊匹配
+ * 使用简单的模糊匹配策略：
+ * 1. 在 drawing_file 表中按 file_path 或 file_name 匹配
+ * 2. 如果提供了 customerName，进行额外的路径过滤
  * 
  * 查询参数：
  * @param {string} drawingNumber - 必需。要搜索的图纸号（例如 "GM223-1314-9"）
- * @param {string} customerName - 可选。用于筛选模糊匹配的客户名称（例如 "MHI-Canada"）
+ * @param {string} customerName - 可选。用于筛选文件位置的客户名称（例如 "MHI-Canada"）
  * 
  * 响应：
  * @returns {Object} JSON 响应，包含：
@@ -20,15 +17,10 @@ import getDB from '@/lib/db';
  * 错误响应：
  * @returns {Object} 400 Bad Request - 缺少 drawingNumber 参数
  * @returns {Object} 500 Server Error - 数据库查询或系统错误
- * 
- * 示例：
- * GET /api/jobs/drawing-file-location?drawingNumber=GM223-1314-9&customerName=MHI-Canada
- * 返回: { fileLocation: "\\\\server\\MHI-Canada\\drawings\\GM223-1314-9.pdf" }
- * 
- * 使用的数据库表：
- * - drawings: 包含 drawing_number、drawing_name 和 file_location
- * - customer_folder_map: 将 customer_name 映射到 folder_name 以匹配路径
  */
+
+import getDB from '@/lib/db';
+
 export default function handler(req, res) {
   if (req.method === 'GET') {
     try {
@@ -42,62 +34,46 @@ export default function handler(req, res) {
       const db = getDB();
       let fileLocation = null;
 
-      // 步骤 1: 在 drawings 表中按 drawing_number 直接匹配
-      // 当 drawing_number 存在时，这是最精确的查找方式
-      const directMatch = db.prepare(
-        'SELECT file_location FROM drawings WHERE drawing_number = ? ORDER BY updated_at IS NULL, updated_at DESC LIMIT 1'
-      ).get(drawingNumber);
+      // 从 drawing_file 表中按 file_path 或 file_name 匹配
+      const matches = db.prepare(`
+        SELECT file_path FROM drawing_file 
+        WHERE file_path LIKE ? OR file_name LIKE ?
+        ORDER BY updated_at DESC
+        LIMIT 10
+      `).all(`%${drawingNumber}%`, `%${drawingNumber}%`);
 
-      if (directMatch && directMatch.file_location) {
-        fileLocation = directMatch.file_location;
-      } else if (customerName) {
-        // 步骤 2: 按 drawing_name 进行模糊匹配，并使用客户文件夹映射
-        // 当 drawing_number 不存在但 drawing_name 包含它时提供灵活性
-
-        // 获取客户特定的文件夹名称映射（如果存在）
-        // 用于根据 file_location 路径进行更精确的匹配
-        const folderMapResult = db.prepare(
-          'SELECT folder_name FROM customer_folder_map WHERE customer_name = ?'
-        ).get(customerName);
-
-        // 如果映射的 folder_name 存在则使用它，否则回退到 customer_name
-        const searchName = folderMapResult ? folderMapResult.folder_name : customerName;
-
-        // 查询所有 drawing_name 包含 drawingNumber 的图纸
-        // 按 drawing_name 排序以保证顺序一致
-        const fuzzyMatches = db.prepare(
-          'SELECT file_location FROM drawings WHERE drawing_name LIKE ? ORDER BY updated_at IS NULL, updated_at DESC'
-        ).all(`%${drawingNumber}%`);
-
-        // 查找第一个与客户路径匹配的有效 file_location
-        for (const match of fuzzyMatches) {
-          if (match.file_location) {
-            // 检查 file_location 是否包含 customer_name 或映射的 folder_name
-            const fileLocationLower = match.file_location.toLowerCase();
-            const customerNameLower = customerName.toLowerCase();
-            const searchNameLower = searchName.toLowerCase();
-
-            if (
-              fileLocationLower.includes(customerNameLower) ||
-              fileLocationLower.includes(searchNameLower)
-            ) {
-              fileLocation = match.file_location;
+      if (matches.length > 0) {
+        if (customerName) {
+          // 如果提供了客户名称，优先选择包含该客户名称的路径
+          for (const match of matches) {
+            if (match.file_path && match.file_path.toLowerCase().includes(customerName.toLowerCase())) {
+              fileLocation = match.file_path;
               break;
             }
           }
         }
-      } else {
-        // 步骤 3: 按 drawing_name 进行模糊匹配，不进行客户过滤
-        // 仅提供图纸号时使用
-
-        const fuzzyMatches = db.prepare(
-          'SELECT file_location FROM drawings WHERE drawing_name LIKE ? ORDER BY updated_at IS NULL, updated_at DESC LIMIT 1'
-        ).get(`%${drawingNumber}%`);
-
-        if (fuzzyMatches && fuzzyMatches.file_location) {
-          fileLocation = fuzzyMatches.file_location;
+        
+        // 如果未找到包含客户名称的路径，或未提供客户名称，使用第一个匹配
+        if (!fileLocation && matches[0]) {
+          fileLocation = matches[0].file_path;
         }
-      }
+      }      res.status(200).json({ fileLocation });
+    } catch (error) {
+      console.error('API Error:', error);
+      res.status(500).json({ error: error.message });
+    }
+  } else {
+    res.status(405).json({ error: 'Method not allowed' });
+  }
+}
+    } catch (error) {
+      console.error('API Error:', error);
+      res.status(500).json({ error: error.message });
+    }
+  } else {
+    res.status(405).json({ error: 'Method not allowed' });
+  }
+}
 
       // 返回文件位置（如果未找到则返回 null）
       res.status(200).json({

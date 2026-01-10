@@ -18,15 +18,13 @@ export default function handler(req, res) {
     // 查询所有活跃客户，按使用计数降序、名称升序排序
     const customers = db.prepare(`
       SELECT 
-        customer_id,
+        id as customer_id,
         customer_name,
-        is_active,
         usage_count,
         last_used,
         created_at,
         updated_at
-      FROM customers
-      WHERE is_active = 1
+      FROM customer
       ORDER BY usage_count DESC, LOWER(customer_name) ASC
     `).all();
 

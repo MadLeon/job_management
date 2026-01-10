@@ -25,16 +25,16 @@ export default function handler(req, res) {
 
     // 递增 usage_count 并更新 last_used
     const update = db.prepare(`
-      UPDATE contacts
+      UPDATE customer_contact
       SET usage_count = usage_count + 1,
           last_used = ?,
-          updated_at = CURRENT_TIMESTAMP
-      WHERE contact_id = ?
+          updated_at = datetime('now', 'localtime')
+      WHERE id = ?
     `);
 
     update.run(jobCreatedAt || new Date().toISOString(), id);
 
-    const updated = db.prepare('SELECT * FROM contacts WHERE contact_id = ?').get(id);
+    const updated = db.prepare('SELECT id as contact_id, customer_id, contact_name, contact_email, usage_count, last_used, created_at, updated_at FROM customer_contact WHERE id = ?').get(id);
     res.status(200).json(updated);
   } catch (error) {
     console.error('API Error (PUT /api/contacts/:id/usage):', error);
