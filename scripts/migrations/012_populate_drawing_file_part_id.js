@@ -16,7 +16,7 @@ export const name = '012_populate_drawing_file_part_id';
 
 export function up(db) {
   console.log(`\n⚙️  执行迁移: ${name}`);
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
 
   // 统计信息
   const stats = {
@@ -111,7 +111,7 @@ export function up(db) {
 
 export function down(db) {
   console.log(`\n⚙️  回滚迁移: ${name}`);
-  console.log('=' .repeat(60));
+  console.log('='.repeat(60));
 
   try {
     // 回滚：将drawing_file中的part_id重置为NULL

@@ -19,7 +19,7 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
   const [dynamicColWidths, setDynamicColWidths] = React.useState(colWidths);
   const cellRefs = React.useRef([]);
   const { data: assemblies = [] } = useAssemblies(open ? row.part_id : null, open ? row.order_item_id : null);
-  
+
   // 使用 React Query hook 获取文件位置
   const { data: fileLocation, isLoading: isLoadingFile } = useDrawingFileLocation(row.part_number);
 

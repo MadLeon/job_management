@@ -41,7 +41,7 @@ export function matchPartToDrawing(db, part, customer_id) {
     }
 
     const drawing_number = part.drawing_number.trim();
-    
+
     // step 1: 在drawing_file中模糊搜索file_name包含drawing_number的记录
     // 注意：忽略is_active的限制，后续会优先选择is_active=1的结果
     const fuzzyMatches = db.prepare(`

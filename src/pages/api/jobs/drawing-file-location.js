@@ -37,7 +37,7 @@ export default function handler(req, res) {
       }
 
       const db = getDB();
-      
+
       // 使用智能查找函数
       const parsedCustomerId = customerId ? parseInt(customerId) : null;
       const drawing = findDrawingFile(db, drawingNumber, parsedCustomerId);
@@ -73,7 +73,7 @@ export default function handler(req, res) {
       }
 
       // 返回文件位置和part_id
-      res.status(200).json({ 
+      res.status(200).json({
         fileLocation: fileLocation || null,
         partId: partId || null
       });
