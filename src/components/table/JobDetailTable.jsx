@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableBody from '@mui/material/TableBody';
 import JobDetailRow from './JobDetailRow';
 
-export default function JobDetailTable({ data = [], colWidths = [], onPartEditSubmit }) {
+export default function JobDetailTable({ data = [], colWidths = [], onPartEditSubmit, jobNumber }) {
   const detailColumns = [
     { label: 'Item', width: 3 },
     { label: 'Detail Number', width: 4 },
@@ -44,6 +44,7 @@ export default function JobDetailTable({ data = [], colWidths = [], onPartEditSu
             row={row}
             index={index}
             onPartEditSubmit={onPartEditSubmit}
+            jobNumber={jobNumber}
           />
         ))}
       </TableBody>

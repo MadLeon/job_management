@@ -4,6 +4,7 @@ import TableCell from '@mui/material/TableCell';
 import Collapse from '@mui/material/Collapse';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
+import Link from '@mui/material/Link';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useRouter } from 'next/router';
@@ -97,7 +98,18 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
    * @param {string} jobNumber - 工作号
    */
   const handleOpenJob = (jobNumber) => {
+    if (!jobNumber) return;
     router.push(`/active-jobs/${jobNumber}`);
+  };
+
+  /**
+   * 打开 drawing 详情页
+   * @param {string} jobNumber - 工作号
+   * @param {string} drawingNumber - drawing 号
+   */
+  const handleOpenDrawing = (jobNumber, drawingNumber) => {
+    if (!jobNumber || !drawingNumber) return;
+    router.push(`/active-jobs/${jobNumber}/${drawingNumber}`);
   };
 
   return (
@@ -107,11 +119,9 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
           align="center"
           ref={(el) => (cellRefs.current[0] = el)}
           sx={{
-            ':hover': { cursor: hasAssemblyDetails ? 'pointer' : 'default' },
             typography: 'regularBold',
             borderBottom: 'unset',
           }}
-          onClick={() => hasAssemblyDetails && setOpen(!open)}
         >
           <Stack direction="row" alignItems="center" spacing={1}>
             <IconButton
@@ -119,6 +129,7 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
               size="small"
               disabled={!hasAssemblyDetails}
               sx={{ visibility: hasAssemblyDetails ? 'visible' : 'hidden' }}
+              onClick={() => hasAssemblyDetails && setOpen(!open)}
             >
               {open ? (
                 <KeyboardArrowUpIcon fontSize="inherit" />
@@ -126,7 +137,24 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
                 <KeyboardArrowDownIcon fontSize="inherit" />
               )}
             </IconButton>
-            {row.job_number}
+            <Link
+              component="button"
+              variant="body2"
+              onClick={(e) => {
+                e.preventDefault();
+                handleOpenJob(row.job_number);
+              }}
+              sx={{
+                cursor: 'pointer',
+                textDecoration: 'underline',
+                fontWeight: 'bold',
+                '&:hover': {
+                  opacity: 0.8,
+                },
+              }}
+            >
+              {row.job_number}
+            </Link>
           </Stack>
         </TableCell>
         <TableCell ref={(el) => (cellRefs.current[1] = el)} sx={{ borderBottom: 'unset' }}>
@@ -139,7 +167,23 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
           {row.line_number}
         </TableCell>
         <TableCell ref={(el) => (cellRefs.current[4] = el)} sx={{ borderBottom: 'unset' }}>
-          {row.part_number}
+          <Link
+            component="button"
+            variant="body2"
+            onClick={(e) => {
+              e.preventDefault();
+              handleOpenDrawing(row.job_number, row.part_number);
+            }}
+            sx={{
+              cursor: 'pointer',
+              textDecoration: 'underline',
+              '&:hover': {
+                opacity: 0.8,
+              },
+            }}
+          >
+            {row.part_number}
+          </Link>
         </TableCell>
         <TableCell ref={(el) => (cellRefs.current[5] = el)} sx={{ borderBottom: 'unset' }} align="center">
           {row.revision}
@@ -176,7 +220,7 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} />
         <TableCell style={{ padding: 0 }} colSpan={8}>
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <JobDetailTable data={assemblies} colWidths={dynamicColWidths} />
+            <JobDetailTable data={assemblies} colWidths={dynamicColWidths} jobNumber={row.job_number} />
           </Collapse>
         </TableCell>
       </TableRow>

@@ -1,10 +1,13 @@
 import React from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
+import Link from '@mui/material/Link';
+import { useRouter } from 'next/router';
 import ActionButtonList from '../common/ActionButtonList';
 import { useDrawingFileLocation } from '../../lib/hooks/useDrawingFileLocation';
 
-export default function JobDetailRow({ row, index, onPartEditSubmit }) {
+export default function JobDetailRow({ row, index, onPartEditSubmit, jobNumber }) {
+  const router = useRouter();
   // 使用 React Query hook 获取文件位置
   const { data: fileLocation, isLoading: isLoadingFile } = useDrawingFileLocation(row.drawing_number);
 
@@ -49,13 +52,39 @@ export default function JobDetailRow({ row, index, onPartEditSubmit }) {
     console.log('Delete part:', id);
   };
 
+  /**
+   * 打开 drawing 详情页
+   * @param {string} jobNumber - 工作号
+   * @param {string} drawingNumber - drawing 号
+   */
+  const handleOpenDrawing = (jobNumber, drawingNumber) => {
+    if (!jobNumber || !drawingNumber) return;
+    router.push(`/active-jobs/${jobNumber}/${drawingNumber}`);
+  };
+
   return (
     <TableRow>
       <TableCell sx={{ borderBottom: 'unset' }} align="center">
         {index + 1}
       </TableCell>
       <TableCell sx={{ borderBottom: 'unset' }}>
-        {row.drawing_number}
+        <Link
+          component="button"
+          variant="body2"
+          onClick={(e) => {
+            e.preventDefault();
+            handleOpenDrawing(jobNumber, row.drawing_number);
+          }}
+          sx={{
+            cursor: 'pointer',
+            textDecoration: 'underline',
+            '&:hover': {
+              opacity: 0.8,
+            },
+          }}
+        >
+          {row.drawing_number}
+        </Link>
       </TableCell>
       <TableCell sx={{ borderBottom: 'unset' }} align="center">
         {row.revision}

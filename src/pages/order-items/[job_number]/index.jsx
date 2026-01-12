@@ -7,9 +7,8 @@ import ItemContainer from '@/components/itemContainer';
 import PriorityChip from '@/components/shared/PriorityChip';
 import JobInformation from '@/components/itemContainer/JobInformation';
 import AdditionalJobInfo from '@/components/itemContainer/AdditionalJobInfo';
-import QRCodeDisplay from '@/components/itemContainer/QRCodeDisplay';
 import { useJobs } from '@/lib/hooks/useJobs';
-import { useAssemblies } from '@/lib/hooks/useAssemblies';
+import { useJobDrawings } from '@/lib/hooks/useJobDrawings';
 import JobCompletionChart from '@/components/itemContainer/JobCompletionChart';
 import { DrawingsTable } from '@/components/table';
 
@@ -25,8 +24,6 @@ export default function JobDetailPage() {
   const router = useRouter();
   const { job_number } = router.query;
   const { data: jobs = [] } = useJobs();
-  const basicInfoRef = React.useRef(null);
-  const [containerHeight, setContainerHeight] = React.useState(0);
 
   /**
    * 根据 job_number 查找对应的工作记录
@@ -36,43 +33,23 @@ export default function JobDetailPage() {
   }, [jobs, job_number]);
 
   /**
-   * 使用 useAssemblies 钩子获取当前工作的装配数据
+   * 使用 useJobDrawings 钩子获取当前工作的所有图纸和组件数据
    */
-  const { data: assemblies = [], isLoading: assembliesLoading } = useAssemblies(currentJob?.part_number);
-
-  /**
-   * 监测 BasicInformation 容器的高度变化
-   * 并同步更新 QR 码尺寸
-   */
-  React.useEffect(() => {
-    if (basicInfoRef.current) {
-      const observer = new ResizeObserver(() => {
-        setContainerHeight(basicInfoRef.current?.offsetHeight || 0);
-      });
-      observer.observe(basicInfoRef.current);
-      // 初始化高度
-      setContainerHeight(basicInfoRef.current.offsetHeight);
-      return () => observer.disconnect();
-    }
-  }, []);
+  const { data: drawings = [], isLoading: drawingsLoading } = useJobDrawings(job_number);
 
   return (
     <Stack spacing={3}>
       <Breadcrumb
-        locationLayer={['Active Jobs', job_number || 'Detail']}
-        href={["/active-jobs", `/active-jobs/${job_number}`]}
+        locationLayer={['Order Items', job_number || 'Detail']}
+        href={["/order-items", `/order-items/${job_number}`]}
       />
       <PageTitle title="Job Overview" />
-      <Stack direction="row" spacing={2} sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <ItemContainer
-          ref={basicInfoRef}
-          title="Basic Information"
-          content={<JobInformation jobData={currentJob} />}
-          component={currentJob ? <PriorityChip priority={currentJob.priority} /> : null}
-          sx={{ width: '80%' }}
-        />
-        <QRCodeDisplay size={containerHeight} />
-      </Stack>
+      <ItemContainer
+        title="Basic Information"
+        content={<JobInformation jobData={currentJob} />}
+        component={currentJob ? <PriorityChip priority={currentJob.priority} /> : null}
+        sx={{ width: '100%' }}
+      />
       <Stack direction={"row"} spacing={3}>
         <Stack spacing={3} width="40%">
           <ItemContainer
@@ -94,8 +71,8 @@ export default function JobDetailPage() {
           align="normal"
           content={
             <DrawingsTable
-              drawings={assemblies}
-              isLoading={assembliesLoading}
+              drawings={drawings}
+              isLoading={drawingsLoading}
               jobNumber={job_number}
             />
           }

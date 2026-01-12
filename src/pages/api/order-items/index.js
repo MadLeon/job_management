@@ -11,8 +11,8 @@ export default function handler(req, res) {
   if (req.method === 'GET') {
     try {
       const db = getDB();
-      
-      // 联查：job + order_item + part + purchase_order + customer
+
+      // 联查：job + order_item + part + purchase_order + customer + customer_contact
       // 同时检查 part_tree 以判断是否有子组件
       // 注意：某些 PO 的 contact_id 可能为 null，此时 customer 信息为 null
       const jobs = db.prepare(`
@@ -32,10 +32,11 @@ export default function handler(req, res) {
           p.id as part_id,
           p.drawing_number as part_number,
           p.revision,
-          p.description,
+          p.description as part_description,
           p.is_assembly,
           po.po_number,
           po.oe_number,
+          cc.contact_name as customer_contact,
           c.id as customer_id,
           c.customer_name,
           CASE WHEN pt.parent_id IS NOT NULL THEN 1 ELSE 0 END as has_assembly_details
@@ -48,11 +49,11 @@ export default function handler(req, res) {
         LEFT JOIN customer c ON cc.customer_id = c.id
         ORDER BY j.created_at DESC
       `).all();
-      
+
       // 去重：因为 part_tree 可能有多条记录，需要对结果进行去重处理
       const uniqueJobs = [];
       const seen = new Set();
-      
+
       for (const job of jobs) {
         const key = `${job.job_id}-${job.order_item_id}`;
         if (!seen.has(key)) {
@@ -60,7 +61,7 @@ export default function handler(req, res) {
           uniqueJobs.push(job);
         }
       }
-      
+
       res.status(200).json(uniqueJobs);
     } catch (error) {
       console.error('API Error:', error);
