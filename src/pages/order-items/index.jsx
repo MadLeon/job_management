@@ -1,5 +1,7 @@
 import React from 'react';
 import { Stack } from '@mui/material';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import Breadcrumb from '@/components/common/Breadcrumbs';
 import PageTitle from '@/components/common/PageTitle';
@@ -36,6 +38,7 @@ function ActiveJobs() {
     itemName: '',
     jobNumber: null
   });
+  const [displayMode, setDisplayMode] = React.useState('job');
 
   /**
    * 处理搜索框选择回调
@@ -45,6 +48,10 @@ function ActiveJobs() {
     console.log('[ActiveJobs] 搜索选择回调:', selectedJob);
     setSearchFilter(selectedJob);
   }, []);
+
+  const handleChangeToggle = (event, newDisplayMode) => {
+    setDisplayMode(newDisplayMode);
+  };
 
   /**
    * 根据应用的过滤条件过滤工作列表
@@ -137,7 +144,19 @@ function ActiveJobs() {
   return (
     <Stack spacing={3} >
       <Breadcrumb locationLayer={['Order Items']} href={["order-items"]} />
-      <PageTitle title="Order Items" />
+      <PageTitle title="Order Items">
+        <ToggleButtonGroup
+          color="primary"
+          size='medium'
+          value={displayMode}
+          exclusive
+          onChange={handleChangeToggle}
+          aria-label="Platform"
+        >
+          <ToggleButton value="job">Job View</ToggleButton>
+          <ToggleButton value="po">PO View</ToggleButton>
+        </ToggleButtonGroup>
+      </PageTitle>
       <ItemContainer
         content={
           <SearchArea onCreateJobClick={
@@ -149,7 +168,7 @@ function ActiveJobs() {
             onSearchSelect={handleSearchSelect} />
         }
       />
-      <ItemContainer title="All Active Jobs" content={jobsArea} />
+      <ItemContainer title="All Order Items" content={jobsArea} />
       <JobEditModal
         open={jobModalOpen}
         onClose={() => setJobModalOpen(false)}

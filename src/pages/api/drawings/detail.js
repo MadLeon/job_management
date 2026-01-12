@@ -29,6 +29,7 @@
  */
 
 import getDB from '@/lib/db';
+import { findDrawingFile } from '@/lib/drawing-file-helper';
 
 export default function handler(req, res) {
   // 仅允许 GET 请求
@@ -37,7 +38,7 @@ export default function handler(req, res) {
   }
 
   try {
-    const { drawing_number } = req.query;
+    const { drawing_number, customer_id } = req.query;
 
     // 验证必要参数
     if (!drawing_number) {
@@ -47,25 +48,8 @@ export default function handler(req, res) {
     // 获取数据库实例
     const db = getDB();
 
-    // 从 drawing_file 表查询（轮换自原 detail_drawing）
-    // 注意：part 表中存储了 drawing_number
-    const drawing = db
-      .prepare(`
-        SELECT 
-          df.id,
-          df.part_id,
-          df.file_name,
-          df.file_path,
-          df.is_active,
-          df.last_modified_at,
-          df.revision,
-          df.created_at,
-          df.updated_at
-        FROM drawing_file df
-        WHERE df.file_path LIKE ? OR df.file_name LIKE ?
-        LIMIT 1
-      `)
-      .get(`%${drawing_number}%`, `%${drawing_number}%`);
+    // 使用智能查找函数
+    const drawing = findDrawingFile(db, drawing_number, customer_id ? parseInt(customer_id) : null);
 
     if (!drawing) {
       return res.status(404).json({ error: `Drawing not found: ${drawing_number}` });

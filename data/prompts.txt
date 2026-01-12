@@ -33,3 +33,6 @@ read structure.txt and run check-db.js for better understanding for the database
 http://localhost:3000/active-jobs/[id] 中的contact只显示n/a
 jobs页面的drawingnumber列表没有正确显示
 先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+
+
+

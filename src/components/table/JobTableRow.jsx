@@ -11,6 +11,7 @@ import ActionButtonList from '../common/ActionButtonList';
 import PriorityChip from '../shared/PriorityChip';
 import JobDetailTable from './JobDetailTable';
 import { useAssemblies } from '../../lib/hooks/useAssemblies';
+import { useDrawingFileLocation } from '../../lib/hooks/useDrawingFileLocation';
 
 export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDeleteConfirm }) {
   const router = useRouter();
@@ -18,6 +19,9 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
   const [dynamicColWidths, setDynamicColWidths] = React.useState(colWidths);
   const cellRefs = React.useRef([]);
   const { data: assemblies = [] } = useAssemblies(open ? row.part_id : null, open ? row.order_item_id : null);
+  
+  // 使用 React Query hook 获取文件位置
+  const { data: fileLocation, isLoading: isLoadingFile } = useDrawingFileLocation(row.part_number);
 
   // 判断是否有assembly details
   const hasAssemblyDetails = row.has_assembly_details === 1;
@@ -153,14 +157,14 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
           <ActionButtonList
             buttons={['pdf', 'edit', 'delete', 'add', 'openNew']}
             handlers={{
-              onPdfClick: () => handleOpenPDF(row.file_location),
+              onPdfClick: () => handleOpenPDF(fileLocation),
               onEditClick: () => handleEdit(row),
               onDeleteClick: () => handleDeleteClick({ title: 'Deletion Confirm', message: 'Are you sure you want to delete this job?', itemName: row.job_number, jobNumber: row.job_number }),
               onAddClick: () => handleAddPart(row),
               onOpenNewClick: () => handleOpenJob(row.job_number),
             }}
             disabledButtons={{
-              pdf: !row.file_location,
+              pdf: !fileLocation || isLoadingFile,
             }}
           />
         </TableCell>

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 
-export default function PageTitle({ title }) {
+export default function PageTitle({ title, children }) {
   return (
-    <Box>
-      <Typography variant="h1" component="h1" gutterBottom>
+    <Stack direction={"row"} justifyContent="space-between" alignItems="center">
+      <Typography variant="h1" component="h1">
         {title}
       </Typography>
-    </Box>
+      {children}
+    </Stack>
   );
 }

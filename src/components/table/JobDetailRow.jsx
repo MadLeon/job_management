@@ -2,8 +2,12 @@ import React from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import ActionButtonList from '../common/ActionButtonList';
+import { useDrawingFileLocation } from '../../lib/hooks/useDrawingFileLocation';
 
 export default function JobDetailRow({ row, index, onPartEditSubmit }) {
+  // 使用 React Query hook 获取文件位置
+  const { data: fileLocation, isLoading: isLoadingFile } = useDrawingFileLocation(row.drawing_number);
+
   /**
    * 打开 PDF 文件
    * @param {string} fileLocation - 文件位置
@@ -69,12 +73,12 @@ export default function JobDetailRow({ row, index, onPartEditSubmit }) {
         <ActionButtonList
           buttons={['pdf', 'edit', 'delete']}
           handlers={{
-            onPdfClick: () => handleOpenPDF(row.file_location),
+            onPdfClick: () => handleOpenPDF(fileLocation),
             onEditClick: () => handleEdit(row),
             onDeleteClick: () => handleDelete(row.id),
           }}
           disabledButtons={{
-            pdf: !row.file_location,
+            pdf: !fileLocation || isLoadingFile,
           }}
         />
       </TableCell>
