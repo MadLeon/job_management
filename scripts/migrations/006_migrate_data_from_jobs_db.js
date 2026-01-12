@@ -256,7 +256,16 @@ export function up(db) {
           finalPoNumber = `NPO-${today}-${customerName}-${seq}`;
 
           if (!poMap.has(finalPoNumber)) {
-            const result = insertPO.run(finalPoNumber, oe_number || null, null);
+            // ✅ 修复：查询原始数据中该 job_number 对应的 customer_contact，获取正确的 contact_id
+            const jobContactInfo = oldDb.prepare(`
+              SELECT customer_contact FROM jobs WHERE job_number = ? LIMIT 1
+            `).get(job_number);
+            
+            const contactId = jobContactInfo?.customer_contact 
+              ? contactMap.get(`${customer_name}|${jobContactInfo.customer_contact}`)
+              : null;
+
+            const result = insertPO.run(finalPoNumber, oe_number || null, contactId || null);
             poMap.set(finalPoNumber, result.lastInsertRowid);
             stats.purchaseOrder++;
             stats.tempPoGenerated++;

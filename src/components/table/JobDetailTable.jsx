@@ -18,7 +18,7 @@ export default function JobDetailTable({ data = [], colWidths = [], onPartEditSu
   ];
 
   return (
-    <Table aria-label="job-details" size="small" sx={{ tableLayout: 'fixed' }}>
+    <Table aria-label="job-details" size="small" sx={{ tableLayout: 'fixed', '& thead': { position: 'sticky', top: 0, zIndex: 5, backgroundColor: 'background.paper' } }}>
       <TableHead>
         <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
           {detailColumns.map((column, index) => (

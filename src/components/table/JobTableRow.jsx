@@ -17,7 +17,7 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
   const [open, setOpen] = React.useState(false);
   const [dynamicColWidths, setDynamicColWidths] = React.useState(colWidths);
   const cellRefs = React.useRef([]);
-  const { data: assemblies = [] } = useAssemblies(open ? row.part_number : null);
+  const { data: assemblies = [] } = useAssemblies(open ? row.part_id : null, open ? row.order_item_id : null);
 
   // 判断是否有assembly details
   const hasAssemblyDetails = row.has_assembly_details === 1;

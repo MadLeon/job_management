@@ -1,6 +1,22 @@
 [
   {
     "description": [
+      "Fix order items dropdown arrow logic: Added has_assembly_details field via LEFT JOIN part_tree in /api/order-items",
+      "Create /api/parts/[id]/children.js endpoint to fetch child components with inheritance of parent timing/status",
+      "Rename API from /api/jobs to /api/order-items for semantic correctness",
+      "Update useJobs hook to call new /api/order-items endpoint",
+      "Update useAssemblies hook: Change parameter from partNumber to partId, add orderItemId support",
+      "Update JobTableRow component: Pass both row.part_id and row.order_item_id to useAssemblies",
+      "Fix sticky header conflict in JobDetailTable: Add position sticky with zIndex=5 (lower than JobTable's 10)",
+      "Fix migration bug in 006_migrate_data_from_jobs_db.js step 4: Correct contact_id mapping (was NULL for 30 POs)",
+      "Database recovery: Rollback migrations 006-009 to step 005, fix migration script, re-execute 006-009",
+      "Verify: Job 72297 and 29 other affected records now show correct customer data",
+      "Update structure.txt with latest database statistics (141,493 total records across 20 tables)"
+    ],
+    "updateTime": "2026-01-11"
+  },
+  {
+    "description": [
       "Fix check-db.js script to work with record.db instead of old jobs.db.",
       "Create structure.txt documentation with complete database schema and statistics.",
       "Update refactor.md with actual database state (137,399 drawing files, 1,657 parts, 1,460 BOM records).",

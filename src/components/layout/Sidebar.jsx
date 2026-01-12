@@ -20,7 +20,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import DashboardSidebarContext from '../../context/DashboardSidebarContext';
-import DashboardSidebarPageItem from './DashboardSidebarPageItem';
+import SidebarPageItem from './SidebarPageItem';
 import {
   getDrawerSxTransitionMixin,
   getDrawerWidthTransitionMixin,
@@ -117,7 +117,7 @@ function Sidebar({
               }}
             >
               {/* <DashboardSidebarHeaderItem>Main items</DashboardSidebarHeaderItem> */}
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="dashboard"
                 title="Dashboard"
                 icon={<HomeIcon />}
@@ -125,15 +125,15 @@ function Sidebar({
                 selected={!!matchPath('/dashboard/*', pathname) || pathname === '/'}
               />
 
-              <DashboardSidebarPageItem
-                id="activeJobs"
-                title="Active Jobs"
+              <SidebarPageItem
+                id="orderItem"
+                title="Order Items"
                 icon={<ReceiptIcon />}
-                href="/active-jobs"
-                selected={!!matchPath('/active-jobs/*', pathname)}
+                href="/order-items"
+                selected={!!matchPath('/order-items/*', pathname)}
               />
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="watchlist"
                 title="Watchlist"
                 icon={<RemoveRedEyeIcon />}
@@ -141,7 +141,7 @@ function Sidebar({
                 selected={!!matchPath('/watch-list/*', pathname)}
               />
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="taskScheduler"
                 title="Task Scheduler"
                 icon={<CalendarTodayIcon />}
@@ -160,7 +160,7 @@ function Sidebar({
               }}
             >
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="allDrawings"
                 title="All Drawings"
                 icon={<PhotoLibraryIcon />}
@@ -168,7 +168,7 @@ function Sidebar({
                 selected={!!matchPath('/all-drawings/*', pathname)}
               />
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="allJobs"
                 title="All Jobs"
                 icon={<LayersIcon />}
@@ -176,7 +176,7 @@ function Sidebar({
                 selected={!!matchPath('/all-jobs/*', pathname)}
               />
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="allCustomers"
                 title="All Customers"
                 icon={<PeopleIcon />}
@@ -195,7 +195,7 @@ function Sidebar({
               }}
             >
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="updates"
                 title="Updates"
                 icon={<InfoIcon />}
@@ -203,7 +203,7 @@ function Sidebar({
                 selected={!!matchPath('/updates/*', pathname)}
               />
 
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="settings"
                 title="Settings"
                 icon={<SettingsIcon />}
@@ -222,7 +222,7 @@ function Sidebar({
                 width: mini ? MINI_DRAWER_WIDTH : 'auto',
               }}
             >
-              <DashboardSidebarPageItem
+              <SidebarPageItem
                 id="logout"
                 title="Logout"
                 icon={<LogoutIcon />}

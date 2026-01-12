@@ -1,12 +1,102 @@
 # 项目完成情况总结
 
-**更新日期**: 2026-01-09  
-**总体状态**: ✅ 数据库迁移完成 → **API改写进行中**  
-**项目进度**: 80% (数据库就绪，API改写75%完成，UI待开发)
+**更新日期**: 2026-01-11  
+**总体状态**: ✅ 数据库&API就绪 → **UI问题修复完成**  
+**项目进度**: 85% (数据库、API、UI核心功能均已修复)
 
 ---
 
-## 📊 Sessions 1-5 成果概览
+## 📝 Session 6: UI修复与数据迁移BUG修复 (本session) 🔧
+
+**主要任务**: 修复 order items 页面的下拉箭头逻辑、展开内容显示和数据迁移BUG
+
+### 核心问题与解决方案
+
+| 问题 | 根本原因 | 解决方案 | 影响范围 |
+|------|---------|---------|---------|
+| 下拉箭头不显示 | API缺少 `has_assembly_details` 字段 | 在 `/api/order-items` 中添加 LEFT JOIN part_tree + CASE WHEN 逻辑 | 358个order_items |
+| 展开内容为空 | useAssemblies hook调用不存在的API + 使用错误参数(part_number) | 创建 `/api/parts/[id]/children` API + 修改hook使用part_id + 添加orderItemId | 所有assembly item |
+| Sticky header冲突 | JobDetailTable无sticky定位，导致滚动时header混乱 | 添加 sticky + zIndex=5（低于JobTable的10） | 所有行展开时 |
+| 客户名称为空（Job72297） | 006迁移脚本bug：步骤4重新创建临时PO时contact_id设为NULL | 修复脚本行254-262，添加contact_id映射逻辑 | 30个受影响的PO |
+
+### 完成工作清单
+
+| 功能 | 细节 | 状态 |
+|------|------|------|
+| ✅ API: /api/order-items/index.js | 新建。LEFT JOIN part_tree查询has_assembly_details | 完成 |
+| ✅ API: /api/parts/[id]/children.js | 新建。返回子组件，继承parent order_item的timing/status | 完成 |
+| ✅ Hook: useJobs.js | 修改fetch URL：`/api/jobs` → `/api/order-items` | 完成 |
+| ✅ Hook: useAssemblies.js | 改参数(partNumber→partId)，添加orderItemId，新endpoint | 完成 |
+| ✅ Component: JobTableRow.jsx | 传递row.part_id和row.order_item_id给useAssemblies | 完成 |
+| ✅ Component: JobDetailTable.jsx | 添加sticky header：position+top+zIndex+bgColor | 完成 |
+| ✅ Migration: 006_migrate_data_from_jobs_db.js | 修复step4的contact_id映射（行254-262） | 完成 |
+| ✅ 数据库恢复 | 回滚→修复→重新迁移006-009 | 完成 |
+| ✅ 文档更新 | structure.txt已更新，session总结已补充 | 完成 |
+
+### 迁移BUG详细分析
+
+**原始问题场景**：
+```
+Job 72297 → PO_id=317 → contact_id=NULL → customer_name缺失 → UI显示为空
+```
+
+**Bug位置**: `006_migrate_data_from_jobs_db.js` 第254-262行
+
+**原始错误代码**:
+```javascript
+// 步骤4：创建job时重新创建临时PO
+// 问题：contact_id没有从原数据映射，直接设为NULL
+newDb.prepare(`
+  INSERT INTO purchase_order (customer_id, contact_id, po_number, ...)
+  VALUES (?, NULL, ?, ...)  // ❌ contact_id=NULL错误
+`).run(customerId, ...);
+```
+
+**修复后代码**:
+```javascript
+// 从oldDb获取原customer_contact字段
+const jobContactInfo = oldDb.prepare(`
+  SELECT customer_contact FROM jobs WHERE job_number = ? LIMIT 1
+`).get(job_number);
+
+// 通过contactMap映射得到正确的contact_id
+const contactId = jobContactInfo?.customer_contact 
+  ? contactMap.get(`${customer_name}|${jobContactInfo.customer_contact}`)
+  : null;
+
+// 使用正确的contact_id插入
+newDb.prepare(`
+  INSERT INTO purchase_order (customer_id, contact_id, po_number, ...)
+  VALUES (?, ?, ?, ...)  // ✅ contact_id正确映射
+`).run(customerId, contactId, ...);
+```
+
+**影响范围**: 30个PO记录（占总数 172 的 17%）
+
+**恢复过程**:
+1. ✅ 执行4次 `npm run db:migrate:down` (006→009回滚到005)
+2. ✅ 修改脚本并保存
+3. ✅ 执行 `npm run db:migrate` (006-009全量重新执行)
+4. ✅ 验证: Job 72297 customer_name 从空 → "Bombardier"
+
+### 数据验证结果
+
+**迁移后数据完整性** (2025-01-11 14:30):
+```
+✅ 339 jobs 完整导入
+✅ 172 purchase_orders (含46个临时PO) ✅
+✅ 358 order_items (含customer+po关联) ✅
+✅ 1,657 parts (含BOM树) ✅
+✅ 1,460 part_tree relations (parent_id→child_id) ✅
+✅ 137,399 drawing_files (含revision) ✅
+```
+
+**特验证样本**:
+- Job 72297: po_id=317, contact_id=78 (Nesha), customer_id=30 (Bombardier) ✅
+
+---
+
+## 📊 Sessions 1-6 成果概览
 
 ### 数据库迁移与扫描系统 ✅
 

@@ -4,7 +4,7 @@ export function useJobs() {
   return useQuery({
     queryKey: ['jobs'],
     queryFn: async () => {
-      const res = await fetch('/api/jobs');
+      const res = await fetch('/api/order-items');
       return res.json();
     }
   });

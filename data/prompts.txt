@@ -8,6 +8,7 @@ read structure.txt and run check-db.js for better understanding for the database
 什么是 Plan mode
 
 新session模板
+=============
 先阅读上个session的记忆
 本session主要任务:
 本session todos包括:
@@ -22,3 +23,13 @@ read structure.txt and run check-db.js for better understanding for the database
 
 对 session_summary/summary.md 文件进行压缩处理, 只保留重要信息
 移除在本session所产生的所有临时脚本和文件
+
+先阅读上个session的记忆
+本session主要任务: 修复api重写带来的问题
+
+搜索api可以用, 但是在点击搜过结果时, 对应的sort没有触发
+对于单个job内存在多个partnumber的情况, job number 左侧的下拉菜单均不显示
+对于actionbuttonlist的第一个按钮, 图片链接没有正确创建
+http://localhost:3000/active-jobs/[id] 中的contact只显示n/a
+jobs页面的drawingnumber列表没有正确显示
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行

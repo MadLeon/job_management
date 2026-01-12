@@ -23,23 +23,23 @@
     },
     {
       "name": "006_migrate_data_from_jobs_db",
-      "appliedAt": "2026-01-07T18:52:41.001Z"
+      "appliedAt": "2026-01-11T22:20:18.572Z"
     },
     {
       "name": "007_import_drawing_files",
-      "appliedAt": "2026-01-08T20:47:06.791Z"
+      "appliedAt": "2026-01-11T22:20:20.603Z"
     },
     {
       "name": "007_import_missing_parts_from_assemblies",
-      "appliedAt": "2026-01-09T21:29:24.514Z"
+      "appliedAt": "2026-01-11T22:20:25.140Z"
     },
     {
       "name": "008_migrate_assemblies_to_part_tree",
-      "appliedAt": "2026-01-09T21:29:27.196Z"
+      "appliedAt": "2026-01-11T22:20:29.844Z"
     },
     {
       "name": "009_add_revision_to_drawing_file",
-      "appliedAt": "2026-01-09T21:41:22.235Z"
+      "appliedAt": "2026-01-11T22:20:30.333Z"
     }
   ]
 }

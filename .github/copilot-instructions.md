@@ -5,7 +5,10 @@
 - 非常重要: 你的所有回复消息都必须使用简体中文。
 - 你生成的所有代码均使用 JSDoc 风格注释
 - 每个会话开始前, 阅读 structure.txt 并运行 `scripts/check-db.js` 来建立对数据库的了解
-- 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 并且在所有实际代码部分使用英文.
+- 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
+- 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
+- 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
+- 确保在所有实际代码部分使用英文.
 - 阅读session_summary/summary.md以了解之前会话的总结作为上下文
 - 永远不要假设任何事情。始终检查代码库以确认细节。
 - 永远不要编造代码或细节。如果你不确定，请查阅代码库

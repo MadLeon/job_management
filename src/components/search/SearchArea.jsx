@@ -31,7 +31,7 @@ function SearchArea({ onCreateJobClick, onSearchSelect }) {
           variant="contained"
           onClick={onCreateJobClick}
         >
-          New Job
+          New Item
         </Button>
         {/* <IconButton
           size="large"
