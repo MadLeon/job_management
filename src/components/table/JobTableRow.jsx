@@ -103,6 +103,15 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
   };
 
   /**
+   * 打开采购订单详情
+   * @param {string} poNumber - 采购订单号
+   */
+  const handleOpenPurchaseOrder = (poNumber) => {
+    if (!poNumber) return;
+    router.push(`/purchase-orders/${poNumber}`);
+  };
+
+  /**
    * 打开 drawing 详情页
    * @param {string} jobNumber - 工作号
    * @param {string} drawingNumber - drawing 号
@@ -158,7 +167,27 @@ export default function JobTableRow({ row, onEditJobClick, colWidths = [], onDel
           </Stack>
         </TableCell>
         <TableCell ref={(el) => (cellRefs.current[1] = el)} sx={{ borderBottom: 'unset' }}>
-          {row.po_number}
+          {row.po_number ? (
+            <Link
+              component="button"
+              variant="body2"
+              onClick={(e) => {
+                e.preventDefault();
+                handleOpenPurchaseOrder(row.po_number);
+              }}
+              sx={{
+                cursor: 'pointer',
+                textDecoration: 'underline',
+                '&:hover': {
+                  opacity: 0.8,
+                },
+              }}
+            >
+              {row.po_number}
+            </Link>
+          ) : (
+            '-'
+          )}
         </TableCell>
         <TableCell ref={(el) => (cellRefs.current[2] = el)} sx={{ borderBottom: 'unset' }}>
           {row.customer_name}
