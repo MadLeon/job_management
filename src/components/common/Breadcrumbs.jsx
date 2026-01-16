@@ -37,9 +37,13 @@ export default function Breadcrumb({ locationLayer, href }) {
         <Chip
           key={index}
           size='small'
-          label={
-            <b>{layer}</b>
-          }>
+          label={<b>{layer}</b>}
+          sx={{
+            '& .MuiChip-labelSmall': {
+              pt: '3px'
+            }
+          }}
+        >
         </Chip>
       );
     }

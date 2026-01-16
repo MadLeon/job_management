@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import Breadcrumb from '@/components/common/Breadcrumbs';
 import PageTitle from '@/components/common/PageTitle';
 import ItemContainer from '@/components/itemContainer';
+import InfoField from '@/components/itemContainer/InfoField';
 
 /**
  * 采购订单详情页面
@@ -84,35 +85,21 @@ export default function PurchaseOrderDetailPage() {
    * 基本信息组件
    */
   const basicInfoContent = (
-    <Stack spacing={2}>
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
-        <Box>
-          <Typography variant="caption" color="textSecondary">PO Number</Typography>
-          <Typography variant="body1" sx={{ fontWeight: 'bold' }}>{purchaseOrder.po_number}</Typography>
-        </Box>
-        <Box>
-          <Typography variant="caption" color="textSecondary">OE Number</Typography>
-          <Typography variant="body1">{purchaseOrder.oe_number || '-'}</Typography>
-        </Box>
-        <Box>
-          <Typography variant="caption" color="textSecondary">Customer</Typography>
-          <Typography variant="body1">{purchaseOrder.customer_name || '-'}</Typography>
-        </Box>
-        <Box>
-          <Typography variant="caption" color="textSecondary">Contact Person</Typography>
-          <Typography variant="body1">{purchaseOrder.contact_name || '-'}</Typography>
-        </Box>
-        <Box>
-          <Typography variant="caption" color="textSecondary">Contact Email</Typography>
-          <Typography variant="body1">{purchaseOrder.contact_email || '-'}</Typography>
-        </Box>
-        <Box>
-          <Typography variant="caption" color="textSecondary">Created Date</Typography>
-          <Typography variant="body1">
-            {purchaseOrder.created_at ? new Date(purchaseOrder.created_at).toLocaleDateString() : '-'}
-          </Typography>
-        </Box>
-      </Box>
+    <Stack
+      direction="row"
+      width="100%"
+      sx={{
+        p: 2.5,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}
+    >
+      <InfoField label="PO Number" value={purchaseOrder.po_number} align="left" />
+      <InfoField label="OE Number" value={purchaseOrder.oe_number} align="center" />
+      <InfoField label="Customer" value={purchaseOrder.customer_name} align="center" />
+      <InfoField label="Contact Name" value={purchaseOrder.contact_name} align="center" />
+      <InfoField label="Contact Email" value={purchaseOrder.contact_email} align="center" />
+      <InfoField label="Completion" value="0%" align="center" />
     </Stack>
   );
 
@@ -190,21 +177,14 @@ export default function PurchaseOrderDetailPage() {
         locationLayer={['Purchase Orders', poIdentifier || 'Detail']}
         href={['/purchase-orders', `/purchase-orders/${poIdentifier}`]}
       />
-      <PageTitle title={`Purchase Order: ${purchaseOrder.po_number}`} />
+      <PageTitle title="Purchase Order" />
       <ItemContainer
         title="Basic Information"
         content={basicInfoContent}
-        component={
-          <Chip
-            label={purchaseOrder.is_active ? 'Active' : 'Inactive'}
-            color={purchaseOrder.is_active ? 'success' : 'default'}
-            variant="outlined"
-          />
-        }
         sx={{ width: '100%' }}
       />
       <ItemContainer
-        title={`Associated Jobs (${purchaseOrder.jobs?.length || 0})`}
+        title={`Job List (${purchaseOrder.jobs?.length || 0})`}
         content={jobsTableContent}
       />
     </Stack>

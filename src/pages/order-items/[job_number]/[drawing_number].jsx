@@ -129,7 +129,6 @@ export default function DrawingDetailPage() {
           title="Basic Information"
           content={<JobInformation jobData={currentJob} assemblyData={currentDrawing} type="detail" />}
           component={<OpenInNewLink url={`/all-drawings/${drawing_number}`} text="Drawing History" />}
-        // sx={{ width: '80%' }}
         />
         <QRCodeDisplay size={containerHeight} />
       </Stack>
