@@ -8,11 +8,14 @@
  */
 
 import React from 'react';
-import { Stack, Table, TableBody, TableContainer, TableHead, TableRow, TableCell, Paper, CircularProgress, Box, Button } from '@mui/material';
+import { Stack, Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import Breadcrumb from '@/components/common/Breadcrumbs';
 import PageTitle from '@/components/common/PageTitle';
 import ItemContainer from '@/components/itemContainer';
+import SearchBox from '@/components/search/SearchBox';
+import PurchaseOrderTable from '@/components/table/PurchaseOrderTable';
 
 /**
  * 采购订单列表页面
@@ -22,6 +25,16 @@ export default function PurchaseOrdersPage() {
   const [purchaseOrders, setPurchaseOrders] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
+  const [searchFilter, setSearchFilter] = React.useState(null);
+
+  /**
+   * 处理搜索框选择回调
+   * @param {Object} selectedPO - 选中的采购订单记录
+   */
+  const handleSearchSelect = React.useCallback((selectedPO) => {
+    console.log('[PurchaseOrders] 搜索选择回调:', selectedPO);
+    setSearchFilter(selectedPO);
+  }, []);
 
   /**
    * 获取采购订单列表数据
@@ -56,75 +69,20 @@ export default function PurchaseOrdersPage() {
     router.push(`/purchase-orders/${poNumber}`);
   };
 
-  const tableContent = (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
-            <TableCell sx={{ fontWeight: 'bold' }}>PO Number</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>OE Number</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Customer</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Contact</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }} align="center">Jobs</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Created Date</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {isLoading ? (
-            <TableRow>
-              <TableCell colSpan={7} align="center" sx={{ py: 3 }}>
-                <CircularProgress size={40} />
-              </TableCell>
-            </TableRow>
-          ) : purchaseOrders.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={7} align="center" sx={{ py: 3 }}>
-                No purchase orders found
-              </TableCell>
-            </TableRow>
-          ) : (
-            purchaseOrders.map((po) => (
-              <TableRow
-                key={po.po_id}
-                onClick={() => handleRowClick(po.po_number)}
-                sx={{
-                  cursor: 'pointer',
-                  '&:hover': {
-                    backgroundColor: '#f9f9f9'
-                  }
-                }}
-              >
-                <TableCell>{po.po_number}</TableCell>
-                <TableCell>{po.oe_number || '-'}</TableCell>
-                <TableCell>{po.customer_name || '-'}</TableCell>
-                <TableCell>{po.contact_name || '-'}</TableCell>
-                <TableCell align="center">{po.job_count || 0}</TableCell>
-                <TableCell>
-                  {po.created_at ? new Date(po.created_at).toLocaleDateString() : '-'}
-                </TableCell>
-                <TableCell>
-                  <Box
-                    component="span"
-                    sx={{
-                      px: 1.5,
-                      py: 0.5,
-                      borderRadius: '4px',
-                      fontSize: '0.875rem',
-                      backgroundColor: po.is_active ? '#e8f5e9' : '#ffebee',
-                      color: po.is_active ? '#2e7d32' : '#c62828'
-                    }}
-                  >
-                    {po.is_active ? 'Active' : 'Inactive'}
-                  </Box>
-                </TableCell>
-              </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+  /**
+   * 根据搜索过滤条件过滤采购订单列表
+   */
+  const filteredPurchaseOrders = React.useMemo(() => {
+    return purchaseOrders.filter(po => {
+      // 搜索过滤：如果用户选择了搜索结果，则仅显示匹配的记录
+      if (searchFilter) {
+        if (po.po_number !== searchFilter.po_number) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }, [purchaseOrders, searchFilter]);
 
   return (
     <Stack spacing={3}>
@@ -134,8 +92,26 @@ export default function PurchaseOrdersPage() {
       />
       <PageTitle title="Purchase Orders" />
       <ItemContainer
+        content={
+          <Stack direction="row" width="100%" sx={{ px: 3, py: 2, justifyContent: 'space-between' }}>
+            <Stack direction="row" spacing={2}>
+              <SearchBox onSelect={handleSearchSelect} />
+              <Button variant="text" startIcon={<FilterAltIcon />}>
+                Filter
+              </Button>
+            </Stack>
+          </Stack>
+        }
+      />
+      <ItemContainer
         title="All Purchase Orders"
-        content={tableContent}
+        content={
+          <PurchaseOrderTable
+            data={filteredPurchaseOrders}
+            isLoading={isLoading}
+            onRowClick={handleRowClick}
+          />
+        }
       />
     </Stack>
   );

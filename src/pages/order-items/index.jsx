@@ -145,7 +145,7 @@ function ActiveJobs() {
     <Stack spacing={3} >
       <Breadcrumb locationLayer={['Order Items']} href={["order-items"]} />
       <PageTitle title="Order Items">
-        <ToggleButtonGroup
+        {/* <ToggleButtonGroup
           color="primary"
           size='medium'
           value={displayMode}
@@ -155,7 +155,7 @@ function ActiveJobs() {
         >
           <ToggleButton value="job">Job View</ToggleButton>
           <ToggleButton value="po">PO View</ToggleButton>
-        </ToggleButtonGroup>
+        </ToggleButtonGroup> */}
       </PageTitle>
       <ItemContainer
         content={
