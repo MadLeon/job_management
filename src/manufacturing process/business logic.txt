@@ -11,4 +11,4 @@
 
 
 如果询问结果为否, 进行数据库查询, 以第7行B到D的合并格中的值作为po number在po表中找到该po的id, 然后通过join po, job, order item, part, part_tree, 找到order item对应的图纸号, 并在其为assembly时, 通过part tree找到他的所有孩子, 并且在当孩子是组装图时继续向下查找, 直到所有子组件被包括.
-如果po为空, 则使用alert提示po为空然后什么都不做    
+如果po为空, 则使用alert提示po为空然后什么都不做
