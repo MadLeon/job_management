@@ -78,7 +78,6 @@ export default function AdditionalJobInfo({ jobData }) {
           </IconButton>
         }
       />
-      <InfoRow label="Working Time (This Job)" value="N/A" />
       <InfoRow label="Description" value={jobData?.part_description} />
     </Stack>
   );

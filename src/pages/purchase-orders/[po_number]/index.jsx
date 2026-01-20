@@ -8,7 +8,7 @@
  */
 
 import React from 'react';
-import { Box, Stack, Typography, Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell, CircularProgress, Chip } from '@mui/material';
+import { Box, Stack, Typography, Table, TableBody, TableContainer, TableHead, TableRow, TableCell, CircularProgress, Chip } from '@mui/material';
 import { useRouter } from 'next/router';
 import Breadcrumb from '@/components/common/Breadcrumbs';
 import PageTitle from '@/components/common/PageTitle';
@@ -107,17 +107,129 @@ export default function PurchaseOrderDetailPage() {
    * 关联的工作订单表格
    */
   const jobsTableContent = (
-    <TableContainer component={Paper}>
-      <Table>
+    <TableContainer>
+      <Table
+        sx={{
+          tableLayout: 'fixed',
+          '& thead': {
+            position: 'sticky',
+            top: 0,
+            zIndex: 10,
+            backgroundColor: 'background.paper',
+          }
+        }}
+      >
         <TableHead>
-          <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
-            <TableCell sx={{ fontWeight: 'bold' }}>Job Number</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Line</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Part Number</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Revision</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }} align="center">Qty</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Status</TableCell>
-            <TableCell sx={{ fontWeight: 'bold' }}>Delivery Date</TableCell>
+          <TableRow>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '12%',
+                backgroundColor: 'background.paper',
+                pl: 3,
+              }}
+            >
+              Job Number
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '8%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Line
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '16%',
+                backgroundColor: 'background.paper',
+              }}
+            >
+              Part Number
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '6%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Rev
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '7%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Qty
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '11%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Delivery Date
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '8%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Priority
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '10%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Packing Slip
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '8%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Invoice
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '11%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Shipped Date
+            </TableCell>
+            <TableCell
+              sx={{
+                typography: 'regularBold',
+                width: '9%',
+                backgroundColor: 'background.paper',
+              }}
+              align="center"
+            >
+              Shipped Qty
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -125,43 +237,51 @@ export default function PurchaseOrderDetailPage() {
             purchaseOrder.jobs.map((job, index) => (
               <TableRow
                 key={index}
-                onClick={() => router.push(`/order-items/${job.job_number}`)}
+                onClick={() => router.push(`/order-items/${job.order_item_id}`)}
                 sx={{
                   cursor: 'pointer',
                   '&:hover': {
                     backgroundColor: '#f9f9f9'
-                  }
+                  },
+                  height: '57px'
                 }}
               >
-                <TableCell sx={{ fontWeight: '500' }}>{job.job_number}</TableCell>
-                <TableCell>{job.line_number || '-'}</TableCell>
-                <TableCell>{job.drawing_number || '-'}</TableCell>
-                <TableCell>{job.revision || '-'}</TableCell>
-                <TableCell align="center">{job.quantity || 0}</TableCell>
-                <TableCell>
-                  <Chip
-                    label={job.status || 'pending'}
-                    size="small"
-                    variant="outlined"
-                    color={
-                      job.status === 'completed'
-                        ? 'success'
-                        : job.status === 'in-progress'
-                          ? 'warning'
-                          : 'default'
-                    }
-                  />
+                <TableCell sx={{ pl: 3, fontWeight: 'bold' }}>
+                  {job.job_number}
                 </TableCell>
-                <TableCell>
+                <TableCell align="center">{job.line_number || '-'}</TableCell>
+                <TableCell>{job.drawing_number || '-'}</TableCell>
+                <TableCell align="center">{job.revision || '-'}</TableCell>
+                <TableCell align="center">{job.quantity || 0}</TableCell>
+                <TableCell align="center">
                   {job.delivery_required_date
                     ? new Date(job.delivery_required_date).toLocaleDateString()
                     : '-'}
                 </TableCell>
+                <TableCell align="center">
+                  {job.priority ? (
+                    <Chip
+                      label={job.priority}
+                      size="small"
+                      variant="outlined"
+                    />
+                  ) : (
+                    '-'
+                  )}
+                </TableCell>
+                <TableCell align="center">{job.packing_slip_number || '-'}</TableCell>
+                <TableCell align="center">{job.invoice_number || '-'}</TableCell>
+                <TableCell align="center">
+                  {job.shipped_date
+                    ? new Date(job.shipped_date).toLocaleDateString()
+                    : '-'}
+                </TableCell>
+                <TableCell align="center">{job.shipped_quantity || 0}</TableCell>
               </TableRow>
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={7} align="center" sx={{ py: 3 }}>
+              <TableCell colSpan={11} align="center" sx={{ py: 3 }}>
                 No associated jobs found
               </TableCell>
             </TableRow>

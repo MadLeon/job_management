@@ -10,6 +10,8 @@ import Divider from '@mui/material/Divider';
 
 import HomeIcon from '@mui/icons-material/Home';
 import ReceiptIcon from '@mui/icons-material/Receipt';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import FolderCopyIcon from '@mui/icons-material/FolderCopy';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PhotoLibraryIcon from '@mui/icons-material/PhotoLibrary';
@@ -123,6 +125,14 @@ function Sidebar({
                 icon={<HomeIcon />}
                 href="/dashboard"
                 selected={!!matchPath('/dashboard/*', pathname) || pathname === '/'}
+              />
+
+              <SidebarPageItem
+                id="purchaseOrders"
+                title="Active POs"
+                icon={<FolderCopyIcon />}
+                href="/purchase-orders"
+                selected={!!matchPath('/purchase-orders/*', pathname)}
               />
 
               <SidebarPageItem
