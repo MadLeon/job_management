@@ -237,7 +237,7 @@ export default function PurchaseOrderDetailPage() {
             purchaseOrder.jobs.map((job, index) => (
               <TableRow
                 key={index}
-                onClick={() => router.push(`/active-jobs/${job.job_number}`)}
+                onClick={() => router.push(`/order-items/${job.order_item_id}`)}
                 sx={{
                   cursor: 'pointer',
                   '&:hover': {
