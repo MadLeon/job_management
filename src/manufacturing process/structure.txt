@@ -1,0 +1,13 @@
+1. 步骤行位于文件的第11行到第39行
+2. D和E列组成shop code
+  D列是每一行步骤的类别, 具体指代如下:
+    - FI = Free Issued Mat'l
+    - P = Purchase
+    - RT = Record to Manufacture
+    - SC = Subcontract
+    - I = Inspect
+    - H = Hold
+    - W = Witness
+    - PI = Packaging Inspection
+  E列为以10为单位的递增值, 类似于行号
+3. F到N为合并左对齐的步骤内容

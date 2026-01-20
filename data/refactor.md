@@ -220,6 +220,7 @@ CREATE TABLE part (
 	revision									TEXT			NOT NULL DEFAULT '-',	-- 版本号
 	description								TEXT,														-- 描述
 	is_assembly								INTEGER		DEFAULT 0,						-- 是否为装配体
+	has_parent								INTEGER,												-- 是否有父亲 (1:有 NULL:无)
 	production_count					INTEGER		DEFAULT 0,						-- 生产数量
 	total_production_hour			REAL			DEFAULT 0,						-- 总生产小时数
 	total_administrative_hour	REAL			DEFAULT 0,						-- 总行政小时数

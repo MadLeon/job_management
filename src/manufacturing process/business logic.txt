@@ -1,0 +1,14 @@
+继续HandleJ7Change的逻辑.
+修改drawing number后, 
+- 使用drawing number查询part表
+  - 如果记录存在 & is_assembly=1
+    - 查找part_tree表, 作为分装件, 查看是否有父组件存在
+提示用户检测到当前的图纸为组装图, 
+弹出alert并询问该图纸是否为assembly drawing
+- 若用户选择确认
+  - 创建一个Add Last Line按钮在T10, 使用原生excel的按钮. 使用建立class的方式为其赋予行为逻辑. 
+    - 该按钮在点击后, 查找并获取目前最后一行步骤(最后一个D到N为非空的步骤行), 另起一行填入 "Protect; Store for Assembly ${该零件或分装图对应的总装图号}" 对应的总装图号可以从part_tree表中通过child_id与parent_id找到.
+
+
+如果询问结果为否, 进行数据库查询, 以第7行B到D的合并格中的值作为po number在po表中找到该po的id, 然后通过join po, job, order item, part, part_tree, 找到order item对应的图纸号, 并在其为assembly时, 通过part tree找到他的所有孩子, 并且在当孩子是组装图时继续向下查找, 直到所有子组件被包括.
+如果po为空, 则使用alert提示po为空然后什么都不做    

@@ -260,8 +260,8 @@ export function up(db) {
             const jobContactInfo = oldDb.prepare(`
               SELECT customer_contact FROM jobs WHERE job_number = ? LIMIT 1
             `).get(job_number);
-            
-            const contactId = jobContactInfo?.customer_contact 
+
+            const contactId = jobContactInfo?.customer_contact
               ? contactMap.get(`${customer_name}|${jobContactInfo.customer_contact}`)
               : null;
 
@@ -320,7 +320,7 @@ export function up(db) {
 
     for (const { part_number, revision, part_description, unit_price } of parts) {
       try {
-        const isAssembly = part_number && part_number.includes('-GA-') ? 1 : 0;
+        const isAssembly = part_number && part_number.includes('-GA-') ? 1 : null;
 
         let price = null;
         if (unit_price) {
