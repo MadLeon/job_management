@@ -1,0 +1,52 @@
+jobs数据库是老数据库, 存放在data/jobs.database
+mp schedule以jobs作为数据来源进行编写
+现在对数据库进行了重构, 新数据库是record.db, 存放在data/record.db
+迁移的逻辑可以在scripts/migration进行查看
+现在希望将旧有的excel表格按照新数据的结构进行修改
+
+mp schedule excel file的业务逻辑是
+一个Sync All按钮触发SyncAll函数
+一个Gen Links触发CreateHyperLinks函数
+
+SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次无法正常使用, 无法添加所有的order item
+目前我希望修改总体业务逻辑, 
+- 舍弃shipped表格, 不在需要track已经不在oe entry文件中的条目
+- 添加几列字段, 让mp schedule有更多的信息
+
+先阅读上个session的记忆
+本session主要任务:
+1. 分析当前文件帮助我回想当时的逻辑
+2. 重写SyncALL函数
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+
+在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+总结本session主要任务 (一句话)
+本session todos包括 (简单bullet points)
+操作及变更细节 (简单bullet points)
+未来注意 (一句话)
+将该总结并入 mp schedule/summary.md, 尽量简短, 如果没有该文件则创建
+
+Gen Links 的逻辑 (已完成)
+- 点击按钮, 触发函数
+- 筛选出选区内所有的E列的数据, 对每一个E列数据进行遍历
+  - 使用 drawing_number 查找 part_id
+    - 若找到, 则使用 part_id 在 drawing_file 中进行查找
+      - 找到结果则直接返回 (最佳情况)
+      - 未找到则进行模糊匹配
+    - 未找到则进行模糊匹配
+
+模糊匹配 (直接使用 drawing_number 在 drawing_file 表中进行查找)
+- 匹配失败
+  - 直接返回, 什么都不做
+- 找到结果 (一个或多个)
+  - 记录所有找到的结果
+  - 如果找到的结果中有且仅有一条记录的is_active=1
+    - 返回结果
+  - else
+    - 检查所有的 file_path 是否包含当前的 PO
+      - 匹配成功
+        - 返回成功的所有结果中 last_modified 最新的那个
+      - 匹配失败
+        - 返回 last_modified 最新的那个
+
+

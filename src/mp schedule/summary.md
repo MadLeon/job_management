@@ -1,0 +1,42 @@
+# MP Schedule 开发日志
+
+## Session 1：重写 CreateHyperlinks 函数以适配新数据库
+
+**总结**: 将 CreateHyperlinks 函数从 jobs.db 迁移到 record.db，实现精确查询+模糊匹配的两阶段链接逻辑
+
+**完成的 Todos**:
+- 分析旧数据库(jobs.db)和新数据库(record.db)的schema差异
+- 理解 CreateHyperlinks 函数当前业务逻辑
+- 设计新的 SQL 查询逻辑（part表 + drawing_file表）
+- 修改 CreateHyperlinks 函数实现新逻辑
+- 修复返回值逻辑和错误处理
+
+**操作及变更细节**:
+- DB_PATH 从 `\\rtdnas2\OE\jobs.db` 更新为 `\\rtdnas2\OE\record.db`
+- CreateSingleHyperlink 重写为 Function，返回 Boolean：
+  - 精确查询：drawing_number → part_id → drawing_file(is_active=1)
+  - 模糊查询：drawing_number 在 drawing_file 中的 file_name/file_path 中模糊匹配
+- 新增 FuzzyMatchDrawingFile 函数处理复杂的模糊匹配规则：
+  - 规则1：恰好1个is_active=1的文件 → 直接返回
+  - 规则2：多个or无is_active=1的文件 → 检查file_path是否包含po_number，优先返回匹配的最新文件，无匹配则返回最新的
+- 统计成功创建的超链接数，显示"X of Y cells"的结果
+
+**未来注意**: SyncAll 函数较为复杂且有逻辑漏洞，后续重构时需特别关注；建议在实际 Excel 环境中充分测试查询性能和匹配准确率
+
+---
+
+## 关键代码改动
+
+### 1. DB 路径更新
+```vb
+Const DB_PATH As String = "\\rtdnas2\OE\record.db"
+```
+
+### 2. 两阶段查询逻辑
+- **精确查询**：`SELECT id FROM part WHERE drawing_number = ?`
+- **精确查询到part后**：`SELECT file_path FROM drawing_file WHERE part_id = ? AND is_active = 1`
+- **模糊查询**：`SELECT file_path, is_active, last_modified_at FROM drawing_file WHERE file_name LIKE ? OR file_path LIKE ?`
+
+### 3. 模糊匹配优先级
+- 规则1：is_active=1 恰好1条 → 返回
+- 规则2：多条or无active → po_number 包含匹配 → last_modified_at最新 → 全部最新
