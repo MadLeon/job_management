@@ -1,0 +1,55 @@
+背景知识
+- jobs数据库是老数据库, 存放在data/jobs.database
+- oe 的超链接查找逻辑是以jobs作为数据来源进行编写
+- 现在对数据库进行了重构, 新数据库是record.db, 存放在data/record.db
+- 迁移的逻辑可以在scripts/migration进行查看
+- 现在希望将旧有的excel宏逻辑按照新数据的结构进行修改
+
+Order Entry Log excel file 的业务逻辑是
+- 一个 Create A New Job 按钮触发 OpenInputForm 过程, 并打开 Input Form sheet
+  在 Input Form sheet 中, 
+  - 一个 Add Next New record 触发 AddNextNewRecord 过程
+  - 一个 Add New Record w EMP LN 按钮触发 EMP 函数
+- 一个 Add Hyperlinks 触发 CreateHyperlinks 函数
+
+目标任务
+- 使用 record.db 数据库中的数据作为添加超链接的数据源
+- 添加新的 order item 时, 更新 record.db 中的数据, 而不是旧数据库 (AddNextNewRecord & EMP)
+- 添加心得 order item 时, 添加一个新的逻辑, 将 DELIVERY SCHEDULE sheet 的所有 Candu 单, 导出为csv或json格式 (取决于对于 sharepoint 哪个格式更方便快捷), 在目标地址
+
+本session主要任务:
+1. 分析当前文件帮助我回想当时的逻辑
+2. 重写 createhyperlinks, 该文件与 mp schedule/modCreateHyperlinks 类似
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+
+在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+总结本session主要任务 (一句话)
+本session todos包括 (简单bullet points)
+操作及变更细节 (简单bullet points)
+未来注意 (一句话)
+将该总结并入 order entry log/summary.md, 尽量简短, 如果没有该文件则创建
+
+添加超链接的逻辑
+- 点击按钮, 触发函数
+- 筛选出选区内所有的E列的数据, 对每一个非空的E列数据进行遍历
+  - 使用 drawing_number 查找 part_id
+    - 若找到, 则使用 part_id 在 drawing_file 中进行查找
+      - 找到结果则直接返回 (最佳情况)
+      - 未找到则进行模糊匹配
+    - 未找到则进行模糊匹配
+
+模糊匹配 (直接使用 drawing_number 在 drawing_file 表中进行查找)
+- 匹配失败
+  - 直接返回, 什么都不做
+- 找到结果 (一个或多个)
+  - 记录所有找到的结果
+  - 如果找到的结果中有且仅有一条记录的is_active=1 (之前已查找过)
+    - 返回结果
+  - else
+    - 检查所有的 file_path 是否包含当前的 PO
+      - 匹配成功 (准确率较高)
+        - 返回成功的所有结果中 last_modified 最新的那个
+      - 匹配失败 (准确率一般)
+        - 返回 last_modified 最新的那个
+
+
