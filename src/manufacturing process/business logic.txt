@@ -1,14 +1,30 @@
-继续HandleJ7Change的逻辑.
-修改drawing number后, 
-- 使用drawing number查询part表
-  - 如果记录存在 & is_assembly=1
-    - 查找part_tree表, 作为分装件, 查看是否有父组件存在
-提示用户检测到当前的图纸为组装图, 
-弹出alert并询问该图纸是否为assembly drawing
-- 若用户选择确认
-  - 创建一个Add Last Line按钮在T10, 使用原生excel的按钮. 使用建立class的方式为其赋予行为逻辑. 
-    - 该按钮在点击后, 查找并获取目前最后一行步骤(最后一个D到N为非空的步骤行), 另起一行填入 "Protect; Store for Assembly ${该零件或分装图对应的总装图号}" 对应的总装图号可以从part_tree表中通过child_id与parent_id找到.
+数据库是record.db, 存放在data/record.db
 
+mp schedule excel file 的业务逻辑是
+一个 Confirm 按钮触发 confirmPartRelationship 过程
+一个 Link 按钮触发 Link 过程 (具体名字后续确定)
+一个 Save 按钮触发 Save 过程 (具体名字后续确定)
 
-如果询问结果为否, 进行数据库查询, 以第7行B到D的合并格中的值作为po number在po表中找到该po的id, 然后通过join po, job, order item, part, part_tree, 找到order item对应的图纸号, 并在其为assembly时, 通过part tree找到他的所有孩子, 并且在当孩子是组装图时继续向下查找, 直到所有子组件被包括.
-如果po为空, 则使用alert提示po为空然后什么都不做
+查看 ./structure.txt 来了解 Manufacturing Process.xlsm 文件的结构
+
+confirmPartRelationship 的业务逻辑:
+- 使用 drawing number (J7) 查找 part 表
+  - 若记录存在, 检查 is_assembly 字段的值
+    - is_assembly=NULL
+      - 弹出 UI 询问是否组装件
+        - 点击否认: 更新该 part is_assembly 属性为 0
+        - 点击确认: 
+    - is_assembly=0
+    - is_assembly=1
+
+先阅读上个session的记忆
+本session主要任务:
+1. 协助我编写 confirmPartRelationship 过程
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+
+在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+总结本session主要任务 (一句话)
+本session todos包括 (简单bullet points)
+操作及变更细节 (简单bullet points)
+未来注意 (一句话)
+将该总结并入 mp schedule/summary.md, 尽量简短, 如果没有该文件则创建

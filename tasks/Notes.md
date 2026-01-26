@@ -1,3 +1,7 @@
+https://www.microsoft.com/en-us/microsoft-365/business	Risa@recordtech.ca	N.159870695484of
+https://rtd15.sharepoint.com/_layouts/15/sharepoint.aspx?&login_hint=Risa@recordtech.ca
+https://rtd15.sharepoint.com/SitePages/Home.aspx
+
 IP Address:   192.168.0.150
 Subnet Mask:  255.255.255.0
 Gateway:      192.168.0.201   （推荐）
