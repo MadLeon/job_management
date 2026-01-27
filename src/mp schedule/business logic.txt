@@ -44,6 +44,12 @@ SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次
 然后给出你的联级更新方案, 我同样需要确认你对于表之间关系的理解
 先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
 - 手动更新 OE 每行的 order item id
+本session主要任务:
+新建可以多次使用的脚本, 用以更新 OE 每行的 order item id (若其为空), 该列位于DELIVERY SCHEDULE的AA列
+数据来源是record.db的order_item表的id列
+先给出你对于数据库字段与oe文件列的关联的理解, 我需要确认你的理解是正确的
+我们需要制定一个方案, 使得文件中每行可以在数据库中找到其对应的条目.
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
 - 手动更新 MP Schedule 的第一列的 order item id
 
 添加新 .bas 文件, 一个新的模块 (帮我命名), 用于同步 priority sheet 与数据库 record.db 中的数据

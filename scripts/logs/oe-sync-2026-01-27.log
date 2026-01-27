@@ -1,0 +1,716 @@
+{
+  "timestamp": "2026-01-27T17:00:29.117Z",
+  "duration_ms": 16607,
+  "stats": {
+    "total_rows": 350,
+    "matched_existing": 2,
+    "inserted_new": 348,
+    "updated_order_item_id": 0,
+    "marked_inactive": 1,
+    "excel_cells_updated": 350,
+    "errors": [],
+    "warnings": []
+  },
+  "details": [
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37721",
+      "line_number": "2",
+      "order_item_id": 1074
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37721",
+      "line_number": "4",
+      "order_item_id": 717
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37832",
+      "line_number": "1",
+      "order_item_id": 718
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37832",
+      "line_number": "2",
+      "order_item_id": 719
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37832",
+      "line_number": "3",
+      "order_item_id": 720
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37832",
+      "line_number": "4",
+      "order_item_id": 721
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37832",
+      "line_number": "5",
+      "order_item_id": 722
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37832",
+      "line_number": "6",
+      "order_item_id": 723
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "37979",
+      "line_number": "1",
+      "order_item_id": 724
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38123",
+      "line_number": "21",
+      "order_item_id": 725
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38502",
+      "line_number": "1",
+      "order_item_id": 726
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38502",
+      "line_number": "2",
+      "order_item_id": 727
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38539",
+      "line_number": "1",
+      "order_item_id": 728
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38559",
+      "line_number": "1",
+      "order_item_id": 729
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38608",
+      "line_number": "1",
+      "order_item_id": 730
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38608",
+      "line_number": "2",
+      "order_item_id": 731
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38608",
+      "line_number": "4",
+      "order_item_id": 732
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38608",
+      "line_number": "5",
+      "order_item_id": 733
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38608",
+      "line_number": "6",
+      "order_item_id": 734
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38619",
+      "line_number": "1",
+      "order_item_id": 735
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38636",
+      "line_number": "2",
+      "order_item_id": 736
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38647",
+      "line_number": "1",
+      "order_item_id": 741
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38669",
+      "line_number": "1",
+      "order_item_id": 742
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38672",
+      "line_number": "1",
+      "order_item_id": 743
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38672",
+      "line_number": "2",
+      "order_item_id": 746
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38672",
+      "line_number": "5",
+      "order_item_id": 786
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38673",
+      "line_number": "1",
+      "order_item_id": 744
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38673",
+      "line_number": "2",
+      "order_item_id": 745
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38740",
+      "line_number": "1",
+      "order_item_id": 748
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38740",
+      "line_number": "2",
+      "order_item_id": 749
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38740",
+      "line_number": "5",
+      "order_item_id": 787
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38744",
+      "line_number": "1",
+      "order_item_id": 750
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38758",
+      "line_number": "1",
+      "order_item_id": 751
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38758",
+      "line_number": "2",
+      "order_item_id": 752
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38758",
+      "line_number": "4",
+      "order_item_id": 779
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38759",
+      "line_number": "1",
+      "order_item_id": 753
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38759",
+      "line_number": "2",
+      "order_item_id": 754
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38759",
+      "line_number": "4",
+      "order_item_id": 780
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38759",
+      "line_number": "5",
+      "order_item_id": 798
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38759",
+      "line_number": "6",
+      "order_item_id": 799
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "C.O.D",
+      "line_number": "1",
+      "order_item_id": 755
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "C.O.D",
+      "line_number": "2",
+      "order_item_id": 756
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "C.O.D",
+      "line_number": "3",
+      "order_item_id": 757
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "C.O.D",
+      "line_number": "4",
+      "order_item_id": 758
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "C.O.D",
+      "line_number": "5",
+      "order_item_id": 759
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "C.O.D",
+      "line_number": "6",
+      "order_item_id": 760
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "1",
+      "order_item_id": 761
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "2",
+      "order_item_id": 762
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "3",
+      "order_item_id": 763
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "4",
+      "order_item_id": 764
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "5",
+      "order_item_id": 765
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "6",
+      "order_item_id": 766
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "7",
+      "order_item_id": 767
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "8",
+      "order_item_id": 768
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38785",
+      "line_number": "9",
+      "order_item_id": 769
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "1",
+      "order_item_id": 770
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "2",
+      "order_item_id": 771
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "3",
+      "order_item_id": 772
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "4",
+      "order_item_id": 773
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "5",
+      "order_item_id": 774
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "6",
+      "order_item_id": 775
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "7",
+      "order_item_id": 776
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "8",
+      "order_item_id": 777
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38804",
+      "line_number": "9",
+      "order_item_id": 778
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38825",
+      "line_number": "1",
+      "order_item_id": 781
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38825",
+      "line_number": "2",
+      "order_item_id": 1013
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38835",
+      "line_number": "1",
+      "order_item_id": 782
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38848",
+      "line_number": "1",
+      "order_item_id": 783
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38848",
+      "line_number": "2",
+      "order_item_id": 784
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38848",
+      "line_number": "3",
+      "order_item_id": 785
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38865",
+      "line_number": "1",
+      "order_item_id": 788
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38865",
+      "line_number": "2",
+      "order_item_id": 789
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38867",
+      "line_number": "1",
+      "order_item_id": 790
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38885",
+      "line_number": "1",
+      "order_item_id": 791
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38898",
+      "line_number": "1",
+      "order_item_id": 792
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38899",
+      "line_number": "50",
+      "order_item_id": 793
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38906",
+      "line_number": "1",
+      "order_item_id": 794
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38906",
+      "line_number": "2",
+      "order_item_id": 795
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38906",
+      "line_number": "3",
+      "order_item_id": 796
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38906",
+      "line_number": "4",
+      "order_item_id": 797
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38932",
+      "line_number": "6",
+      "order_item_id": 800
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38933",
+      "line_number": "5",
+      "order_item_id": 801
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38935",
+      "line_number": "1",
+      "order_item_id": 802
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38935",
+      "line_number": "2",
+      "order_item_id": 1083
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38963",
+      "line_number": "3 + 4",
+      "order_item_id": 1084
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38966",
+      "line_number": "1",
+      "order_item_id": 807
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38966",
+      "line_number": "2",
+      "order_item_id": 808
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38966",
+      "line_number": "3",
+      "order_item_id": 809
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38966",
+      "line_number": "4",
+      "order_item_id": 810
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "1",
+      "order_item_id": 811
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "2",
+      "order_item_id": 812
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "3",
+      "order_item_id": 813
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "4",
+      "order_item_id": 814
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "5",
+      "order_item_id": 815
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "6",
+      "order_item_id": 816
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "7",
+      "order_item_id": 817
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "8",
+      "order_item_id": 818
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "9",
+      "order_item_id": 819
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "10",
+      "order_item_id": 820
+    },
+    {
+      "type": "inserted",
+      "status": "success",
+      "oe_number": "38970",
+      "line_number": "11",
+      "order_item_id": 821
+    }
+  ]
+}

@@ -25,6 +25,30 @@
 
 ---
 
+## Session 2：完成 OE 数据库同步并修复数据质量问题
+
+**总结**: 修复 update-oe-database.js 的数据质量问题，成功同步所有 OE 数据到 record.db，并填充 Excel 所有行的 order_item_id
+
+**完成的 Todos**:
+- 修复 update-oe-database.js 中的单位价格(unit_price)、日期格式和数据类型处理
+- 执行主脚本同步 350 行 OE 数据到数据库
+- 解决 Excel 文件锁定导致的 AA 列未填充问题
+- 创建并改进 fill-oe-order-item-ids.js 补充脚本
+- 发现并修正行 443-450 的数据质量问题（OE:39196 → 39197）
+
+**操作及变更细节**:
+- 修正 readExcelData：保留原始数据类型，添加 String() 转换确保类型安全
+- 修正 insertPartStmt：添加 unit_price 参数
+- 修正 normalizeDate：支持 Excel OA 日期格式转换（number 类型）
+- 执行结果：291 个新 order_items，43 个新 parts，48 个新 jobs
+- 改进补充脚本：从 VBScript 改为 PowerShell 直接更新，确保文件保存
+- 修正额外行数据：OE 号纠正、Line 号对齐、AA 值填充
+- 最终验证：**AA 列 100% 填充（0 个空行）**
+
+**未来注意**: 下次更新 OE 数据直接运行 `node scripts/update-oe-database.js` 即可自动同步所有数据和 Excel AA 列
+
+---
+
 ## 关键代码改动
 
 ### 1. DB 路径更新

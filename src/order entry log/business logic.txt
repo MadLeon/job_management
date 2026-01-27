@@ -5,6 +5,26 @@
 - 迁移的逻辑可以在scripts/migration进行查看
 - 现在希望将旧有的excel宏逻辑按照新数据的结构进行修改
 
+Order Entry Log.xlsm 文件的列结构, 下面的标题是文档中实际的header, 有的带冒号, 有的没有
+- O.E.:
+- Job #:
+- Customer:
+- Qty.:
+- Part #
+- Rev
+- Contact:
+- DWG Rel.
+- M
+- Descriptions:
+- Price:
+- P.O. :
+- Packing Slip
+- Qty.:
+- Invoice:
+- Del. Req'd:
+- Del. Ship'd:
+- Delay:
+
 Order Entry Log excel file 的业务逻辑是
 - 一个 Create A New Job 按钮触发 OpenInputForm 过程, 并打开 Input Form sheet
   在 Input Form sheet 中, 
