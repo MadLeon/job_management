@@ -6,8 +6,7 @@
 ' -------------------------------------------------------------------------------------------------
 Option Explicit
 
-Public Const DB_PATH As String = "C:\Users\ee\manufacturing_process_schedule\oe\jobs.db"
-'Public Const DB_PATH As String = "D:\work\Record Tech\manufacturing_process_schedule\oe\jobs.db"
+Public Const DB_PATH As String = "D:\work\Record Tech\job_management\data\record.db"
 Public lastEditedRow As Long
 
 Public Function GetLastEditedRow() As Long
