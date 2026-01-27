@@ -4,9 +4,19 @@ mp schedule以jobs作为数据来源进行编写
 迁移的逻辑可以在scripts/migration进行查看
 现在希望将旧有的excel表格按照新数据的结构进行修改
 
-mp schedule excel file的业务逻辑是
+mp schedule excel file 的业务逻辑是
 一个Sync All按钮触发SyncAll函数
 一个Gen Links触发CreateHyperLinks函数
+
+mp schedule excel file 的列为:
+- order item id: 对应数据库中 order_item id
+- PO #
+- JOB #
+- Customer
+- Description
+- Part #
+- Qty.
+- Ship Date: 对应 Delivery required date
 
 SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次无法正常使用, 无法添加所有的order item
 目前我希望修改总体业务逻辑, 
@@ -25,6 +35,30 @@ SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次
 操作及变更细节 (简单bullet points)
 未来注意 (一句话)
 将该总结并入 mp schedule/summary.md, 尽量简短, 如果没有该文件则创建
+
+新建脚本
+- 手动更新数据库, 以当前 OE 文件位置
+- 手动更新 OE 每行的 order item id
+- 手动更新 MP Schedule 的第一列的 order item id
+
+添加新 .bas 文件, 一个新的模块 (帮我命名), 用于同步 priority sheet 与数据库 record.db 中的数据
+该模块的逻辑 (仅做增量检查):
+- 找到 priority sheet 的最后一个被编辑的行, 记录该行号 A (console.log输出行号)
+- 查看该行 A 列是否有值
+  - 有值 (该行为 assembly 行)
+    - 使用该值作为 order item id 执行数据库查找过程
+  - 没有值 (该行为 detail 行)
+    - 向上查找直到找到 A 列有值的那行
+    - 使用该值作为 order item id 执行数据库查找过程
+
+数据库查找过程
+- 查找 order item 表所有 id 大于 A 列值 (order item id) 的结果
+- 将这些结果插入当前表的 A + 1 行, 间隔一个空行
+
+formatPrioritySheet 重写
+- 根据新的 Priority Sheet 重写格式化内容
+
+SyncAll 顺序调用新模块 & formatPrioritySheet
 
 Gen Links 的逻辑 (已完成)
 - 点击按钮, 触发函数

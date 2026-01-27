@@ -1,0 +1,567 @@
+PO,Title,Rev,Job #,OE Date,PO Effective,PO Delivery,FAT,Witness,"Manufacturing 
+Completed","Submission 
+of DOCs",Predicted Date,Current Status,"% completed
+(Manufacturing)",Forcast,Expeditor,Milestones
+RT79-87920-PN-R005,CTI BORE GAUGE TOOL FOR C1R      ,0, J# 71669,12/3/2024,29-Nov-24,26-Mar-25,?, ,Jan-23-26,Feb-5-26,Feb-13-26,"Jan-22-26- MTR, -still waiting for approval
+Jn-22-26-  Once Mfg is completd- Witness Notiifiction wiill be sent, ",95%,Changed,David Weldon,"Milestone
+# 1-   35% of Unprice PO for Mat'l :          Inv# 52477
+#  2-  30% Function /accept test    :           Inv# 52877
+# 3-  35 % upon Comp & Delv                  Inv#
+
+All procedures received - Approved"
+RT98-87920-PN-R006,CTI BORE GAUGE TOOL FOR QINSHAN  -,0, J# 71742,12/3/2024,7-Jan-25,25-Jan-25,?, ,6-Nov-25,26-Nov-25,"Jan 23, 26
+Jan 16, 26","Nov-5-25- Trigger Lock's manufacturing was completed-currently reassembly, prepare QA Docs
+Nov-6-25- Manufacturing completed-waiting for preparing trigger part's DIR, waiting approval for other Docs
+Nov-26-25- CfC, DIR, FAT submitted-waiting for approval
+Dec-11-25-Under correction of DIR
+Dec-17-25-DDR submitted-waiting for approval
+Jan-5-26- DDR9002 resubmitted-waiting for approval
+Jan-7-26- CfC, DIR are not accepted-need to correct and resubmit
+Jan-14-26- MTR, CfC, DIR-still waiting for approval",95%,Changed,David Weldon,"Milestone
+# 1-   35% of Unprice PO for Mat'l :          Inv# 52478
+#  2-  30% Function /accept test    :           Inv# 52876
+# 3-  35 % upon Comp & Delv                  Inv#"
+RT98-88010-PN-R009,GROUP 7G TOOLS FOR QINSHAN, ,J# 72580~ 72583,7/22/2025,7/22/2025,Sept-29-25,?, ,17-Nov-25,1-Dec-25,"Jan 23, 26
+Jan 16, 26","OCT-22-25- RT-87000-70201-6100-1-GA-B-has an issue with the final shape.
+Since the manufacturing complete date will be determined once the countermeasure is decided, a tentative schedule is provided for now.
+Oct-29-25- Accept issue about RT-87000-70201-6100-1-GA-B, preparing QA Docs
+Nov-5-25- J#72580 need to rework-There was a comment that rework is required for the approved DDR.
+Nov-12-25- The date needs to be changed. The rework requires a large machine-since processing other high-priority parts, the adjustment has taken longer than expected.
+Dec-9-25- Submitted FAT report-still pending
+Jan-6-26- MTR and DIR were resubmitted-waiting for approval
+Jan-14-26- MTR was accepted, DIR still waiting for approval",95%,On Schedule,Etianne Machado,NO Milestones
+RT98-88010-PN-R008- Rev.1,GROUP 7F OF TOOLS, ,"J# 72589-72599
+J# 73000",7/22/2025,7/22/2025,Sept-25-25,?, ,"Dec 9, 25
+Nov 28, 25","Dec 23, 25
+Dec 16, 25","Jan 23, 26
+Jan 13, 26","Oct-22-25- Since currently waiting for the inspection of the detail parts also assembly has not been completed, it is necessary to reschedule the shipping date.
+Oct-29-25- Due to delays in the inspection and assembly processes-need to change the date.
+Nov-12-25- Ship date need to be changed-waiting for Heat Treat and painting
+Nov-26-25- Ship date need to be changed-Because ‘RT-88000-70034-000-1-GA-E’ is taking longer than planned.
+Dec-10-25- Manufacturing completed, preparing QA Docs
+Dec-17-25- MTR, C of C will submit in Dec-18, preparing FAT report
+Jan-7-26- MTR, CfC, DIR were accepted, FAT report need to resubmit
+Jan-8-26- submitted revised FAT report-still waiting for approval",95%,On Schedule,Etianne Machado,NO MILESTONES 
+RT79-87900-PN-R003,C6-BORE GAUGE AND C6-BORE GAUGE-NARROW LANDING FOR C1R,0,J# 71852-71853,12/30/2024,24-Dec-24,31-Jul-25,?,28-Jan-26,"Jan 23, 26
+tentitive
+Dec 23, 25","Jan 30, 26
+tentitive
+Jan 6, 26","Feb 13, 26
+Jan 16. 26","Oct-29-25- Tip part's dwg issue- need to get new design dwg, remake tips
+Nov-5-25- Remakining Tip parts- reassembly
+Nov-7-25- sent e-mail for assembly issue, DDR9003 submitted-waiting for approval
+Nov-12-25- Tip part : waiting for Candu answer, assembly issue
+Nov-25-25- received custom probe tips dwg-need to submit quote
+Dec-1-25- new tips doesn't work so Steve will tell to Candu
+Dec-3-25- Candu Inspector came to check the issue, RTD need to send new desighin-there are not only tip issue.-redesign issue pending
+Jan-7-26- Need to submit DDR for rework (Probe Tips and the Peek cone)
+Jan-14-26- Tip parts machining done (for RT79), in inspection ",80%,On Schedule,Laila Parveen,"Milestone
+1-     30%  of Unpriced PO                    Inv#     52795                                                          
+2-    70%  competion / Delv          Inv#
+Feb-26-25-  All procedures received approved"
+RT98-87900-PN-R003,C6-BORE GAUGE AND C6-BORE GAUGE-NARROW LANDING FOR C1R, ,J# 72622-72623,Aug-1-25,Aug-1-25,Nov-28-25,?,18-Feb-26,"Feb 13, 26
+tentitive
+Nov 26, 25","Feb 20, 26
+tentitive
+Dec 3, 25","Mar 6, 26
+Jan 16, 26","Oct-29-25- Since the sighed PO with a shipment date of Dec28 has been submitted and approved, the shipment date will be changed to Dec 28.
+Nov-25-25- received custom probe tips dwg-need to submit quote
+Dec-1-25- new tips doesn't work so Steve will tell to Candu
+Dec-3-25- Candu Inspector came to check the issue, RTD need to send new desighin-there are not only tip issue.-redesign issue pending
+Jan-7-26- Need to submit DDR for rework (Probe Tips and the Peek cone)
+Jan-14-26- Due to an insufficiency in the chrome process, the chrome process needs to be carried out again, so the schedule has been changed.",70%, ,Amritha Gopan,"Milestone
+1) 30%- Upon Submission Unpriced PO
+2) 70% Upn Delivery of all equipment & Docs"
+RT79-87630-PN-R005,VRS MANUAL RETRIEVAL TOOL,0,j# 72395,5/1/2025,May-20-25,Aug-27-25,N/A, ,"pending
+Jan 9, 26
+Nov 24, 25","pending
+Jan 16, 26
+Dec 1, 25","Jan 30, 26
+Dec 17, 25","Oct-22-25- Quote will be submitted in Oct-22.
+Still waiting for Instection, need to Assembly-The delivery date need to be changed.
+Nov-5-25- Waiting approval for DDR9005,Reference quote#LP72395
+Nov-12-25- Change the manufacturing date-to complete order glue
+Dec-11-25- We obtained the cloth part information from Candu, so purchasing is required-we will receive the cloth in this week-need to machine
+Dec-17-25- Need to change the date-due to Due the manufacturing progress being behind schedule.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- waiting answer for the manufacturing progress and the schedule from shopping floor.",75%,On Schedule,Laila Parveen,"Milestone:
+1) 30% upon submittal of Unpriced PO             05/27/25           INV# 52865
+2) 70% Upon Delivery of Deliverable & Documents  8/27/25  INV#"
+RT98-87540-PN-R001,POSITIONING ASSEMBLY (PA) HARDWARE REMOVAL TOOL FOR QINSHAN,0,j# 71829,12/23/2024,19-Dec-24,2-May-25,?, ,5-Dec-25,12-Dec-25,"Jan 23, 26
+Jan 16, 26","Oct-22-25- (Docs) DIR-Waiting for Candu approval
+Oct-29-25- The casters and floor lock need to be reassembled with new ones. The specifications have already been shared with the Candu side.
+Oct-31-25- DIR was resubmitted
+Nov-5-25- Still waiting for Caster confirmation.
+Nov-12-25- Doc package resubmitted-waiting fo rapproval
+Nov-26-25- Waiting for the answer about caster and lock.
+Dec-9-25- The quote for the caster and lock has been submitted-waiting for Candu answer-pending
+Jan-6-26- waiting for Candu answer for the quote-pending (email Jan-6 11:54)
+Jan-14-26-  waiting for Candu answer for the quote-pending (email Jan-6 11:54)",90%,On Schedule,David Weldon,"Milestone:
+#1-   30% receipt of Major Material:  Inv#  52544
+#2-   30% Upon 75% completion      :  Inv# 52816
+#3-    40% completion/ delv               :   Inv #
+ "
+RT98-87290-PN-R004,MATERIAL HANDLING CART, ,J# 72643,Aug-12-25,Aug-12-25,Dec-17-25,?,7-Jan-26,"Jan 9, 26
+Dec 2, 25","tentitive
+Dec 9, 25","Jan 23, 26
+Jan 9, 26","Oct-29-25- Ready to Loadtest-MPI, paint,reassembly
+Nov-25-25- For some of the carts, the stainless steel cover (RT-87920-7006-1-DD-D) is slightly bowed/bumped up in the middle.
+Dec-11-25- Checking what kind of test we need (FAT)
+Dec-17-25- Finished FAT-need to witness, confirming Doc submission date
+Jan-7-26- After completing the FAT witness,
+Candu : to confirm the weight of the carts (extra 300 pounds)-accepted
+RTD : to complete some welding area (3pc)-completed for manufacturing (Jan-9)
+Jan-14-26- Waiting FTP link from Candu (email Jan-13 9:12 AM)",95%,,Amritha Gopan,Milestones:
+ , , , , , , , , , , , , , , , , 
+RT79-87630-PN-R011, VRS PT LUNCHBOX FOR C1R, ,J#72645-72647,Aug-14-25,Aug-14-25,Dec-11-25,?,25-Feb-26,"Feb 20, 26
+Jan 30, 26","Feb 27, 26
+Feb 6, 26","Mar 13, 26
+Feb 20, 26","Nov-12-25- The shipping date needs to be changed. Since “B-12995-1622-0011” was scrapped, we need to order new material, but the lead time is 3 weeks.
+All dates are tentative, as they depend on the timing of material arrivals.
+Nov-26-25- The shipping date needs to be changed-Since ‘B-12995-1622-0011’ was scrapped and the lead time (3 weeks) to procure the material was long as well.
+Dec-10-25- We need to send subcontrackt but the company shutdown 2W so we need to pushout date.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Need to change the date goe to the dimensions of the area for the EDM process are large, so it takes longer time than expected.",65%,,Laila Parveen,"1) 20% Upon submission of Procedures     Inv#
+2) 20% Upon Submission of Unpriced PO   Inv#
+3)  60% upon delivery & Doc                          Inv#
+
+KICK OFF MEETING: SEPT-10-25- @ 10 AM"
+RT79-88030-PN-R001- Rev.1,GARTER SPRING DETECTION TOOL & SSDO TOOL- ,0,"J# 72083 ~ 72084
+Added J# 72278",2/21/2025,21-Feb-25,20-Jun-25,N/A, ,"Jan 23, 26
+Jan 14, 26
+Dec 30, 25","Jan 30, 26
+Jan 21, 26
+Jan 6, 26","Feb 13, 26
+Feb 4, 26
+Jan 20, 26","Nov-12-25- Quote submitted-waiting approval (it is take 10-12W to complete rework)
+Nov-26-25- Since 72084 requires rework, we are checking whether the shipment of the other parts can be moved up.
+Dec-11-25- waiting for tube reseived-in disassembly,need to  reworke-waiting for a response regarding the partial shipment.
+Dec-17-25- tube received-in reworking-still pending
+Jan-5-26- Need to change the date due to Inspection backlog-rework was completed(Dec-30), in inspection, need to prepare QA Docs
+Jan-14-26- Need to change the date due to take longer than planned to complete the inspection.",95%,NP Processed,David Weldon,"MILESTONES:
+35%- Submission of unpriced  PO for Major Mat'l       Inv# 52661
+15%- Upon 75% completeion of Mfg    Inv# 52993
+20%- Ready to perform Functional /Acceptance Test    Inv#
+10%- Successful completion of Functional/ accept test    Inv#
+20%- Delivery of Equipment including History File    Inv#"
+RT98-88030-PN-R001- Rev.2,GARTER SPRING DETECTION TOOL & SSDO TOOL- ,0,"J# 72085- 72086
+Added  J# 72279
+New Addition
+J# 72459-72460",2/21/2025,21-Feb-25,31-Jul-25,N/A, ,"Jan 23, 26
+Jan 14, 26
+Dec 30, 25","Jan 30, 26
+Jan 21, 26
+Jan 6, 26","Feb 13, 26
+Feb 4, 26
+Jan 20, 26","Nov-12-25- Quote submitted-waiting approval (it is take 10-12W to complete rework)
+Nov-26-25- Since 72084 requires rework, we are checking whether the shipment of the other parts can be moved up.
+Dec-11-25- waiting for tube reseived-in disassembly,need to  reworke-waiting for a response regarding the partial shipment.
+Dec-17-25- tube received-in reworking-still pending
+Jan-5-26- Need to change the date due to Inspection backlog-rework was completed(Dec-30), in inspection, need to prepare QA Docs
+Jan-14-26- Need to change the date due to take longer than planned to complete the inspection.",95%,NP Processed,David Weldon,"FEB-21-2025-  This PO processed -  Procedures will be submitterd- March-25-25
+MILESTONES:
+1)  35%- Submis of unpriced  PO for Major Mat'l    Inv#  52662
+2)  15%- Upon 75% completeion of Mfg    Inv# 52994
+3)  20%- Ready to perform Functional /Acceptance Test    Inv#
+4)  10%- Successful completion of Functional/ accept test    Inv#
+5)  20%- Delivery of Equipment including History File    Inv#"
+RT79-88020-PN-R003,SA TRANSPORT CONTAINER & EF TRANSFER CONTAINER, ,j# 72605-72606,7/25/2025,7/25/2025,7/25/2025,N/A, ,"Feb 16, 26
+Jan 9, 26","Feb 23, 26
+Jan 16, 26","Mar 9, 26
+Jan 30, 26","Oct-7-28- Receoved 6-pcs of -SA Transport Containers - RTD Needs to Evaluate to confirm delivery dates
+Nov-5-25- the containers that have been sent findings have been evaluated-Candu will visit to confirm, and will start rework.
+Nov-26-25- Still on track-waiting for hardware
+Dec-17-25- Since it takes 3W for the subcontracting process after welding, a change in the schedule is required.
+Waiting answer from Candu about handle crash and small parts position,""RT-88030-79002-01-GA-D"", Identify info.
+Jan-6-26- Still waiting answer from Candu
+Jan-14-26- Still waiting for revised dwg from Candu",25%,On Schedule,Etianne Machado,"Milestones:
+1) 25% Upon submission fo Procedures            Inv#
+2) 25% Upon Receipt of Main Materials            Inv#
+3) 25% upon Start of Assy                                    Inv#
+4) 25% upon delivery of Equipment                  Inv# "
+RT79-87840-PN-R002,CV FME INSPECTION TOOL,0,"J# 72517,72906",june-27-25,june-27-25,Nov-17-25,?, ,"Jan 30, 26
+Jan 16, 26","Feb 6, 26
+Jan 23, 26","Feb 20, 26
+Feb 6, 26","Oct-22-25- Due to machining and assembly of the detail parts taking longer than expected, 
+the shipping date has been rescheduled.
+Oct-29-25- Detail parts machining done-Assembly
+Nov-5-25- With the addition of the new JOB#72706, all three dates are now tentitive.
+Nov-12-25- RT-87840-0220-01-GA-2 : 3D model received, still waiting for revised PO
+Nov-26-25- RT-87840-7000-1000-1-GA-B : Waiting for camera part.
+Dec-11-25- stll on track-Line#1 : need to check weight,Line#2 : still on track
+Dec-17-25- stll on track-no issue at this time
+Jan-6-26- Need to change the date due to Inspection backlog
+Jan-14-26- Still working on manufacturing","
+J# 72517  80%
+
+J#72906  60%",,Laila Parveen,"Milestones:
+1)  30% upon submission of Unpriced PO:       Inv# 52867
+2)  30% Upon Completion of approx. 50% of project     Inv#
+3)  15% Upon receipt of Camera, etc. related equop     Inv#
+4)  25% Upon Delivery of all items & QA Doc                 Inv#"
+RT79-88230-PN-R012,FEEDER TEMPLATES,0, J# 72139-72147,3/4/2025,4-Mar-25,17-Oct-25,N/A, ,"Feb 13, 26
+Jan 23, 26","Feb 20, 26
+Jan 30, 26","Mar 6, 26
+Feb 13, 26","Oct-29-25- The shipment date has been changed due to a factory's floor capacity issue.
+Machining done-welding, inspection, assembly
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- Still on track, no issues at this time.
+Nov-26-25- The shipping date needs to be changed-the inspection, welding, and assembly are taking longer than originally planned.
+Dec-11-25- Fit check info should be from Candu
+Dec-17-25- manufacturing still in progress
+Jan-7-26- Fit test info-still waiting from Candu, Need to change the date due to Inspection backlog
+Jan-14-26- Still working on manufacturing",75%,On Schedule,Laila Parveen,"  Milestone:
+1) 30% upon submittal of Unpriced PO                           Inv# 52699
+2) 15% upon 40% ave.comp of MFG              Inv# 52863
+3) 15% upon 75% average completion of MFG                 Inv#
+4) 40% Upon Delivery of items and Docs                           Inv#"
+RT79-87550-PN-R001- Rev.1,MANUFACTURE OF SFCR BELLOWS CUT TOOL FOR C1R     ,0,"( j# 71851 & 71873 - SPARES)
+J# 72330 ( 2)",12/30/2024,24-Dec-24,4-Jul-25,?, ,"Feb 13, 26
+Jan 30, 26","Feb 20, 26
+Feb 6, 26","Mar 6, 26
+Feb 20, 26","Oct-22-25- Machining is still in progress
+Oct-29-25- Gear parts (BOM 9) need to modify-EDM made a mistake, scrap so need to make a new piece.
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- RT-87550-0121-01-GA-E has issue during Inspection- sent e-mail Nov-12 2:23 still waiting for answer
+Dec-17-25- We need to send some parts to subcontrackt but the company shutdow 2W so we need to pushout date.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",75%,On Schedule,Laila Parveen,"Milestone:
+1 -   25 % submit Unpriced PO                       Inv#  52642
+2-   15%  Receipt oof Major lead it          Inv#  52875
+3     15%  Ready for Assy                               Inv#
+4-    15% -Ready for function/accept. test       Inv#
+5-    15% successful function test                  Inv#
+6-    15% completeion & delivery                    Inv#"
+RT98-87550-PN-R004- Rev.1,MANUFACTURE OF SFCR BELLOWS CUT TOOL FOR- Qinshan,0,"J# 72023- 72024 (Spares)
+J# 72331 ( 2)",2/11/2025,11-Feb-25,11-Feb-25,?, ,"Feb 13, 26
+Jan 30, 26","Feb 20, 26
+Feb 6, 26","Mar 6, 26
+Feb 20, 26","Oct-22-25- Machining is still in progress
+Oct-29-25- Gear parts (BOM 9) need to modify-EDM made a mistake, scrap so need to make a new piece.
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- RT-87550-0121-01-GA-E has issue during Inspection- sent e-mail Nov-12 2:23 still waiting for answer
+Nov-26-25- Still on track
+Dec-17-25- We need to send spme parts to subcontrackt but the company shutdow 2W so we need to pushout date.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",75%,On Schedule,Laila Parveen,"Feb-15-2025-  Order Processed with RT79-   
+Milestone 
+1 )   25 % submit Unpriced PO                       Inv#   52643
+2)   15%  Receipt oof Major lead it                  Inv#  52859
+3 )    15%  Ready for Assy                               Inv#
+4)    15% -Ready for function/accept. test       Inv#
+5)    15% successful function test                  Inv#
+6)    15% completeion & delivery                    Inv#"
+RT79-87000-PN-R020,"BRT BELLOWS REMOVAL CUTTING TOOL FOR C1R
++Electrical", ,J# 72692-72708,AUG-29-25,AUG-29-25,April-30-26,?, ,"1set :Mar-26-26
+          Mar-10-26
+       Feb-5-26
+2set : Apr-30-26
+           April-9-26","1set : Apr-2-26
+              Mar-17-26
+              Feb-12-26
+2set : May-7-26
+               April-16-26","1set : Apr-16-26
+            Mar-31-26
+          Feb-26-26
+2set : May-21-26
+             April-30-26","Sept-2-25- PO Accept- Signed Back
+Nov-12-25- on trak- no issues at this time
+Nov-26-25- Confirming the realistic date for one set
+Dec-11-25- Still confirming the realistic date for the shipdate
+Dec-17-25- DDR9001 still pending-need to change the date fo rthe 1st set (still confirming) because of electrical issues (DDR9001)
+Dec-22-25- We have shared the shipment of 1st set will be delayed, along with the reason for the delay.
+Jan-6-26- Still working on manufacturing, Confirming Edwin about electrical issues
+Jan-14-26- Confirmed the realistic date for shipping date",20%,,Laila Parveen,"Milestones:
+1)   30% upon submttal of Unpriced Pos'                      Inv#
+2)    30% upon completion of Purchse of Long Lead and Critical Components   & Initation of Mfg activities
+        Inv#
+3)    40% Upon Delivery of all items including  Documentation"
+RT79-79112-PN-R002,SMALL WASTER TRANSFER FLASK,0,J# 72422,May-26-25,May-26-25,Jan-26-26,?, ,"Feb 28, 26
+Nov 23, 25","Mar 6, 26
+Nov 30, 25","Mar 20, 26
+Dec 14, 25","Oct-22-25- Welding is still in progress no issue at this time
+Oct-29-25- The shipment date has been changed due to a factory's floor capacity issue.
+Nov-5-25- Confirmed the fablication issue
+Nov-10-25- FAT Procedure revised
+Nov-26-25- We cannot change the shipping date due to the shop workload.
+Dec-17-25- still  in machining-still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",45%,On Schedule,Amritha Gopan,"Milestone:
+1) 30% upon submittal of Unpriced PO             06/13/25        INV#  52866
+2) 30% When Ready for Load Testing                9/15/25           INV#
+3) 40% Upon Delivery of all items & Documents1/26/26        INV#"
+ , , , , , , , , , , , , , , , , 
+RT98-87530-PN-R001,GROUP 2G FOR QINSHAN, ,J# 72602-72604,7/25/2025,7/25/2025,Oct-28-25,?, ,"Feb 13, 26
+Jan 20, 26
+Jan 9, 26","Feb 20, 26
+Jan 27, 26
+Jan 16, 26","Mar 6, 26
+Feb 3, 26
+Jan 30, 26","Oct-29-25- The shipment date has been changed due to a backlog in the QC department.
+-detail parts in inspection, assembly
+Nov-26-25- The shipping date needs to be changed-need to do phosphate, dynaloy (98-31952-88-1-DD-C, 98-31952-89-1-DD-C)
+Dec-11-25- Still confirming the realistic date for the shipdate
+Jan-6-26- Need to change the date due to the Dynaloy process for “98-31952-87-1-DD-D,” “98-31952-88-1-DD-D,” and “98-31952-89-1-DD-D” was delayed, additional manufacturing work is still required.
+Jan-14-26- Need to change the date due to mistakes in the Dynaloy and Phosphate processes, the parts need to be sent back to the subcontract company.",70%,,Laila Parveen,"Milestone:  ( KICK OFF MEETING- SEPT-4-25)
+1) 30% upon submission of Unpriced PO                  Inv#
+2) 70% delivery of all item and Docs                           Inv#"
+RT98-87920-PN-R014,GROUP 5 FOR QINSHAN, ,J# 72651-72654,Aug-16-25,Aug-14-25,Feb-16-26,?, ,"Apr 2, 26
+Jan 26, 26","Apr 9, 26
+Feb 2, 26","Apr 23, 26
+Feb 16, 26","Delivery date accepted from Jan-22-25- to Feb-16-25 due to workload
+Nov-12-25- on trak- no issues at this time
+Nov-26-25- RT-87920-74245-000-1-GA-E (J#72652) : DDR approved, manufacturing still on track
+Dec-11-25- Confirming the manufacturing status
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- The shipment date will be changed to align with the schedule for the integrating test.",45%,,Amritha Gopan,"Milestones:
+1) 30% Upon submittal of unpriced PO
+2) 30% Upon Comp. 50% of Projecct
+3) 40% upon Delivery & Docs"
+RT98-87710-PN-R006,END SHIELD MEASUREMENT TOOL FOR QINSHAN,0,J# 72621,aug-1-25,Aug-1-25,Nov-14-25,N/A, ,"Dec 22, 25
+Jan 5, 26","Dec 24, 25
+Jan 15, 26","Jan 23, 26
+Jan 14, 26","Oct-29-25- Under calibration, scheduled to be returned on Nov 7.
+Nov-5-25- 8 gauges return to factory for replacement
+Nov-12-25- Still waiting for indicator
+Nov-26-25- Still waiting for indicator (delivery will be tentaively 6 weeks)
+Dec-11-25- Stll waiting indicator
+Dec-17-25- Stll waiting indicator info
+Jan-6-26- Manufacturing completed(Dec 22), submitted Docs(Dec 24)-waiting approval
+Jan-14-26- Still waiting approval for QA reports",95%,On Schedule,Laila Parveen,NO MILESTONES
+RT98-87272-PN-R020- Rev.1,MOCKUP COLUMN FOR COMMISION OF TILTER, ,J# 72624,5/25/2008,25-May-08,Jan-26-26,?, ,"Jan 30, 26
+Jan 5, 26","Feb 6, 26
+Jan 12, 26","Feb 20, 26
+Jan 26, 26","Oct-22-25- Welding will be done in the next week
+Nov-5-25- on track, no issues at this time
+Nov-11-25- on track, no issues at this time
+Nov-26-25- The shipping date needs to be changed-Because of big machine capacity issue.
+Dec-11-25- Still on track
+Dec-17-25- Still on track-no issues at this time
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",70%,On Schedule,Etianne Machado,"MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  40% Upon delivery of all items & Doc             Inv#"
+RT98-87250-PN-R007,INSTALLATION WORKTABLE AND INSTALLATION WORKTABLE SUPPORT FRAME ,0,J# 72438-72441,June-2-25,June-3-25,Oct-16-26,N/A, ,"1set : Apr 30, 26
+         Feb 6, 26
+2set : Sep 25, 26","1set : May 7, 26
+             Feb 13, 26
+2set : Oct 2, 26","1set : May 21, 26
+          Feb 27, 26
+2set : Oct 16, 26","Oct-10-25-  New Updated Software schedule needs to be submitted to capture 2- different delivery dates
+Oct-29-25- No issue at this moment
+Nov-5-25- No issue at this moment
+Nov-11-25- Still on track, no issues at this time.
+Nov-26-25- We cannot met the 1set Feb- we have material hardware issue
+Dec-11-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26 Confirmed the realistic date for 1set shipping date",15%,On Schedule,Laila Parveen,"Milestone:
+1) 30% upon submittal of Unpriced PO             06/27/25        INV#
+2) 30% Upon 50% compltetion of PO                 12/12/25           INV#
+3) 20% When ready for Function Test                08/28/26          INV#
+4) 10%  After del'v of 1 Worktable & Supt frame   02/816/26    INV#
+5) 10%    After delivery of remain'g Items          10/16/26            INV#"
+RT98-88230-PN-R010,FEEDER TEMPLATES,0,J# J# 72234-72242,3/20/2025,20-Mar-25,17-Oct-25,N/A, ,"Mar 13, 26
+Feb 13, 26","Mar 20, 26
+Feb 20, 26","Apr 3, 26
+Mar 6, 26","Oct-22-25- Machining is still in progress
+Oct-29-25- The shipment date has been changed due to a factory's floor capacity issue.
+Machining done-welding, inspection, assembly
+Nov-12-25- Shipdate need to be revised-To prioritize the processing of RT79 parts
+Nov-26-25-  The shipping date needs to be changed-rechecked the realistic date in order to prioritize the RT79 parts.
+Dec-17-25- Still on track
+Jan-7-26- Fit test info-still waiting from Candu, Need to change the date due to Inspection backlog
+Jan-14-26- Still working on manufacturing",70%,On Schedule,Laila Parveen,"Milestone:
+1) 30% upon submittal of Unpriced PO                           Inv# 52700
+2) 15% upon 40% average compltn of MFG           Inv# 52864
+3) 15% upon 75% average completion of MFG                 Inv#
+4) 40% Upon Delivery of items and Docs                           Inv#"
+RT98-87000-PN-R012,PITCH-YAW MOUNTING TABLE AND PITCH YAW MOUNTING FRAME TOOL,0,J# 72367-72368,May-5-25,May-5-25,Jul-29-26,?, ,"1set : Mar 19, 26
+           Feb 13, 26
+         Feb 6, 26
+2set : Jul 8, 26","1set : Mar 26, 26
+           Feb 20, 26
+           Feb 13, 26
+2set : Jul 15, 26","1set : Apr 9, 26
+            Mar 6, 26
+             Feb 27, 26
+2set : Jul 29, 26","Oct-6-25- Delivery date for 1set will be Feb 27,26- for integration testing
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- Still on track, no issues at this time.
+Nov-26-25- The date has been changed after reviewing a more realistic schedule.
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing for 1set
+Jan-14-26 Confirmed the realistic date for 1set shipping date","1 set : 40%
+2 set : 10%",On Schedule,Laila Parveen,"MileStone:
+1) 30% Upon submission of Unpriced PO's   05/30/25             Inv#   52946
+2) 25% Upon completion of  50% of Project  08/29/25            Inv#
+3) 20% Upon Completion of 80% of Project   02/13/26             Inv#
+4) 25% Upon Delivery                                            07/29/25           Inv# "
+RT98-88010-PN-R010,GROUP 7A OF TOOLS FOR QINSHAN, ,J# 72713-72726,7/24/2025,24-Jul-25,16-Mar-26,?, ,23-Feb-26,2-Mar-26,16-Mar-26,"Noissue at this time
+Jan-7-26- Manufacturing is still in progress
+Jan-14-26- Requesting the meeting for Technical Summary of Exceptions (email Jan-13 4:58 PM)-need to confirm the realistic shipping date",5%,,Laila Parveen,"Milestones:
+30%- Unpriced PO:
+30%- Completion fo r50% of Project
+40%- Upon completion- Delivery:"
+RT98-87920-PN-R017,GROUP 7C ( LIFTING BEAMS ) FOR QINSHAN, ,J#72840-72844,10/3/2025,3-Oct-25,13-Feb-26,?, ,"Mar 13, 26
+Feb 27, 26
+Jan 23, 26","Mar 20, 26
+Mar 6, 26
+Jan 30, 26","Apr 9, 26
+Mar 20, 26
+Feb 13, 26","Oct-6-25-  All Procedures Submitted
+Noissue at this time
+Nov-26-25- The shipping date needs to be changed-Because the material has not been ordered yet.
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Confirmed the realistic date for shipping",20%,,Laila Parveen, 
+RT98-87640-PN-R005,GROUP 7D (CARTS & RACK) FOR QINSHAN, ,"J#72818-72820
+J# 72967",9/29/2025,29-Sep-25,30-Jan-26,?, ,"Feb 27, 26
+Feb 6, 26
+-
+Apr 1, 26","Mar 6, 26
+Feb 13, 26
+-
+Apr 8, 26","Mar 20, 26
+Feb 27, 26
+-
+Apr 22, 26","Delivery date adjust from Jan-30-26- to Feb-27-26 due to workload
+Oct-7-25-  All procedures submitted
+Oct-15-25- Kick-off meeting
+Noissue at this time
+Nov-26-25- The shipping date needs to be changed-Because of large mill machine capacity issue.
+Dec-11-25- add the parts for 1pc ""EF tool rack""-shipdate will be Apr-22,26
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",15%,,Laila Parveen,"Milestones:
+30% Submission of Unpriced PO:
+30% - Completion of Long lead Items
+40%  Upon completeion & Delivury"
+RT98-87920-PN-R015,GROUP 5F FOR QINSHAN, ,J#72811-72817,9/29/2025,29-Sep-25,5-Feb-26,?, ,"Mar 6, 26
+Feb 5, 26","Mar 13, 26
+Feb 12, 26","Mar 27, 26
+Feb 23, 26","Delivery date adjust from Feb-5-26- to Feb-23-26 due to workload
+Oct-6-25- All procedures submitted
+Noissue at this time
+Nov-26-25- The shipping date needs to be changed-Because the material is currently being ordered.
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",10%,,Laila Parveen,"Milestone:
+30% Upon Submission of Unpriced PO:
+30%  Completion of Long Lead Time
+40% Upon Completion and Delivery:"
+RT98-87590-PN-R006- Rev.1,"EFSF REMOVAL TOOL
++Electrical",0,J# 72373,May-5-25,May-5-25,Oct-9-26,?, ,"1set : May 26, 26
+           Mar 13, 26
+        Feb 2, 26
+2set : Sep 18, 26","1set : Jun 2 ,26
+               Mar 20, 26
+        Feb 9, 26
+2 set : Sep 25, 26","1set :  Jun 16, 26
+          Apr 3, 26
+              Feb 23, 26
+2set : Oct 9, 26","Oct-6-25- Delivery date for 1set will be Feb 23,26 for integration testing
+Nov-13-25-LCP dwg waiting
+Nov-26-25- The shipping date needs to be changed-Because of the big machine capacity issue. Still waiting LCP dwg-sent remind email (Nov-21)
+Dec-11-25- Confirming the manufacturing status, ship date
+Dec-17-25- We can't meet the date for 1set in Feb-22-26-Current manufacturing progress at the plant as well as the electrical issue that was shared during meeting in Dec-17.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Confirmed the realistic shipping date",35%,On Schedule,Amritha Gopan,"Milestone:
+1) 30% Upon submission of Unpriced PO's   05/30/25             Inv#
+2) 10% AT   50% of Project                                 10/01/25            Inv#
+3) 10% when ready for Unit 1 Function Test  02/06/26           Inv#
+4) 10% Upon Delivery of Unit 1                          03/16/26           Inv#
+5) 25% After Delivery of All items and Accpt Doc 10/9/26       Inv#    
+6) 15%  At 50% completion of Remaiing Qty    08/03/26         Inv#                           "
+RT98-87590-PN-R007,MOCKUP LWTF TROLLEY FOR QINSHAN,0,"J# 72280
+J# 72948",4/1/2025,1-Apr-25,15-Aug-25,N/A, ,"Mar 16, 26
+Jan 16, 26","Mar 23, 26
+Jan 23, 26","Apr 6, 26
+Feb 6, 26","Oct-21-25-  All documents were submitted -waiting Approval-changed the delivery date
+Oct-28-25- Meeting held regarding frame parts. Currently confirming cost and schedule.
+Nov-6-25- Frame parts quote will be submitted.
+Nov-12-25- got clarification info-need to review the info and submit Quote (Nov-14)
+Nov-26-25- RT-87640-70300-000-1-GA-E (J#72280) : Manufacturing completed
+RT-87640-70300-000-1-GA-E (J#72948) : Ordering material
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",50%,,Laila Parveen,"Milestones:
+1)  0%- Upon Submission of Unpriced PO: May-9-25       Inv#. 52759
+2) 70%- Upon Delivery of Equipment % Doc: Aug-15-25  Inv# "
+RT98-87920-PN-R013,GROUP 5B FOR QINSHAN, ,J# 72625 ~ 72635,Aug-8-25,Aug-8-25,May-28-26,?, ,7-May-26,14-May-26,28-May-26,"4) Tool ID for QINSHAN starts at ""200""
+5) Requested for 3D models in STEP FORMAT
+Oct-29-25- Noissue at this time
+Nov-5-25- on trak- no issues at this time
+Nov-12-25- on trak- no issues at this time
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",10%,,Amritha Gopan,NO Milestone
+RT98-88040-PN-R004,GROUP 5D FOR QINSHAN, ,J# 72775-72780,NEW, ,"1line-5line : Jul 17,26
+6 line : Aug 28, 26",?, ,"1line-5line : Jul 6, 26
+                         Jun 26,26
+6 line : Aug 7, 26","1line-5line : Jul 13, 26
+                   Jul 3,26
+6 line : Aug 14, 26","1line-5line : Jul 27, 26
+                      Jul 17,26
+6 line : Aug 28, 26","Oct-3-23-  All procedures Submitted
+Nov-5-25- on track, no issues rt this time
+Nov-11-25- on track, no issues at this time
+Nov-26-25- on track
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Confirmed the realistic shipping date",20%,On Schedule,Etianne Machado,"MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  40% Upon delivery of all items & Doc             Inv#"
+RT98-87000-PN-R018,BRT BELLOWS REMOVAL CUTTING TOOL FOR QINSHAN, ,J# 72924-72940,NEW, , , , ,Jul-20-26,Jul-27-26,Aug-10-26,"Dec-2-25- Kick off meeting @10am
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",5%,,Laila Parveen, 
+RT98-87640-PN-R004,LWFT & AIRLOCK TROLLEY & TRACK ASSY, ,J# 72728-72736,9/9/2025,15-Apr-27,27-May-27,?, ,3-Feb-27,17-Feb-27,24-Feb-27,"Oct-29-25- No issue at this moment
+Nov-5-25- on track, no issues at this time
+Nov-7-25-DDR9001 submitted
+Nov-12-25- on track, no issues at this time
+Nov-26-25- on track
+Dec-11-25- continually test procedures and planting test procedures are not accept-waiting electrical engineer
+Dec-17-25- Still pending for electrical issues.
+Jan-7-26- Need to update the SOE
+Jan-14-26- Still working on manufacturing",15%,On Schedule,Etianne Machado,"MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  15% Prior to sucessful FAT                                 Inv#
+4)  25% upon completion of shipment                  Inv#"
+RT98-87000-PN-R023,ROLLED JOINT SENTRING, ,J# 72959,NEW, , , , ,"Jan 5, 26
+Dec 23, 25","Jan 7, 26
+Dec 30, 25","Jan 23, 26
+Jan 15, 26","Dec-11-25- Still on track
+Dec-17-25- Still on track
+Jan-7-26- Manufacturing completed (Jan-5),submitted QA Docs (Jan-7)-waiting for approval
+Jan-14-26- Waiting approval for QA reports",95%,,Etianne Machado, 
+RT79-87540-PN-R004,STUD INSTRATION TOOL, ,J# 72966, , , , , ,"Feb 13, 26
+Jan 19, 26","Feb 20, 26
+Jan 26, 26","Mar 6, 26
+Feb 9, 26","Dec-11-25- Still on track
+Jan-7-26- Waiting for Candu answer about DDR
+Need to confirm the each date
+Jan-14-26- Need to change the each date due to the welding backlog",20%,On Schedule,Wendy Wu, 
+RT98-87000-PN-R021,FEEDER COUPLING ASSY FOR QINSHAN, ,J#73001-73004,DEC-23-25, , , , ,Feb-3-26,feb-17-26,feb-24-26,"New order
+Dec-31-25- All Procedures Submitted
+Jan-9-26- RT-87120-70184-002-1-DD-B- 24 gauge CRS1018 not commercially stocked
+advise if 1008 is acceptable ( pending)
+Jan-14-26- we are confirming delivery date by next conference call ",5%,,Wendy Wu,NO MILESTONE:  DELIVERY OF ALL ITEM + DOCUMENTS
+RT79-88010-PN-R003- R.2,GROUP 8 TOOLS FOR C1R, ,J# 73007-73008,DEC-24-25, , , , ,JAN-30-26,FEB-13-26,FEB-20-26,"New order
+Jan-14-26- we are confirming delivery date by next conference call ",5%,,Laila Parveen,"MILESTONE:
+1) 25% upon submission for procedures
+2) 25% Upon receipt of Major Materials
+3) 25% Upon start of assy
+4) 25% Upon delivery of Equipment & Docs"
+RT98-87540-PN-R002- Rev.1,GROUP 15 TOOLS FOR QINSHAN, ,J# 73009,DEC-24-25, , , , ,JAN-30-26,FEB-13-26,FEB-20-26,"New order
+Jan-14-26- we are confirming delivery date by next conference call ",5%,,Laila Parveen,NO MILESTONES-  CHANGE ORDER # 1
+RT79-31912-PN-R006,GARTER SPRING FLASK & TROLLEY, ,J# 73027,DEC-30-25, , , , ,APRIL-1-26,APRIL-15-26,APRIL-22-26,"New order
+Jan-14-26- we are confirming delivery date by next conference call ",5%,,Etianne Machado,"MILESTONE:
+1) 30% UPON SUBMITTAL OF UNPRICED PO
+2) 70% UPON DELIVERY OF ALL ITEMS INCLUDING DOCUMENTS"
+RT98-87540-PN-R003,PA STUD INSTALLATION TOOL & SPRING PIN INSTALLATION TOOL-HARDWARE TOOL QINSHAN, ,J# 73038-73040,JAN-7-26, , , , ,MAR-9-26,MAR-23-26,Mar-30-26,"New Order
+Jan-9-26- Welding / Painiting / Dim& Visual procedures submitted ( Pending)
+Jan-14-26- we are confirming delivery date by next conference call",5%,,Raza Talpur,NO MILESTONE- DELIVERY COMPLETE WITH QA DOC'S
