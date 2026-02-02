@@ -1,0 +1,782 @@
+Order Item ID,Expeditor,PO,Title,Rev,Job #,OE Date,PO Delivery,FAT,Witness,"Manufacturing 
+Completion Date","% completed
+(Manufacturing)",Forcast,QA Package Submission,Accepted,DOC Submission,Accepted2,Predicted Ship Date,Current Status,Milestones
+824,Amritha Gopan,RT79-79112-PN-R002,SMALL WASTER TRANSFER FLASK,0,J# 72422,May-26-25,Jan-26-26,?, ,"Feb 28, 26
+Nov 23, 25",45%,On Schedule,,,"Mar 6, 26
+Nov 30, 25",,"Mar 20, 26
+Dec 14, 25","Oct-22-25- Welding is still in progress no issue at this time
+Oct-29-25- The shipment date has been changed due to a factory's floor capacity issue.
+Nov-5-25- Confirmed the fablication issue
+Nov-10-25- FAT Procedure revised
+Nov-26-25- We cannot change the shipping date due to the shop workload.
+Dec-17-25- still  in machining-still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","Milestone:
+1) 30% upon submittal of Unpriced PO             06/13/25        INV#  52866
+2) 30% When Ready for Load Testing                9/15/25           INV#
+3) 40% Upon Delivery of all items & Documents1/26/26        INV#"
+,,,,,,,,,,,,,,,,,,,
+896,Amritha Gopan,RT98-87290-PN-R004,MATERIAL HANDLING CART, ,J# 72643,Aug-12-25,Dec-17-25,?,7-Jan-26,"Jan 9, 26
+Dec 2, 25",95%,,,,"tentitive
+Dec 9, 25",,"Jan 23, 26
+Jan 9, 26","Oct-29-25- Ready to Loadtest-MPI, paint,reassembly
+Nov-25-25- For some of the carts, the stainless steel cover (RT-87920-7006-1-DD-D) is slightly bowed/bumped up in the middle.
+Dec-11-25- Checking what kind of test we need (FAT)
+Dec-17-25- Finished FAT-need to witness, confirming Doc submission date
+Jan-7-26- After completing the FAT witness,
+Candu : to confirm the weight of the carts (extra 300 pounds)-accepted
+RTD : to complete some welding area (3pc)-completed for manufacturing (Jan-9)
+Jan-14-26- Waiting FTP link from Candu (email Jan-13 9:12 AM)",Milestones:
+,,,,,,,,,,,,,,,,,,,
+821,Amritha Gopan,RT98-87590-PN-R006- Rev.1,"EFSF REMOVAL TOOL
++Electrical",0,J# 72373,May-5-25,Oct-9-26,?, ,"1set : May 26, 26
+           Mar 13, 26
+        Feb 2, 26
+2set : Sep 18, 26",35%,On Schedule,,,"1set : Jun 2 ,26
+               Mar 20, 26
+        Feb 9, 26
+2 set : Sep 25, 26",,"1set :  Jun 16, 26
+          Apr 3, 26
+              Feb 23, 26
+2set : Oct 9, 26","Oct-6-25- Delivery date for 1set will be Feb 23,26 for integration testing
+Nov-13-25-LCP dwg waiting
+Nov-26-25- The shipping date needs to be changed-Because of the big machine capacity issue. Still waiting LCP dwg-sent remind email (Nov-21)
+Dec-11-25- Confirming the manufacturing status, ship date
+Dec-17-25- We can't meet the date for 1set in Feb-22-26-Current manufacturing progress at the plant as well as the electrical issue that was shared during meeting in Dec-17.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Confirmed the realistic shipping date","Milestone:
+1) 30% Upon submission of Unpriced PO's   05/30/25             Inv#
+2) 10% AT   50% of Project                                 10/01/25            Inv#
+3) 10% when ready for Unit 1 Function Test  02/06/26           Inv#
+4) 10% Upon Delivery of Unit 1                          03/16/26           Inv#
+5) 25% After Delivery of All items and Accpt Doc 10/9/26       Inv#    
+6) 15%  At 50% completion of Remaiing Qty    08/03/26         Inv#                           "
+,,,,,,,,,,,,,,,,,,,
+-,Amritha Gopan,RT98-87900-PN-R003,C6-BORE GAUGE AND C6-BORE GAUGE-NARROW LANDING FOR C1R, ,J# 72622-72623,Aug-1-25,Nov-28-25,?,18-Feb-26,"Feb 13, 26
+tentitive
+Nov 26, 25",70%, ,,,"Feb 20, 26
+tentitive
+Dec 3, 25",,"Mar 6, 26
+Jan 16, 26","Oct-29-25- Since the sighed PO with a shipment date of Dec28 has been submitted and approved, the shipment date will be changed to Dec 28.
+Nov-25-25- received custom probe tips dwg-need to submit quote
+Dec-1-25- new tips doesn't work so Steve will tell to Candu
+Dec-3-25- Candu Inspector came to check the issue, RTD need to send new desighin-there are not only tip issue.-redesign issue pending
+Jan-7-26- Need to submit DDR for rework (Probe Tips and the Peek cone)
+Jan-14-26- Due to an insufficiency in the chrome process, the chrome process needs to be carried out again, so the schedule has been changed.","Milestone
+1) 30%- Upon Submission Unpriced PO
+2) 70% Upn Delivery of all equipment & Docs"
+877,Amritha Gopan,RT98-87900-PN-R003,C6-Bore Gauge,,J# 72622,Aug-1-25,Nov-28-25,,,,,,,,,,,,
+878,Amritha Gopan,RT98-87900-PN-R003,C6-Bore Gague- Narrow Landing,,J# 72623,Aug-1-25,Nov-28-25,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+-,Amritha Gopan,RT98-87920-PN-R013,GROUP 5B FOR QINSHAN, ,J# 72625 ~ 72635,Aug-8-25,May-28-26,?, ,7-May-26,10%,,,,14-May-26,,28-May-26,"4) Tool ID for QINSHAN starts at ""200""
+5) Requested for 3D models in STEP FORMAT
+Oct-29-25- Noissue at this time
+Nov-5-25- on trak- no issues at this time
+Nov-12-25- on trak- no issues at this time
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing",NO Milestone
+882,Amritha Gopan,RT98-87920-PN-R013,Calandria Tube Extension Sleeve,,J# 72625,Aug-8-25,May-28-26,,,,,,,,,,,,
+883,Amritha Gopan,RT98-87920-PN-R013,Feeder Port Angle Adjustment Tool,,J# 72626,Aug-8-25,May-28-26,,,,,,,,,,,,
+884,Amritha Gopan,RT98-87920-PN-R013,Lifting Grapple,,J# 72627,Aug-8-25,May-28-26,,,,,,,,,,,,
+885,Amritha Gopan,RT98-87920-PN-R013,Extension Trolley,,J# 72628,Aug-8-25,May-28-26,,,,,,,,,,,,
+886,Amritha Gopan,RT98-87920-PN-R013,Cart Closure Plug Cart,,J# 72629,Aug-8-25,May-28-26,,,,,,,,,,,,
+887,Amritha Gopan,RT98-87920-PN-R013,Insertion Trolley & Handle,,J# 72630,Aug-8-25,May-28-26,,,,,,,,,,,,
+888,Amritha Gopan,RT98-87920-PN-R013,EF in Shuttle Flask Tool,,J# 72631,Aug-8-25,May-28-26,,,,,,,,,,,,
+889,Amritha Gopan,RT98-87920-PN-R013,EF Rotation Tool,,J# 72632,Aug-8-25,May-28-26,,,,,,,,,,,,
+890,Amritha Gopan,RT98-87920-PN-R013,Manual Bellows Push Tool,,J# 72633,Aug-8-25,May-28-26,,,,,,,,,,,,
+891,Amritha Gopan,RT98-87920-PN-R013,Closure Plug Shuttle Box,,J# 72634,Aug-8-25,May-28-26,,,,,,,,,,,,
+892,Amritha Gopan,RT98-87920-PN-R013,Tool Delivery  Trough,,J# 72635,Aug-8-25,May-28-26,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+-,Amritha Gopan,RT98-87920-PN-R014,GROUP 5 FOR QINSHAN, ,J# 72651-72654,Aug-16-25,Feb-16-26,?, ,"Apr 2, 26
+Jan 26, 26",45%,,,,"Apr 9, 26
+Feb 2, 26",,"Apr 23, 26
+Feb 16, 26","Delivery date accepted from Jan-22-25- to Feb-16-25 due to workload
+Nov-12-25- on trak- no issues at this time
+Nov-26-25- RT-87920-74245-000-1-GA-E (J#72652) : DDR approved, manufacturing still on track
+Dec-11-25- Confirming the manufacturing status
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- The shipment date will be changed to align with the schedule for the integrating test.","Milestones:
+1) 30% Upon submittal of unpriced PO
+2) 30% Upon Comp. 50% of Projecct
+3) 40% upon Delivery & Docs"
+902,Amritha Gopan,RT98-87920-PN-R014,Modified Air Motor Adaptor,,J# 72651,Aug-16-25,2/16/2026,,,,,,,,,,,,
+903,Amritha Gopan,RT98-87920-PN-R014,Modified Air Motor Adaptor,,J# 72651,Aug-16-25,,,,,,,,,,,,,
+904,Amritha Gopan,RT98-87920-PN-R014,Air Motor Stande,,J# 72652,Aug-16-25,2/16/2026,,,,,,,,,,,,
+905,Amritha Gopan,RT98-87920-PN-R014,Air Motor Support Stand,,J# 72653,Aug-16-25,2/16/2026,,,,,,,,,,,,
+906,Amritha Gopan,RT98-87920-PN-R014,Air Motor Support with Stabalizer,,J# 72654,Aug-16-25,2/16/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+749,David Weldon,RT79-87920-PN-R005,CTI BORE GAUGE TOOL FOR C1R      ,0, J# 71669,12/3/2024,3/26/2025,?, ,Jan-23-26,95%,Changed,,,Feb-5-26,,Feb-13-26,"Jan-22-26- MTR, -still waiting for approval
+Jn-22-26-  Once Mfg is completd- Witness Notiifiction wiill be sent, ","Milestone
+# 1-   35% of Unprice PO for Mat'l :          Inv# 52477
+#  2-  30% Function /accept test    :           Inv# 52877
+# 3-  35 % upon Comp & Delv                  Inv#
+
+All procedures received - Approved"
+,,,,,,,,,,,,,,,,,,,
+,David Weldon,RT79-88030-PN-R001- Rev.1,GARTER SPRING DETECTION TOOL & SSDO TOOL- ,0,"J# 72083 ~ 72084
+Added J# 72278",2/21/2025,6/20/2025,N/A, ,"Jan 23, 26
+Jan 14, 26
+Dec 30, 25",95%,NP Processed,,,"Jan 30, 26
+Jan 21, 26
+Jan 6, 26",,"Feb 13, 26
+Feb 4, 26
+Jan 20, 26","Nov-12-25- Quote submitted-waiting approval (it is take 10-12W to complete rework)
+Nov-26-25- Since 72084 requires rework, we are checking whether the shipment of the other parts can be moved up.
+Dec-11-25- waiting for tube reseived-in disassembly,need to  reworke-waiting for a response regarding the partial shipment.
+Dec-17-25- tube received-in reworking-still pending
+Jan-5-26- Need to change the date due to Inspection backlog-rework was completed(Dec-30), in inspection, need to prepare QA Docs
+Jan-14-26- Need to change the date due to take longer than planned to complete the inspection.","MILESTONES:
+35%- Submission of unpriced  PO for Major Mat'l       Inv# 52661
+15%- Upon 75% completeion of Mfg    Inv# 52993
+20%- Ready to perform Functional /Acceptance Test    Inv#
+10%- Successful completion of Functional/ accept test    Inv#
+20%- Delivery of Equipment including History File    Inv#"
+765,David Weldon,RT79-88030-PN-R001- Rev.1,Garter Spring Detection Tool,,J# 72083,2/21/2025,7/21/2025,,,,,,,,,,,,
+766,David Weldon,RT79-88030-PN-R001- Rev.1,Single Spacer Drop off Tool,,J# 72084,2/21/2025,1/20/2026,,,,,,,,,,,,
+767,David Weldon,RT79-88030-PN-R001- Rev.1,Eddy Current Spacer Detection Trough,,J# 72278,3/31/2025,7/21/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+753,David Weldon,RT98-87540-PN-R001,POSITIONING ASSEMBLY (PA) HARDWARE REMOVAL TOOL FOR QINSHAN,0,j# 71829,12/23/2024,5/2/2025,?, ,5-Dec-25,90%,On Schedule,,,12-Dec-25,,"Jan 23, 26
+Jan 16, 26","Oct-22-25- (Docs) DIR-Waiting for Candu approval
+Oct-29-25- The casters and floor lock need to be reassembled with new ones. The specifications have already been shared with the Candu side.
+Oct-31-25- DIR was resubmitted
+Nov-5-25- Still waiting for Caster confirmation.
+Nov-12-25- Doc package resubmitted-waiting fo rapproval
+Nov-26-25- Waiting for the answer about caster and lock.
+Dec-9-25- The quote for the caster and lock has been submitted-waiting for Candu answer-pending
+Jan-6-26- waiting for Candu answer for the quote-pending (email Jan-6 11:54)
+Jan-14-26-  waiting for Candu answer for the quote-pending (email Jan-6 11:54)","Milestone:
+#1-   30% receipt of Major Material:  Inv#  52544
+#2-   30% Upon 75% completion      :  Inv# 52816
+#3-    40% completion/ delv               :   Inv #
+ "
+,,,,,,,,,,,,,,,,,,,
+752,David Weldon,RT98-87920-PN-R006,CTI BORE GAUGE TOOL FOR QINSHAN  -,0, J# 71742,12/3/2024,1/25/2025,?, ,6-Nov-25,95%,Changed,,,26-Nov-25,,"Jan 23, 26
+Jan 16, 26","Nov-5-25- Trigger Lock's manufacturing was completed-currently reassembly, prepare QA Docs
+Nov-6-25- Manufacturing completed-waiting for preparing trigger part's DIR, waiting approval for other Docs
+Nov-26-25- CfC, DIR, FAT submitted-waiting for approval
+Dec-11-25-Under correction of DIR
+Dec-17-25-DDR submitted-waiting for approval
+Jan-5-26- DDR9002 resubmitted-waiting for approval
+Jan-7-26- CfC, DIR are not accepted-need to correct and resubmit
+Jan-14-26- MTR, CfC, DIR-still waiting for approval
+
+","Milestone
+# 1-   35% of Unprice PO for Mat'l :          Inv# 52478
+#  2-  30% Function /accept test    :           Inv# 52876
+# 3-  35 % upon Comp & Delv                  Inv#"
+,,,,,,,,,,,,,,,,,,,
+,David Weldon,RT98-88030-PN-R001- Rev.2,GARTER SPRING DETECTION TOOL & SSDO TOOL- ,0,"J# 72085- 72086
+Added  J# 72279
+New Addition
+J# 72459-72460",2/21/2025,7/31/2025,N/A, ,"Jan 23, 26
+Jan 14, 26
+Dec 30, 25",95%,NP Processed,,,"Jan 30, 26
+Jan 21, 26
+Jan 6, 26",,"Feb 13, 26
+Feb 4, 26
+Jan 20, 26","Nov-12-25- Quote submitted-waiting approval (it is take 10-12W to complete rework)
+Nov-26-25- Since 72084 requires rework, we are checking whether the shipment of the other parts can be moved up.
+Dec-11-25- waiting for tube reseived-in disassembly,need to  reworke-waiting for a response regarding the partial shipment.
+Dec-17-25- tube received-in reworking-still pending
+Jan-5-26- Need to change the date due to Inspection backlog-rework was completed(Dec-30), in inspection, need to prepare QA Docs
+Jan-14-26- Need to change the date due to take longer than planned to complete the inspection.","FEB-21-2025-  This PO processed -  Procedures will be submitterd- March-25-25
+MILESTONES:
+1)  35%- Submis of unpriced  PO for Major Mat'l    Inv#  52662
+2)  15%- Upon 75% completeion of Mfg    Inv# 52994
+3)  20%- Ready to perform Functional /Acceptance Test    Inv#
+4)  10%- Successful completion of Functional/ accept test    Inv#
+5)  20%- Delivery of Equipment including History File    Inv#"
+769,David Weldon,RT98-88030-PN-R001- Rev.2,Garter Spring Detection Tool,,J# 72085,2/21/2025,7/21/2025,,,,,,,,,,,,
+770,David Weldon,RT98-88030-PN-R001- Rev.2,Single Spacer Drop off Tool,,J# 72086,2/21/2025,7/21/2025,,,,,,,,,,,,
+771,David Weldon,RT98-88030-PN-R001- Rev.2,Eddy Current Spacer Detection Trough,,J# 72279,3/31/2025,7/21/2025,,,,,,,,,,,,
+772,David Weldon,RT98-88030-PN-R001- Rev.2,Eddy Current Verification Bench,,J# 72459,6/11/2025,8/27/2025,,,,,,,,,,,,
+773,David Weldon,RT98-88030-PN-R001- Rev.2,Tool Encoder Bracket Assy,,J# 72460,6/11/2025,8/27/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+1114,Etianne Machado,RT79-31912-PN-R006,GARTER SPRING FLASK & TROLLEY, ,J# 73027,DEC-30-25, , , ,APRIL-1-26,5%,,,,APRIL-15-26,,APRIL-22-26,"New order
+Jan-14-26- we are confirming delivery date by next conference call ","MILESTONE:
+1) 30% UPON SUBMITTAL OF UNPRICED PO
+2) 70% UPON DELIVERY OF ALL ITEMS INCLUDING DOCUMENTS"
+,,,,,,,,,,,,,,,,,,,
+,Etianne Machado,RT79-88020-PN-R003,SA TRANSPORT CONTAINER & EF TRANSFER CONTAINER, ,j# 72605-72606,7/25/2025,7/25/2025,N/A, ,"Feb 16, 26
+Jan 9, 26",25%,On Schedule,,,"Feb 23, 26
+Jan 16, 26",,"Mar 9, 26
+Jan 30, 26","Oct-7-28- Receoved 6-pcs of -SA Transport Containers - RTD Needs to Evaluate to confirm delivery dates
+Nov-5-25- the containers that have been sent findings have been evaluated-Candu will visit to confirm, and will start rework.
+Nov-26-25- Still on track-waiting for hardware
+Dec-17-25- Since it takes 3W for the subcontracting process after welding, a change in the schedule is required.
+Waiting answer from Candu about handle crash and small parts position,""RT-88030-79002-01-GA-D"", Identify info.
+Jan-6-26- Still waiting answer from Candu
+Jan-14-26- Still waiting for revised dwg from Candu","Milestones:
+1) 25% Upon submission fo Procedures            Inv#
+2) 25% Upon Receipt of Main Materials            Inv#
+3) 25% upon Start of Assy                                    Inv#
+4) 25% upon delivery of Equipment                  Inv# "
+872,Etianne Machado,RT79-88020-PN-R003,SA Transport Container,,72605,7/25/2025,12/19/2025,,,,,,,,,,,,
+873,Etianne Machado,RT79-88020-PN-R003,EF Transport Container,,72606,7/25/2025,12/19/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+1023,Etianne Machado,RT98-87000-PN-R023,ROLLED JOINT SENTRING, ,J# 72959,NEW, , , ,"Jan 5, 26
+Dec 23, 25",95%,,,,"Jan 7, 26
+Dec 30, 25",,"Jan 23, 26
+Jan 15, 26","Dec-11-25- Still on track
+Dec-17-25- Still on track
+Jan-7-26- Manufacturing completed (Jan-5),submitted QA Docs (Jan-7)-waiting for approval
+Jan-14-26- Waiting approval for QA reports", 
+,,,,,,,,,,,,,,,,,,,
+880,Etianne Machado,RT98-87272-PN-R020- Rev.1,MOCKUP COLUMN FOR COMMISION OF TILTER, ,J# 72624,5/25/2008,Jan-26-26,?, ,"Jan 30, 26
+Jan 5, 26",70%,On Schedule,,,"Feb 6, 26
+Jan 12, 26",,"Feb 20, 26
+Jan 26, 26","Oct-22-25- Welding will be done in the next week
+Nov-5-25- on track, no issues at this time
+Nov-11-25- on track, no issues at this time
+Nov-26-25- The shipping date needs to be changed-Because of big machine capacity issue.
+Dec-11-25- Still on track
+Dec-17-25- Still on track-no issues at this time
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  40% Upon delivery of all items & Doc             Inv#"
+,,,,,,,,,,,,,,,,,,,
+,Etianne Machado,RT98-87640-PN-R004,LWFT & AIRLOCK TROLLEY & TRACK ASSY, ,J# 72728-72736,9/9/2025,5/27/2027,?, ,3-Feb-27,15%,On Schedule,,,17-Feb-27,,24-Feb-27,"Oct-29-25- No issue at this moment
+Nov-5-25- on track, no issues at this time
+Nov-7-25-DDR9001 submitted
+Nov-12-25- on track, no issues at this time
+Nov-26-25- on track
+Dec-11-25- continually test procedures and planting test procedures are not accept-waiting electrical engineer
+Dec-17-25- Still pending for electrical issues.
+Jan-7-26- Need to update the SOE
+Jan-14-26- Still working on manufacturing","MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  15% Prior to sucessful FAT                                 Inv#
+4)  25% upon completion of shipment                  Inv#"
+966,Etianne Machado,RT98-87640-PN-R004,Airlock Trolley c/w Wings,,J# 72728,9/22/2025,2/24/2025,,,,,,,,,,,,
+977,Etianne Machado,RT98-87640-PN-R004,LWTF Trolley- Corridor-NO Wing,,J# 72729,9/22/2025,2/24/2025,,,,,,,,,,,,
+967,Etianne Machado,RT98-87640-PN-R004,Shuttle Flask Trolley FM Room,,J# 72730,9/22/2025,2/24/2025,,,,,,,,,,,,
+968,Etianne Machado,RT98-87640-PN-R004,Tool Trolley Track Asy ( Airlock),,J# 72731,9/22/2025,2/24/2025,,,,,,,,,,,,
+969,Etianne Machado,RT98-87640-PN-R004,Tool Trolley Track (SF Trolley & LWTF),,J# 72732,9/22/2025,2/24/2025,,,,,,,,,,,,
+970,Etianne Machado,RT98-87640-PN-R004,Flag Assembly 1,,J# 72733,9/22/2025,2/24/2025,,,,,,,,,,,,
+971,Etianne Machado,RT98-87640-PN-R004,Flag Assembly 2,,J# 72734,9/22/2025,2/24/2025,,,,,,,,,,,,
+972,Etianne Machado,RT98-87640-PN-R004,Flag Assembly 3,,J# 72735,9/22/2025,2/24/2025,,,,,,,,,,,,
+973,Etianne Machado,RT98-87640-PN-R004,Flag Assembly 4,,J# 72736,9/22/2025,2/24/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Etianne Machado,RT98-88010-PN-R008- Rev.1,GROUP 7F OF TOOLS, ,"J# 72589-72599
+J# 73000",7/22/2025,Sept-25-25,?, ,"Dec 9, 25
+Nov 28, 25",95%,On Schedule,,,"Dec 23, 25
+Dec 16, 25",,"Jan 23, 26
+Jan 13, 26","Oct-22-25- Since currently waiting for the inspection of the detail parts also assembly has not been completed, it is necessary to reschedule the shipping date.
+Oct-29-25- Due to delays in the inspection and assembly processes-need to change the date.
+Nov-12-25- Ship date need to be changed-waiting for Heat Treat and painting
+Nov-26-25- Ship date need to be changed-Because ‘RT-88000-70034-000-1-GA-E’ is taking longer than planned.
+Dec-10-25- Manufacturing completed, preparing QA Docs
+Dec-17-25- MTR, C of C will submit in Dec-18, preparing FAT report
+Jan-7-26- MTR, CfC, DIR were accepted, FAT report need to resubmit
+Jan-8-26- submitted revised FAT report-still waiting for approval",NO MILESTONES 
+848,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge Expander Tool- Ring Gauge,,J# 72589,7/24/2025,9/30/2025,,,,,,,,,,,,
+849,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge AS Length Gauge,,J# 72590,7/24/2025,9/30/2025,,,,,,,,,,,,
+850,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge P/T Expander Reach setting Gauge,,J# 72591,7/24/2025,9/30/2025,,,,,,,,,,,,
+851,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge P/T Ring Gauge ( Blue),,J# 72592,7/24/2025,9/30/2025,,,,,,,,,,,,
+853,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge P/T Ring Gauge ( Red),,J# 72593,7/24/2025,9/30/2025,,,,,,,,,,,,
+1082,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge P/T Ring Gauge ( Yellow),,J# 72594,7/24/2025,9/30/2025,,,,,,,,,,,,
+854,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge Ring Gauge for Bore Gauge,,J# 72595,7/24/2025,9/30/2025,,,,,,,,,,,,
+855,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge P/T Category Check Tool,,J# 72596,7/24/2025,9/30/2025,,,,,,,,,,,,
+856,Etianne Machado,RT98-88010-PN-R008- Rev.1,P/T Category Check Tool,,J# 72597,7/24/2025,9/30/2025,,,,,,,,,,,,
+857,Etianne Machado,RT98-88010-PN-R008- Rev.1,P/T Category Check Tool- PLug306,,J# 72598,7/24/2025,9/30/2025,,,,,,,,,,,,
+858,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge EF Liner Tube Plug Gauge,,J# 72599,7/24/2025,9/30/2025,,,,,,,,,,,,
+861,Etianne Machado,RT98-88010-PN-R008- Rev.1,Gauge P/T Expander Reach setting Gauge,,J# 73000,12/19/2025,2/12/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Etianne Machado,RT98-88010-PN-R009,GROUP 7G TOOLS FOR QINSHAN, ,J# 72580~ 72583,7/22/2025,9/29/2025,?, ,17-Nov-25,95%,On Schedule,,,1-Dec-25,,"Jan 23, 26
+Jan 16, 26","OCT-22-25- RT-87000-70201-6100-1-GA-B-has an issue with the final shape.
+Since the manufacturing complete date will be determined once the countermeasure is decided, a tentative schedule is provided for now.
+Oct-29-25- Accept issue about RT-87000-70201-6100-1-GA-B, preparing QA Docs
+Nov-5-25- J#72580 need to rework-There was a comment that rework is required for the approved DDR.
+Nov-12-25- The date needs to be changed. The rework requires a large machine-since processing other high-priority parts, the adjustment has taken longer than expected.
+Dec-9-25- Submitted FAT report-still pending
+Jan-6-26- MTR and DIR were resubmitted-waiting for approval
+Jan-14-26- MTR was accepted, DIR still waiting for approval",NO Milestones
+843,Etianne Machado,RT98-88010-PN-R009,CT Removal Protective Sleeve,,J# 72580,7/22/2025,9/29/2025,,,,,,,,,,,,
+844,Etianne Machado,RT98-88010-PN-R009,CT Removal Thrust Sleeve,,J# 72581,7/22/2025,9/29/2025,,,,,,,,,,,,
+845,Etianne Machado,RT98-88010-PN-R009,Leak Test Tool Check Sleeve,,J# 72582,7/22/2025,9/29/2025,,,,,,,,,,,,
+846,Etianne Machado,RT98-88010-PN-R009,Bore Gauge Protective Sleeve,,J# 72583,7/22/2025,9/29/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Etianne Machado,RT98-88040-PN-R004,GROUP 5D FOR QINSHAN, ,J# 72775-72780,NEW,"1line-5line : Jul 17,26
+6 line : Aug 28, 26",?, ,"1line-5line : Jul 6, 26
+                         Jun 26,26
+6 line : Aug 7, 26",20%,On Schedule,,,"1line-5line : Jul 13, 26
+                   Jul 3,26
+6 line : Aug 14, 26",,"1line-5line : Jul 27, 26
+                      Jul 17,26
+6 line : Aug 28, 26","Oct-3-23-  All procedures Submitted
+Nov-5-25- on track, no issues rt this time
+Nov-11-25- on track, no issues at this time
+Nov-26-25- on track
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Confirmed the realistic shipping date","MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  40% Upon delivery of all items & Doc             Inv#"
+982,Etianne Machado,RT98-88040-PN-R004,FC Axial Adjustment Tool,,J# 72775,9/18/2025,7/17/2026,,,,,,,,,,,,
+983,Etianne Machado,RT98-88040-PN-R004,EC Spacer Detention End Fitting Adaptor Tool,,J# 72776,9/18/2025,7/17/2026,,,,,,,,,,,,
+984,Etianne Machado,RT98-88040-PN-R004,CT Extension Installation Tool,,J# 72777,9/18/2025,7/17/2026,,,,,,,,,,,,
+985,Etianne Machado,RT98-88040-PN-R004,Shield Plug Installation Tool,,J# 72778,9/18/2025,7/17/2026,,,,,,,,,,,,
+986,Etianne Machado,RT98-88040-PN-R004,Closure Plug Installation Tool,,J# 72779,9/18/2025,7/17/2026,,,,,,,,,,,,
+987,Etianne Machado,RT98-88040-PN-R004,Calibration Fixture,,J# 72780,9/18/2025,8/28/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-87000-PN-R020,"BRT BELLOWS REMOVAL CUTTING TOOL FOR C1R
++Electrical", ,J# 72692-72708,AUG-29-25,4/30/2026,?, ,"1set :Mar-26-26
+          Mar-10-26
+       Feb-5-26
+2set : Apr-30-26
+           April-9-26",20%,,,,"1set : Apr-2-26
+              Mar-17-26
+              Feb-12-26
+2set : May-7-26
+               April-16-26",,"1set : Apr-16-26
+            Mar-31-26
+          Feb-26-26
+2set : May-21-26
+             April-30-26","Sept-2-25- PO Accept- Signed Back
+Nov-12-25- on trak- no issues at this time
+Nov-26-25- Confirming the realistic date for one set
+Dec-11-25- Still confirming the realistic date for the shipdate
+Dec-17-25- DDR9001 still pending-need to change the date fo rthe 1st set (still confirming) because of electrical issues (DDR9001)
+Dec-22-25- We have shared the shipment of 1st set will be delayed, along with the reason for the delay.
+Jan-6-26- Still working on manufacturing, Confirming Edwin about electrical issues
+Jan-14-26- Confirmed the realistic date for shipping date","Milestones:
+1)   30% upon submttal of Unpriced Pos'                      Inv#
+2)    30% upon completion of Purchse of Long Lead and Critical Components   & Initation of Mfg activities
+        Inv#
+3)    40% Upon Delivery of all items including  Documentation"
+1091,Laila Parveen,RT79-87000-PN-R020,Bellows Replacement Tool Base,,J# 72692,8/29/2025,4/30/2026,,,,,,,,,,,,
+918,Laila Parveen,RT79-87000-PN-R020,Plug Insertion Tool,,J# 72693,8/29/2025,4/30/2026,,,,,,,,,,,,
+919,Laila Parveen,RT79-87000-PN-R020,Shield Plug to Handling Tool Adapter,,J# 72694,8/29/2025,4/30/2026,,,,,,,,,,,,
+920,Laila Parveen,RT79-87000-PN-R020,Shield Plug Manual Insertion Tool,,J# 72695,8/29/2025,4/30/2026,,,,,,,,,,,,
+921,Laila Parveen,RT79-87000-PN-R020,Bellows Replacement Shield Plug,,J# 72696,8/29/2025,4/30/2026,,,,,,,,,,,,
+922,Laila Parveen,RT79-87000-PN-R020,Bellows Removal Cutting Tool,,J# 72697,8/29/2025,4/30/2026,,,,,,,,,,,,
+923,Laila Parveen,RT79-87000-PN-R020,Bellows Removal Cutting Tool Drive,,J# 72698,8/29/2025,4/30/2026,,,,,,,,,,,,
+924,Laila Parveen,RT79-87000-PN-R020,Bellows Replacement Machine Chuck,,J# 72699,8/29/2025,4/30/2026,,,,,,,,,,,,
+925,Laila Parveen,RT79-87000-PN-R020,Tool Mockup Components,,J# 72700,8/29/2025,4/30/2026,,,,,,,,,,,,
+926,Laila Parveen,RT79-87000-PN-R020,ALT. weld head Mounting Tool,,J# 72701,8/29/2025,4/30/2026,,,,,,,,,,,,
+927,Laila Parveen,RT79-87000-PN-R020,Tool Alignment Tool,,J# 72702,8/29/2025,4/30/2026,,,,,,,,,,,,
+1092,Laila Parveen,RT79-87000-PN-R020,Extension Adaptor,,J# 72703,8/29/2025,4/30/2026,,,,,,,,,,,,
+937,Laila Parveen,RT79-87000-PN-R020,Junction Control Box  ( with Cables),,J# 72704,8/29/2025,4/30/2026,,,,,,,,,,,,
+938,Laila Parveen,RT79-87000-PN-R020,Tool Ring Gauges ( Set),,J# 72705,8/29/2025,4/30/2026,,,,,,,,,,,,
+939,Laila Parveen,RT79-87000-PN-R020,Axial Wear Ring .633,,J# 72706,8/29/2025,4/30/2026,,,,,,,,,,,,
+940,Laila Parveen,RT79-87000-PN-R020,Axial Wera Ring Cut 1,,J# 72707,8/29/2025,4/30/2026,,,,,,,,,,,,
+941,Laila Parveen,RT79-87000-PN-R020,Azial Wear Ring Cut 2,,J# 72708,8/29/2025,4/30/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-87550-PN-R001- Rev.1,MANUFACTURE OF SFCR BELLOWS CUT TOOL FOR C1R     ,0,"( j# 71851 & 71873 - SPARES)
+J# 72330 ( 2)",12/30/2024,7/4/2025,?, ,"Feb 13, 26
+Jan 30, 26",75%,On Schedule,,,"Feb 20, 26
+Feb 6, 26",,"Mar 6, 26
+Feb 20, 26","Oct-22-25- Machining is still in progress
+Oct-29-25- Gear parts (BOM 9) need to modify-EDM made a mistake, scrap so need to make a new piece.
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- RT-87550-0121-01-GA-E has issue during Inspection- sent e-mail Nov-12 2:23 still waiting for answer
+Dec-17-25- We need to send some parts to subcontrackt but the company shutdow 2W so we need to pushout date.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","Milestone:
+1 -   25 % submit Unpriced PO                       Inv#  52642
+2-   15%  Receipt oof Major lead it          Inv#  52875
+3     15%  Ready for Assy                               Inv#
+4-    15% -Ready for function/accept. test       Inv#
+5-    15% successful function test                  Inv#
+6-    15% completeion & delivery                    Inv#"
+780,Laila Parveen,RT79-87550-PN-R001- Rev.1,Bellows Cutting Tool (SFCR),,J# 71851,12/30/2024,7/4/2025,,,,,,,,,,,,
+798,Laila Parveen,RT79-87550-PN-R001- Rev.1,To Capture cost for Spare parts,,J# 71873,1/9/2025,7/4/2025,,,,,,,,,,,,
+799,Laila Parveen,RT79-87550-PN-R001- Rev.1,Shell Installation Tool Assy,,J# 72330,4/24/2025,7/21/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+822,Laila Parveen,RT79-87630-PN-R005,VRS MANUAL RETRIEVAL TOOL,0,J# 72395,5/1/2025,Aug-27-25,N/A, ,"pending
+Jan 9, 26
+Nov 24, 25",75%,On Schedule,,,"pending
+Jan 16, 26
+Dec 1, 25",,"Jan 30, 26
+Dec 17, 25","Oct-22-25- Quote will be submitted in Oct-22.
+Still waiting for Instection, need to Assembly-The delivery date need to be changed.
+Nov-5-25- Waiting approval for DDR9005,Reference quote#LP72395
+Nov-12-25- Change the manufacturing date-to complete order glue
+Dec-11-25- We obtained the cloth part information from Candu, so purchasing is required-we will receive the cloth in this week-need to machine
+Dec-17-25- Need to change the date-due to Due the manufacturing progress being behind schedule.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- waiting answer for the manufacturing progress and the schedule from shopping floor.","Milestone:
+1) 30% upon submittal of Unpriced PO             05/27/25           INV# 52865
+2) 70% Upon Delivery of Deliverable & Documents  8/27/25  INV#"
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-87630-PN-R011, VRS PT LUNCHBOX FOR C1R, ,J#72645-72647,Aug-14-25,Dec-11-25,?,25-Feb-26,"Feb 20, 26
+Jan 30, 26",65%,,,,"Feb 27, 26
+Feb 6, 26",,"Mar 13, 26
+Feb 20, 26","Nov-12-25- The shipping date needs to be changed. Since “B-12995-1622-0011” was scrapped, we need to order new material, but the lead time is 3 weeks.
+All dates are tentative, as they depend on the timing of material arrivals.
+Nov-26-25- The shipping date needs to be changed-Since ‘B-12995-1622-0011’ was scrapped and the lead time (3 weeks) to procure the material was long as well.
+Dec-10-25- We need to send subcontrackt but the company shutdown 2W so we need to pushout date.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Need to change the date goe to the dimensions of the area for the EDM process are large, so it takes longer time than expected.","1) 20% Upon submission of Procedures     Inv#
+2) 20% Upon Submission of Unpriced PO   Inv#
+3)  60% upon delivery & Doc                          Inv#
+
+KICK OFF MEETING: SEPT-10-25- @ 10 AM"
+1087,Laila Parveen,RT79-87630-PN-R011,VRS PT Lunchbox,,J# 72645,,,,,,,,,,,,,,
+897,Laila Parveen,RT79-87630-PN-R011,VRS Baseline- PT Small OD Gripper Hd,,J# 72646,,,,,,,,,,,,,,
+1088,Laila Parveen,RT79-87630-PN-R011,VRS Swab Loader- Mark 2,,J# 72647,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-87840-PN-R002,CV FME INSPECTION TOOL,0,"J# 72517,72906",june-27-25,Nov-17-25,?, ,"Jan 30, 26
+Jan 16, 26","
+J# 72517  80%
+
+J#72906  60%",,,,"Feb 6, 26
+Jan 23, 26",,"Feb 20, 26
+Feb 6, 26","Oct-22-25- Due to machining and assembly of the detail parts taking longer than expected, 
+the shipping date has been rescheduled.
+Oct-29-25- Detail parts machining done-Assembly
+Nov-5-25- With the addition of the new JOB#72706, all three dates are now tentitive.
+Nov-12-25- RT-87840-0220-01-GA-2 : 3D model received, still waiting for revised PO
+Nov-26-25- RT-87840-7000-1000-1-GA-B : Waiting for camera part.
+Dec-11-25- stll on track-Line#1 : need to check weight,Line#2 : still on track
+Dec-17-25- stll on track-no issue at this time
+Jan-6-26- Need to change the date due to Inspection backlog
+Jan-14-26- Still working on manufacturing","Milestones:
+1)  30% upon submission of Unpriced PO:       Inv# 52867
+2)  30% Upon Completion of approx. 50% of project     Inv#
+3)  15% Upon receipt of Camera, etc. related equop     Inv#
+4)  25% Upon Delivery of all items & QA Doc                 Inv#"
+838,Laila Parveen,RT79-87840-PN-R002,,,J# 72517,6/27/2025,11/17/2025,,,,,,,,,,,,
+839,Laila Parveen,RT79-87840-PN-R002,Bearing Assy,,J# 72906,10/30/2025,1/5/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-87900-PN-R003,C6-BORE GAUGE AND C6-BORE GAUGE-NARROW LANDING FOR C1R,0,J# 71852-71853,12/30/2024,7/31/2025,?,28-Jan-26,"Jan 23, 26
+tentitive
+Dec 23, 25",80%,On Schedule,,,"Jan 30, 26
+tentitive
+Jan 6, 26",,"Feb 13, 26
+Jan 16. 26","Oct-29-25- Tip part's dwg issue- need to get new design dwg, remake tips
+Nov-5-25- Remakining Tip parts- reassembly
+Nov-7-25- sent e-mail for assembly issue, DDR9003 submitted-waiting for approval
+Nov-12-25- Tip part : waiting for Candu answer, assembly issue
+Nov-25-25- received custom probe tips dwg-need to submit quote
+Dec-1-25- new tips doesn't work so Steve will tell to Candu
+Dec-3-25- Candu Inspector came to check the issue, RTD need to send new desighin-there are not only tip issue.-redesign issue pending
+Jan-7-26- Need to submit DDR for rework (Probe Tips and the Peek cone)
+Jan-14-26- Tip parts machining done (for RT79), in inspection ","Milestone
+1-     30%  of Unpriced PO                    Inv#     52795                                                          
+2-    70%  competion / Delv          Inv#
+Feb-26-25-  All procedures received approved"
+838,Laila Parveen,RT79-87900-PN-R003,C6- Bore Gauge,,J# 71852,12/30/2024,7/31/2025,,,,,,,,,,,,
+839,Laila Parveen,RT79-87900-PN-R003,C6 Bore Gauge- Narrow Landing,,J# 71853,12/30/2024,7/31/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-88010-PN-R003- R.2,GROUP 8 TOOLS FOR C1R, ,J# 73007-73008,DEC-24-25, , , ,JAN-30-26,5%,,,,FEB-13-26,,FEB-20-26,"New order
+Jan-14-26- we are confirming delivery date by next conference call ","MILESTONE:
+1) 25% upon submission for procedures
+2) 25% Upon receipt of Major Materials
+3) 25% Upon start of assy
+4) 25% Upon delivery of Equipment & Docs"
+1094,Laila Parveen,RT79-88010-PN-R003- R.2,Calibrated Measuring Tape-BOM#6,,J# 73007,12/24/2025,2/20/2026,,,,,,,,,,,,
+1095,Laila Parveen,RT79-88010-PN-R003- R.2,E/F Protective Cap for Plug Gaug'g,,J# 73008,12/24/2025,2/20/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT79-88230-PN-R012,FEEDER TEMPLATES,0, J# 72139-72147,3/4/2025,10/17/2025,N/A, ,"Feb 13, 26
+Jan 23, 26",75%,On Schedule,,,"Feb 20, 26
+Jan 30, 26",,"Mar 6, 26
+Feb 13, 26","Oct-29-25- The shipment date has been changed due to a factory's floor capacity issue.
+Machining done-welding, inspection, assembly
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- Still on track, no issues at this time.
+Nov-26-25- The shipping date needs to be changed-the inspection, welding, and assembly are taking longer than originally planned.
+Dec-11-25- Fit check info should be from Candu
+Dec-17-25- manufacturing still in progress
+Jan-7-26- Fit test info-still waiting from Candu, Need to change the date due to Inspection backlog
+Jan-14-26- Still working on manufacturing","  Milestone:
+1) 30% upon submittal of Unpriced PO                           Inv# 52699
+2) 15% upon 40% ave.comp of MFG              Inv# 52863
+3) 15% upon 75% average completion of MFG                 Inv#
+4) 40% Upon Delivery of items and Docs                           Inv#"
+783,Laila Parveen,RT79-88230-PN-R012,"Large Template , MK TP-1A",,J# 72139,3/4/2025,11/24/2025,,,,,,,,,,,,
+784,Laila Parveen,RT79-88230-PN-R012,"Large Template , MK TP-1C",,J# 72140,3/4/2025,11/24/2025,,,,,,,,,,,,
+785,Laila Parveen,RT79-88230-PN-R012,"Large Template , MK TP-2A",,J# 72141,3/4/2025,11/24/2025,,,,,,,,,,,,
+788,Laila Parveen,RT79-88230-PN-R012,"Large Template , MK TP-2C",,J# 72142,3/4/2025,11/24/2025,,,,,,,,,,,,
+789,Laila Parveen,RT79-88230-PN-R012,"Small Template , MK TP-3A",,J# 72143,3/4/2025,11/24/2025,,,,,,,,,,,,
+790,Laila Parveen,RT79-88230-PN-R012,"Small Template , MK TP-3C",,J# 72144,3/4/2025,11/24/2025,,,,,,,,,,,,
+791,Laila Parveen,RT79-88230-PN-R012,"Small Template , MK TP-4A",,J# 72145,3/4/2025,11/24/2025,,,,,,,,,,,,
+792,Laila Parveen,RT79-88230-PN-R012,"Small Template , MK TP-4C",,J# 72146,3/4/2025,11/24/2025,,,,,,,,,,,,
+793,Laila Parveen,RT79-88230-PN-R012,Upper Feeder Template Assy,,J# 72147,3/4/2025,11/24/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87000-PN-R012,PITCH-YAW MOUNTING TABLE AND PITCH YAW MOUNTING FRAME TOOL,0,J# 72367-72368,May-5-25,Jul-29-26,?, ,"1set : Mar 19, 26
+           Feb 13, 26
+         Feb 6, 26
+2set : Jul 8, 26","1 set : 40%
+2 set : 10%",On Schedule,,,"1set : Mar 26, 26
+           Feb 20, 26
+           Feb 13, 26
+2set : Jul 15, 26",,"1set : Apr 9, 26
+            Mar 6, 26
+             Feb 27, 26
+2set : Jul 29, 26","Oct-6-25- Delivery date for 1set will be Feb 27,26- for integration testing
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- Still on track, no issues at this time.
+Nov-26-25- The date has been changed after reviewing a more realistic schedule.
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing for 1set
+Jan-14-26 Confirmed the realistic date for 1set shipping date","MileStone:
+1) 30% Upon submission of Unpriced PO's   05/30/25             Inv#   52946
+2) 25% Upon completion of  50% of Project  08/29/25            Inv#
+3) 20% Upon Completion of 80% of Project   02/13/26             Inv#
+4) 25% Upon Delivery                                            07/29/25           Inv# "
+818,Laila Parveen,RT98-87000-PN-R012,Pitch Yaw Mounting Frame Tool,,J# 72367,5/2/2025,7/29/2026,,,,,,,,,,,,
+819,Laila Parveen,RT98-87000-PN-R012,Pitch Yaw Mounting Table,,J# 72368,5/2/2025,7/29/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87000-PN-R018,BRT BELLOWS REMOVAL CUTTING TOOL FOR QINSHAN, ,J# 72924-72940,NEW, , , ,Jul-20-26,5%,,,,Jul-27-26,,Aug-10-26,"Dec-2-25- Kick off meeting @10am
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing", 
+1134,Laila Parveen,RT98-87000-PN-R018,Bellows Replacement Tool Base,,J# 72924,11/13/2025,8/10/2026,,,,,,,,,,,,
+1135,Laila Parveen,RT98-87000-PN-R018,Plug Insertion Tool,,J# 72925,11/13/2025,8/10/2026,,,,,,,,,,,,
+1136,Laila Parveen,RT98-87000-PN-R018,Shield Plug to Handling Tool Adapter,,J# 72926,11/13/2025,8/10/2026,,,,,,,,,,,,
+1137,Laila Parveen,RT98-87000-PN-R018,Shield Plug Manual Insertion Tool,,J# 72927,11/13/2025,8/10/2026,,,,,,,,,,,,
+1138,Laila Parveen,RT98-87000-PN-R018,Bellows Replacement Shield Plug,,J# 72928,11/13/2025,8/10/2026,,,,,,,,,,,,
+1139,Laila Parveen,RT98-87000-PN-R018,Bellows Removal Cutting Tool,,J# 72929,11/13/2025,8/10/2026,,,,,,,,,,,,
+1140,Laila Parveen,RT98-87000-PN-R018,Bellows Removal Cutting Tool Drive,,J# 72930,11/13/2025,8/10/2026,,,,,,,,,,,,
+1141,Laila Parveen,RT98-87000-PN-R018,Bellows Replacement Machine Chuck,,J# 72931,11/13/2025,8/10/2026,,,,,,,,,,,,
+1142,Laila Parveen,RT98-87000-PN-R018,Tool Mockup Components,,J# 72932,11/13/2025,8/10/2026,,,,,,,,,,,,
+1143,Laila Parveen,RT98-87000-PN-R018,ALT. weld head Mounting Tool,,J# 72933,11/13/2025,8/10/2026,,,,,,,,,,,,
+1144,Laila Parveen,RT98-87000-PN-R018,Tool Alignment Tool,,J# 72934,11/13/2025,8/10/2026,,,,,,,,,,,,
+1145,Laila Parveen,RT98-87000-PN-R018,Extension Adaptor,,J# 72935,11/13/2025,8/10/2026,,,,,,,,,,,,
+1146,Laila Parveen,RT98-87000-PN-R018,Junction Control Box  ( with Cables),,J# 72936,11/13/2025,8/10/2026,,,,,,,,,,,,
+1147,Laila Parveen,RT98-87000-PN-R018,Tool Ring Gauges ( Set),,J# 72937,11/13/2025,8/10/2026,,,,,,,,,,,,
+1148,Laila Parveen,RT98-87000-PN-R018,Axial Wear Ring .633,,J# 72938,11/13/2025,8/10/2026,,,,,,,,,,,,
+1009,Laila Parveen,RT98-87000-PN-R018,Axial Wear Ring Cut 1,,J# 72939,11/13/2025,8/10/2026,,,,,,,,,,,,
+1010,Laila Parveen,RT98-87000-PN-R018,Axial Wear Ring Cut 2,,J# 72940,11/13/2025,8/10/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87250-PN-R007,INSTALLATION WORKTABLE AND INSTALLATION WORKTABLE SUPPORT FRAME ,0,J# 72438-72441,June-2-25,Oct-16-26,N/A, ,"1set : Apr 30, 26
+         Feb 6, 26
+2set : Sep 25, 26",15%,On Schedule,,,"1set : May 7, 26
+             Feb 13, 26
+2set : Oct 2, 26",,"1set : May 21, 26
+          Feb 27, 26
+2set : Oct 16, 26","Oct-10-25-  New Updated Software schedule needs to be submitted to capture 2- different delivery dates
+Oct-29-25- No issue at this moment
+Nov-5-25- No issue at this moment
+Nov-11-25- Still on track, no issues at this time.
+Nov-26-25- We cannot met the 1set Feb- we have material hardware issue
+Dec-11-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26 Confirmed the realistic date for 1set shipping date","Milestone:
+1) 30% upon submittal of Unpriced PO             06/27/25        INV#
+2) 30% Upon 50% compltetion of PO                 12/12/25           INV#
+3) 20% When ready for Function Test                08/28/26          INV#
+4) 10%  After del'v of 1 Worktable & Supt frame   02/816/26    INV#
+5) 10%    After delivery of remain'g Items          10/16/26            INV#"
+828,Laila Parveen,RT98-87250-PN-R007,Installation Worktable,,J# 72438,6/2/2025,10/16/2026,,,,,,,,,,,,
+829,Laila Parveen,RT98-87250-PN-R007,Inst. Worktable Support Frame,,J# 72439,6/2/2025,10/16/2026,,,,,,,,,,,,
+831,Laila Parveen,RT98-87250-PN-R007,CT Shield Sleeve- Short,,J# 72440,6/2/2025,10/16/2026,,,,,,,,,,,,
+832,Laila Parveen,RT98-87250-PN-R007,Hook Assy For Extension Tool,,J# 72441,6/2/2025,10/16/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87530-PN-R001,GROUP 2G FOR QINSHAN, ,J# 72602-72604,7/25/2025,Oct-28-25,?, ,"Feb 13, 26
+Jan 20, 26
+Jan 9, 26",70%,,,,"Feb 20, 26
+Jan 27, 26
+Jan 16, 26",,"Mar 6, 26
+Feb 3, 26
+Jan 30, 26","Oct-29-25- The shipment date has been changed due to a backlog in the QC department.
+-detail parts in inspection, assembly
+Nov-26-25- The shipping date needs to be changed-need to do phosphate, dynaloy (98-31952-88-1-DD-C, 98-31952-89-1-DD-C)
+Dec-11-25- Still confirming the realistic date for the shipdate
+Jan-6-26- Need to change the date due to the Dynaloy process for “98-31952-87-1-DD-D,” “98-31952-88-1-DD-D,” and “98-31952-89-1-DD-D” was delayed, additional manufacturing work is still required.
+Jan-14-26- Need to change the date due to mistakes in the Dynaloy and Phosphate processes, the parts need to be sent back to the subcontract company.","Milestone:  ( KICK OFF MEETING- SEPT-4-25)
+1) 30% upon submission of Unpriced PO                  Inv#
+2) 70% delivery of all item and Docs                           Inv#"
+868,Laila Parveen,RT98-87530-PN-R001,Enhanced FIF Tool,,J# 72602,7/25/2025,10/28/2025,,,,,,,,,,,,
+869,Laila Parveen,RT98-87530-PN-R001,General Inspection Fixture,,J# 72603,7/25/2025,10/28/2025,,,,,,,,,,,,
+870,Laila Parveen,RT98-87530-PN-R001,Tool Channel Closure Dismantling Tool,,J# 72604,7/25/2025,10/28/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+1096,Laila Parveen,RT98-87540-PN-R002- Rev.1,GROUP 15 TOOLS FOR QINSHAN, ,J# 73009,DEC-24-25, , , ,JAN-30-26,5%,,,,FEB-13-26,,FEB-20-26,"New order
+Jan-14-26- we are confirming delivery date by next conference call ",NO MILESTONES-  CHANGE ORDER # 1
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87550-PN-R004- Rev.1,MANUFACTURE OF SFCR BELLOWS CUT TOOL FOR- Qinshan,0,"J# 72023- 72024 (Spares)
+J# 72331 ( 2)",2/11/2025,2/11/2025,?, ,"Feb 13, 26
+Jan 30, 26",75%,On Schedule,,,"Feb 20, 26
+Feb 6, 26",,"Mar 6, 26
+Feb 20, 26","Oct-22-25- Machining is still in progress
+Oct-29-25- Gear parts (BOM 9) need to modify-EDM made a mistake, scrap so need to make a new piece.
+Nov-5-25- Stil on track- no issues at this time
+Nov-12-25- RT-87550-0121-01-GA-E has issue during Inspection- sent e-mail Nov-12 2:23 still waiting for answer
+Nov-26-25- Still on track
+Dec-17-25- We need to send spme parts to subcontrackt but the company shutdow 2W so we need to pushout date.
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","Feb-15-2025-  Order Processed with RT79-   
+Milestone 
+1 )   25 % submit Unpriced PO                       Inv#   52643
+2)   15%  Receipt oof Major lead it                  Inv#  52859
+3 )    15%  Ready for Assy                               Inv#
+4)    15% -Ready for function/accept. test       Inv#
+5)    15% successful function test                  Inv#
+6)    15% completeion & delivery                    Inv#"
+759,Laila Parveen,RT98-87550-PN-R004- Rev.1,Bellows Cutting Tool (SFCR),,J# 72023,2/11/2025,9/19/2025,,,,,,,,,,,,
+760,Laila Parveen,RT98-87550-PN-R004- Rev.1,To Capture cost for Spare parts,,J# 72024,2/11/2025,9/19/2025,,,,,,,,,,,,
+761,Laila Parveen,RT98-87550-PN-R004- Rev.1,Shell Installatin Tool Assy,,J# 72331,4/24/2025,9/19/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87590-PN-R007,MOCKUP LWTF TROLLEY FOR QINSHAN,0,"J# 72280
+J# 72948",4/1/2025,8/15/2025,N/A, ,"Mar 16, 26
+Jan 16, 26",50%,,,,"Mar 23, 26
+Jan 23, 26",,"Apr 6, 26
+Feb 6, 26","Oct-21-25-  All documents were submitted -waiting Approval-changed the delivery date
+Oct-28-25- Meeting held regarding frame parts. Currently confirming cost and schedule.
+Nov-6-25- Frame parts quote will be submitted.
+Nov-12-25- got clarification info-need to review the info and submit Quote (Nov-14)
+Nov-26-25- RT-87640-70300-000-1-GA-E (J#72280) : Manufacturing completed
+RT-87640-70300-000-1-GA-E (J#72948) : Ordering material
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","Milestones:
+1)  0%- Upon Submission of Unpriced PO: May-9-25       Inv#. 52759
+2) 70%- Upon Delivery of Equipment % Doc: Aug-15-25  Inv# "
+809,Laila Parveen,RT98-87590-PN-R007,Mockup LWTF Trolley,,J# 72280,4/1/2025,8/15/2025,,,,,,,,,,,,
+810,Laila Parveen,RT98-87590-PN-R007,LWTF Mock-UP Trolley Frame,,J# 72948,11/18/2025,3/13/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87640-PN-R005,GROUP 7D (CARTS & RACK) FOR QINSHAN, ,"J#72818-72820
+J# 72967",9/29/2025,1/30/2026,?, ,"Feb 27, 26
+Feb 6, 26
+-
+Apr 1, 26",15%,,,,"Mar 6, 26
+Feb 13, 26
+-
+Apr 8, 26",,"Mar 20, 26
+Feb 27, 26
+-
+Apr 22, 26","Delivery date adjust from Jan-30-26- to Feb-27-26 due to workload
+Oct-7-25-  All procedures submitted
+Oct-15-25- Kick-off meeting
+Noissue at this time
+Nov-26-25- The shipping date needs to be changed-Because of large mill machine capacity issue.
+Dec-11-25- add the parts for 1pc ""EF tool rack""-shipdate will be Apr-22,26
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","Milestones:
+30% Submission of Unpriced PO:
+30% - Completion of Long lead Items
+40%  Upon completeion & Delivury"
+1001,Laila Parveen,RT98-87640-PN-R005,Tool EF Tool Rack,,J# 72818,9/29/2025,2/27/2026,,,,,,,,,,,,
+1002,Laila Parveen,RT98-87640-PN-R005,Transfer Carts for Lattice Sleeve & Plugs,,J# 72819,9/29/2025,2/27/2026,,,,,,,,,,,,
+1003,Laila Parveen,RT98-87640-PN-R005,CT Storage Rack,,J# 72820,9/29/2025,2/27/2026,,,,,,,,,,,,
+1004,Laila Parveen,RT98-87640-PN-R005,Tool EF Tool Rack,,J# 72967,12/4/2025,4/22/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+875,Laila Parveen,RT98-87710-PN-R006,END SHIELD MEASUREMENT TOOL FOR QINSHAN,0,J# 72621,aug-1-25,Nov-14-25,N/A, ,"Dec 22, 25
+Jan 5, 26",95%,On Schedule,,,"Dec 24, 25
+Jan 15, 26",,"Jan 23, 26
+Jan 14, 26","Oct-29-25- Under calibration, scheduled to be returned on Nov 7.
+Nov-5-25- 8 gauges return to factory for replacement
+Nov-12-25- Still waiting for indicator
+Nov-26-25- Still waiting for indicator (delivery will be tentaively 6 weeks)
+Dec-11-25- Stll waiting indicator
+Dec-17-25- Stll waiting indicator info
+Jan-6-26- Manufacturing completed(Dec 22), submitted Docs(Dec 24)-waiting approval
+Jan-14-26- Still waiting approval for QA reports",NO MILESTONES
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87920-PN-R015,GROUP 5F FOR QINSHAN, ,J#72811-72817,9/29/2025,2/5/2026,?, ,"Mar 6, 26
+Feb 5, 26",10%,,,,"Mar 13, 26
+Feb 12, 26",,"Mar 27, 26
+Feb 23, 26","Delivery date adjust from Feb-5-26- to Feb-23-26 due to workload
+Oct-6-25- All procedures submitted
+Noissue at this time
+Nov-26-25- The shipping date needs to be changed-Because the material is currently being ordered.
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Still working on manufacturing","Milestone:
+30% Upon Submission of Unpriced PO:
+30%  Completion of Long Lead Time
+40% Upon Completion and Delivery:"
+993,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72811,9/29/2025,2/23/2026,,,,,,,,,,,,
+994,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72812,9/29/2025,2/23/2026,,,,,,,,,,,,
+995,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72813,9/29/2025,2/23/2026,,,,,,,,,,,,
+996,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72814,9/29/2025,2/23/2026,,,,,,,,,,,,
+997,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72815,9/29/2025,2/23/2026,,,,,,,,,,,,
+998,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72816,9/29/2025,2/23/2026,,,,,,,,,,,,
+999,Laila Parveen,RT98-87920-PN-R015,PT Expander Mandrel Clamp,,J# 72817,9/30/2025,2/23/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-87920-PN-R017,GROUP 7C ( LIFTING BEAMS ) FOR QINSHAN, ,J#72840-72844,10/3/2025,2/13/2026,?, ,"Mar 13, 26
+Feb 27, 26
+Jan 23, 26",20%,,,,"Mar 20, 26
+Mar 6, 26
+Jan 30, 26",,"Apr 9, 26
+Mar 20, 26
+Feb 13, 26","Oct-6-25-  All Procedures Submitted
+Noissue at this time
+Nov-26-25- The shipping date needs to be changed-Because the material has not been ordered yet.
+Dec-17-25- Still on track
+Jan-7-26- Still working on manufacturing
+Jan-14-26- Confirmed the realistic date for shipping", 
+1015,Laila Parveen,RT98-87920-PN-R017,Tool E/F Lifting Beam,,J# 72840,10/3/2025,2/13/2026,,,,,,,,,,,,
+1016,Laila Parveen,RT98-87920-PN-R017,Tool Lifting Rig for Measuring  Bench,,J# 72841,10/3/2025,2/13/2026,,,,,,,,,,,,
+1018,Laila Parveen,RT98-87920-PN-R017,15T Spreader Beam for Fuel Channel,,J# 72842,10/3/2025,2/13/2026,,,,,,,,,,,,
+1019,Laila Parveen,RT98-87920-PN-R017,5.5 Ton Heavy Worktable Spreader Beam,,J# 72843,10/3/2025,2/13/2026,,,,,,,,,,,,
+1023,Laila Parveen,RT98-87920-PN-R017,6T Spreader Beam for  EFSP Removal,,J# 72844,10/3/2025,2/13/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-88010-PN-R010,GROUP 7A OF TOOLS FOR QINSHAN, ,J# 72713-72726,7/24/2025,3/16/2026,?, ,23-Feb-26,5%,,,,2-Mar-26,,16-Mar-26,"Noissue at this time
+Jan-7-26- Manufacturing is still in progress
+Jan-14-26- Requesting the meeting for Technical Summary of Exceptions (email Jan-13 4:58 PM)-need to confirm the realistic shipping date","Milestones:
+30%- Unpriced PO:
+30%- Completion fo r50% of Project
+40%- Upon completion- Delivery:"
+945,Laila Parveen,RT98-88010-PN-R010,Measure/Cut off Bench,,J# 72713,9/8/2025,3/16/2026,,,,,,,,,,,,
+946,Laila Parveen,RT98-88010-PN-R010,Scribing Tool,,J# 72714,9/8/2025,3/17/2026,,,,,,,,,,,,
+947,Laila Parveen,RT98-88010-PN-R010,Bore Gague & Ring Gauge Cal. Stor Trough,,J# 72715,9/8/2025,3/18/2026,,,,,,,,,,,,
+947,Laila Parveen,RT98-88010-PN-R010,Tool E/F Assy Bench,,J# 72716,9/8/2025,3/19/2026,,,,,,,,,,,,
+947,Laila Parveen,RT98-88010-PN-R010,Tool End Stop Bench (RH),,J# 72717,9/8/2025,3/20/2026,,,,,,,,,,,,
+949,Laila Parveen,RT98-88010-PN-R010,Tool P/T Measuring Bench,,J# 72718,9/8/2025,3/21/2026,,,,,,,,,,,,
+951,Laila Parveen,RT98-88010-PN-R010,S/A Preparation Bench ( LH),,J# 72719,9/8/2025,3/22/2026,,,,,,,,,,,,
+952,Laila Parveen,RT98-88010-PN-R010,S/A Preparation Bench ( RH),,J# 72720,9/8/2025,3/23/2026,,,,,,,,,,,,
+954,Laila Parveen,RT98-88010-PN-R010,Expander Support Stand,,J# 72721,9/8/2025,3/24/2026,,,,,,,,,,,,
+956,Laila Parveen,RT98-88010-PN-R010,Roller Supports for Measuring Bench,,J# 72722,9/8/2025,3/25/2026,,,,,,,,,,,,
+957,Laila Parveen,RT98-88010-PN-R010,Roller Support Frame,,J# 72723,9/8/2025,3/26/2026,,,,,,,,,,,,
+958,Laila Parveen,RT98-88010-PN-R010,End Stop Bench ( LH),,J# 72724,9/8/2025,3/27/2026,,,,,,,,,,,,
+959,Laila Parveen,RT98-88010-PN-R010,SA Prep Bench (RH) Supt Stand,,J# 72725,9/8/2025,3/28/2026,,,,,,,,,,,,
+960,Laila Parveen,RT98-88010-PN-R010,Prep Bench ( LH) Supt Stand,,J# 72726,9/8/2025,3/29/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Laila Parveen,RT98-88230-PN-R010,FEEDER TEMPLATES,0,J# 72234-72242,3/20/2025,10/17/2025,N/A, ,"Mar 13, 26
+Feb 13, 26",70%,On Schedule,,,"Mar 20, 26
+Feb 20, 26",,"Apr 3, 26
+Mar 6, 26","Oct-22-25- Machining is still in progress
+Oct-29-25- The shipment date has been changed due to a factory's floor capacity issue.
+Machining done-welding, inspection, assembly
+Nov-12-25- Shipdate need to be revised-To prioritize the processing of RT79 parts
+Nov-26-25-  The shipping date needs to be changed-rechecked the realistic date in order to prioritize the RT79 parts.
+Dec-17-25- Still on track
+Jan-7-26- Fit test info-still waiting from Candu, Need to change the date due to Inspection backlog
+Jan-14-26- Still working on manufacturing","Milestone:
+1) 30% upon submittal of Unpriced PO                           Inv# 52700
+2) 15% upon 40% average compltn of MFG           Inv# 52864
+3) 15% upon 75% average completion of MFG                 Inv#
+4) 40% Upon Delivery of items and Docs                           Inv#"
+795,Laila Parveen,RT98-88230-PN-R010,"Large Template , MK TP-1A",,J# 72234,3/20/2025,11/24/2025,,,,,,,,,,,,
+796,Laila Parveen,RT98-88230-PN-R010,"Large Template , MK TP-1C",,J# 72235,3/20/2025,11/24/2025,,,,,,,,,,,,
+797,Laila Parveen,RT98-88230-PN-R010,"Large Template , MK TP-2A",,J# 72236,3/20/2025,11/24/2025,,,,,,,,,,,,
+800,Laila Parveen,RT98-88230-PN-R010,"Large Template , MK TP-2C",,J# 72237,3/20/2025,11/24/2025,,,,,,,,,,,,
+801,Laila Parveen,RT98-88230-PN-R010,"Small Template , MK TP-3A",,J# 72238,3/20/2025,11/24/2025,,,,,,,,,,,,
+802,Laila Parveen,RT98-88230-PN-R010,"Small Template , MK TP-3C",,J# 72239,3/20/2025,11/24/2025,,,,,,,,,,,,
+1083,Laila Parveen,RT98-88230-PN-R010,"Small Template , MK TP-4A",,J# 72240,3/20/2025,11/24/2025,,,,,,,,,,,,
+1084,Laila Parveen,RT98-88230-PN-R010,"Small Template , MK TP-4C",,J# 72241,3/20/2025,11/24/2025,,,,,,,,,,,,
+807,Laila Parveen,RT98-88230-PN-R010,Upper Feeder Template Assy,,J# 72242,3/20/2025,11/24/2025,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+,Raza Talpur,RT98-87540-PN-R003,PA STUD INSTALLATION TOOL & SPRING PIN INSTALLATION TOOL-HARDWARE TOOL QINSHAN, ,J# 73038-73040,JAN-7-26, , , ,MAR-9-26,5%,,,,MAR-23-26,,Mar-30-26,"New Order
+Jan-9-26- Welding / Painiting / Dim& Visual procedures submitted ( Pending)
+Jan-14-26- we are confirming delivery date by next conference call",NO MILESTONE- DELIVERY COMPLETE WITH QA DOC'S
+1124,Raza Talpur,RT98-87540-PN-R003,PA Stud Installation Tool,,J# 73038,1/7/2026,3/30/2026,,,,,,,,,,,,
+1125,Raza Talpur,RT98-87540-PN-R003,Support Brkt for spring Inst Tool,,J# 73039,1/7/2026,3/30/2026,,,,,,,,,,,,
+1126,Raza Talpur,RT98-87540-PN-R003,Hardware for Spring Pin Inst Tool,,J# 73040,1/7/2026,3/30/2026,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+1030,Wendy Wu,RT79-87540-PN-R004,STUD INSTRATION TOOL, ,J# 72966,12/4/2025,2/9/2026, , ,"Feb 13, 26
+Jan 19, 26",20%,On Schedule,,,"Feb 20, 26
+Jan 26, 26",,"Mar 6, 26
+Feb 9, 26","Dec-11-25- Still on track
+Jan-7-26- Waiting for Candu answer about DDR
+Need to confirm the each date
+Jan-14-26- Need to change the each date due to the welding backlog", 
+,,,,,,,,,,,,,,,,,,,
+,Wendy Wu,RT98-87000-PN-R021,FEEDER COUPLING ASSY FOR QINSHAN, ,J# 73001-73004,DEC-23-25, , , ,Feb-3-26,5%,,,,feb-17-26,,feb-24-26,"New order
+Dec-31-25- All Procedures Submitted
+Jan-9-26- RT-87120-70184-002-1-DD-B- 24 gauge CRS1018 not commercially stocked
+advise if 1008 is acceptable ( pending)
+Jan-14-26- we are confirming delivery date by next conference call ",NO MILESTONE:  DELIVERY OF ALL ITEM + DOCUMENTS
+1065,Wendy Wu,RT98-87000-PN-R021,Seal Ring Washer Mockup,,J# 73001,12/23/2025,2/24/2026,,,,,,,,,,,,
+1066,Wendy Wu,RT98-87000-PN-R021,Graylock Hub Mockup,,J# 73002,12/23/2025,2/24/2026,,,,,,,,,,,,
+1067,Wendy Wu,RT98-87000-PN-R021,Flange,,J# 73003,12/23/2025,2/24/2026,,,,,,,,,,,,
+1068,Wendy Wu,RT98-87000-PN-R021,Lock Plate,,J# 73004,12/23/2025,2/24/2026,,,,,,,,,,,,

@@ -1,68 +1,82 @@
 当前小目标可以通过读取 ./sharepoint.md 获取信息
 
 已完成部分:
-- ExportToCSV.bas 是一个测试文件, 它能够在动态目的地(根据用户名)生成当前工作簿的csv数据
+- OE Log文件已经能够动态生成当前工作簿的csv数据
 - 该csv已验证可以被sharepoint读取
 
 接下来的任务
-- 将 ExportToCSV 移植到 Order Entry Log.xlsm 文件中并生成符合标准的 csv 文件
 - 在 sharepoint 中添加按钮并调用 power automation
 - 实现 power automation 的逻辑, 使其能够正确进行差异分析, 并将新内容添加到 sharepoint 中
 
-./Order Entry Log - csv.csv 是一个样板导出, 你可以阅读它获取 OE 文件的结构
-./PO Report.csv 是一个 sharepoint 文件的 csv 导出, 你可以阅读它获取 sharepoint 文件的结构
+./Candu_Orders_xxxxx_xxxxx.csv 是一个样板导出, 你可以阅读它获取 OE 文件的结构
+./PO Report (Candu)(test).csv 是一个 sharepoint 文件的 csv 导出, 你可以阅读它获取 sharepoint 文件的结构
 
-你可以注意到, 在 OE Log 文件中, 对于一个 OE number, 有多个行对应
-文件的结构应该如下
-一个 PO 行 & 属于该 PO 的所有 order item 行
-每个行都应该被添加到相同PO下
+对于PO Report (Candu)(test).csv来说, 它有两种类型的行
+- PO行
+- order item行
+
+PO行也有两种情况, 即
+- A列(order item id)有数字的情况 (该PO行下方没有order item)
+- A列(order item id)为'-'或空的情况 (该PO行下方有order item, 所有的PO行与order item都有相同的PO number)
 
 对于 PO 行, 下面的对应关系是 PO 列的内容, 及它与 Order Entry Log 文件的列的关系 (括号中为列号):
-PO Report - PO:                           OE - P.O. (L)
-PO Report - Title:                        留空
-PO Report - Rev:                          默认为 0
-PO Report - Job #:                        OE - 该 PO 下所有行的 Job # (如果只有一个, 则列出; 若有多个, 则显示范围: 72580-72583)
-PO Report - OE Date:                      列出该 PO 下所有不同的 DWG Rel. (H), 以 alt+enter 间隔
-PO Report - PO Effective:                 留空
-PO Report - PO Delivery:                  OE - Del. Req'd (P)
-PO Report - FAT:                          留空
-PO Report - Witness:                      留空
-PO Report - Manufacturing Completed:      留空
-PO Report - Submission of DOCs:           留空
-PO Report - Predicted Date:               留空
-PO Report - Current Status:               留空
-PO Report - % Completed (Manufacturing):  留空
-PO Report - Forcast:                      建立一个 dropdown, 取值为: On Schedule, Changed, NP Processed, [empty]. 值保持为空白
-PO Report - Expeditor:                    建立一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
-PO Report - Milestones:                   留空
+PO Report - Order Item ID                         OE - Order Item ID (AA) 根据是否有多个order item决定是空白或有值
+PO Report - Expeditor:                            建立一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
+PO Report - PO:                                   OE - P.O. (L)
+PO Report - Title:                                留空  手动添加
+PO Report - Rev:                                  默认为 0  手动添加
+PO Report - Job #:                                OE - 该 PO 下所有行的 Job # (具体格式见下方 Job # 格式)
+PO Report - OE Date:                              列出该 PO 下所有不同的 OE - DWG Rel. (H), 以 alt+enter 间隔
+PO Report - PO Delivery:                          列出该 PO 下所有不同的 OE - Del. Req'd (P), 以 alt+enter 间隔
+PO Report - FAT:                                  留空
+PO Report - Witness:                              留空
+PO Report - Manufacturing Compeletion Date:       留空
+PO Report - % Completed (Manufacturing):          留空
+PO Report - Forcast:                              建立一个 dropdown, 取值为: On Schedule, Changed, NP Processed, [empty]. 值保持为空白
+PO Report - QA Package Submission:                留空
+PO Report - Accepted:                             留空
+PO Report - DOC Submission:                       留空
+PO Report - Accepted:                             留空
+PO Report - Predicted Ship Date:                  留空
+PO Report - Current Status:                       留空
+PO Report - Milestones:                           留空
 
 对于 PO 行下方的 order item 行, 下面的对应关系是列的内容, 及它与 Order Entry Log 文件的列的关系 (括号中为列号):
-PO Report - PO:                           留空
-PO Report - Title:                        OE - Descriptions (J)
-PO Report - Rev:                          OE - Rev (F)
-PO Report - Job #:                        OE - Job # (B)
-PO Report - OE Date:                      OE - DWG Rel. (H)
-PO Report - PO Effective:                 留空
-PO Report - PO Delivery:                  OE - Del. Req'd (P)
-PO Report - FAT:                          留空
-PO Report - Witness:                      留空
-PO Report - Manufacturing Completed:      留空
-PO Report - Submission of DOCs:           留空
-PO Report - Predicted Date:               留空
-PO Report - Current Status:               留空
-PO Report - % Completed (Manufacturing):  留空
-PO Report - Forcast:                      建立一个 dropdown, 取值为: On Schedule, Changed, NP Processed, [empty]. 值保持为空白
-PO Report - Expeditor:                    建立一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
-PO Report - Milestones:                   留空
+PO Report - Order Item ID                         OE - Order Item ID (AA)
+PO Report - Expeditor:                            建立一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
+PO Report - PO:                                   OE - P.O. (L)
+PO Report - Title:                                OE - Descriptions (J)
+PO Report - Rev:                                  OE - Rev (F)
+PO Report - Job #:                                OE - Job # (B)
+PO Report - OE Date:                              OE - DWG Rel. (H)
+PO Report - PO Delivery:                          OE - Del. Req'd (P)
+PO Report - FAT:                                  留空
+PO Report - Witness:                              留空
+PO Report - Manufacturing Compeletion Date:       留空
+PO Report - % Completed (Manufacturing):          留空
+PO Report - Forcast:                              建立一个 dropdown, 取值为: On Schedule, Changed, NP Processed, [empty]. 值保持为空白
+PO Report - QA Package Submission:                留空
+PO Report - Accepted:                             留空
+PO Report - DOC Submission:                       留空
+PO Report - Accepted:                             留空
+PO Report - Predicted Ship Date:                  留空
+PO Report - Current Status:                       留空
+PO Report - Milestones:                           留空
+
+Job # 格式
+- 如果只有一个Job #, 则列出; 
+- 若有多个, 则
+  - 显示范围: 72580-72583, 72580~72583; 
+  - 直接列出:  j# 71851 & 71873 - SPARES J# 72330
+- 所有的数据均以'J# '开头
+- job # 保证是5位整数
 
 power automation 的具体逻辑
-- 寻找 OE csv 中所有 PO Report 中没有的行, 将这些新的行添加到 PO Report 中所有
-- 应该首先获取 PO Report 的最后一行内容, 读取 PO 和 Job #
-- 在 OE csv 中找到这一行, 并标记, 例如 A
-- 将所有 OE csv 的 A 行下方的所有行按逻辑添加到 PO Report 的最下方
+- 寻找 PO Report (Candu)(test).csv 中所有 PO Report 中没有的行, 将这些新的行添加到 PO Report 中
+- 查找应该基于A列的order item id, 这个值相当于每个order item行的primary key
+- 对于找到的order item行, 首先查看其PO number(L列)是否存在于本sheet, 
+  - 如果存在, 则在最后一个该po number的行后面插入一行, 将这条未记录的信息填入
+  - 如果不存在, 则在表格的最后一行往下数2行插入, 即PO间间隔一行
 
-额外的追溯逻辑 (可选)
-- 当前 PO Report 只包含了 PO 行, 添加一个按钮, 用于追溯已经输入的所有 PO 行下的 order items 行
-- 对于每个 PO 行, 获取其首列 PO 列的值, 
-- 在 OE csv 中所有行中查找 L 列包含该值的行, 
-- 根据找到的个数, 在 PO 行下方插入新行, 并按照对应关系更新这些新行的数据
+当前任务, 先引导我创建一个按钮, 绑定脚本, 在控制台显示 hello world
+先写一个todos, 在我批准后逐步进行
