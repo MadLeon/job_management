@@ -37,13 +37,13 @@ Sub ExportCanduOrders()
     timestamp = Format(Now(), "yyyymmdd_hhmmss")
     
     ' 3. Build CSV file path (in project data folder)
-    csvFilePath = ThisWorkbook.Path & "\data\Candu_Orders_" & timestamp & ".csv"
+    csvFilePath = ThisWorkbook.Path & "\Candu_Orders_" & timestamp & ".csv"
     
     ' 4. Get last row with data
-    lastRow = deliveryWS.Cells(deliveryWS.Rows.Count, 1).End(xlUp).Row
+    lastRow = deliveryWS.Cells(deliveryWS.Rows.Count, 1).End(xlUp).row
     
     ' 5. Build header row (column names from first row)
-    columnCount = 16 ' Based on DELIVERY SCHEDULE structure
+    columnCount = 27 ' Based on DELIVERY SCHEDULE structure (A-AA columns)
     headerRow = BuildHeaderRow(deliveryWS, columnCount)
     csvContent = headerRow & vbCrLf
     
@@ -59,13 +59,16 @@ Sub ExportCanduOrders()
         End If
     Next r
     
-    ' 7. Write CSV content to file
+    ' 7. Delete old Candu order CSV files before creating new one
+    Call DeleteOldCanduCSVFiles(ThisWorkbook.Path)
+    
+    ' 8. Write CSV content to file
     fileNumber = FreeFile
     Open csvFilePath For Output As fileNumber
     Print #fileNumber, csvContent
     Close fileNumber
     
-    ' 8. Display success message
+    ' 9. Display success message
     MsgBox "Candu orders exported successfully!" & vbCrLf & _
            "File: " & csvFilePath, vbInformation, "Export Complete"
     
@@ -133,3 +136,46 @@ Function BuildDataRow(ws As Worksheet, rowNum As Long, colCount As Integer) As S
     
     BuildDataRow = dataRow
 End Function
+
+' Delete old Candu order CSV files from the specified folder
+' Parameters: folderPath - Path to the folder to search for old CSV files
+' Finds all files matching pattern "Candu_Orders_*.csv" and deletes them
+Sub DeleteOldCanduCSVFiles(folderPath As String)
+    Dim fileName As String
+    Dim filePath As String
+    Dim deletedCount As Integer
+    
+    On Error GoTo ErrorHandler
+    
+    deletedCount = 0
+    
+    ' Find first matching file
+    fileName = Dir(folderPath & "\Candu_Orders_*.csv")
+    
+    ' Loop through all matching files and delete them
+    Do While fileName <> ""
+        filePath = folderPath & "\" & fileName
+        
+        ' Delete the file
+        Kill filePath
+        deletedCount = deletedCount + 1
+        Debug.Print "Deleted old CSV file: " & filePath
+        
+        ' Find next matching file
+        fileName = Dir()
+    Loop
+    
+    If deletedCount > 0 Then
+        Debug.Print "Total old Candu CSV files deleted: " & deletedCount
+    Else
+        Debug.Print "No old Candu CSV files found to delete"
+    End If
+    
+    Exit Sub
+
+ErrorHandler:
+    ' If error occurs, just continue (e.g., file in use)
+    Debug.Print "Error deleting old CSV files: " & Err.Description
+End Sub
+
+

@@ -24,6 +24,9 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     Dim inputWS As Worksheet
     Dim lastRowDelivery As Long
     Dim deliveryWS As Worksheet
+    Dim startTime As Double, stepTime As Double
+    
+    startTime = Timer
 
     ' ========== Step 1: Set Object Variables and Initialize DB ==========
     dbPath = mod_PublicData.DB_PATH ' Use public constant from mod_PublicData
@@ -45,6 +48,7 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     Dim partNumber As String, revision As String, quantity As String
     Dim poNumber As String, lineNumber As String, actualPrice As String
     Dim deliveryRequiredDate As String, customerContact As String
+    Dim drawingReleaseDate As String, todayDate As Date
 
     oeNumber = Trim(inputWS.Range("OE").Value)
     jobNumber = Trim(inputWS.Range("JobNum").Value)
@@ -63,6 +67,22 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
         deliveryRequiredDate = FormatDateForDatabase(deliveryRequiredDate)
     End If
 
+    ' Get current system date for drawing_release_date
+    ' Format as M/D/YYYY for display in H column, and YYYY-MM-DD for database
+    todayDate = Date()
+    drawingReleaseDate = Format(todayDate, "YYYY-MM-DD")
+
+    ' ========== Generate PO Number if Empty or NPO ==========
+    ' If PO is empty or "NPO", generate a fixed format: NPO-{oe_number}
+    ' One OE number corresponds to one PO, which can have multiple jobs and order items
+    If poNumber = "" Or UCase(poNumber) = "NPO" Or UCase(poNumber) = "NPO#" Then
+        poNumber = "NPO-" & oeNumber
+    End If
+
+    ' ========== Normalize PO Number ==========
+    ' Apply standardization rules: uppercase, remove spaces, convert Rev. to R., add decimals, remove leading zeros
+    poNumber = NormalizePONumber(poNumber)
+
     ' ========== Step 3: Validate Critical Input ==========
     If oeNumber = "" Or jobNumber = "" Or poNumber = "" Then
         MsgBox "Critical data missing: OE, JobNum, and PO are required!", vbCritical
@@ -75,8 +95,10 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     ' ========== Step 4: Cascading Insert Operations ==========
 
     ' 4.1 Find or Create Customer
+    stepTime = Timer
     Dim customerId As Variant
     customerId = FindOrCreateCustomer(customerName)
+    Debug.Print "Step 4.1 (Find/Create Customer): " & (Timer - stepTime) & "s"
     If IsNull(customerId) Then
         Debug.Print "Failed to find or create customer: " & customerName
         mod_SQLite.CloseSQLite
@@ -84,8 +106,10 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     End If
 
     ' 4.2 Find or Create Customer Contact
+    stepTime = Timer
     Dim contactId As Variant
     contactId = FindOrCreateCustomerContact(CLng(customerId), customerContact)
+    Debug.Print "Step 4.2 (Find/Create Contact): " & (Timer - stepTime) & "s"
     If IsNull(contactId) Then
         Debug.Print "Failed to find or create customer contact: " & customerContact
         mod_SQLite.CloseSQLite
@@ -93,8 +117,10 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     End If
 
     ' 4.3 Find or Create Purchase Order
+    stepTime = Timer
     Dim poId As Variant
     poId = FindOrCreatePurchaseOrder(poNumber, oeNumber, CLng(contactId))
+    Debug.Print "Step 4.3 (Find/Create PO): " & (Timer - stepTime) & "s"
     If IsNull(poId) Then
         Debug.Print "Failed to find or create purchase order: " & poNumber
         mod_SQLite.CloseSQLite
@@ -102,8 +128,10 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     End If
 
     ' 4.4 Find or Create Job
+    stepTime = Timer
     Dim jobId As Variant
     jobId = FindOrCreateJob(jobNumber, CLng(poId))
+    Debug.Print "Step 4.4 (Find/Create Job): " & (Timer - stepTime) & "s"
     If IsNull(jobId) Then
         Debug.Print "Failed to find or create job: " & jobNumber
         mod_SQLite.CloseSQLite
@@ -111,32 +139,49 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     End If
 
     ' 4.5 Find or Create Part
+    stepTime = Timer
     Dim partId As Variant
     If partNumber <> "" Then
         partId = FindOrCreatePart(partNumber, revision)
     Else
         partId = Null
     End If
+    Debug.Print "Step 4.5 (Find/Create Part): " & (Timer - stepTime) & "s"
 
     ' 4.6 Create Order Item
+    stepTime = Timer
     Dim orderItemId As Variant
-    orderItemId = CreateOrderItem(CLng(jobId), partId, lineNumber, quantity, actualPrice, deliveryRequiredDate)
-    If IsNull(orderItemId) Then
-        Debug.Print "Failed to create order item"
+    orderItemId = CreateOrderItem(CLng(jobId), partId, lineNumber, quantity, actualPrice, deliveryRequiredDate, drawingReleaseDate)
+    Debug.Print "Step 4.6 (Create Order Item): " & (Timer - stepTime) & "s"
+    If IsNull(orderItemId) Or orderItemId = "" Or CLng(orderItemId) = 0 Then
+        Debug.Print "ERROR: Failed to create or update order item - returned: " & IIf(IsNull(orderItemId), "Null", orderItemId)
         Exit Sub
     End If
 
     ' ========== Step 5: Write Order Item ID to Spreadsheet ==========
     ' If a row number was provided, write the order_item ID to column AA (column 27)
+    ' and write the drawing_release_date to column H (column 8) in M/D/YYYY format
     If rowNumber > 0 Then
         On Error Resume Next
         Set deliveryWS = ThisWorkbook.Sheets("DELIVERY SCHEDULE")
         If Not deliveryWS Is Nothing Then
             ' Disable events temporarily to prevent Worksheet_Change from triggering
             Application.EnableEvents = False
-            deliveryWS.Cells(rowNumber, 27).Value = CLng(orderItemId)
+            Dim orderItemIdValue As Long
+            orderItemIdValue = CLng(orderItemId)
+            
+            ' Write order_item ID to column AA (column 27)
+            deliveryWS.Cells(rowNumber, 27).Value = orderItemIdValue
+            Debug.Print "Order Item ID " & orderItemIdValue & " written to DELIVERY SCHEDULE row " & rowNumber & " column AA"
+            
+            ' Write drawing_release_date to column H (column 8) in M/D/YYYY format
+            ' Convert from YYYY-MM-DD to M/D/YYYY
+            Dim displayDate As String
+            displayDate = Format(todayDate, "M/D/YYYY")
+            deliveryWS.Cells(rowNumber, 8).Value = displayDate
+            Debug.Print "Drawing Release Date " & displayDate & " written to DELIVERY SCHEDULE row " & rowNumber & " column H"
+            
             Application.EnableEvents = True
-            Debug.Print "Order Item ID " & orderItemId & " written to DELIVERY SCHEDULE row " & rowNumber & " column AA"
         End If
         On Error GoTo 0
     End If
@@ -150,6 +195,7 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     ' and be called sequentially without repeated initialization
     
     Debug.Print "Order item created successfully! Order Item ID: " & orderItemId
+    Debug.Print "========== TOTAL TIME: " & (Timer - startTime) & " seconds =========="
 
     Exit Sub
 
@@ -157,6 +203,80 @@ HandleError:
     MsgBox "Error: " & Err.Description, vbCritical
     ' NOTE: Do NOT close database here either - let the caller handle cleanup
 End Sub
+
+' Normalize PO number according to standard rules
+' Rules: remove spaces, uppercase, Rev.→R., ensure dash before R., -RN→-R.N, R.0N→R.N
+Function NormalizePONumber(poNumber As String) As String
+    Dim normalized As String
+    Dim i As Long
+    Dim char As String
+    Dim result As String
+    
+    If Trim(poNumber) = "" Then
+        NormalizePONumber = ""
+        Exit Function
+    End If
+    
+    normalized = poNumber
+    
+    ' Step 1: Remove all spaces
+    normalized = Replace(normalized, " ", "")
+    
+    ' Step 2: Convert to uppercase
+    normalized = UCase(normalized)
+    
+    ' Step 3: Replace REV. with R.
+    normalized = Replace(normalized, "REV.", "R.")
+    
+    ' Step 4: Ensure dash before R.
+    result = ""
+    For i = 1 To Len(normalized)
+        char = Mid(normalized, i, 1)
+        If i < Len(normalized) - 1 Then
+            If char Like "[A-Z0-9]" And Mid(normalized, i + 1, 2) = "R." Then
+                result = result & char & "-"
+            Else
+                result = result & char
+            End If
+        Else
+            result = result & char
+        End If
+    Next i
+    normalized = result
+    
+    ' Step 5: Convert -RN to -R.N (single digit only)
+    result = ""
+    i = 1
+    Do While i <= Len(normalized)
+        If i <= Len(normalized) - 2 Then
+            If Mid(normalized, i, 2) = "-R" And Mid(normalized, i + 2, 1) Like "[0-9]" Then
+                If i + 3 > Len(normalized) Or Not (Mid(normalized, i + 3, 1) Like "[0-9]") Then
+                    result = result & "-R." & Mid(normalized, i + 2, 1)
+                    i = i + 3
+                    GoTo continue_loop
+                End If
+            End If
+        End If
+        result = result & Mid(normalized, i, 1)
+        i = i + 1
+continue_loop:
+    Loop
+    normalized = result
+    
+    ' Step 6: Remove leading zeros from R.0N
+    normalized = Replace(normalized, "R.0", "R.")
+    
+    ' Step 7: Clean up spaces around dashes
+    result = ""
+    For i = 1 To Len(normalized)
+        char = Mid(normalized, i, 1)
+        If char <> " " Then
+            result = result & char
+        End If
+    Next i
+    
+    NormalizePONumber = result
+End Function
 
 ' Find existing customer or create new one
 ' Parameters: customerName - Name of the customer
@@ -251,19 +371,29 @@ Function FindOrCreatePurchaseOrder(poNumber As String, oeNumber As String, conta
 End Function
 
 ' Find existing job or create new one
+' If job exists, overwrite the po_id and priority with new values
 ' Parameters: jobNumber - Job number
 '             poId - Purchase Order ID
 ' Returns: Job ID, or Null on failure
 Function FindOrCreateJob(jobNumber As String, poId As Long) As Variant
     Dim results As Variant
     Dim insertSQL As String
+    Dim updateSQL As String
 
-    ' Try to find existing job
+    ' Try to find existing job with matching job_number
     results = mod_SQLite.ExecuteQuery("SELECT id FROM job WHERE job_number = '" & Replace(jobNumber, "'", "''") & "' LIMIT 1")
 
     If Not IsNull(results) Then
-        ' Job exists
-        FindOrCreateJob = results(0)(0)
+        ' Job exists, update it with new po_id and priority
+        Dim jobId As Long
+        jobId = results(0)(0)
+        
+        updateSQL = "UPDATE job SET po_id = " & poId & ", priority = 'Normal', updated_at = datetime('now', 'localtime') " & _
+                    "WHERE id = " & jobId
+        
+        If mod_SQLite.ExecuteNonQuery(updateSQL) Then
+            FindOrCreateJob = jobId
+        End If
         Exit Function
     End If
 
@@ -312,17 +442,21 @@ Function FindOrCreatePart(drawingNumber As String, revision As String) As Varian
     End If
 End Function
 
-' Create a new order item entry
+' Create or update order item entry
+' If order item with same job_id and line_number exists, update it (overwrite)
+' Otherwise, create new one
 ' Parameters: jobId - Job ID
 '             partId - Part ID (can be Null)
 '             lineNumber - Line number within the job
 '             quantity - Order quantity
 '             actualPrice - Unit price
 '             deliveryRequiredDate - Delivery deadline
+'             drawingReleaseDate - Drawing release date (in YYYY-MM-DD format)
 ' Returns: Order Item ID, or Null on failure
 Function CreateOrderItem(jobId As Long, partId As Variant, lineNumber As String, quantity As String, _
-                         actualPrice As String, deliveryRequiredDate As String) As Variant
+                         actualPrice As String, deliveryRequiredDate As String, drawingReleaseDate As String) As Variant
     Dim insertSQL As String
+    Dim updateSQL As String
     Dim results As Variant
     Dim partIdClause As String
 
@@ -338,17 +472,50 @@ Function CreateOrderItem(jobId As Long, partId As Variant, lineNumber As String,
     qtyValue = IIf(quantity = "", 0, CLng(quantity))
     priceValue = IIf(actualPrice = "", 0, CDbl(actualPrice))
 
-    ' Create order item
-    insertSQL = "INSERT INTO order_item (job_id, part_id, line_number, quantity, actual_price, delivery_required_date, status, created_at, updated_at) " & _
+    ' Check if order item with same job_id and line_number already exists
+    results = mod_SQLite.ExecuteQuery("SELECT id FROM order_item WHERE job_id = " & jobId & " AND line_number = '" & Replace(lineNumber, "'", "''") & "' LIMIT 1")
+
+    If Not IsNull(results) Then
+        ' Order item exists, update it (overwrite)
+        Dim orderItemId As Long
+        orderItemId = results(0)(0)
+        
+        Debug.Print "Order item exists (ID: " & orderItemId & "), updating..."
+        
+        updateSQL = "UPDATE order_item SET part_id = " & partIdClause & ", quantity = " & qtyValue & ", actual_price = " & priceValue & ", " & _
+                    "delivery_required_date = '" & Replace(deliveryRequiredDate, "'", "''") & "', drawing_release_date = '" & Replace(drawingReleaseDate, "'", "''") & "', status = 'PENDING', updated_at = datetime('now', 'localtime') " & _
+                    "WHERE id = " & orderItemId
+        
+        If mod_SQLite.ExecuteNonQuery(updateSQL) Then
+            Debug.Print "Order item updated successfully. ID: " & orderItemId
+            CreateOrderItem = orderItemId
+        Else
+            Debug.Print "ERROR: Failed to update order item. SQL: " & updateSQL
+            CreateOrderItem = Null
+        End If
+        Exit Function
+    End If
+
+    ' Order item doesn't exist, create new one
+    insertSQL = "INSERT INTO order_item (job_id, part_id, line_number, quantity, actual_price, delivery_required_date, drawing_release_date, status, created_at, updated_at) " & _
                 "VALUES (" & jobId & ", " & partIdClause & ", '" & Replace(lineNumber, "'", "''") & "', " & qtyValue & ", " & priceValue & ", " & _
-                "'" & Replace(deliveryRequiredDate, "'", "''") & "', 'PENDING', datetime('now', 'localtime'), datetime('now', 'localtime'))"
+                "'" & Replace(deliveryRequiredDate, "'", "''") & "', '" & Replace(drawingReleaseDate, "'", "''") & "', 'PENDING', datetime('now', 'localtime'), datetime('now', 'localtime'))"
 
     If mod_SQLite.ExecuteNonQuery(insertSQL) Then
         ' Return last inserted ID
         results = mod_SQLite.ExecuteQuery("SELECT last_insert_rowid()")
         If Not IsNull(results) Then
-            CreateOrderItem = results(0)(0)
+            Dim newOrderItemId As Long
+            newOrderItemId = results(0)(0)
+            Debug.Print "Order item created successfully. New ID: " & newOrderItemId
+            CreateOrderItem = newOrderItemId
+        Else
+            Debug.Print "ERROR: Failed to retrieve last inserted ID after insert"
+            CreateOrderItem = Null
         End If
+    Else
+        Debug.Print "ERROR: Failed to insert order item. SQL: " & insertSQL
+        CreateOrderItem = Null
     End If
 End Function
 

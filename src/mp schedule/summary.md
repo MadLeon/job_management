@@ -64,3 +64,23 @@ Const DB_PATH As String = "\\rtdnas2\OE\record.db"
 ### 3. 模糊匹配优先级
 - 规则1：is_active=1 恰好1条 → 返回
 - 规则2：多条or无active → po_number 包含匹配 → last_modified_at最新 → 全部最新
+
+---
+
+## Session 3: ���� Priority Sheet ͬ��ģ��
+
+**�ܽ�**: ���� modSyncPrioritySheetWithDB.bas ģ�飬ʵ�� Priority Sheet �� record.db ���ݿ���Զ�ͬ��
+
+**Todos**:
+- ������ VB ģ�� modSyncPrioritySheetWithDB.bas������ 4 �����ĺ�����
+- ��д FormatPrioritySheet() �����µ� 8 ��(A-H) �ṹ
+- ���ɵ� SyncAll() ����
+- ����ע�͸�ʽ������ modSqlite.bas ���ߺ���
+
+**���������ϸ��**:
+- **��ģ�� modSyncPrioritySheetWithDB.bas**: 4 �������������/��ѯ/���� order_items
+- **���� modFormatPrioritySheet.bas**: ���� 98����������ڸ�ʽ����
+- **�� funSyncAll.bas**: ������ SyncPrioritySheetWithDB()  FormatPrioritySheet()
+- **ʹ�� modSqlite.bas ����**: ���ֱ�� SQLite3 ����
+
+**��ǰ״̬**: Priority Sheet 2505 �У���� ID 1134��DB 409 �� order_items��ģ������ɴ�ʵ��

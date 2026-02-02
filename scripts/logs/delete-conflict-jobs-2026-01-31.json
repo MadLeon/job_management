@@ -1,0 +1,291 @@
+{
+  "timestamp": "2026-01-31T23:15:45.489Z",
+  "summary": {
+    "deleted_jobs": 35,
+    "deleted_order_items": 41,
+    "deleted_purchase_orders": 25,
+    "total_deleted": 101
+  },
+  "details": [
+    {
+      "action": "deleted",
+      "job_id": 1078,
+      "job_number": "71512.0",
+      "po_id": 627,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1097,
+      "job_number": "72083.0",
+      "po_id": 527,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1098,
+      "job_number": "72084.0",
+      "po_id": 527,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1105,
+      "job_number": "72113.0",
+      "po_id": 628,
+      "order_items_deleted": 6,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1099,
+      "job_number": "72278.0",
+      "po_id": 527,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1126,
+      "job_number": "72297.0",
+      "po_id": 634,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1127,
+      "job_number": "72326.0",
+      "po_id": 635,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1128,
+      "job_number": "72327.0",
+      "po_id": 636,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1129,
+      "job_number": "72328.0",
+      "po_id": 637,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1133,
+      "job_number": "72395.0",
+      "po_id": 538,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1140,
+      "job_number": "72517.0",
+      "po_id": 539,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1158,
+      "job_number": "72600.0",
+      "po_id": 540,
+      "order_items_deleted": 2,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1159,
+      "job_number": "72601.0",
+      "po_id": 540,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1163,
+      "job_number": "72605.0",
+      "po_id": 541,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1164,
+      "job_number": "72606.0",
+      "po_id": 541,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1186,
+      "job_number": "72651.0",
+      "po_id": 525,
+      "order_items_deleted": 2,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1187,
+      "job_number": "72652.0",
+      "po_id": 525,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1188,
+      "job_number": "72653.0",
+      "po_id": 525,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1189,
+      "job_number": "72654.0",
+      "po_id": 525,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1266,
+      "job_number": "72855.0",
+      "po_id": 638,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1268,
+      "job_number": "72860.0",
+      "po_id": 544,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1269,
+      "job_number": "72879.0",
+      "po_id": 639,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1276,
+      "job_number": "72894.0",
+      "po_id": 379,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1141,
+      "job_number": "72906.0",
+      "po_id": 539,
+      "order_items_deleted": 2,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1282,
+      "job_number": "72912.0",
+      "po_id": 546,
+      "order_items_deleted": 1,
+      "po_deleted": false
+    },
+    {
+      "action": "deleted",
+      "job_id": 1283,
+      "job_number": "72913.0",
+      "po_id": 546,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1310,
+      "job_number": "72954.0",
+      "po_id": 548,
+      "order_items_deleted": 0,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1323,
+      "job_number": "72997.0",
+      "po_id": 549,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1324,
+      "job_number": "72998.0",
+      "po_id": 641,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1325,
+      "job_number": "72999.0",
+      "po_id": 642,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1357,
+      "job_number": "73042.0",
+      "po_id": 643,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1359,
+      "job_number": "73044.0",
+      "po_id": 644,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1360,
+      "job_number": "73045.0",
+      "po_id": 645,
+      "order_items_deleted": 0,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1364,
+      "job_number": "73049.0",
+      "po_id": 647,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    },
+    {
+      "action": "deleted",
+      "job_id": 1371,
+      "job_number": "73060.0",
+      "po_id": 648,
+      "order_items_deleted": 1,
+      "po_deleted": true
+    }
+  ]
+}

@@ -36,35 +36,37 @@ SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次
 未来注意 (一句话)
 将该总结并入 mp schedule/summary.md, 尽量简短, 如果没有该文件则创建
 
-新建脚本
-- 手动更新数据库, 以当前 OE 文件位置
 本session主要任务:
-新建可以多次使用的脚本, 用以手动更新数据库record.db. 以order entry log/Order Entry Log.xlsm作为数据的来源
-先给出你对于数据库字段与oe文件列的关联的理解, 我需要确认你的理解是正确的
-然后给出你的联级更新方案, 我同样需要确认你对于表之间关系的理解
-先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
-- 手动更新 OE 每行的 order item id
-本session主要任务:
-新建可以多次使用的脚本, 用以更新 OE 每行的 order item id (若其为空), 该列位于DELIVERY SCHEDULE的AA列
-数据来源是record.db的order_item表的id列
+手动更新 MP Schedule 的第一列的 order item id
 先给出你对于数据库字段与oe文件列的关联的理解, 我需要确认你的理解是正确的
 我们需要制定一个方案, 使得文件中每行可以在数据库中找到其对应的条目.
 先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
-- 手动更新 MP Schedule 的第一列的 order item id
 
+本session主要任务:
 添加新 .bas 文件, 一个新的模块 (帮我命名), 用于同步 priority sheet 与数据库 record.db 中的数据
-该模块的逻辑 (仅做增量检查):
-- 找到 priority sheet 的最后一个被编辑的行, 记录该行号 A (console.log输出行号)
-- 查看该行 A 列是否有值
-  - 有值 (该行为 assembly 行)
-    - 使用该值作为 order item id 执行数据库查找过程
-  - 没有值 (该行为 detail 行)
-    - 向上查找直到找到 A 列有值的那行
-    - 使用该值作为 order item id 执行数据库查找过程
+priority sheet的结构:
+- 多个order item行搭配下方的零件行, 其中零件行可能不存在
+- order item行的特征是: 前两列有值. 首列的值为order_item表的ID属性, 次列的值为job#
+- 零建行的前三列均为空
 
-数据库查找过程
-- 查找 order item 表所有 id 大于 A 列值 (order item id) 的结果
-- 将这些结果插入当前表的 A + 1 行, 间隔一个空行
+该模块的逻辑:
+首先进行清除操作, 所有首列的order item id, 只要其不在数据库, 就移除该order item行以及其下方的所有零件行
+然后进行增量操作
+- 找到 priority sheet 的最后一个被编辑的A列的值, 记录该值 (debug print该值)
+- 在数据库的order item表找到所有大于该id的记录
+- 将这些记录添加到该工作表的下面 (插入时仅考虑order item行)
+- 插入时, order item行之间应间隔一行 (第一个插入行与之前最后一行间也应间隔一行)
+
+注意: 移除时, order item与其下方的零件行被视为一体, 移除的范围应该是order item行下方直到找到下一个order item行, 或者直到本sheet的最后一行 (若始终未找到下一个order item)
+
+
+---------------------------------从此开始
+从part表的1895行开始, 所有的revision字段均为小数形式, 保存的时候出现了问题, 修复他们为整数或字符串格式
+另外, description也为空, 需要填写, 应该使联查找到具体的order item id, 在oe文件的AA列匹配到那条记录, 然后使用description更新数据库
+然后, 你应该先查看one-time-script/update-oe-database - old.js文件和sync-excel-to-db.js, 搞清楚原因, 然后修复错误的逻辑
+然后, 你需要在order entry log/mod_addnewjobtodb.bas中修改sql语句, 级联part表, 将文件中的description更新到数据库中
+
+1月24号的数据插入有问题, part表的description被添加成了part number了
 
 formatPrioritySheet 重写
 - 根据新的 Priority Sheet 重写格式化内容

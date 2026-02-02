@@ -127,6 +127,9 @@ Sub AddNextNewRecord()
     End With
 
     Call NewJOB
+    
+    ' Export Candu orders to CSV
+    Call ExportCanduOrders
 End Sub
 
 ' Cancel the current form entry and reset

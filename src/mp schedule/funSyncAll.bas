@@ -1,7 +1,7 @@
 Sub SyncAll()
     ' Interface for all functions
-    Call SyncJobsDBAndOrderEntryLog
-    Call SyncCurrentSheetAndJobsDB
-    Call UpdateAssemblies
+    ' Sync Priority Sheet with record.db database
+    Call SyncPrioritySheetWithDB
+    ' Format the sheet
     Call FormatPrioritySheet
 End Sub

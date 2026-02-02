@@ -1,8 +1,5 @@
 Option Explicit
-
-' --- Configuration Variables ---
-Const DB_PATH As String = "\\rtdnas2\OE\record.db"
-
+' Const DB_PATH As String = "\\rtdnas2\OE\record.db"
 Function CreateSingleHyperlink(cell As Range) As Boolean
     ' Adds hyperlink to single cell by querying new database schema
     ' Returns True if hyperlink was created, False otherwise
@@ -149,12 +146,13 @@ End Function
 
 
 Sub CreateHyperlinks()
-    ' Creates hyperlinks for selected cells in column E without caching
+    ' Creates hyperlinks for selected cells in column F without caching
     Dim curBook As Workbook, curWS As Worksheet
     Dim selectedRange As Range, cell As Range
     Dim eCells As Collection
     Dim c As Variant
     Dim successCount As Long, totalCount As Long
+    Dim dbPath As String
 
     ' 1. Initialize workbook and worksheet
     Set curBook = ThisWorkbook
@@ -167,7 +165,8 @@ Sub CreateHyperlinks()
     On Error GoTo 0
 
     ' 2. Initialize SQLite connection
-    If Not modSQLite.InitializeSQLite(DB_PATH) Then
+    dbPath = ThisWorkbook.Path & "\..\..\data\record.db"
+    If Not modSQLite.InitializeSQLite(dbPath) Then
         MsgBox "Failed to initialize database!", vbCritical
         Exit Sub
     End If
@@ -177,7 +176,7 @@ Sub CreateHyperlinks()
     Set eCells = New Collection
 
     For Each cell In selectedRange
-        If cell.Column = 5 And cell.row > 1 Then ' Column E and skip header
+        If cell.Column = 6 And cell.row > 1 Then ' Column F and skip header
             eCells.Add cell
         End If
     Next cell

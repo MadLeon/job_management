@@ -118,4 +118,7 @@ Sub EMT()
     
     ' Call NewJOB to update the Job Number
     Call NewJOB
+    
+    ' Export Candu orders to CSV
+    Call ExportCanduOrders
 End Sub

@@ -10,7 +10,7 @@
  * 执行: npm run db:migrate
  */
 
-import { matchPartToDrawing, getCustomerIdFromOrderItem } from '../match-part-drawing.js';
+import { matchPartToDrawing, getCustomerIdFromOrderItem } from '../one-time-scripts/match-part-drawing.js';
 
 export const name = '012_populate_drawing_file_part_id';
 

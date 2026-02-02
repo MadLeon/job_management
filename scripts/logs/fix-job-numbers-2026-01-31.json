@@ -1,0 +1,2992 @@
+{
+  "timestamp": "2026-01-31T23:00:02.227Z",
+  "method": "smart-delete-duplicates-convert-to-integer",
+  "summary": {
+    "deleted": 263,
+    "converted": 0,
+    "conflicts": 35,
+    "total_processed": 298
+  },
+  "details": [
+    {
+      "action": "deleted",
+      "decimal_id": 1074,
+      "decimal_job_number": "69605.0",
+      "decimal_po_id": 357,
+      "clean_id": 680,
+      "clean_job_number": "69605",
+      "clean_po_id": 357,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1075,
+      "decimal_job_number": "70131.0",
+      "decimal_po_id": 395,
+      "clean_id": 681,
+      "clean_job_number": "70131",
+      "clean_po_id": 395,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1076,
+      "decimal_job_number": "70586.0",
+      "decimal_po_id": 387,
+      "clean_id": 682,
+      "clean_job_number": "70586",
+      "clean_po_id": 387,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1077,
+      "decimal_job_number": "71480.0",
+      "decimal_po_id": 386,
+      "clean_id": 685,
+      "clean_job_number": "71480",
+      "clean_po_id": 386,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1078,
+      "decimal_job_number": "71512.0",
+      "decimal_po_id": 627,
+      "clean_id": 686,
+      "clean_job_number": "71512",
+      "clean_po_id": 487,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1079,
+      "decimal_job_number": "71609.0",
+      "decimal_po_id": 399,
+      "clean_id": 687,
+      "clean_job_number": "71609",
+      "clean_po_id": 399,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1080,
+      "decimal_job_number": "71610.0",
+      "decimal_po_id": 399,
+      "clean_id": 688,
+      "clean_job_number": "71610",
+      "clean_po_id": 399,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1081,
+      "decimal_job_number": "71611.0",
+      "decimal_po_id": 399,
+      "clean_id": 689,
+      "clean_job_number": "71611",
+      "clean_po_id": 399,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1082,
+      "decimal_job_number": "71612.0",
+      "decimal_po_id": 399,
+      "clean_id": 690,
+      "clean_job_number": "71612",
+      "clean_po_id": 399,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1083,
+      "decimal_job_number": "71613.0",
+      "decimal_po_id": 399,
+      "clean_id": 691,
+      "clean_job_number": "71613",
+      "clean_po_id": 399,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1084,
+      "decimal_job_number": "71669.0",
+      "decimal_po_id": 448,
+      "clean_id": 692,
+      "clean_job_number": "71669",
+      "clean_po_id": 448,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1085,
+      "decimal_job_number": "71718.0",
+      "decimal_po_id": 414,
+      "clean_id": 693,
+      "clean_job_number": "71718",
+      "clean_po_id": 414,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1086,
+      "decimal_job_number": "71742.0",
+      "decimal_po_id": 474,
+      "clean_id": 698,
+      "clean_job_number": "71742",
+      "clean_po_id": 474,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1087,
+      "decimal_job_number": "71829.0",
+      "decimal_po_id": 462,
+      "clean_id": 699,
+      "clean_job_number": "71829",
+      "clean_po_id": 462,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1088,
+      "decimal_job_number": "71851.0",
+      "decimal_po_id": 441,
+      "clean_id": 700,
+      "clean_job_number": "71851",
+      "clean_po_id": 441,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1091,
+      "decimal_job_number": "71852.0",
+      "decimal_po_id": 447,
+      "clean_id": 701,
+      "clean_job_number": "71852",
+      "clean_po_id": 447,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1092,
+      "decimal_job_number": "71853.0",
+      "decimal_po_id": 447,
+      "clean_id": 702,
+      "clean_job_number": "71853",
+      "clean_po_id": 447,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1089,
+      "decimal_job_number": "71873.0",
+      "decimal_po_id": 441,
+      "clean_id": 703,
+      "clean_job_number": "71873",
+      "clean_po_id": 441,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1093,
+      "decimal_job_number": "72023.0",
+      "decimal_po_id": 464,
+      "clean_id": 705,
+      "clean_job_number": "72023",
+      "clean_po_id": 464,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1094,
+      "decimal_job_number": "72024.0",
+      "decimal_po_id": 464,
+      "clean_id": 706,
+      "clean_job_number": "72024",
+      "clean_po_id": 464,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1096,
+      "decimal_job_number": "72028.0",
+      "decimal_po_id": 413,
+      "clean_id": 707,
+      "clean_job_number": "72028",
+      "clean_po_id": 413,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1097,
+      "decimal_job_number": "72083.0",
+      "decimal_po_id": 527,
+      "clean_id": 708,
+      "clean_job_number": "72083",
+      "clean_po_id": 452,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1098,
+      "decimal_job_number": "72084.0",
+      "decimal_po_id": 527,
+      "clean_id": 709,
+      "clean_job_number": "72084",
+      "clean_po_id": 452,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1100,
+      "decimal_job_number": "72085.0",
+      "decimal_po_id": 482,
+      "clean_id": 710,
+      "clean_job_number": "72085",
+      "clean_po_id": 482,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1101,
+      "decimal_job_number": "72086.0",
+      "decimal_po_id": 482,
+      "clean_id": 711,
+      "clean_job_number": "72086",
+      "clean_po_id": 482,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1105,
+      "decimal_job_number": "72113.0",
+      "decimal_po_id": 628,
+      "clean_id": 712,
+      "clean_job_number": "72113",
+      "clean_po_id": 488,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1106,
+      "decimal_job_number": "72139.0",
+      "decimal_po_id": 453,
+      "clean_id": 713,
+      "clean_job_number": "72139",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1107,
+      "decimal_job_number": "72140.0",
+      "decimal_po_id": 453,
+      "clean_id": 714,
+      "clean_job_number": "72140",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1108,
+      "decimal_job_number": "72141.0",
+      "decimal_po_id": 453,
+      "clean_id": 715,
+      "clean_job_number": "72141",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1109,
+      "decimal_job_number": "72142.0",
+      "decimal_po_id": 453,
+      "clean_id": 716,
+      "clean_job_number": "72142",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1110,
+      "decimal_job_number": "72143.0",
+      "decimal_po_id": 453,
+      "clean_id": 717,
+      "clean_job_number": "72143",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1111,
+      "decimal_job_number": "72144.0",
+      "decimal_po_id": 453,
+      "clean_id": 718,
+      "clean_job_number": "72144",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1112,
+      "decimal_job_number": "72145.0",
+      "decimal_po_id": 453,
+      "clean_id": 719,
+      "clean_job_number": "72145",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1113,
+      "decimal_job_number": "72146.0",
+      "decimal_po_id": 453,
+      "clean_id": 720,
+      "clean_job_number": "72146",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1114,
+      "decimal_job_number": "72147.0",
+      "decimal_po_id": 453,
+      "clean_id": 721,
+      "clean_job_number": "72147",
+      "clean_po_id": 453,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1115,
+      "decimal_job_number": "72234.0",
+      "decimal_po_id": 484,
+      "clean_id": 722,
+      "clean_job_number": "72234",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1116,
+      "decimal_job_number": "72235.0",
+      "decimal_po_id": 484,
+      "clean_id": 723,
+      "clean_job_number": "72235",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1117,
+      "decimal_job_number": "72236.0",
+      "decimal_po_id": 484,
+      "clean_id": 724,
+      "clean_job_number": "72236",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1118,
+      "decimal_job_number": "72237.0",
+      "decimal_po_id": 484,
+      "clean_id": 725,
+      "clean_job_number": "72237",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1119,
+      "decimal_job_number": "72238.0",
+      "decimal_po_id": 484,
+      "clean_id": 726,
+      "clean_job_number": "72238",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1120,
+      "decimal_job_number": "72239.0",
+      "decimal_po_id": 484,
+      "clean_id": 727,
+      "clean_job_number": "72239",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1121,
+      "decimal_job_number": "72240.0",
+      "decimal_po_id": 484,
+      "clean_id": 728,
+      "clean_job_number": "72240",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1122,
+      "decimal_job_number": "72241.0",
+      "decimal_po_id": 484,
+      "clean_id": 729,
+      "clean_job_number": "72241",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1123,
+      "decimal_job_number": "72242.0",
+      "decimal_po_id": 484,
+      "clean_id": 730,
+      "clean_job_number": "72242",
+      "clean_po_id": 484,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1099,
+      "decimal_job_number": "72278.0",
+      "decimal_po_id": 527,
+      "clean_id": 731,
+      "clean_job_number": "72278",
+      "clean_po_id": 452,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1102,
+      "decimal_job_number": "72279.0",
+      "decimal_po_id": 482,
+      "clean_id": 732,
+      "clean_job_number": "72279",
+      "clean_po_id": 482,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1124,
+      "decimal_job_number": "72280.0",
+      "decimal_po_id": 466,
+      "clean_id": 733,
+      "clean_job_number": "72280",
+      "clean_po_id": 466,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1126,
+      "decimal_job_number": "72297.0",
+      "decimal_po_id": 634,
+      "clean_id": 734,
+      "clean_job_number": "72297",
+      "clean_po_id": 489,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1127,
+      "decimal_job_number": "72326.0",
+      "decimal_po_id": 635,
+      "clean_id": 735,
+      "clean_job_number": "72326",
+      "clean_po_id": 490,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1128,
+      "decimal_job_number": "72327.0",
+      "decimal_po_id": 636,
+      "clean_id": 736,
+      "clean_job_number": "72327",
+      "clean_po_id": 491,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1129,
+      "decimal_job_number": "72328.0",
+      "decimal_po_id": 637,
+      "clean_id": 737,
+      "clean_job_number": "72328",
+      "clean_po_id": 492,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1090,
+      "decimal_job_number": "72330.0",
+      "decimal_po_id": 442,
+      "clean_id": 738,
+      "clean_job_number": "72330",
+      "clean_po_id": 442,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1095,
+      "decimal_job_number": "72331.0",
+      "decimal_po_id": 464,
+      "clean_id": 739,
+      "clean_job_number": "72331",
+      "clean_po_id": 464,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1130,
+      "decimal_job_number": "72367.0",
+      "decimal_po_id": 454,
+      "clean_id": 740,
+      "clean_job_number": "72367",
+      "clean_po_id": 454,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1131,
+      "decimal_job_number": "72368.0",
+      "decimal_po_id": 454,
+      "clean_id": 741,
+      "clean_job_number": "72368",
+      "clean_po_id": 454,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1132,
+      "decimal_job_number": "72373.0",
+      "decimal_po_id": 465,
+      "clean_id": 742,
+      "clean_job_number": "72373",
+      "clean_po_id": 465,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1133,
+      "decimal_job_number": "72395.0",
+      "decimal_po_id": 538,
+      "clean_id": 743,
+      "clean_job_number": "72395",
+      "clean_po_id": 443,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1134,
+      "decimal_job_number": "72422.0",
+      "decimal_po_id": 436,
+      "clean_id": 744,
+      "clean_job_number": "72422",
+      "clean_po_id": 436,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1135,
+      "decimal_job_number": "72438.0",
+      "decimal_po_id": 458,
+      "clean_id": 746,
+      "clean_job_number": "72438",
+      "clean_po_id": 458,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1136,
+      "decimal_job_number": "72439.0",
+      "decimal_po_id": 458,
+      "clean_id": 747,
+      "clean_job_number": "72439",
+      "clean_po_id": 458,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1137,
+      "decimal_job_number": "72440.0",
+      "decimal_po_id": 458,
+      "clean_id": 748,
+      "clean_job_number": "72440",
+      "clean_po_id": 458,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1138,
+      "decimal_job_number": "72441.0",
+      "decimal_po_id": 458,
+      "clean_id": 749,
+      "clean_job_number": "72441",
+      "clean_po_id": 458,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1103,
+      "decimal_job_number": "72459.0",
+      "decimal_po_id": 482,
+      "clean_id": 750,
+      "clean_job_number": "72459",
+      "clean_po_id": 482,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1104,
+      "decimal_job_number": "72460.0",
+      "decimal_po_id": 482,
+      "clean_id": 751,
+      "clean_job_number": "72460",
+      "clean_po_id": 482,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1139,
+      "decimal_job_number": "72502.0",
+      "decimal_po_id": 392,
+      "clean_id": 752,
+      "clean_job_number": "72502",
+      "clean_po_id": 392,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1140,
+      "decimal_job_number": "72517.0",
+      "decimal_po_id": 539,
+      "clean_id": 754,
+      "clean_job_number": "72517",
+      "clean_po_id": 446,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1142,
+      "decimal_job_number": "72580.0",
+      "decimal_po_id": 480,
+      "clean_id": 759,
+      "clean_job_number": "72580",
+      "clean_po_id": 480,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1143,
+      "decimal_job_number": "72581.0",
+      "decimal_po_id": 480,
+      "clean_id": 760,
+      "clean_job_number": "72581",
+      "clean_po_id": 480,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1144,
+      "decimal_job_number": "72582.0",
+      "decimal_po_id": 480,
+      "clean_id": 761,
+      "clean_job_number": "72582",
+      "clean_po_id": 480,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1145,
+      "decimal_job_number": "72583.0",
+      "decimal_po_id": 480,
+      "clean_id": 762,
+      "clean_job_number": "72583",
+      "clean_po_id": 480,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1146,
+      "decimal_job_number": "72589.0",
+      "decimal_po_id": 479,
+      "clean_id": 763,
+      "clean_job_number": "72589",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1147,
+      "decimal_job_number": "72590.0",
+      "decimal_po_id": 479,
+      "clean_id": 764,
+      "clean_job_number": "72590",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1148,
+      "decimal_job_number": "72591.0",
+      "decimal_po_id": 479,
+      "clean_id": 765,
+      "clean_job_number": "72591",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1149,
+      "decimal_job_number": "72592.0",
+      "decimal_po_id": 479,
+      "clean_id": 766,
+      "clean_job_number": "72592",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1150,
+      "decimal_job_number": "72593.0",
+      "decimal_po_id": 479,
+      "clean_id": 767,
+      "clean_job_number": "72593",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1151,
+      "decimal_job_number": "72594.0",
+      "decimal_po_id": 479,
+      "clean_id": 768,
+      "clean_job_number": "72594",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1152,
+      "decimal_job_number": "72595.0",
+      "decimal_po_id": 479,
+      "clean_id": 769,
+      "clean_job_number": "72595",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1153,
+      "decimal_job_number": "72596.0",
+      "decimal_po_id": 479,
+      "clean_id": 770,
+      "clean_job_number": "72596",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1154,
+      "decimal_job_number": "72597.0",
+      "decimal_po_id": 479,
+      "clean_id": 771,
+      "clean_job_number": "72597",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1155,
+      "decimal_job_number": "72598.0",
+      "decimal_po_id": 479,
+      "clean_id": 772,
+      "clean_job_number": "72598",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1156,
+      "decimal_job_number": "72599.0",
+      "decimal_po_id": 479,
+      "clean_id": 773,
+      "clean_job_number": "72599",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1158,
+      "decimal_job_number": "72600.0",
+      "decimal_po_id": 540,
+      "clean_id": 774,
+      "clean_job_number": "72600",
+      "clean_po_id": 493,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1159,
+      "decimal_job_number": "72601.0",
+      "decimal_po_id": 540,
+      "clean_id": 775,
+      "clean_job_number": "72601",
+      "clean_po_id": 494,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1160,
+      "decimal_job_number": "72602.0",
+      "decimal_po_id": 461,
+      "clean_id": 776,
+      "clean_job_number": "72602",
+      "clean_po_id": 461,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1161,
+      "decimal_job_number": "72603.0",
+      "decimal_po_id": 461,
+      "clean_id": 777,
+      "clean_job_number": "72603",
+      "clean_po_id": 461,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1162,
+      "decimal_job_number": "72604.0",
+      "decimal_po_id": 461,
+      "clean_id": 778,
+      "clean_job_number": "72604",
+      "clean_po_id": 461,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1163,
+      "decimal_job_number": "72605.0",
+      "decimal_po_id": 541,
+      "clean_id": 779,
+      "clean_job_number": "72605",
+      "clean_po_id": 451,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1164,
+      "decimal_job_number": "72606.0",
+      "decimal_po_id": 541,
+      "clean_id": 780,
+      "clean_job_number": "72606",
+      "clean_po_id": 451,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1165,
+      "decimal_job_number": "72621.0",
+      "decimal_po_id": 471,
+      "clean_id": 782,
+      "clean_job_number": "72621",
+      "clean_po_id": 471,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1166,
+      "decimal_job_number": "72622.0",
+      "decimal_po_id": 473,
+      "clean_id": 783,
+      "clean_job_number": "72622",
+      "clean_po_id": 473,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1167,
+      "decimal_job_number": "72623.0",
+      "decimal_po_id": 473,
+      "clean_id": 784,
+      "clean_job_number": "72623",
+      "clean_po_id": 473,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1168,
+      "decimal_job_number": "72624.0",
+      "decimal_po_id": 459,
+      "clean_id": 785,
+      "clean_job_number": "72624",
+      "clean_po_id": 459,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1169,
+      "decimal_job_number": "72625.0",
+      "decimal_po_id": 475,
+      "clean_id": 786,
+      "clean_job_number": "72625",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1170,
+      "decimal_job_number": "72626.0",
+      "decimal_po_id": 475,
+      "clean_id": 787,
+      "clean_job_number": "72626",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1171,
+      "decimal_job_number": "72627.0",
+      "decimal_po_id": 475,
+      "clean_id": 788,
+      "clean_job_number": "72627",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1172,
+      "decimal_job_number": "72628.0",
+      "decimal_po_id": 475,
+      "clean_id": 789,
+      "clean_job_number": "72628",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1173,
+      "decimal_job_number": "72629.0",
+      "decimal_po_id": 475,
+      "clean_id": 790,
+      "clean_job_number": "72629",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1174,
+      "decimal_job_number": "72630.0",
+      "decimal_po_id": 475,
+      "clean_id": 791,
+      "clean_job_number": "72630",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1175,
+      "decimal_job_number": "72631.0",
+      "decimal_po_id": 475,
+      "clean_id": 792,
+      "clean_job_number": "72631",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1176,
+      "decimal_job_number": "72632.0",
+      "decimal_po_id": 475,
+      "clean_id": 793,
+      "clean_job_number": "72632",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1177,
+      "decimal_job_number": "72633.0",
+      "decimal_po_id": 475,
+      "clean_id": 794,
+      "clean_job_number": "72633",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1178,
+      "decimal_job_number": "72634.0",
+      "decimal_po_id": 475,
+      "clean_id": 795,
+      "clean_job_number": "72634",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1179,
+      "decimal_job_number": "72635.0",
+      "decimal_po_id": 475,
+      "clean_id": 796,
+      "clean_job_number": "72635",
+      "clean_po_id": 475,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1180,
+      "decimal_job_number": "72638.0",
+      "decimal_po_id": 400,
+      "clean_id": 797,
+      "clean_job_number": "72638",
+      "clean_po_id": 400,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1181,
+      "decimal_job_number": "72643.0",
+      "decimal_po_id": 460,
+      "clean_id": 798,
+      "clean_job_number": "72643",
+      "clean_po_id": 460,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1182,
+      "decimal_job_number": "72645.0",
+      "decimal_po_id": 445,
+      "clean_id": 799,
+      "clean_job_number": "72645",
+      "clean_po_id": 445,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1183,
+      "decimal_job_number": "72646.0",
+      "decimal_po_id": 445,
+      "clean_id": 800,
+      "clean_job_number": "72646",
+      "clean_po_id": 445,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1184,
+      "decimal_job_number": "72647.0",
+      "decimal_po_id": 445,
+      "clean_id": 801,
+      "clean_job_number": "72647",
+      "clean_po_id": 445,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1185,
+      "decimal_job_number": "72648.0",
+      "decimal_po_id": 364,
+      "clean_id": 802,
+      "clean_job_number": "72648",
+      "clean_po_id": 364,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1186,
+      "decimal_job_number": "72651.0",
+      "decimal_po_id": 525,
+      "clean_id": 804,
+      "clean_job_number": "72651",
+      "clean_po_id": 476,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1187,
+      "decimal_job_number": "72652.0",
+      "decimal_po_id": 525,
+      "clean_id": 805,
+      "clean_job_number": "72652",
+      "clean_po_id": 476,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1188,
+      "decimal_job_number": "72653.0",
+      "decimal_po_id": 525,
+      "clean_id": 806,
+      "clean_job_number": "72653",
+      "clean_po_id": 476,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1189,
+      "decimal_job_number": "72654.0",
+      "decimal_po_id": 525,
+      "clean_id": 807,
+      "clean_job_number": "72654",
+      "clean_po_id": 476,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1190,
+      "decimal_job_number": "72690.0",
+      "decimal_po_id": 376,
+      "clean_id": 814,
+      "clean_job_number": "72690",
+      "clean_po_id": 376,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1191,
+      "decimal_job_number": "72691.0",
+      "decimal_po_id": 376,
+      "clean_id": 815,
+      "clean_job_number": "72691",
+      "clean_po_id": 376,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1192,
+      "decimal_job_number": "72692.0",
+      "decimal_po_id": 437,
+      "clean_id": 816,
+      "clean_job_number": "72692",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1193,
+      "decimal_job_number": "72693.0",
+      "decimal_po_id": 437,
+      "clean_id": 817,
+      "clean_job_number": "72693",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1194,
+      "decimal_job_number": "72694.0",
+      "decimal_po_id": 437,
+      "clean_id": 818,
+      "clean_job_number": "72694",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1195,
+      "decimal_job_number": "72695.0",
+      "decimal_po_id": 437,
+      "clean_id": 819,
+      "clean_job_number": "72695",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1196,
+      "decimal_job_number": "72696.0",
+      "decimal_po_id": 437,
+      "clean_id": 820,
+      "clean_job_number": "72696",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1197,
+      "decimal_job_number": "72697.0",
+      "decimal_po_id": 437,
+      "clean_id": 821,
+      "clean_job_number": "72697",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1198,
+      "decimal_job_number": "72698.0",
+      "decimal_po_id": 437,
+      "clean_id": 822,
+      "clean_job_number": "72698",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1199,
+      "decimal_job_number": "72699.0",
+      "decimal_po_id": 437,
+      "clean_id": 823,
+      "clean_job_number": "72699",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1200,
+      "decimal_job_number": "72700.0",
+      "decimal_po_id": 437,
+      "clean_id": 824,
+      "clean_job_number": "72700",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1201,
+      "decimal_job_number": "72701.0",
+      "decimal_po_id": 437,
+      "clean_id": 825,
+      "clean_job_number": "72701",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1202,
+      "decimal_job_number": "72702.0",
+      "decimal_po_id": 437,
+      "clean_id": 826,
+      "clean_job_number": "72702",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1203,
+      "decimal_job_number": "72703.0",
+      "decimal_po_id": 437,
+      "clean_id": 827,
+      "clean_job_number": "72703",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1204,
+      "decimal_job_number": "72704.0",
+      "decimal_po_id": 437,
+      "clean_id": 828,
+      "clean_job_number": "72704",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1205,
+      "decimal_job_number": "72705.0",
+      "decimal_po_id": 437,
+      "clean_id": 829,
+      "clean_job_number": "72705",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1206,
+      "decimal_job_number": "72706.0",
+      "decimal_po_id": 437,
+      "clean_id": 830,
+      "clean_job_number": "72706",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1207,
+      "decimal_job_number": "72707.0",
+      "decimal_po_id": 437,
+      "clean_id": 831,
+      "clean_job_number": "72707",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1208,
+      "decimal_job_number": "72708.0",
+      "decimal_po_id": 437,
+      "clean_id": 832,
+      "clean_job_number": "72708",
+      "clean_po_id": 437,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1209,
+      "decimal_job_number": "72713.0",
+      "decimal_po_id": 481,
+      "clean_id": 834,
+      "clean_job_number": "72713",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1210,
+      "decimal_job_number": "72714.0",
+      "decimal_po_id": 481,
+      "clean_id": 835,
+      "clean_job_number": "72714",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1211,
+      "decimal_job_number": "72715.0",
+      "decimal_po_id": 481,
+      "clean_id": 836,
+      "clean_job_number": "72715",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1212,
+      "decimal_job_number": "72716.0",
+      "decimal_po_id": 481,
+      "clean_id": 837,
+      "clean_job_number": "72716",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1213,
+      "decimal_job_number": "72717.0",
+      "decimal_po_id": 481,
+      "clean_id": 838,
+      "clean_job_number": "72717",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1214,
+      "decimal_job_number": "72718.0",
+      "decimal_po_id": 481,
+      "clean_id": 839,
+      "clean_job_number": "72718",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1215,
+      "decimal_job_number": "72719.0",
+      "decimal_po_id": 481,
+      "clean_id": 840,
+      "clean_job_number": "72719",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1216,
+      "decimal_job_number": "72720.0",
+      "decimal_po_id": 481,
+      "clean_id": 841,
+      "clean_job_number": "72720",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1217,
+      "decimal_job_number": "72721.0",
+      "decimal_po_id": 481,
+      "clean_id": 842,
+      "clean_job_number": "72721",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1218,
+      "decimal_job_number": "72722.0",
+      "decimal_po_id": 481,
+      "clean_id": 843,
+      "clean_job_number": "72722",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1219,
+      "decimal_job_number": "72723.0",
+      "decimal_po_id": 481,
+      "clean_id": 844,
+      "clean_job_number": "72723",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1220,
+      "decimal_job_number": "72724.0",
+      "decimal_po_id": 481,
+      "clean_id": 845,
+      "clean_job_number": "72724",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1221,
+      "decimal_job_number": "72725.0",
+      "decimal_po_id": 481,
+      "clean_id": 846,
+      "clean_job_number": "72725",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1222,
+      "decimal_job_number": "72726.0",
+      "decimal_po_id": 481,
+      "clean_id": 847,
+      "clean_job_number": "72726",
+      "clean_po_id": 481,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1225,
+      "decimal_job_number": "72728.0",
+      "decimal_po_id": 468,
+      "clean_id": 848,
+      "clean_job_number": "72728",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1226,
+      "decimal_job_number": "72729.0",
+      "decimal_po_id": 468,
+      "clean_id": 849,
+      "clean_job_number": "72729",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1227,
+      "decimal_job_number": "72730.0",
+      "decimal_po_id": 468,
+      "clean_id": 850,
+      "clean_job_number": "72730",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1228,
+      "decimal_job_number": "72731.0",
+      "decimal_po_id": 468,
+      "clean_id": 851,
+      "clean_job_number": "72731",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1229,
+      "decimal_job_number": "72732.0",
+      "decimal_po_id": 468,
+      "clean_id": 852,
+      "clean_job_number": "72732",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1230,
+      "decimal_job_number": "72733.0",
+      "decimal_po_id": 468,
+      "clean_id": 853,
+      "clean_job_number": "72733",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1231,
+      "decimal_job_number": "72734.0",
+      "decimal_po_id": 468,
+      "clean_id": 854,
+      "clean_job_number": "72734",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1232,
+      "decimal_job_number": "72735.0",
+      "decimal_po_id": 468,
+      "clean_id": 855,
+      "clean_job_number": "72735",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1233,
+      "decimal_job_number": "72736.0",
+      "decimal_po_id": 468,
+      "clean_id": 856,
+      "clean_job_number": "72736",
+      "clean_po_id": 468,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1234,
+      "decimal_job_number": "72753.0",
+      "decimal_po_id": 419,
+      "clean_id": 857,
+      "clean_job_number": "72753",
+      "clean_po_id": 419,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1235,
+      "decimal_job_number": "72775.0",
+      "decimal_po_id": 483,
+      "clean_id": 858,
+      "clean_job_number": "72775",
+      "clean_po_id": 483,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1236,
+      "decimal_job_number": "72776.0",
+      "decimal_po_id": 483,
+      "clean_id": 859,
+      "clean_job_number": "72776",
+      "clean_po_id": 483,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1237,
+      "decimal_job_number": "72777.0",
+      "decimal_po_id": 483,
+      "clean_id": 860,
+      "clean_job_number": "72777",
+      "clean_po_id": 483,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1238,
+      "decimal_job_number": "72778.0",
+      "decimal_po_id": 483,
+      "clean_id": 861,
+      "clean_job_number": "72778",
+      "clean_po_id": 483,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1239,
+      "decimal_job_number": "72779.0",
+      "decimal_po_id": 483,
+      "clean_id": 862,
+      "clean_job_number": "72779",
+      "clean_po_id": 483,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1240,
+      "decimal_job_number": "72780.0",
+      "decimal_po_id": 483,
+      "clean_id": 863,
+      "clean_job_number": "72780",
+      "clean_po_id": 483,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1241,
+      "decimal_job_number": "72786.0",
+      "decimal_po_id": 401,
+      "clean_id": 865,
+      "clean_job_number": "72786",
+      "clean_po_id": 401,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1242,
+      "decimal_job_number": "72811.0",
+      "decimal_po_id": 477,
+      "clean_id": 867,
+      "clean_job_number": "72811",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1243,
+      "decimal_job_number": "72812.0",
+      "decimal_po_id": 477,
+      "clean_id": 868,
+      "clean_job_number": "72812",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1244,
+      "decimal_job_number": "72813.0",
+      "decimal_po_id": 477,
+      "clean_id": 869,
+      "clean_job_number": "72813",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1245,
+      "decimal_job_number": "72814.0",
+      "decimal_po_id": 477,
+      "clean_id": 870,
+      "clean_job_number": "72814",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1246,
+      "decimal_job_number": "72815.0",
+      "decimal_po_id": 477,
+      "clean_id": 871,
+      "clean_job_number": "72815",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1247,
+      "decimal_job_number": "72816.0",
+      "decimal_po_id": 477,
+      "clean_id": 872,
+      "clean_job_number": "72816",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1248,
+      "decimal_job_number": "72817.0",
+      "decimal_po_id": 477,
+      "clean_id": 873,
+      "clean_job_number": "72817",
+      "clean_po_id": 477,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1249,
+      "decimal_job_number": "72818.0",
+      "decimal_po_id": 469,
+      "clean_id": 874,
+      "clean_job_number": "72818",
+      "clean_po_id": 469,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1250,
+      "decimal_job_number": "72819.0",
+      "decimal_po_id": 469,
+      "clean_id": 875,
+      "clean_job_number": "72819",
+      "clean_po_id": 469,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1251,
+      "decimal_job_number": "72820.0",
+      "decimal_po_id": 469,
+      "clean_id": 876,
+      "clean_job_number": "72820",
+      "clean_po_id": 469,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1253,
+      "decimal_job_number": "72831.0",
+      "decimal_po_id": 415,
+      "clean_id": 881,
+      "clean_job_number": "72831",
+      "clean_po_id": 415,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1254,
+      "decimal_job_number": "72832.0",
+      "decimal_po_id": 415,
+      "clean_id": 882,
+      "clean_job_number": "72832",
+      "clean_po_id": 415,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1255,
+      "decimal_job_number": "72833.0",
+      "decimal_po_id": 415,
+      "clean_id": 883,
+      "clean_job_number": "72833",
+      "clean_po_id": 415,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1256,
+      "decimal_job_number": "72834.0",
+      "decimal_po_id": 415,
+      "clean_id": 884,
+      "clean_job_number": "72834",
+      "clean_po_id": 415,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1257,
+      "decimal_job_number": "72835.0",
+      "decimal_po_id": 415,
+      "clean_id": 885,
+      "clean_job_number": "72835",
+      "clean_po_id": 415,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1258,
+      "decimal_job_number": "72840.0",
+      "decimal_po_id": 478,
+      "clean_id": 886,
+      "clean_job_number": "72840",
+      "clean_po_id": 478,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1259,
+      "decimal_job_number": "72841.0",
+      "decimal_po_id": 478,
+      "clean_id": 887,
+      "clean_job_number": "72841",
+      "clean_po_id": 478,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1260,
+      "decimal_job_number": "72842.0",
+      "decimal_po_id": 478,
+      "clean_id": 888,
+      "clean_job_number": "72842",
+      "clean_po_id": 478,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1261,
+      "decimal_job_number": "72843.0",
+      "decimal_po_id": 478,
+      "clean_id": 889,
+      "clean_job_number": "72843",
+      "clean_po_id": 478,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1262,
+      "decimal_job_number": "72844.0",
+      "decimal_po_id": 478,
+      "clean_id": 890,
+      "clean_job_number": "72844",
+      "clean_po_id": 478,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1263,
+      "decimal_job_number": "72846.0",
+      "decimal_po_id": 409,
+      "clean_id": 891,
+      "clean_job_number": "72846",
+      "clean_po_id": 409,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1264,
+      "decimal_job_number": "72850.0",
+      "decimal_po_id": 408,
+      "clean_id": 893,
+      "clean_job_number": "72850",
+      "clean_po_id": 408,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1265,
+      "decimal_job_number": "72853.0",
+      "decimal_po_id": 421,
+      "clean_id": 895,
+      "clean_job_number": "72853",
+      "clean_po_id": 421,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1266,
+      "decimal_job_number": "72855.0",
+      "decimal_po_id": 638,
+      "clean_id": 896,
+      "clean_job_number": "72855",
+      "clean_po_id": 495,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1267,
+      "decimal_job_number": "72857.0",
+      "decimal_po_id": 422,
+      "clean_id": 898,
+      "clean_job_number": "72857",
+      "clean_po_id": 422,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1268,
+      "decimal_job_number": "72860.0",
+      "decimal_po_id": 544,
+      "clean_id": 900,
+      "clean_job_number": "72860",
+      "clean_po_id": 423,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1269,
+      "decimal_job_number": "72879.0",
+      "decimal_po_id": 639,
+      "clean_id": 901,
+      "clean_job_number": "72879",
+      "clean_po_id": 496,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1270,
+      "decimal_job_number": "72885.0",
+      "decimal_po_id": 426,
+      "clean_id": 902,
+      "clean_job_number": "72885",
+      "clean_po_id": 426,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1271,
+      "decimal_job_number": "72887.0",
+      "decimal_po_id": 427,
+      "clean_id": 903,
+      "clean_job_number": "72887",
+      "clean_po_id": 427,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1272,
+      "decimal_job_number": "72888.0",
+      "decimal_po_id": 429,
+      "clean_id": 904,
+      "clean_job_number": "72888",
+      "clean_po_id": 429,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1273,
+      "decimal_job_number": "72890.0",
+      "decimal_po_id": 431,
+      "clean_id": 906,
+      "clean_job_number": "72890",
+      "clean_po_id": 431,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1274,
+      "decimal_job_number": "72892.0",
+      "decimal_po_id": 433,
+      "clean_id": 908,
+      "clean_job_number": "72892",
+      "clean_po_id": 433,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1275,
+      "decimal_job_number": "72893.0",
+      "decimal_po_id": 434,
+      "clean_id": 909,
+      "clean_job_number": "72893",
+      "clean_po_id": 434,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1276,
+      "decimal_job_number": "72894.0",
+      "decimal_po_id": 379,
+      "clean_id": 910,
+      "clean_job_number": "72894",
+      "clean_po_id": 497,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1278,
+      "decimal_job_number": "72895.0",
+      "decimal_po_id": 428,
+      "clean_id": 911,
+      "clean_job_number": "72895",
+      "clean_po_id": 428,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1279,
+      "decimal_job_number": "72896.0",
+      "decimal_po_id": 425,
+      "clean_id": 912,
+      "clean_job_number": "72896",
+      "clean_po_id": 425,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1280,
+      "decimal_job_number": "72897.0",
+      "decimal_po_id": 435,
+      "clean_id": 913,
+      "clean_job_number": "72897",
+      "clean_po_id": 435,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1281,
+      "decimal_job_number": "72901.0",
+      "decimal_po_id": 410,
+      "clean_id": 915,
+      "clean_job_number": "72901",
+      "clean_po_id": 410,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1141,
+      "decimal_job_number": "72906.0",
+      "decimal_po_id": 539,
+      "clean_id": 917,
+      "clean_job_number": "72906",
+      "clean_po_id": 446,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1277,
+      "decimal_job_number": "72911.0",
+      "decimal_po_id": 379,
+      "clean_id": 921,
+      "clean_job_number": "72911",
+      "clean_po_id": 379,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1282,
+      "decimal_job_number": "72912.0",
+      "decimal_po_id": 546,
+      "clean_id": 922,
+      "clean_job_number": "72912",
+      "clean_po_id": 499,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1283,
+      "decimal_job_number": "72913.0",
+      "decimal_po_id": 546,
+      "clean_id": 923,
+      "clean_job_number": "72913",
+      "clean_po_id": 500,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1284,
+      "decimal_job_number": "72922.0",
+      "decimal_po_id": 369,
+      "clean_id": 931,
+      "clean_job_number": "72922",
+      "clean_po_id": 369,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1285,
+      "decimal_job_number": "72923.0",
+      "decimal_po_id": 369,
+      "clean_id": 932,
+      "clean_job_number": "72923",
+      "clean_po_id": 369,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1286,
+      "decimal_job_number": "72924.0",
+      "decimal_po_id": 455,
+      "clean_id": 933,
+      "clean_job_number": "72924",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1287,
+      "decimal_job_number": "72925.0",
+      "decimal_po_id": 455,
+      "clean_id": 934,
+      "clean_job_number": "72925",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1288,
+      "decimal_job_number": "72926.0",
+      "decimal_po_id": 455,
+      "clean_id": 935,
+      "clean_job_number": "72926",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1289,
+      "decimal_job_number": "72927.0",
+      "decimal_po_id": 455,
+      "clean_id": 936,
+      "clean_job_number": "72927",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1290,
+      "decimal_job_number": "72928.0",
+      "decimal_po_id": 455,
+      "clean_id": 937,
+      "clean_job_number": "72928",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1291,
+      "decimal_job_number": "72929.0",
+      "decimal_po_id": 455,
+      "clean_id": 938,
+      "clean_job_number": "72929",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1292,
+      "decimal_job_number": "72930.0",
+      "decimal_po_id": 455,
+      "clean_id": 939,
+      "clean_job_number": "72930",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1293,
+      "decimal_job_number": "72931.0",
+      "decimal_po_id": 455,
+      "clean_id": 940,
+      "clean_job_number": "72931",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1294,
+      "decimal_job_number": "72932.0",
+      "decimal_po_id": 455,
+      "clean_id": 941,
+      "clean_job_number": "72932",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1295,
+      "decimal_job_number": "72933.0",
+      "decimal_po_id": 455,
+      "clean_id": 942,
+      "clean_job_number": "72933",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1296,
+      "decimal_job_number": "72934.0",
+      "decimal_po_id": 455,
+      "clean_id": 943,
+      "clean_job_number": "72934",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1297,
+      "decimal_job_number": "72935.0",
+      "decimal_po_id": 455,
+      "clean_id": 944,
+      "clean_job_number": "72935",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1298,
+      "decimal_job_number": "72936.0",
+      "decimal_po_id": 455,
+      "clean_id": 945,
+      "clean_job_number": "72936",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1299,
+      "decimal_job_number": "72937.0",
+      "decimal_po_id": 455,
+      "clean_id": 946,
+      "clean_job_number": "72937",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1300,
+      "decimal_job_number": "72938.0",
+      "decimal_po_id": 455,
+      "clean_id": 947,
+      "clean_job_number": "72938",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1301,
+      "decimal_job_number": "72939.0",
+      "decimal_po_id": 455,
+      "clean_id": 948,
+      "clean_job_number": "72939",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1302,
+      "decimal_job_number": "72940.0",
+      "decimal_po_id": 455,
+      "clean_id": 949,
+      "clean_job_number": "72940",
+      "clean_po_id": 455,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1303,
+      "decimal_job_number": "72942.0",
+      "decimal_po_id": 394,
+      "clean_id": 951,
+      "clean_job_number": "72942",
+      "clean_po_id": 394,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1304,
+      "decimal_job_number": "72943.0",
+      "decimal_po_id": 380,
+      "clean_id": 952,
+      "clean_job_number": "72943",
+      "clean_po_id": 380,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1305,
+      "decimal_job_number": "72944.0",
+      "decimal_po_id": 439,
+      "clean_id": 953,
+      "clean_job_number": "72944",
+      "clean_po_id": 439,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1306,
+      "decimal_job_number": "72945.0",
+      "decimal_po_id": 416,
+      "clean_id": 954,
+      "clean_job_number": "72945",
+      "clean_po_id": 416,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1125,
+      "decimal_job_number": "72948.0",
+      "decimal_po_id": 467,
+      "clean_id": 956,
+      "clean_job_number": "72948",
+      "clean_po_id": 467,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1307,
+      "decimal_job_number": "72949.0",
+      "decimal_po_id": 381,
+      "clean_id": 957,
+      "clean_job_number": "72949",
+      "clean_po_id": 381,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1308,
+      "decimal_job_number": "72950.0",
+      "decimal_po_id": 363,
+      "clean_id": 958,
+      "clean_job_number": "72950",
+      "clean_po_id": 363,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1309,
+      "decimal_job_number": "72951.0",
+      "decimal_po_id": 363,
+      "clean_id": 959,
+      "clean_job_number": "72951",
+      "clean_po_id": 363,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1310,
+      "decimal_job_number": "72954.0",
+      "decimal_po_id": 548,
+      "clean_id": 961,
+      "clean_job_number": "72954",
+      "clean_po_id": 362,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1311,
+      "decimal_job_number": "72955.0",
+      "decimal_po_id": 382,
+      "clean_id": 962,
+      "clean_job_number": "72955",
+      "clean_po_id": 382,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1312,
+      "decimal_job_number": "72959.0",
+      "decimal_po_id": 457,
+      "clean_id": 966,
+      "clean_job_number": "72959",
+      "clean_po_id": 457,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1313,
+      "decimal_job_number": "72965.0",
+      "decimal_po_id": 358,
+      "clean_id": 972,
+      "clean_job_number": "72965",
+      "clean_po_id": 358,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1314,
+      "decimal_job_number": "72966.0",
+      "decimal_po_id": 440,
+      "clean_id": 973,
+      "clean_job_number": "72966",
+      "clean_po_id": 440,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1252,
+      "decimal_job_number": "72967.0",
+      "decimal_po_id": 470,
+      "clean_id": 974,
+      "clean_job_number": "72967",
+      "clean_po_id": 470,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1315,
+      "decimal_job_number": "72969.0",
+      "decimal_po_id": 418,
+      "clean_id": 976,
+      "clean_job_number": "72969",
+      "clean_po_id": 418,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1316,
+      "decimal_job_number": "72983.0",
+      "decimal_po_id": 407,
+      "clean_id": 990,
+      "clean_job_number": "72983",
+      "clean_po_id": 407,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1317,
+      "decimal_job_number": "72984.0",
+      "decimal_po_id": 397,
+      "clean_id": 991,
+      "clean_job_number": "72984",
+      "clean_po_id": 397,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1318,
+      "decimal_job_number": "72985.0",
+      "decimal_po_id": 397,
+      "clean_id": 992,
+      "clean_job_number": "72985",
+      "clean_po_id": 397,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1319,
+      "decimal_job_number": "72986.0",
+      "decimal_po_id": 397,
+      "clean_id": 993,
+      "clean_job_number": "72986",
+      "clean_po_id": 397,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1320,
+      "decimal_job_number": "72987.0",
+      "decimal_po_id": 397,
+      "clean_id": 994,
+      "clean_job_number": "72987",
+      "clean_po_id": 397,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1321,
+      "decimal_job_number": "72988.0",
+      "decimal_po_id": 397,
+      "clean_id": 995,
+      "clean_job_number": "72988",
+      "clean_po_id": 397,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1322,
+      "decimal_job_number": "72989.0",
+      "decimal_po_id": 397,
+      "clean_id": 996,
+      "clean_job_number": "72989",
+      "clean_po_id": 397,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1323,
+      "decimal_job_number": "72997.0",
+      "decimal_po_id": 549,
+      "clean_id": 1004,
+      "clean_job_number": "72997",
+      "clean_po_id": 513,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1324,
+      "decimal_job_number": "72998.0",
+      "decimal_po_id": 641,
+      "clean_id": 1005,
+      "clean_job_number": "72998",
+      "clean_po_id": 514,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1325,
+      "decimal_job_number": "72999.0",
+      "decimal_po_id": 642,
+      "clean_id": 1006,
+      "clean_job_number": "72999",
+      "clean_po_id": 515,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1157,
+      "decimal_job_number": "73000.0",
+      "decimal_po_id": 479,
+      "clean_id": 1007,
+      "clean_job_number": "73000",
+      "clean_po_id": 479,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1326,
+      "decimal_job_number": "73001.0",
+      "decimal_po_id": 456,
+      "clean_id": 1008,
+      "clean_job_number": "73001",
+      "clean_po_id": 456,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1327,
+      "decimal_job_number": "73002.0",
+      "decimal_po_id": 456,
+      "clean_id": 1009,
+      "clean_job_number": "73002",
+      "clean_po_id": 456,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1328,
+      "decimal_job_number": "73003.0",
+      "decimal_po_id": 456,
+      "clean_id": 1010,
+      "clean_job_number": "73003",
+      "clean_po_id": 456,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1329,
+      "decimal_job_number": "73004.0",
+      "decimal_po_id": 456,
+      "clean_id": 1011,
+      "clean_job_number": "73004",
+      "clean_po_id": 456,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1330,
+      "decimal_job_number": "73007.0",
+      "decimal_po_id": 449,
+      "clean_id": 1014,
+      "clean_job_number": "73007",
+      "clean_po_id": 449,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1331,
+      "decimal_job_number": "73008.0",
+      "decimal_po_id": 449,
+      "clean_id": 1015,
+      "clean_job_number": "73008",
+      "clean_po_id": 449,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1332,
+      "decimal_job_number": "73009.0",
+      "decimal_po_id": 463,
+      "clean_id": 1016,
+      "clean_job_number": "73009",
+      "clean_po_id": 463,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1333,
+      "decimal_job_number": "73010.0",
+      "decimal_po_id": 552,
+      "clean_id": 1024,
+      "clean_job_number": "73010",
+      "clean_po_id": 552,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1334,
+      "decimal_job_number": "73011.0",
+      "decimal_po_id": 553,
+      "clean_id": 1025,
+      "clean_job_number": "73011",
+      "clean_po_id": 553,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1335,
+      "decimal_job_number": "73012.0",
+      "decimal_po_id": 554,
+      "clean_id": 1026,
+      "clean_job_number": "73012",
+      "clean_po_id": 554,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1336,
+      "decimal_job_number": "73013.0",
+      "decimal_po_id": 555,
+      "clean_id": 1027,
+      "clean_job_number": "73013",
+      "clean_po_id": 555,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1337,
+      "decimal_job_number": "73014.0",
+      "decimal_po_id": 556,
+      "clean_id": 1028,
+      "clean_job_number": "73014",
+      "clean_po_id": 556,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1338,
+      "decimal_job_number": "73015.0",
+      "decimal_po_id": 557,
+      "clean_id": 1029,
+      "clean_job_number": "73015",
+      "clean_po_id": 557,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1339,
+      "decimal_job_number": "73016.0",
+      "decimal_po_id": 558,
+      "clean_id": 1030,
+      "clean_job_number": "73016",
+      "clean_po_id": 558,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1340,
+      "decimal_job_number": "73017.0",
+      "decimal_po_id": 559,
+      "clean_id": 1031,
+      "clean_job_number": "73017",
+      "clean_po_id": 559,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1341,
+      "decimal_job_number": "73018.0",
+      "decimal_po_id": 560,
+      "clean_id": 1032,
+      "clean_job_number": "73018",
+      "clean_po_id": 560,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1342,
+      "decimal_job_number": "73019.0",
+      "decimal_po_id": 561,
+      "clean_id": 1033,
+      "clean_job_number": "73019",
+      "clean_po_id": 561,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1343,
+      "decimal_job_number": "73020.0",
+      "decimal_po_id": 562,
+      "clean_id": 1034,
+      "clean_job_number": "73020",
+      "clean_po_id": 562,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1344,
+      "decimal_job_number": "73021.0",
+      "decimal_po_id": 563,
+      "clean_id": 1035,
+      "clean_job_number": "73021",
+      "clean_po_id": 563,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1345,
+      "decimal_job_number": "73022.0",
+      "decimal_po_id": 564,
+      "clean_id": 1036,
+      "clean_job_number": "73022",
+      "clean_po_id": 564,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1346,
+      "decimal_job_number": "73023.0",
+      "decimal_po_id": 565,
+      "clean_id": 1037,
+      "clean_job_number": "73023",
+      "clean_po_id": 565,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1347,
+      "decimal_job_number": "73024.0",
+      "decimal_po_id": 565,
+      "clean_id": 1038,
+      "clean_job_number": "73024",
+      "clean_po_id": 565,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1348,
+      "decimal_job_number": "73025.0",
+      "decimal_po_id": 565,
+      "clean_id": 1039,
+      "clean_job_number": "73025",
+      "clean_po_id": 565,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1349,
+      "decimal_job_number": "73026.0",
+      "decimal_po_id": 565,
+      "clean_id": 1040,
+      "clean_job_number": "73026",
+      "clean_po_id": 565,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1350,
+      "decimal_job_number": "73027.0",
+      "decimal_po_id": 566,
+      "clean_id": 1041,
+      "clean_job_number": "73027",
+      "clean_po_id": 566,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1351,
+      "decimal_job_number": "73028.0",
+      "decimal_po_id": 567,
+      "clean_id": 1042,
+      "clean_job_number": "73028",
+      "clean_po_id": 567,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1352,
+      "decimal_job_number": "73029.0",
+      "decimal_po_id": 567,
+      "clean_id": 1043,
+      "clean_job_number": "73029",
+      "clean_po_id": 567,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1353,
+      "decimal_job_number": "73038.0",
+      "decimal_po_id": 569,
+      "clean_id": 1051,
+      "clean_job_number": "73038",
+      "clean_po_id": 569,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1354,
+      "decimal_job_number": "73039.0",
+      "decimal_po_id": 569,
+      "clean_id": 1052,
+      "clean_job_number": "73039",
+      "clean_po_id": 569,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1355,
+      "decimal_job_number": "73040.0",
+      "decimal_po_id": 569,
+      "clean_id": 1053,
+      "clean_job_number": "73040",
+      "clean_po_id": 569,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1356,
+      "decimal_job_number": "73041.0",
+      "decimal_po_id": 570,
+      "clean_id": 1054,
+      "clean_job_number": "73041",
+      "clean_po_id": 570,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1357,
+      "decimal_job_number": "73042.0",
+      "decimal_po_id": 643,
+      "clean_id": 1055,
+      "clean_job_number": "73042",
+      "clean_po_id": 571,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1358,
+      "decimal_job_number": "73043.0",
+      "decimal_po_id": 572,
+      "clean_id": 1056,
+      "clean_job_number": "73043",
+      "clean_po_id": 572,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1359,
+      "decimal_job_number": "73044.0",
+      "decimal_po_id": 644,
+      "clean_id": 1057,
+      "clean_job_number": "73044",
+      "clean_po_id": 573,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1360,
+      "decimal_job_number": "73045.0",
+      "decimal_po_id": 645,
+      "clean_id": 1058,
+      "clean_job_number": "73045",
+      "clean_po_id": 574,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1361,
+      "decimal_job_number": "73046.0",
+      "decimal_po_id": 576,
+      "clean_id": 1059,
+      "clean_job_number": "73046",
+      "clean_po_id": 576,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1362,
+      "decimal_job_number": "73047.0",
+      "decimal_po_id": 577,
+      "clean_id": 1060,
+      "clean_job_number": "73047",
+      "clean_po_id": 577,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1363,
+      "decimal_job_number": "73048.0",
+      "decimal_po_id": 578,
+      "clean_id": 1061,
+      "clean_job_number": "73048",
+      "clean_po_id": 578,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1364,
+      "decimal_job_number": "73049.0",
+      "decimal_po_id": 647,
+      "clean_id": 1062,
+      "clean_job_number": "73049",
+      "clean_po_id": 579,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1365,
+      "decimal_job_number": "73050.0",
+      "decimal_po_id": 580,
+      "clean_id": 1063,
+      "clean_job_number": "73050",
+      "clean_po_id": 580,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1366,
+      "decimal_job_number": "73051.0",
+      "decimal_po_id": 581,
+      "clean_id": 1064,
+      "clean_job_number": "73051",
+      "clean_po_id": 581,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1367,
+      "decimal_job_number": "73052.0",
+      "decimal_po_id": 581,
+      "clean_id": 1065,
+      "clean_job_number": "73052",
+      "clean_po_id": 581,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1368,
+      "decimal_job_number": "73057.0",
+      "decimal_po_id": 583,
+      "clean_id": 1070,
+      "clean_job_number": "73057",
+      "clean_po_id": 583,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1369,
+      "decimal_job_number": "73058.0",
+      "decimal_po_id": 583,
+      "clean_id": 1071,
+      "clean_job_number": "73058",
+      "clean_po_id": 583,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1370,
+      "decimal_job_number": "73059.0",
+      "decimal_po_id": 583,
+      "clean_id": 1072,
+      "clean_job_number": "73059",
+      "clean_po_id": 583,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "conflict",
+      "decimal_id": 1371,
+      "decimal_job_number": "73060.0",
+      "decimal_po_id": 648,
+      "clean_id": 1073,
+      "clean_job_number": "73060",
+      "clean_po_id": 584,
+      "reason": "po_id_different_keep_both"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1223,
+      "decimal_job_number": "73061.0",
+      "decimal_po_id": 542,
+      "clean_id": 1022,
+      "clean_job_number": "73061",
+      "clean_po_id": 542,
+      "reason": "po_id_same_duplicate_record"
+    },
+    {
+      "action": "deleted",
+      "decimal_id": 1224,
+      "decimal_job_number": "73062.0",
+      "decimal_po_id": 542,
+      "clean_id": 1023,
+      "clean_job_number": "73062",
+      "clean_po_id": 542,
+      "reason": "po_id_same_duplicate_record"
+    }
+  ]
+}
