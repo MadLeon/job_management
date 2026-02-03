@@ -60,20 +60,7 @@ priority sheet的结构:
 注意: 移除时, order item与其下方的零件行被视为一体, 移除的范围应该是order item行下方直到找到下一个order item行, 或者直到本sheet的最后一行 (若始终未找到下一个order item)
 
 
----------------------------------从此开始
-从part表的1895行开始, 所有的revision字段均为小数形式, 保存的时候出现了问题, 修复他们为整数或字符串格式
-另外, description也为空, 需要填写, 应该使联查找到具体的order item id, 在oe文件的AA列匹配到那条记录, 然后使用description更新数据库
-然后, 你应该先查看one-time-script/update-oe-database - old.js文件和sync-excel-to-db.js, 搞清楚原因, 然后修复错误的逻辑
-然后, 你需要在order entry log/mod_addnewjobtodb.bas中修改sql语句, 级联part表, 将文件中的description更新到数据库中
 
-1月24号的数据插入有问题, part表的description被添加成了part number了
-
-修复已有的错误数据
-- 从 order_item 关联 OE 文件，填充 description 字段
-
-查看session 10-11 summary, 旧有的逻辑有问题, 造成了AA列的order item id不对! 优先修复
-修复361-409 order_item的drawing_release_date
-移除part中的垃圾数据
 
 formatPrioritySheet 重写
 - 根据新的 Priority Sheet 重写格式化内容

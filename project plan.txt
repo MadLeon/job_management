@@ -19,3 +19,58 @@ the confirmjobcreationmodal should have the same level with createjobmodal, not 
 2. 为createjobmodal的表单添加require的前端和后端的双重确认逻辑. required属性的表单元素包括:
 job number, line number, oe number, po number, select client, select contact, job quantity, delivery required date, priority
 3. *为该表单禁用浏览器端的自动提示
+
+
+---------------------------------从此开始
+从part表的1895行开始, 所有的revision字段均为小数形式, 保存的时候出现了问题, 修复他们为整数或字符串格式
+另外, description也为空, 需要填写, 应该使联查找到具体的order item id, 在oe文件的AA列匹配到那条记录, 然后使用description更新数据库
+然后, 你应该先查看one-time-script/update-oe-database - old.js文件和sync-excel-to-db.js, 搞清楚原因, 然后修复错误的逻辑
+然后, 你需要在order entry log/mod_addnewjobtodb.bas中修改sql语句, 级联part表, 将文件中的description更新到数据库中
+
+1月24号的数据插入有问题, part表的description被添加成了part number了
+
+修复已有的错误数据
+- 从 order_item 关联 OE 文件，填充 description 字段
+
+### 修复AA列
+
+查看session 10-11 summary, 旧有的逻辑有问题, 造成了AA列的order item id不对! 优先修复
+格式问题可以忽略, 我需要你看的是数据逻辑. 
+ok, 我先给你我认为应该实现的逻辑. 
+首先, 应该根据每一行(空行除外)的数据定位到数据库order_item的条目, 逻辑是
+- 根据job number定位到job表中的行, 继而找到改行的id
+- 在order_item表中根据该job id配合line number找到order item行, 进而定位order 首列的值为order_item表的ID
+- 在指定列更新该order item的id
+
+写一个新的脚本, add-order-item-id. 该脚本用于更新一个oe文件导出的csv文件的s列(order item id)的值
+- 文件为order entry log/order entry log - new.csv
+- 该文件第一行为标题行, 所以数据从第二行进行填写
+- 该文件包含大量空行, 注意跳过
+- 使用上方我提到的逻辑
+
+你的理解有误, 并且代码有bug
+- line number的格式并非只是整数, 可以认为是字符串
+- 注意每行逗号的数量, 我可以确认job#位于第二列, line位于第9列
+- 不是在最后一行输出查询结果, 需要在s列, 即第19列, 你的结果分布在了17-19列
+- 更新逻辑, 当根据job#找到的order item只有一条时, 可以不用根据line继续定位, 直接使用该order item的id即可
+- 我清除了之前的结果, 修复脚本后重新运行一次, 结束后, 我希望你列出仍然空白的记录
+
+仍然没有修复输出位置的问题
+现在, 我在该csv文件的第一列插入了一个空的order item id列, 直接将结果输出到那里
+我清除了之前的结果, 修复脚本后重新运行一次
+
+仍然空白的6条记录：
+行号	Job#	Line#	原因说明
+60	72113	1	DB中该Job的line_number最小是2，没有Line#1
+285	72855	(空)	该Job在数据库中完全没有order_item记录
+393	72999	1	该Job在数据库中完全没有order_item记录
+445	73034	1	该Job在数据库中完全没有order_item记录
+446	73035	2	该Job在数据库中完全没有order_item记录
+447	73036	3	该Job在数据库中完全没有order_item记录
+
+修复po的is_active问题
+修复361-409 order_item的drawing_release_date
+移除part中的垃圾数据
+
+
+### PO Report Candu
