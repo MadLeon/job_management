@@ -68,6 +68,13 @@ priority sheet的结构:
 
 1月24号的数据插入有问题, part表的description被添加成了part number了
 
+修复已有的错误数据
+- 从 order_item 关联 OE 文件，填充 description 字段
+
+查看session 10-11 summary, 旧有的逻辑有问题, 造成了AA列的order item id不对! 优先修复
+修复361-409 order_item的drawing_release_date
+移除part中的垃圾数据
+
 formatPrioritySheet 重写
 - 根据新的 Priority Sheet 重写格式化内容
 

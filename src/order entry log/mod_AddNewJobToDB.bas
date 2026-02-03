@@ -48,7 +48,7 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     Dim partNumber As String, revision As String, quantity As String
     Dim poNumber As String, lineNumber As String, actualPrice As String
     Dim deliveryRequiredDate As String, customerContact As String
-    Dim drawingReleaseDate As String, todayDate As Date
+    Dim description As String, drawingReleaseDate As String, todayDate As Date
 
     oeNumber = Trim(inputWS.Range("OE").Value)
     jobNumber = Trim(inputWS.Range("JobNum").Value)
@@ -61,6 +61,7 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     actualPrice = Trim(inputWS.Range("price").Value)
     deliveryRequiredDate = Trim(inputWS.Range("date").Value)
     customerContact = Trim(inputWS.Range("contact").Value)
+    description = Trim(inputWS.Range("desc").Value)
 
     ' Convert delivery date format from YYYY.M.D to YYYY-MM-DD
     If deliveryRequiredDate <> "" Then
@@ -142,7 +143,7 @@ Sub AddNewJobToDB(Optional rowNumber As Long = 0)
     stepTime = Timer
     Dim partId As Variant
     If partNumber <> "" Then
-        partId = FindOrCreatePart(partNumber, revision)
+        partId = FindOrCreatePart(partNumber, revision, description)
     Else
         partId = Null
     End If
@@ -413,8 +414,9 @@ End Function
 ' Find existing part or create new one
 ' Parameters: drawingNumber - Drawing/Part number
 '             revision - Part revision
+'             description - Part description (optional)
 ' Returns: Part ID, or Null on failure
-Function FindOrCreatePart(drawingNumber As String, revision As String) As Variant
+Function FindOrCreatePart(drawingNumber As String, revision As String, Optional description As String = "") As Variant
     Dim results As Variant
     Dim insertSQL As String
 
@@ -430,8 +432,8 @@ Function FindOrCreatePart(drawingNumber As String, revision As String) As Varian
     End If
 
     ' Part doesn't exist, create new one
-    insertSQL = "INSERT INTO part (drawing_number, revision, created_at, updated_at) " & _
-                "VALUES ('" & Replace(drawingNumber, "'", "''") & "', '" & Replace(revision, "'", "''") & "', datetime('now', 'localtime'), datetime('now', 'localtime'))"
+    insertSQL = "INSERT INTO part (drawing_number, revision, description, created_at, updated_at) " & _
+                "VALUES ('" & Replace(drawingNumber, "'", "''") & "', '" & Replace(revision, "'", "''") & "', '" & Replace(description, "'", "''") & "', datetime('now', 'localtime'), datetime('now', 'localtime'))"
 
     If mod_SQLite.ExecuteNonQuery(insertSQL) Then
         ' Return last inserted ID
