@@ -68,8 +68,22 @@ ok, 我先给你我认为应该实现的逻辑.
 446	73035	2	该Job在数据库中完全没有order_item记录
 447	73036	3	该Job在数据库中完全没有order_item记录
 
-修复po的is_active问题
-修复361-409 order_item的drawing_release_date
+### 修复po的is_active
+
+现在的数据库中的po表的is_active字段的数据不正确, 我需要手动更新一次
+遍历po表, 找到每行的oe_number, 查看其是否能够在oe文件中找到
+- 如果能找到, 则跳过
+- 如果找不到, 则将is_active字段设置为0
+- oe文件使用order entry log/Order Entry Log - new.csv
+
+### 修复1082-1148行order_item的drawing_release_date
+
+现在的数据库中的order_item表的drawing_release_date和delivery_required_date字段的数据缺失, 我需要手动更新一次
+遍历order_item表, 对于ID范围在1082-1148的每个记录, 在oe文件中的a列查找记录
+- 找到记录, 则使用第9列的值填入drawing_release_date字段; 使用第17列的值填入delivery_required_date字段
+- 没找到记录则跳过
+- oe文件使用order entry log/Order Entry Log - new.csv
+
 移除part中的垃圾数据
 
 
