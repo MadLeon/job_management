@@ -74,3 +74,40 @@ ok, 我先给你我认为应该实现的逻辑.
 
 
 ### PO Report Candu
+
+Convert csv to string:
+,,,,,,,,,,,,,,,,,,,,,,,,,,
+38608,71609,Candu,46,08-63500-0233-01-DD-2,5,Ashan Syed,11/26/2024,1,Insert Housing Size 36-NEL-IH-36-00,269,87-63500-PN-R010,,,,4/14/2025,,,,,,,,,,,730
+38608,71610,Candu,65,08-63500-0252-01-DD-2,3,Ashan Syed,11/26/2024,2,Insert Housing Size 24-NEL-IH-24-00,265,87-63500-PN-R010,,,,4/14/2025,,,,,,,,,,,731
+38608,71611,Candu,1100,08-63500-0224-01-DD-2,0,Ashan Syed,11/26/2024,4,Pin Size 16-16 - NEL-PN-00-1616,13.95,87-63500-PN-R010,,,,4/14/2025,,,,,,,,,,,732
+38608,71612,Candu,1600,08-63500-0222-01-DD-2,0,Ashan Syed,11/26/2024,5,"Pin Size 16,20 - NEL-PN-00-1620",14.49,87-63500-PN-R010,,,,4/14/2025,,,,,,,,,,,733
+38608,71613,Candu,3500,08-63500-0229-01-DD-3,2,Ashan Syed,11/26/2024,6,Contact Clip Size 16- NEL-CC-00-16,3.08,87-63500-PN-R010,,,,4/14/2025,,,,,,,,,,,734
+38619,71669,Candu,5,RT-87920-0351-01-GA-D,0,David Weldon,12/3/2024,1,CTI Bore Gauge,35171,RT79-87920-PN-R005-R.1,,,,3/21/2025,,,,,,,,,,,735
+
+List rows present in a table:
+{
+  "@odata.etag": "",
+  "ItemInternalId": "dbbc4e0b-85e6-4ed4-a95d-023b5b582928",
+  "Order Item ID": "833",
+  "PO": "RT98-87900-PN-R003",
+  "Expeditor": "Amritha Gopan",
+  "PO / Drawing _x0023_": "RT98-87900-PN-R003",
+  "Title": "C6-Bore Gague- Narrow Landing",
+  "Rev": "",
+  "Job _x0023_": "J# 72623",
+  "OE Date": "45870",
+  "PO Delivery": "45989",
+  "FAT": "",
+  "Witness": "",
+  "Manufacturing \nCompletion Date": "",
+  "% completed\n(Manufacturing)": "",
+  "Report Submission": "",
+  "Accepted2": "",
+  "QA Doc Package": "",
+  "Accepted": "",
+  "Predicted Ship Date": "",
+  "Current Status": "",
+  "Milestones": ""
+}
+
+["39209,73050,Candu,6,RT-88000-70047-000-1-GA-D,3,Laila Parveen,1/19/2026,10A,Protective Sleeve,1799,RT98-88010-PN-R001-R.3,,,,4/3/2026,,,,,,,,,,,1136"]
