@@ -20,11 +20,12 @@ PO行也有两种情况, 即
 - A列(order item id)为'-'或空的情况 (该PO行下方有order item, 所有的PO行与order item都有相同的PO number)
 
 对于 PO 行, 下面的对应关系是 PO 列的内容, 及它与 Order Entry Log 文件的列的关系 (括号中为列号):
-PO Report - Order Item ID                         OE - Order Item ID (AA) 根据是否有多个order item决定是空白或有值
-PO Report - Expeditor:                            建立一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
+PO Report - Order Item ID                         OE - Order Item ID (AA) 下方有多个order item: 空白; 下方无order item: order item id
 PO Report - PO:                                   OE - P.O. (L)
+PO Report - Expeditor:                            一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
+PO Report - PO / Drawing #                        OE - P.O. (L)
 PO Report - Title:                                留空  手动添加
-PO Report - Rev:                                  默认为 0  手动添加
+PO Report - Rev:                                  默认为 0  未来由用户手动添加
 PO Report - Job #:                                OE - 该 PO 下所有行的 Job # (具体格式见下方 Job # 格式)
 PO Report - OE Date:                              列出该 PO 下所有不同的 OE - DWG Rel. (H), 以 alt+enter 间隔
 PO Report - PO Delivery:                          列出该 PO 下所有不同的 OE - Del. Req'd (P), 以 alt+enter 间隔
@@ -32,10 +33,10 @@ PO Report - FAT:                                  留空
 PO Report - Witness:                              留空
 PO Report - Manufacturing Compeletion Date:       留空
 PO Report - % Completed (Manufacturing):          留空
-PO Report - Forcast:                              建立一个 dropdown, 取值为: On Schedule, Changed, NP Processed, [empty]. 值保持为空白
+PO Report - Report Submission:                    留空
 PO Report - QA Package Submission:                留空
-PO Report - Accepted:                             留空
-PO Report - DOC Submission:                       留空
+PO Report - Accepted2:                            留空
+PO Report - QA Doc Package:                       留空
 PO Report - Accepted:                             留空
 PO Report - Predicted Ship Date:                  留空
 PO Report - Current Status:                       留空
@@ -43,8 +44,9 @@ PO Report - Milestones:                           留空
 
 对于 PO 行下方的 order item 行, 下面的对应关系是列的内容, 及它与 Order Entry Log 文件的列的关系 (括号中为列号):
 PO Report - Order Item ID                         OE - Order Item ID (AA)
-PO Report - Expeditor:                            建立一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
 PO Report - PO:                                   OE - P.O. (L)
+PO Report - Expeditor:                            一个 dropdown, 取值为: David Weldon, Etianne Machado, Laila Parveen, Amritha Gopan, Wendy Wu, Raza Talpur, [empty]. 值保持为空白
+PO Report - PO / Drawing #                        OE - Drawing number (D)
 PO Report - Title:                                OE - Descriptions (J)
 PO Report - Rev:                                  OE - Rev (F)
 PO Report - Job #:                                OE - Job # (B)
@@ -54,10 +56,10 @@ PO Report - FAT:                                  留空
 PO Report - Witness:                              留空
 PO Report - Manufacturing Compeletion Date:       留空
 PO Report - % Completed (Manufacturing):          留空
-PO Report - Forcast:                              建立一个 dropdown, 取值为: On Schedule, Changed, NP Processed, [empty]. 值保持为空白
+PO Report - Report Submission:                    留空
 PO Report - QA Package Submission:                留空
-PO Report - Accepted:                             留空
-PO Report - DOC Submission:                       留空
+PO Report - Accepted2:                            留空
+PO Report - QA Doc Package:                       留空
 PO Report - Accepted:                             留空
 PO Report - Predicted Ship Date:                  留空
 PO Report - Current Status:                       留空
@@ -72,11 +74,10 @@ Job # 格式
 - job # 保证是5位整数
 
 power automation 的具体逻辑
-- 寻找 PO Report (Candu)(test).csv 中所有 PO Report 中没有的行, 将这些新的行添加到 PO Report 中
-- 查找应该基于A列的order item id, 这个值相当于每个order item行的primary key
+- 寻找 PO Report (Candu)(test).csv 中所有 PO Report 中没有的行, 将这些新的行添加到 PO Report 中 (已完成)
+- 查找应该基于A列的order item id, 这个值相当于每个order item行的primary key (已完成)
 - 对于找到的order item行, 首先查看其PO number(L列)是否存在于本sheet, 
   - 如果存在, 则在最后一个该po number的行后面插入一行, 将这条未记录的信息填入
-  - 如果不存在, 则在表格的最后一行往下数2行插入, 即PO间间隔一行
-
-当前任务, 先引导我创建一个按钮, 绑定脚本, 在控制台显示 hello world
+  - 如果不存在, 则在表格的最后一行先插入一行PO行, 然后在这个PO行下方插入该行
+insert new row from csv lines.ts是一个早期版本, 需要对其进行重构, 按照新的要求
 先写一个todos, 在我批准后逐步进行
