@@ -117,4 +117,8 @@ ok, 我先给你我认为应该实现的逻辑.
 - oe文件使用order entry log/Order Entry Log - new.csv
 
 TODOs
-- (完成oe文件更新后) 查看\\rtdnas2\oe\jobs.db, 看看在此期间是否有新的数据被插入, 写脚本增量更新这些数据到record.db中
+1. 完成oe文件更新
+- 查看\\rtdnas2\oe\jobs.db, 看看在此期间是否有新的数据被插入, 写脚本增量更新这些数据到record.db中
+- 手动确认 PO report 已更新为最新状态
+
+2. 更新 MP schedule

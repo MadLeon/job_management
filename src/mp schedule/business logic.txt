@@ -18,6 +18,14 @@ mp schedule excel file 的列为:
 - Qty.
 - Ship Date: 对应 Delivery required date
 
+mp schedule excel file 中数据的组织形式是 order item 行 + detail part 行
+- order item 行的特征为: 第二列 job #, 第三列 po #, 第四列 customer 均有值
+- detail part 行的特征为: 前四列均为空
+- order item 下可以不包含 detail part
+- detail part 与 order item 形成多对一的关系
+- 一个 order item 被删除, 其下方的所有 detail part 也应该同时被移除, 此处类似 excel 中的行删除操作
+
+
 SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次无法正常使用, 无法添加所有的order item
 目前我希望修改总体业务逻辑, 
 - 舍弃shipped表格, 不在需要track已经不在oe entry文件中的条目
