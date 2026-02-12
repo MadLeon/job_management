@@ -45,20 +45,16 @@ SyncAll函数较为复杂, 且之前的逻辑可能有漏洞, 因为最近几次
 将该总结并入 mp schedule/summary.md, 尽量简短, 如果没有该文件则创建
 
 本session主要任务:
-手动更新 MP Schedule 的第一列的 order item id
-先给出你对于数据库字段与oe文件列的关联的理解, 我需要确认你的理解是正确的
-我们需要制定一个方案, 使得文件中每行可以在数据库中找到其对应的条目.
-先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
-
-本session主要任务:
 添加新 .bas 文件, 一个新的模块 (帮我命名), 用于同步 priority sheet 与数据库 record.db 中的数据
 priority sheet的结构:
 - 多个order item行搭配下方的零件行, 其中零件行可能不存在
 - order item行的特征是: 前两列有值. 首列的值为order_item表的ID属性, 次列的值为job#
-- 零建行的前三列均为空
+- 零件行的前三列均为空
 
 该模块的逻辑:
-首先进行清除操作, 所有首列的order item id, 只要其不在数据库, 就移除该order item行以及其下方的所有零件行
+首先进行清除操作, 
+- 首先移除无order item id的所有order item行
+- 然后查看所有order item行, 其首列的order item id只要其不在数据库, 就移除该order item行以及其下方的所有零件行
 然后进行增量操作
 - 找到 priority sheet 的最后一个被编辑的A列的值, 记录该值 (debug print该值)
 - 在数据库的order item表找到所有大于该id的记录

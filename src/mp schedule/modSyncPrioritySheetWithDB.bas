@@ -10,9 +10,10 @@ Option Explicit
 
 ' SyncPrioritySheetWithDB - Main synchronization function
 ' Steps:
-'   1. Remove invalid order items from sheet
-'   2. Query database for new order items
-'   3. Insert new rows into sheet
+'   1. Remove order items without ID from sheet
+'   2. Remove order items not in database from sheet
+'   3. Query database for new order items
+'   4. Insert new rows into sheet
 ' Returns: Dictionary with operation summary (deletedRows, insertedRows)
 Public Function SyncPrioritySheetWithDB() As Object
     Dim ws As Worksheet, summary As Object
@@ -26,29 +27,107 @@ Public Function SyncPrioritySheetWithDB() As Object
     End If
     On Error GoTo 0
     
-    ' Step 1: Remove invalid order items
-    Dim deletedRows As Long
-    deletedRows = RemoveInvalidOrderItems(ws)
-    Debug.Print "Deleted rows: " & deletedRows
+    ' Step 1: Remove order items without order_item id (A column is empty)
+    Debug.Print "========== SYNC PRIORITY SHEET WITH DB =========="
+    Debug.Print "Step 1: Remove order items without order_item id..."
+    Dim deletedRowsNoId As Long
+    deletedRowsNoId = RemoveOrderItemsWithoutId(ws)
+    Debug.Print "  Deleted rows (no id): " & deletedRowsNoId
     
-    ' Step 2: Get new order items from database
+    ' Step 2: Remove order items not in database
+    Debug.Print "Step 2: Remove order items not in database..."
+    Dim deletedRowsInvalid As Long
+    deletedRowsInvalid = RemoveInvalidOrderItems(ws)
+    Debug.Print "  Deleted rows (invalid): " & deletedRowsInvalid
+    
+    ' Step 3: Get new order items from database
+    Debug.Print "Step 3: Query new order items from database..."
     Dim newOrderItems As Object
     Set newOrderItems = GetNewOrderItemsToAdd(ws)
     
-    ' Step 3: Insert new rows
+    ' Step 4: Insert new rows
+    Debug.Print "Step 4: Insert new order items..."
     Dim insertedRows As Long
     insertedRows = InsertNewOrderItemRows(ws, newOrderItems)
-    Debug.Print "Inserted rows: " & insertedRows
+    Debug.Print "  Inserted rows: " & insertedRows
+    Debug.Print "========== SYNC COMPLETED =========="
     
     ' Return summary
-    summary("deletedRows") = deletedRows
+    summary("deletedRowsNoId") = deletedRowsNoId
+    summary("deletedRowsInvalid") = deletedRowsInvalid
     summary("insertedRows") = insertedRows
     Set SyncPrioritySheetWithDB = summary
 End Function
 
 ' =============================================================================
-' REMOVAL FUNCTION
+' REMOVAL FUNCTIONS
 ' =============================================================================
+
+' RemoveOrderItemsWithoutId - Remove order item rows with empty order_item id
+' Logic:
+'   1. Identify order item rows (B column and subsequent columns have values)
+'   2. If A column (order_item id) is empty, delete that row and all attached detail part rows
+'   3. Detail part rows are identified by empty A, B, C columns
+' Returns: Count of deleted rows
+Private Function RemoveOrderItemsWithoutId(ws As Worksheet) As Long
+    Dim lastRow As Long, r As Long
+    Dim deletedCount As Long
+    Dim orderItemIdValue As String
+    Dim isOrderItemRow As Boolean
+    
+    lastRow = GetLastDataRow(ws)
+    deletedCount = 0
+    r = lastRow
+    
+    ' Iterate from bottom to top to avoid row shifting issues
+    Do While r >= 2
+        orderItemIdValue = Trim(ws.Cells(r, 1).Value)
+        
+        ' Check if this is an order item row
+        ' Order item row: B (JOB #), C (PO #), D (Customer) columns have values
+        isOrderItemRow = (Trim(ws.Cells(r, 2).Value) <> "" Or _
+                         Trim(ws.Cells(r, 3).Value) <> "" Or _
+                         Trim(ws.Cells(r, 4).Value) <> "")
+        
+        If isOrderItemRow And orderItemIdValue = "" Then
+            ' This is an order item row with missing ID - delete it and all detail part rows below
+            Dim partRowStart As Long, partRowEnd As Long
+            partRowStart = r
+            
+            ' Find the next order item row or end of sheet
+            partRowEnd = r
+            Dim nextRow As Long
+            nextRow = r + 1
+            Do While nextRow <= lastRow
+                ' Check if nextRow is an order item row (has value in B, C, or D column)
+                If Trim(ws.Cells(nextRow, 2).Value) <> "" Or _
+                   Trim(ws.Cells(nextRow, 3).Value) <> "" Or _
+                   Trim(ws.Cells(nextRow, 4).Value) <> "" Then
+                    partRowEnd = nextRow - 1
+                    Exit Do
+                End If
+                nextRow = nextRow + 1
+            Loop
+            
+            ' If we didn't find another order item row, delete to the last row
+            If nextRow > lastRow Then
+                partRowEnd = lastRow
+            End If
+            
+            ' Delete the range (order item + attached detail part rows)
+            Dim rowCount As Long
+            rowCount = partRowEnd - partRowStart + 1
+            ws.Rows(partRowStart & ":" & partRowEnd).Delete
+            deletedCount = deletedCount + rowCount
+            lastRow = lastRow - rowCount
+            r = r - 1
+        Else
+            r = r - 1
+        End If
+    Loop
+    
+    RemoveOrderItemsWithoutId = deletedCount
+End Function
 
 ' RemoveInvalidOrderItems - Remove order item rows not in database
 ' Logic:
@@ -91,9 +170,15 @@ Private Function RemoveInvalidOrderItems(ws As Worksheet) As Long
     Do While r >= 2
         orderItemId = Trim(ws.Cells(r, 1).Value)
         
-        ' Check if this is an order item row (first 2 columns have values)
-        If orderItemId <> "" And Trim(ws.Cells(r, 2).Value) <> "" Then
-            ' This is an order item row - check if it's valid
+        ' Check if this is an order item row
+        ' Order item row: B (JOB #), C (PO #), D (Customer) columns have values
+        Dim isOrderItemRow As Boolean
+        isOrderItemRow = (Trim(ws.Cells(r, 2).Value) <> "" Or _
+                         Trim(ws.Cells(r, 3).Value) <> "" Or _
+                         Trim(ws.Cells(r, 4).Value) <> "")
+        
+        If isOrderItemRow And orderItemId <> "" Then
+            ' This is an order item row with ID - check if it exists in database
             Dim orderId As Long
             On Error Resume Next
             orderId = CLng(orderItemId)
@@ -104,20 +189,23 @@ Private Function RemoveInvalidOrderItems(ws As Worksheet) As Long
                 Dim partRowStart As Long, partRowEnd As Long
                 partRowStart = r
                 
-                ' Find the end of this order item block
+                ' Find the next order item row
                 partRowEnd = r
                 Dim nextRow As Long
                 nextRow = r + 1
                 Do While nextRow <= lastRow
-                    If Trim(ws.Cells(nextRow, 1).Value) <> "" And _
-                       Trim(ws.Cells(nextRow, 2).Value) <> "" Then
+                    ' Check if nextRow is an order item row
+                    If Trim(ws.Cells(nextRow, 2).Value) <> "" Or _
+                       Trim(ws.Cells(nextRow, 3).Value) <> "" Or _
+                       Trim(ws.Cells(nextRow, 4).Value) <> "" Then
                         partRowEnd = nextRow - 1
                         Exit Do
                     End If
                     nextRow = nextRow + 1
                 Loop
                 
-                If partRowEnd = r Then
+                ' If we didn't find another order item row, delete to the last row
+                If nextRow > lastRow Then
                     partRowEnd = lastRow
                 End If
                 
@@ -165,7 +253,14 @@ Private Function GetNewOrderItemsToAdd(ws As Worksheet) As Collection
     For r = 2 To lastRow
         Dim cellVal As String
         cellVal = Trim(ws.Cells(r, 1).Value)
-        If cellVal <> "" And Trim(ws.Cells(r, 2).Value) <> "" Then
+        
+        ' Identify order item row: B, C, or D column has value
+        Dim isOrderItemRow As Boolean
+        isOrderItemRow = (Trim(ws.Cells(r, 2).Value) <> "" Or _
+                         Trim(ws.Cells(r, 3).Value) <> "" Or _
+                         Trim(ws.Cells(r, 4).Value) <> "")
+        
+        If isOrderItemRow And cellVal <> "" Then
             Dim orderId As Long
             On Error Resume Next
             orderId = CLng(cellVal)
@@ -177,7 +272,7 @@ Private Function GetNewOrderItemsToAdd(ws As Worksheet) As Collection
         End If
     Next r
     
-    Debug.Print "Last order_item ID in Priority Sheet: " & lastOrderId
+    Debug.Print "  *** Last order_item ID in Priority Sheet: " & lastOrderId & " ***"
     
     dbPath = ThisWorkbook.Path & "\..\..\data\record.db"
     
@@ -240,9 +335,9 @@ Private Function GetNewOrderItemsToAdd(ws As Worksheet) As Collection
             newOrderItems.Add rowData
         Next idx
         
-        Debug.Print "Found " & newOrderItems.Count & " new order items to add"
+        Debug.Print "  *** Found " & newOrderItems.Count & " new order items to add ***"
     Else
-        Debug.Print "Found 0 new order items to add"
+        Debug.Print "  *** Found 0 new order items to add ***"
     End If
     
     Set GetNewOrderItemsToAdd = newOrderItems
