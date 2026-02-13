@@ -122,6 +122,10 @@ TODOs
 - 手动确认 PO report 已更新为最新状态
 - OE 文件中 ID 947 出现 3 次，ID 1131 出现 2 次, 应沟通避免这种情况的发生, 或者应该使用三个oi来储存
 
+更新record数据库
+- assemblies table 1502
+- 更新oe文件, 包含宏和order item id
+
 2. 更新 MP schedule
 - 更新updateAssemblies
 目标逻辑:
