@@ -10,8 +10,8 @@ mp schedule excel file 的业务逻辑是
 
 mp schedule excel file 的列为:
 - order item id: 对应数据库中 order_item id
-- PO #
 - JOB #
+- PO #
 - Customer
 - Description
 - Part #
@@ -62,12 +62,6 @@ priority sheet的结构:
 - 插入时, order item行之间应间隔一行 (第一个插入行与之前最后一行间也应间隔一行)
 
 注意: 移除时, order item与其下方的零件行被视为一体, 移除的范围应该是order item行下方直到找到下一个order item行, 或者直到本sheet的最后一行 (若始终未找到下一个order item)
-
-
-
-
-formatPrioritySheet 重写
-- 根据新的 Priority Sheet 重写格式化内容
 
 SyncAll 顺序调用新模块 & formatPrioritySheet
 

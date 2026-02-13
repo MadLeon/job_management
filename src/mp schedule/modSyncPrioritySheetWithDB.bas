@@ -283,6 +283,7 @@ Private Function GetNewOrderItemsToAdd(ws As Worksheet) As Collection
     End If
     
     ' Query new order items
+    ' Customer link path: job -> po -> customer_contact -> customer
     sql = "SELECT " & _
           "oi.id, " & _
           "j.job_number, " & _
@@ -295,7 +296,8 @@ Private Function GetNewOrderItemsToAdd(ws As Worksheet) As Collection
           "FROM order_item oi " & _
           "LEFT JOIN job j ON oi.job_id = j.id " & _
           "LEFT JOIN purchase_order po ON j.po_id = po.id " & _
-          "LEFT JOIN customer c ON po.contact_id = c.id " & _
+          "LEFT JOIN customer_contact cc ON po.contact_id = cc.id " & _
+          "LEFT JOIN customer c ON cc.customer_id = c.id " & _
           "LEFT JOIN part p ON oi.part_id = p.id " & _
           "WHERE oi.id > " & lastOrderId & " " & _
           "ORDER BY oi.id"
@@ -363,13 +365,14 @@ Private Function InsertNewOrderItemRows(ws As Worksheet, newOrderItems As Collec
     
     lastRow = GetLastDataRow(ws)
     insertedCount = 0
-    rowToInsert = lastRow + 1
     
     ' Check if we need to add initial spacing
     If lastRow >= 2 Then
         ' Add one empty row as spacing
-        rowToInsert = rowToInsert + 1
+        rowToInsert = lastRow + 1
         insertedCount = 1
+    Else
+        rowToInsert = lastRow
     End If
     
     ' Insert each new order item
@@ -385,6 +388,9 @@ Private Function InsertNewOrderItemRows(ws As Worksheet, newOrderItems As Collec
         ws.Cells(rowToInsert, 6).Value = rowData("drawing_number")             ' F: Part #
         ws.Cells(rowToInsert, 7).Value = rowData("quantity")                   ' G: Qty.
         ws.Cells(rowToInsert, 8).Value = rowData("delivery_required_date")     ' H: Ship Date
+        
+        ' Fill columns B to H with orange color for order item row
+        ws.Range(ws.Cells(rowToInsert, 2), ws.Cells(rowToInsert, 8)).Interior.Color = RGB(255, 199, 44)
         
         insertedCount = insertedCount + 1
         rowToInsert = rowToInsert + 1

@@ -120,12 +120,13 @@ TODOs
 1. 完成oe文件更新
 - 查看\\rtdnas2\oe\jobs.db, 看看在此期间是否有新的数据被插入, 写脚本增量更新这些数据到record.db中
 - 手动确认 PO report 已更新为最新状态
+- OE 文件中 ID 947 出现 3 次，ID 1131 出现 2 次, 应沟通避免这种情况的发生, 或者应该使用三个oi来储存
 
 2. 更新 MP schedule
-- 可以直接运行函数进行测试
-- 多空了一行
-- format 函数的列, 行的颜色, 更新一下
-- 看一下最后几个的 description 为什么显示不正确
+- 更新updateAssemblies
+目标逻辑:
+- 将所有的drawing number先添加到part表中(若已存在则忽略), 使用drawing number, description.
+- 在part tree表添加新记录(若存在则忽略), 使用父子的ID和quantity
 
 3. MP
 - 确认mp文件存放的位置, 好写调用逻辑
