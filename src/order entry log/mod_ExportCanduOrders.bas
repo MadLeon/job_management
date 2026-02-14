@@ -27,27 +27,31 @@ Sub ExportCanduOrders()
     Dim columnCount As Integer
     Dim cell As Range
     Dim cellValue As String
+    Dim poDataFolder As String
 
     On Error GoTo HandleError
 
     ' 1. Initialize worksheet reference
     Set deliveryWS = ThisWorkbook.Sheets("DELIVERY SCHEDULE")
     
-    ' 2. Generate timestamp for filename
+    ' 2. Define PO Data folder path
+    poDataFolder = Environ("USERPROFILE") & "\Record Technology & Development\Communication site - PO Data"
+    
+    ' 3. Generate timestamp for filename
     timestamp = Format(Now(), "yyyymmdd_hhmmss")
     
-    ' 3. Build CSV file path (in project data folder)
-    csvFilePath = ThisWorkbook.Path & "\Candu_Orders_" & timestamp & ".csv"
+    ' 4. Build CSV file path (in PO Data folder)
+    csvFilePath = poDataFolder & "\Candu_Orders_" & timestamp & ".csv"
     
-    ' 4. Get last row with data
+    ' 5. Get last row with data
     lastRow = deliveryWS.Cells(deliveryWS.Rows.Count, 1).End(xlUp).row
     
-    ' 5. Build header row (column names from first row)
+    ' 6. Build header row (column names from first row)
     columnCount = 27 ' Based on DELIVERY SCHEDULE structure (A-AA columns)
     headerRow = BuildHeaderRow(deliveryWS, columnCount)
     csvContent = headerRow & vbCrLf
     
-    ' 6. Iterate through data rows and filter for Candu orders
+    ' 7. Iterate through data rows and filter for Candu orders
     For r = 2 To lastRow ' Start from row 2 (skip header)
         customerName = Trim(deliveryWS.Cells(r, 3).Value) ' Column C: Customer
         
@@ -59,16 +63,16 @@ Sub ExportCanduOrders()
         End If
     Next r
     
-    ' 7. Delete old Candu order CSV files before creating new one
-    Call DeleteOldCanduCSVFiles(ThisWorkbook.Path)
+    ' 8. Delete old Candu order CSV files before creating new one
+    Call DeleteOldCanduCSVFiles(poDataFolder)
     
-    ' 8. Write CSV content to file
+    ' 9. Write CSV content to file
     fileNumber = FreeFile
     Open csvFilePath For Output As fileNumber
     Print #fileNumber, csvContent
     Close fileNumber
     
-    ' 9. Display success message
+    ' 10. Display success message
     MsgBox "Candu orders exported successfully!" & vbCrLf & _
            "File: " & csvFilePath, vbInformation, "Export Complete"
     

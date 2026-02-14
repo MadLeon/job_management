@@ -118,15 +118,10 @@ ok, 我先给你我认为应该实现的逻辑.
 
 TODOs
 1. 完成oe文件更新
-- 查看\\rtdnas2\oe\jobs.db, 看看在此期间是否有新的数据被插入, 写脚本增量更新这些数据到record.db中
-- 手动确认 PO report 已更新为最新状态
 - OE 文件中 ID 947 出现 3 次，ID 1131 出现 2 次, 应沟通避免这种情况的发生, 或者应该使用三个oi来储存
 
 更新record数据库
 - assemblies table 1502
-- 修改oe宏中提到的所有文件的地址
-- 数据库添加
-- 搞清楚candu csv文件的保留位置
 
 2. 更新 MP schedule
 - 更新updateAssemblies

@@ -14,7 +14,7 @@ On Error GoTo ErrorHandler
 mpFilePath = "D:\work\Record Tech\job_management\src\manufacturing process\Manufacturing Process.xlsm"
 
 ' 获取当前活跃的 OE Log workbook
-Set oeLog = Workbooks("Order Entry Log - new.xlsm")
+Set oeLog = ActiveWorkbook
 Set oeSheet = oeLog.ActiveSheet
 
 ' 【重要】在打开 MP 文件之前获取 OE 文件的行号
