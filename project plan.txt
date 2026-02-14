@@ -124,7 +124,9 @@ TODOs
 
 更新record数据库
 - assemblies table 1502
-- 更新oe文件, 包含宏和order item id
+- 修改oe宏中提到的所有文件的地址
+- 数据库添加
+- 搞清楚candu csv文件的保留位置
 
 2. 更新 MP schedule
 - 更新updateAssemblies
