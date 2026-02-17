@@ -257,7 +257,7 @@ function parseOELine(line: string): {
         const values = actualLine.split(',');
 
         if (values.length < 27) {
-            console.warn(`    ⚠️  警告：CSV 行的字段数不足（期望 27，实际 ${values.length}）`);
+            console.log(`    ⚠️  警告：CSV 行的字段数不足（期望 27，实际 ${values.length}）`);
         }
 
         return {
@@ -290,7 +290,7 @@ function buildPORow(parsed: ReturnType<typeof parseOELine>, columnCount: number)
     rowData[0] = '';                      // Order Item ID 为空（这是 PO 行，不是 Order Item）
     rowData[1] = parsed.poNumber;         // PO
     rowData[2] = parsed.expeditor;        // Expeditor
-    rowData[3] = parsed.poNumber;    // Drawing Number
+    rowData[3] = '';    // Drawing Number
     rowData[4] = '';      // Description
     rowData[5] = '0';         // Revision
     rowData[6] = '';        // Job Number
@@ -324,12 +324,3 @@ function buildOrderItemRow(
     // 可根据实际列顺序继续映射其他字段
     return rowData;
 }
-
-// 定义测试数据
-const testLines = [
-    "38900,75001,Candu,10,RT00-NEW-0001-01-DD-1,1,David Weldon,2026/01/15,2,Test Component A,5000,RT00-NEW-PN-R001,,,,2026/06/15,,,,,,,,,,,5001",
-    "38901,75002,Candu,5,RT79-79112-0001-01-DD-1,0,Amritha Gopan,2025/05/26,1,Test Component B,3000,RT79-79112-PN-R002,,,,2026/01/26,,,,,,,,,,,5002",
-    "38902,75003,Candu,3,RT00-NEW-0002-01-DD-1,2,David Weldon,2026/01/16,2,Test Component C,2500,RT00-NEW-PN-R001,,,,2026/06/20,,,,,,,,,,,5003",
-    "38903,75004,Candu,2,RT98-87290-0001-01-DD-1,3,Wendy Wu,2025/08/12,1,Test Component D,4500,RT98-87290-PN-R004,,,,2026/12/17,,,,,,,,,,,5004",
-    "38904,75005,Candu,7,RT99-SPECIAL-0001-01-DD-1,1,Brandon Kwakye,2026/02/07,1,Special-Test Component,6000,RT99-SPECIAL-PN-R001,,,,2026/07/25,,,,,,,,,,,5005"
-];

@@ -4,7 +4,7 @@
 
 - 非常重要: 你的所有回复消息都必须使用简体中文。
 - 你生成的所有代码均使用 JSDoc 风格注释
-- 每个会话开始前, 阅读 structure.txt 并运行 `scripts/check-db.js` 来建立对数据库的了解
+- 每个会话开始前, 阅读 refactor.md 并运行 `scripts/check-db.js` 来建立对数据库的了解
 - 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
 - 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
 - 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
@@ -31,7 +31,7 @@
 ### 数据库
 
 - 旧数据库: `data/jobs.db` (SQLite3)
-- 新数据库: `data/record.db` (SQLite3) 
+- 新数据库: `data/record.db` (SQLite3)
 
 ### 迁移系统 ([scripts/migrate.js](../scripts/migrate.js))
 
@@ -47,7 +47,6 @@
 - 每个迁移导出: `name`, `up(db)`, `down(db)`
 - 已应用迁移记录在 `data/migrations.json`
 - 创建表/列前检查是否存在，使用 `db.pragma('table_info(table_name)')`
-
 
 ### 测试与调试
 
