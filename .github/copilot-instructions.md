@@ -3,8 +3,8 @@
 ## 第一优先级规则
 
 - 非常重要: 你的所有回复消息都必须使用简体中文。
-- 你生成的所有代码均使用 JSDoc 风格注释
-- 每个会话开始前, 阅读 structure.txt 并运行 `scripts/check-db.js` 来建立对数据库的了解
+- 你生成的所有js代码均使用 JSDoc 风格注释
+- 每个会话开始前, 阅读 refactor.md 并运行 `scripts/check-db.js` 来建立对数据库的了解
 - 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
 - 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令
 - 项目处于 Windows 环境下开发, 请确保 CLI 命令和路径格式适用于 PowerShell, 不要使用 linux 命令

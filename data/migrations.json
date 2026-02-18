@@ -64,6 +64,14 @@
     {
       "name": "015_fix_revision_and_description",
       "appliedAt": "2026-02-03T04:45:13.178Z"
+    },
+    {
+      "name": "016_change_part_is_assembly_default",
+      "appliedAt": "2026-02-14T23:46:08.835Z"
+    },
+    {
+      "name": "017_populate_is_assembly_field",
+      "appliedAt": "2026-02-15T00:23:30.482Z"
     }
   ]
 }

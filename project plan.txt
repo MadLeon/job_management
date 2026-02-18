@@ -117,17 +117,26 @@ ok, 我先给你我认为应该实现的逻辑.
 - oe文件使用order entry log/Order Entry Log - new.csv
 
 TODOs
-1. 完成oe文件更新
-- OE 文件中 ID 947 出现 3 次，ID 1131 出现 2 次, 应沟通避免这种情况的发生, 或者应该使用三个oi来储存
 
-更新record数据库
+### oe文件
+1. is_assembly字段的默认值为0, 这很影响后续的判断, 应将其改为1.
+  - 使用016 migration可以将该字段的默认值改为NULL
+  - 使用017 migration可以将该字段的所有非Candu的零件的值从0改为NULL
+  - 未来可以直接使用这两个migration对公司的数据库进行更新
+2. OE 文件中 ID 947 出现 3 次，ID 1131 出现 2 次, 应沟通避免这种情况的发生, 或者应该使用三个oi来储存
+
+### 更新record数据库
 - assemblies table 1502
 
-2. 更新 MP schedule
-- 更新updateAssemblies
+### 更新 MP schedule
+- 更新updateAssemblies, 可与Cedric讨论后决定
 目标逻辑:
 - 将所有的drawing number先添加到part表中(若已存在则忽略), 使用drawing number, description.
 - 在part tree表添加新记录(若存在则忽略), 使用父子的ID和quantity
 
-3. MP
+### MP
 - 确认mp文件存放的位置, 好写调用逻辑
+- 确认由谁负责录入图纸关系的数据, MP? Cedric? Koi?
+- 确认MP录入的常规顺序由上到下? 由下到上?
+- 一套assembly输入完了没有我要怎么知道, 如果开发出了根据总装图读取分装图的识别程序, 应该由谁来触发
+- 这个识别程序需要知道其中是否存在sub assembly
