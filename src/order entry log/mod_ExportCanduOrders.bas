@@ -35,7 +35,13 @@ Sub ExportCanduOrders()
     Set deliveryWS = ThisWorkbook.Sheets("DELIVERY SCHEDULE")
     
     ' 2. Define PO Data folder path
-    poDataFolder = Environ("USERPROFILE") & "\Record Technology & Development\Communication site - PO Data"
+    poDataFolder = Environ("USERPROFILE") & "\OneDrive - Record Technology & Development\Communication site - Documents\PO Data"
+    
+    ' 2a. Check if PO Data folder exists
+    If Dir(poDataFolder, vbDirectory) = "" Then
+        Debug.Print "Error: PO Data folder not found: " & poDataFolder
+        Exit Sub
+    End If
     
     ' 3. Generate timestamp for filename
     timestamp = Format(Now(), "yyyymmdd_hhmmss")
@@ -54,13 +60,9 @@ Sub ExportCanduOrders()
     ' 7. Iterate through data rows and filter for Candu orders
     For r = 2 To lastRow ' Start from row 2 (skip header)
         customerName = Trim(deliveryWS.Cells(r, 3).Value) ' Column C: Customer
-        Dim poNumber As String
-        poNumber = Trim(deliveryWS.Cells(r, 12).Value) ' Column L: PO Number
         
         ' Check if customer name contains "Candu" (case-insensitive)
-        ' AND PO number starts with "rt79" or "rt98" (case-insensitive)
-        If InStr(1, customerName, "Candu", vbTextCompare) > 0 And _
-           (InStr(1, poNumber, "rt79", vbTextCompare) = 1 Or InStr(1, poNumber, "rt98", vbTextCompare) = 1) Then
+        If InStr(1, customerName, "Candu", vbTextCompare) > 0 Then
             ' Build and append data row to CSV content
             dataRow = BuildDataRow(deliveryWS, r, columnCount)
             csvContent = csvContent & dataRow & vbCrLf
@@ -77,13 +79,13 @@ Sub ExportCanduOrders()
     Close fileNumber
     
     ' 10. Display success message
-    MsgBox "Candu orders exported successfully!" & vbCrLf & _
+    Debug.Print "Candu orders exported successfully!" & vbCrLf & _
            "File: " & csvFilePath, vbInformation, "Export Complete"
     
     Exit Sub
 
 HandleError:
-    MsgBox "Error exporting Candu orders: " & Err.Description, vbCritical
+    Debug.Print "Error exporting Candu orders: " & Err.description
 End Sub
 
 ' Build CSV header row from column names in row 1
@@ -183,7 +185,5 @@ Sub DeleteOldCanduCSVFiles(folderPath As String)
 
 ErrorHandler:
     ' If error occurs, just continue (e.g., file in use)
-    Debug.Print "Error deleting old CSV files: " & Err.Description
+    Debug.Print "Error deleting old CSV files: " & Err.description
 End Sub
-
-
