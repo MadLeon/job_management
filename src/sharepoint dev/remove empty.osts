@@ -1,0 +1,63 @@
+function main(workbook: ExcelScript.Workbook): void {
+    const sheet: ExcelScript.Worksheet = workbook.getActiveWorksheet();
+
+    // 获取 Table2
+    const table: ExcelScript.Table | undefined = sheet.getTable("Table2");
+    if (!table) {
+        console.log("Table2 not found on this sheet.");
+        return;
+    }
+
+    // 获取 Table 的数据行范围（不包含表头和总计行）
+    const dataRange: ExcelScript.Range = table.getRangeBetweenHeaderAndTotal();
+    const tableValues: (string | number | boolean | null)[][] = dataRange.getValues();
+
+    console.log(`Total data rows before cleanup: ${tableValues.length}`);
+
+    // 从表格地址中提取起始行号（e.g., "A2:T314" -> 2）
+    const dataAddress = dataRange.getAddress();
+    const startRowMatch = dataAddress.match(/!([A-Z]+)(\d+):/);
+    const startRow = parseInt(startRowMatch[2]);
+
+    let deletedCount = 0;
+    const rowsToDelete: number[] = [];
+
+    // 从最后一行往上遍历，收集需要删除的行
+    for (let i: number = tableValues.length - 1; i >= 0; i--) {
+        const rowValues: (string | number | boolean | null)[] = tableValues[i];
+
+        // 判断整行是否为空
+        const isEmpty: boolean = rowValues.every((cell: string | number | boolean | null) => cell === null || cell === '');
+
+        if (isEmpty) {
+            console.log(`Row ${i} identified as empty`);
+            const nonEmptyCells = rowValues.map((cell, idx) => {
+                if (cell !== null && cell !== '') {
+                    return `Column ${idx}: "${cell}"`;
+                }
+                return null;
+            }).filter(x => x !== null);
+            
+            if (nonEmptyCells.length > 0) {
+                console.log(`WARNING: Row ${i} has non-empty cells: ${nonEmptyCells.join(', ')}`);
+            }
+            
+            // 计算绝对行号（1-based）
+            const absoluteRow = startRow + i;
+            rowsToDelete.push(absoluteRow);
+            console.log(`Marked worksheet row ${absoluteRow} for deletion`);
+            deletedCount++;
+        }
+    }
+
+    // 从最后往前删除行，以避免行号移位问题
+    rowsToDelete.sort((a, b) => b - a);
+    for (const rowNum of rowsToDelete) {
+        const rowRange = sheet.getRange(`${rowNum}:${rowNum}`);
+        rowRange.delete(ExcelScript.DeleteShiftDirection.up);
+        console.log(`Deleted worksheet row ${rowNum}`);
+    }
+
+    console.log(`Cleanup finished. Total empty rows deleted: ${deletedCount}`);
+    console.log(`Remaining data rows: ${table.getRangeBetweenHeaderAndTotal().getRowCount()}`);
+}

@@ -31,7 +31,7 @@
 ### 数据库
 
 - 旧数据库: `data/jobs.db` (SQLite3)
-- 新数据库: `data/record.db` (SQLite3) 
+- 新数据库: `data/record.db` (SQLite3)
 
 ### 迁移系统 ([scripts/migrate.js](../scripts/migrate.js))
 
@@ -47,7 +47,6 @@
 - 每个迁移导出: `name`, `up(db)`, `down(db)`
 - 已应用迁移记录在 `data/migrations.json`
 - 创建表/列前检查是否存在，使用 `db.pragma('table_info(table_name)')`
-
 
 ### 测试与调试
 

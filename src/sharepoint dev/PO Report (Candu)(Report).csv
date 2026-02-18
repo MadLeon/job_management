@@ -1,0 +1,584 @@
+Order Item ID,PO,Expeditor,PO / Drawing #,Title,Rev,Job #,OE Date,PO Delivery,FAT,Witness,"Manufacturing 
+Completion Date","% completed
+(Manufacturing)",Report Submission,Accepted2,QA Doc Package,Accepted,Predicted Ship Date,Current Status,Milestones,
+792,RT79-79112-PN-R002,Amritha Gopan,"
+PO# -RT-79112-0300-01-GA-E",SMALL WASTER TRANSFER FLASK,0,J# 72422,"May 26, 2025","Jan 26, 2026",?, ,"Apr 10, 2026",60%,"Apr 17, 2026",,,,"May 1, 2026","  -FEb-25-26- Send to Mars Metal for Lead pouring-  RTD to inform CANDU to go to Mars metal for Integrity TEstin/ Witness
+wen recvd  Mar-3-26 + 2 Wks for M/C + 2 Wks for Assy","Milestone:
+1) 30% upon submittal of Unpriced PO             06/13/25        INV#  52866
+2) 30% When Ready for Load Testing                9/15/25           INV#
+3) 40% Upon Delivery of all items & Documents1/26/26        INV#",
+790,RT98-87590-PN-R006- Rev.1,Amritha Gopan,PO# -RT98-87590-PN-R006- Rev.1 ,"EFSP REMOVAL TOOL
++Electrical",0,J# 72373,"May 5, 2025","Oct 9, 2026",June-10-1 set, ,"1set : May 26, 2026
+         
+2set : Sep 18, 2026",50%,"1set : Jun 12 ,26
+            
+        
+2 set : Sep 25, 2026",,,,"1set : Jun 26, 2026
+          
+2set : Oct 9, 2026","Feb-6-26-RT-87590-71000-001-1-DD-E- Support Frame-1- Completed/ Needs insp, 2nd M/c completerd needs DB & Insp & Paint
+DWG# RT-87590-71100-000-1-GA-E- Tool Drive Supt Frame- 40% Completed
+DWG# RT-87590-71200-000-1-GA-E-  Inner Sleeve Carriage Asy- 50% Completed
+DWG# RT-87590-71300-000-1-GA-E- RAm Carriage Assy- 35% completed
+DWG# RT-87590-71400-000-2-GA-E- Shield plug Assy - 20% Completed
+DWG# RT-87590-71500-000-1-GA-E- End Fitting Ram- 40% completed
+DWG# RT-57590-71525-000-1-GA-E- LCP & Light Frame-  30% Completed
++ DDR To be submitted for Electrical Issues
+Feb-11-26- E-mail sent to Gavin @ CANDU whether the proposed alternative for the LIght Curtain is acceptable, as Edwin noted this will be a very Long Lead item ( Pending Confirmation)- Candu requestng meeting rgarding Field device and Light Curtain ordering ( Edwin needs to confirm availability)
+Feb-12- DWG# RT-87590-71400-067-1-DD-B-Toogle Rod 2- (5-pc needs to fix, 1- Pc too short)/ DWG-RT-87590-71100-014-1-DD- 3- pc hole issue 1.0 Dia // Dwg# RT-87590-71400-087-1-DD-D-Needs to make 1-pc before Chrome
+Feb-14-26-  Delivery for 1 set - still on Track for- Mfg May-26-26","Milestone:
+1) 30% Upon submission of Unpriced PO's   05/30/25             Inv#
+2) 10% AT   50% of Project                                 10/01/25            Inv#
+3) 10% when ready for Unit 1 Function Test  02/06/26           Inv#
+4) 10% Upon Delivery of Unit 1                          03/16/26           Inv#
+5) 25% After Delivery of All items and Accpt Doc 10/9/26       Inv#    
+6) 15%  At 50% completion of Remaiing Qty    08/03/26         Inv#                           ",
+,,,RT-87590-70000-000-1-GA-E,EFSF Removal Tool ( RT-7591-000-PRT),,J# 72373,,,,,,,,,,,,,,
+,RT98-87900-PN-R003,Amritha Gopan,PO# -RT98-87900-PN-R003 ,C6-BORE GAUGE AND C6-BORE GAUGE-NARROW LANDING FOR C1R, ,J# 72622-72623,"Aug 1, 2025","Nov 28, 2025",?,,"Mar 6, 2026
+
+",70%,"Mar 13, 2026
+",,,,"Mar 27, 2026",FEb-6-26-  DWG# RT-87900-0402-1-DD-D- Shield Parts still waiting to come back from Chrome.,"Milestone
+1) 30%- Upon Submission Unpriced PO
+2) 70% Upn Delivery of all equipment & Docs",
+832,RT98-87900-PN-R003,Amritha Gopan,RT-87900-0400-1-GA-E,C6-Bore Gauge,,J# 72622,"Aug 1, 2025","Nov 28, 2025",,,,,,,,,,,,
+833,RT98-87900-PN-R003,Amritha Gopan,RT-87900-0500-01-GA-E,C6-Bore Gague- Narrow Landing,,J# 72623,"Aug 1, 2025","Nov 28, 2025",,,,,,,,,,,,
+,,,PO# RT98-87920-PN-R013,GROUP 5B FOR QINSHAN,,J# 72625-72635,Aug-8-2025,May-28-26,,,May7-26,10%,May-14-26,,,,May-28-26,,NO Milestones,
+,,,RT-88030-0053-01-GA-D,Calandria Tube Extension Sleeve,,J# 72625,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-88020-0200-1-GA-C,Feeder Port Angle Adjustement Tool,,j# 72626,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87920-74112-000-1-GA-E,Lifting Grapple,,j# 72627,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87920-74107-000-1-GA-E,Extension Trolley,,j# 72628,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,21RT-88070-0326-001-GA-1,Cart Closure Plug Cart,,j# 72629,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87920-74104-000-1-GA-E,Insertion Tool & Handle,,j# 72630,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87590-0250-1-GA-0,EF in Shuttle Flask Tool,,j# 72631,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87590-0108-1-GA-0,EF Rotation  Tool,,j# 72632,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87590-70201-4000-1-GA-B,Manual Bellows Push tool ,,j# 72633,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-79100-0100-01-GA-E,Closure Plug Shuttle Box,,j# 72634,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,,,RT-87000-0480-1-GA-E,Tool Delivery Trougj,,j# 72635,Aug-8-2025,May-28-26,,,,,,,,,,,,
+,RT98-87920-PN-R014,Amritha Gopan,PO# -RT98-87920-PN-R014,GROUP 5 FOR QINSHAN, ,J# 72651-72654,"Aug 16, 2025","Feb 16, 2026",?, ,"Apr 2, 2026
+",65%,"Apr 9, 2026
+",,,,"Apr 23, 2026
+",,"Milestones:
+1) 30% Upon submittal of unpriced PO   - Inv# 53201
+2) 30% Upon Comp. 50% of Projecct
+3) 40% upon Delivery & Docs",
+853,RT98-87920-PN-R014,Amritha Gopan,RT-87920-74245-048-1-DD-B,Modified Air Motor Adaptor,,J# 72651,"Aug 16, 2025","Feb 16, 2026",,,,0%,,,,,,- Feb-13-26 Part Made incorrect- Scrapped - needs to be remade ( by Dobco),,
+854,RT98-87920-PN-R014,Amritha Gopan,RT-87920-74245-000-1-GA-E,Air Motor Stand,,J# 72652,"Aug 16, 2025","Feb 16, 2026",,,,50%,,,,,,Some parts still out for chrome,,
+855,RT98-87920-PN-R014,Amritha Gopan,RT-88000-70097-000-1-GA-E,Air Motor Support Stand,,J# 72653,"Aug 16, 2025","Feb 16, 2026",,,,50%,,,,,,Feb-10-26- DDR-9003 Submtted ( Pendng),,
+856,RT98-87920-PN-R014,Amritha Gopan,RT-88000-70056-000-1-GA-E,Air Motor Support with Stabalizer,,J# 72654,"Aug 16, 2025","Feb 16, 2026",,,,70%,,,,,,Feb-6-26- - needs to be assemblec,,
+1082,RT98-87920-PN-R014,Amritha Gopan,RT-87920-74245-048-1-DD-B,Modified Air Motor Adaptor,,J# 72651,"Aug 16, 2025",,,,,0%,,,,,,"Feb-13-26- Parts made incorrect - Scrapped- needs to be remade ( By Dobco)
+Feb-14-26- NO Change to Delv",,
+,RT79-88030-PN-R001- Rev.1,David Weldon,PO# -RT79-88030-PN-R001- Rev.1,GARTER SPRING DETECTION TOOL & SSDO TOOL- ,0,"J# 72083-72084
+Added J# 72278","Feb 21, 2025","Jun 20, 2025","Feb 23, 2026","Feb 23, 2026","Jan 23, 2026
+",95%,"Jan 30, 2026
+6",,,,"Feb 13, 2026
+","Feb-5-26- DDR-9004- Submitted ( Pending)
+Feb-10-26- Continuity Test Procedure (9007) rejected, Edwin needs to revise.
+FEb-13-26- Continuity Test Procedure -9007- Rejected- Edwin to correct so RTD can Resubmit ( Pending )- Edwin also informed that he Only quote Hi pot test per scope of work.  The difference is HI pot test uses Higher Voltage, compared to the Meager Testing ?-  REvised Continiuty Test submitted to RTD from EDWIN","MILESTONES:
+35%- Submission of unpriced  PO for Major Mat'l       Inv# 52661
+15%- Upon 75% completeion of Mfg    Inv# 52993
+20%- Ready to perform Functional /Acceptance Test    Inv#
+10%- Successful completion of Functional/ accept test    Inv#
+20%- Delivery of Equipment including History File    Inv#",
+751,RT79-88030-PN-R001- Rev.1,David Weldon,RT-88030-0300-01-GA-0,Garter Spring Detection Tool,,J# 72083,"Feb 21, 2025","Jul 21, 2025",,,,,,,,,,Feb-6-26- 95% Completed- Waiting for Aproved Doc's,,
+752,RT79-88030-PN-R001- Rev.1,David Weldon,RT-88030-0063-01-GA-E,Single Spacer Drop off Tool,,J# 72084,"Feb 21, 2025","Jan 20, 2026",,,,,"DDR-9004- Feb 5, 2026",,,,,Feb-6-26- Function Test Completed- Witness notification to be sent to CAND,,
+779,RT79-88030-PN-R001- Rev.1,David Weldon,RT-88030-0250-1-GA-D,Eddy Current Spacer Detection Trough,,J# 72278,"Feb 21, 2026","Jul 21, 2025",,,,,,,,,,,,
+742,RT98-87540-PN-R001,David Weldon,PO# -RT98-87540-PN-R001,POSITIONING ASSEMBLY (PA) HARDWARE REMOVAL TOOL FOR QINSHAN,0,J# 71829,"Dec 23, 2024","May 2, 2025",?, ,"Dec 5, 2025",90%,"Feb 20, 2026",,,,Tentative,,"Milestone:
+#1-   30% receipt of Major Material:  Inv#  52544
+#2-   30% Upon 75% completion      :  Inv# 52816
+#3-    40% completion/ delv               :   Inv #
+ ",
+,,,RT-87540-0200-01-GA-E,Removal PA Tool Cart ( RT7538-000-PRT),,J# 71829,,,,,,,,,,,"Feb 13, 2026
+",Feb-6-26 DDR-9006 submitted c/w Red line dwgs by Olivier ( Pending),,
+741,RT98-87920-PN-R006,Etianne Machado,PO#-RT98-87540-PN-R001,CTI BORE GAUGE TOOL FOR QINSHAN  -,0, J# 71742,"Dec 3, 2024","Jan 25, 2025",?, ,"Nov 6, 2025",95%,"Function test report-01-9-26
+C of C- Jan 30, 2026
+Rev- DIR- Feb 10, 2026",,,,"Jan 23, 2026
+Jan 16, 2026","jAN-9-26- Acception Test Report- Submitted ( pending)
+Jan-30-26- C of C resubmitted ( Pending)
+Feb-10-26- DIR resubmitted ( Pending)- Once everything recvd tehn we can prepare QA Doc Pkd
+REsend Doc","Milestone
+# 1-   35% of Unprice PO for Mat'l :          Inv# 52478
+#  2-  30% Function /accept test    :           Inv# 52876
+# 3-  35 % upon Comp & Delv                  Inv#",
+,,,RT-87920-0351-01-GA-D,CTI Bore Gague,,J# 71742,,,,,,,,,,,,,,
+,RT98-88030-PN-R001- Rev.2,David Weldon,PO#- RT98-88030-PN-R001- Rev.2,GARTER SPRING DETECTION TOOL & SSDO TOOL- ,0,"J# 72085- 72086
+Added  J# 72279
+New Addition
+J# 72459-72460","Feb 21, 2025","Jul 31, 2025","Feb 23, 2026","Feb 23, 2026","Jan 23, 2026
+",95%,"Feb 4, 2026 (MTR)
+Feb 5, 2026 (DDR-9002)",MTR Accpted (Feb. 10),,,"Feb 13, 2026
+","FEb-5-26- J# 72086 DDR-9004- Submitted ( Pending)
+Jan-30-26- C of C  REv.1- Submitted  Jan-30-26 ( Pend'g)
+Feb-10-26- Revised Dim / visual submitted ( Pending)","FEB-21-2025-  This PO processed -  Procedures will be submitterd- March-25-25
+MILESTONES:
+1)  35%- Submis of unpriced  PO for Major Mat'l    Inv#  52662
+2)  15%- Upon 75% completeion of Mfg    Inv# 52994
+3)  20%- Ready to perform Functional /Acceptance Test    Inv#
+4)  10%- Successful completion of Functional/ accept test    Inv#
+5)  20%- Delivery of Equipment including History File    Inv#",
+753,RT98-88030-PN-R001- Rev.2,David Weldon,RT-88030-0300-01-GA-0,Garter Spring Detection Tool,,J# 72085,"Feb 21, 2025","Jul 21, 2025",,,,,mtr,,,,,,,
+754,RT98-88030-PN-R001- Rev.2,David Weldon,RT-88030-0063-01-GA-E,Single Spacer Drop off Tool,,J# 72086,"Feb 21, 2025","Jul 21, 2025",,,,,mtr/ DDR-9004,,,,,,,
+780,RT98-88030-PN-R001- Rev.2,David Weldon,RT-88030-0250-1-GA-D,Eddy Current Spacer Detection Trough,,J# 72279,"Feb 21, 2025","Jul 21, 2025",,,,,mtr,,,,,,,
+798,RT98-88030-PN-R001- Rev.2,David Weldon,RT-88030-0310-1-GA-D,Eddy Current Verification Bench,,J# 72459,"Feb 21, 2025","Aug 27, 2025",,,,,mtr,,,,,J# 72459- DWG-RT-88030-0310-1-GA-D- 95% completed,,
+799,RT98-88030-PN-R001- Rev.2,David Weldon,RT-88030-0021-01-GA-1,Tool Encoder Bracket Assy,,J# 72460,"Feb 21, 2025","Aug 27, 2025",,,,,mtr,,,,,J# 72461- RT-88030-0021-01-ga-1-  95% completed,,
+,,Etianne Machado,PO#- RT79-31912-PN-R006,,,,,,,,,,,,,,,,,
+1114,RT79-31912-PN-R006,Etianne Machado,"
+XX-31912-959-1-GA-E",GARTER SPRING FLASK & TROLLEY, ,J# 73027,"Dec 30, 2025", , , ,"Apr 24, 2026",10%,"May 1, 2026",,,,"May 15, 2026","New order
+Feb-5-26-  all the procedures and ITP EXCEPT INTEGRITY TEST PROC.
+Feb-6-26- Matl in house , parts still have to be M/C, Weld, S/R & S/B, MPI , Lead Pouring, Inspect & Paint
+Feb-14-26- NO Change to Delivery at this time","MILESTONE:
+1) 30% UPON SUBMITTAL OF UNPRICED PO
+2) 70% UPON DELIVERY OF ALL ITEMS INCLUDING DOCUMENTS",
+,,Etianne Machado,PO#- RT79-31912-PN-R006,Garter Spring Flask & Trolley,,J# 73027,Dec-30-25,,,,April-24-26,5%,May-1-26,,,,May-15-26,"Feb-6-26- Mat'l in house, parts still have to be M/C, Weld, SR/SB, NDE, Lead Pouring ,Insp & Paint
+Feb-11-26- Shielding integrity Test Procedure Submitted","Milestone:
+1) 30% Upon Submittal of Upriced PO:
+2) 70% Upon Deliver of all items including Documents",
+,RT79-87640-PN-R004,Etianne Machado,RT-88000-0300-01-GA-E,EF Tool rack,,J# 73063,"Jan 27, 2026","Apr 17, 2020",?,,"Mar 27, 2026",20%,"Mar 6, 2026",,"Mar 20, 2026",,"Apr 17, 2026","Feb-14-26- Material prep, weld , NDE, Mill, Assy & Paint- NO Change to Delivery at this time",No Milestones,
+,RT79-88020-PN-R003,Etianne Machado,RT79-88020-PN-R003,SA TRANSPORT CONTAINER & EF TRANSFER CONTAINER, ,J# 72605-72606,"Jul 25, 2025","Jul 25, 2025",N/A, ,"Feb 16, 2026
+",25%,"Feb 23, 2026
+",,,,"Mar 9, 2026
+","Feb-6-26- All Modification Complete- Pending sub-cont for Sand blasting & Paint Tentative FEb-12-26- ( Approx 3 Wks turnaround)  Once recvd installion of Seals and Saddles ( 2 WKs)  Inspecton & QA Doc
+Meeting Schedule for Feb-
+Feb-13-26- 2X Revised DWGs received and Issued to the shop.","Milestones:
+1) 25% Upon submission fo Procedures            Inv#
+2) 25% Upon Receipt of Main Materials            Inv#
+3) 25% upon Start of Assy                                    Inv#
+4) 25% upon delivery of Equipment                  Inv# ",
+828,RT79-88020-PN-R003,Etianne Machado,RT-88030-70120-2000-1-GA-B,SA Transport Container,,72605,"Jul 25, 2025","Dec 19, 2025",,,,,,,,,,,,
+829,RT79-88020-PN-R003,Etianne Machado,RT-88030-70121-2000-1-GA-B,EF Transport Container,,72606,"Jul 25, 2025","Dec 19, 2025",,,,,,,,,,,,
+834,RT98-87272-PN-R020- Rev.1,Etianne Machado,"
+RT-87272-0010-01-GA-E",MOCKUP COLUMN FOR COMMISION OF TILTER, ,J# 72624,"May 25, 2008","Jan 26, 2026",?,"Mar 6, 2026","Feb 25, 2026",80%,"Feb 6, 2026 (DIR)
+
+Feb 20, 2026- MTR, C of c",,,,"Mar 20, 2026","Feb-6-26- DIm/Visual Report Submitted for Approval ( Pending)
+FEb-6-26- All bolts torqued, locating centre of Gravity Weld elevator Block ( approx 1 wkd more)","MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  40% Upon delivery of all items & Doc             Inv#",
+,RT98-87640-PN-R004,Etianne Machado,RT98-87640-PN-R004,LWFT & AIRLOCK TROLLEY & TRACK ASSY, ,J# 72728-72736,"Sep 9, 2025","May 27, 2027",?, ,"Feb 3, 2027",15%,"Feb 17, 2027",,,,"Feb 24, 2027",Feb-6-26- Working on First of Requirement - Material not ordered yet since delivery requirement in 2027,"MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  15% Prior to sucessful FAT                                 Inv#
+4)  25% upon completion of shipment                  Inv#",
+897,RT98-87640-PN-R004,Etianne Machado,RT-87640-72150-000-1-GA-E,Airlock Trolley c/w Wings,,J# 72728,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+899,RT98-87640-PN-R004,Etianne Machado,RT87640-73150-000-1-GA-E,Shuttle Flask Trolley FM Room,,J# 72730,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+900,RT98-87640-PN-R004,Etianne Machado,RT-87640-70320-000-1-GA-E,Tool Trolley Track Asy ( Airlock),,J# 72731,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+901,RT98-87640-PN-R004,Etianne Machado,RT-87640-70315-000-1-GA-E,Tool Trolley Track (SF Trolley & LWTF),,J# 72732,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+902,RT98-87640-PN-R004,Etianne Machado,RT-87640-70315-049-1-GA-C,Flag Assembly 1,,J# 72733,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+903,RT98-87640-PN-R004,Etianne Machado,RT-87640-70315-050-1-GA-C,Flag Assembly 2,,J# 72734,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+904,RT98-87640-PN-R004,Etianne Machado,RT-87640-70315-051-1-GA-C,Flag Assembly 3,,J# 72735,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+905,RT98-87640-PN-R004,Etianne Machado,RT-87640-70315-052-1-GA-C,Flag Assembly 4,,J# 72736,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+1088,RT98-87640-PN-R004,Etianne Machado,RT-87640-72150-000-1-GA-E,LWTF Trolley- Corridor-NO Wing,,J# 72729,"Sep 22, 2025","Feb 24, 2025",,,,,,,,,,,,
+,RT98-88010-PN-R008- Rev.1,Etianne Machado,RT98-88010-PN-R008- Rev.1,GROUP 7F OF TOOLS, ,"
+J# 73000","Jul 22, 2025","Sep 25, 2025",?, ,"Dec 9, 2025
+Nov 28, 2025",95%,"Dec 23, 2025
+Dec 16, 2025",,"Jan 29, 2026",,"Jan 23, 2026
+Jan 13, 2026","Oct-22-25- Since currently waiting for the inspection of the detail parts also assembly has not been completed, it is necessary to reschedule the shipping date.
+Oct-29-25- Due to delays in the inspection and assembly processes-need to change the date.
+Nov-12-25- Ship date need to be changed-waiting for Heat Treat and painting
+Nov-26-25- Ship date need to be changed-Because ‘RT-88000-70034-000-1-GA-E’ is taking longer than planned.
+Dec-10-25- Manufacturing completed, preparing QA Docs
+Dec-17-25- MTR, C of C will submit in Dec-18, preparing FAT report
+Jan-7-26- MTR, CfC, DIR were accepted, FAT report need to resubmit
+Jan-8-26- submitted revised FAT report-still waiting for approval
+Feb-4-26- Waiting for Shipping Release",NO MILESTONES ,
+1085,RT98-88010-PN-R008- Rev.1,Etianne Machado,RT-88000-70051-000-1-GA-E,Gauge P/T Expander Reach setting Gauge,,J# 73000,"Dec 19, 2025","Feb 12, 2026",,,,,,,,,,,,
+,,,XX-31912-959-1-GA-E,Flask and Trolley for Garter Spring ,,,,,,,,,,,,,,,,
+,RT98-88010-PN-R009,Etianne Machado,RT98-88010-PN-R009,GROUP 7G TOOLS FOR QINSHAN, ,J# 72580-72583,"Jul 22, 2025","Sep 29, 2025",?, ,"Nov 17, 2025",95%,Pending DDR Acceptance,,"Jan 22, 2026",rejected (Jan. 30),"Feb 5, 2026",Feb. 10 -  DDR-9001 submitted for Material change - Lester ,NO Milestones,
+,,Etianne Machado,PO#- RT79-88020-PN-R003- Rev.1,SA TRANSPORT CONTAINER & EF TRANSFER CONTAINER,,j# 72605-72606,JULY 25-2025,July-25-26,n/a, ,Pending,25%,Pending,,,,Pending,"Feb-10-26- Sent E-mail stating one of the containers has an Alum. Lid and and the Posts and Handles cannot be made teh same
+Feb-15-26- Still waiting for Clarifiation to complete part with Alum cover.  Conference Call on Tuesday-Feb-17--6, once answers received , then we hav eot sub-contract for Sandblasting & Paint ( Approx 3 wks)  when received back we still have to install seals and saddles  ( Approx 2 Wks)
+Feb-17-26- Conference call @ 9:30 to clarify",,
+,,,RT-88030-70120-2000-1-GA-B,SA Transport Container,,j# 72605,JULY 25-2025,Dec-19-26,,,,,,,,,,,,
+,,,RT-88030-70121-2000-1-GA-B,EF Transport Container,,J#72606,JULY 25-2025,Dec-19-26,,,,,,,,,,,,
+,,Laila Parveen,PO# RT98-87272-PN-R020- Rev.1,MOCKUP COLUMN FOR COMMISION OF TILTER,,j# 72624,"May 25,2025",Jan-26-2026,,,Feb-13-26,90%,Feb-6-26 (DIR),,,,Mar-6-26,FEb-11-26- DDR has some comments - Rejected- ( Rev.1 Needs to submit),,
+,,,RT-87272-0010-01-GA-E,End Shield Measurement Tool,,J# 72624,,,,,,,"Feb-20-26 (mtr, C of C)",,,,,,,
+,,Etianne Machado,PO# RT98-87640-PN-R004-Rev.1,LWTF & AIRLOCK TROLLEY & TRACK ASSY,,j# 72728-72736,Sept-9-25,May-27-2027,,,FEb-3-2027,15%,FEb-17-2027,,,,Feb-17-2027,,"Milestones:
+1) 30% Upon submission fo Unpriced PO:
+2) 30% Upon Approx 50% completion :
+3) 15% Prior to sucessful FAT Test:
+4) 25 % Upon Completion of Shipment:",
+,,,RT-87640-72150-000-1-GA-E,Airlock trolley c/ Wing,,j# 72728,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-72150-000-1-GA-E,LWTF Trolley- Corridor- NO Wing,,J# 72729,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-73150-000-1-GA-E,Shuttle Flask Troley FM Room,,j# 72730,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-70320-000-1-GA-E,Tool Trolley Track Assy ( Airlock),,j# 72731,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-70315-000-1-GA-C,Tool Trolley Track ( SF Trolley & LWTF),,j# 72732,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-70315-049-1-GA-C,Flag Assy 1,,j# 72733,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-70315-050-1-GA-C,Flag Assy 2,,j# 72734,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-70315-051-1-GA-C,Flag Assy 3,,j# 72735,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,,RT-87640-70315-052-1-GA-C,Flag Assy 4,,j# 72736,"Sep 22, 2025",May-27-2027,,,,,,,,,,,,
+,,Etianne Machado,PO# RT98-88010-PN-R008-Rev.2,GROUP 7F of TOOLS FOR QINSHAN,,j# 73000,July 22-2025,"Sep 25, 2025",,,,,,,,,,,NO Milestones,
+,,,RT-88000-70051-1-000-1-GA-E,Gauge P/T Expander Reach Setting Gauge,,J# 73000,,,,,,,,,,,,,,
+,,Laila Parveen,PO# - RT98-88010-PN-R009,GROUP 7G TOOLS FOR QINSHAN,,j# 72580-72583,July-22-2025,"Sept 29,2025",,,NOv-17-22025,95%,Jan-6-26,,,,Feb-5-26,Jan-22-26- QA Doc Package submitted  ( Waiting for approval & Shipping Release),,
+,,,RT-87000-0097-1-GA-C,CT Removal Protective Sleeve,,J# 72580,July-22-2025,"Sept 29,2025",,,,,,,,,,,,
+,,,RT-87000-70600-6000-1-GA-B,CT Removal Thrust Sleeve,,J# 72581,July-22-2025,"Sept 29,2025",,,,,,,,,,,,
+,,,RT-88000-70067-000-1-GA-D,Leak Test Tool Check Sleeve,,J# 72582,July-22-2025,"Sept 29,2025",,,,,,,,,,,,
+,,,RT-88010-0080-01-DD-B,Bore Gauge Protective Sleeve,,J# 72583,July-22-2025,"Sept 29,2025",,,,,,,,,,,,
+,,Etianne Machado,PO# RT98-88040-PN-R004- Rev.1,GROUP 5D FOR QINSHAN,,j# 72775-72780,NEW,lINE 1-5- jULY-17-2026,,,lINE 1-5- jULY-6-26,20%,Line 1-5: July-1726,,,,lINE 1-5- jULY-27-26,fEB-6-26- Material not ordered Yet,,
+,,,RT-88040-0020-01-GA,FC Axial Adjustment tool,,j# 72775,Sept-18-25,July-17-26,,,,,,,,,,,,
+,,,RT-88030-0007-01-GA-1,EC Spacer Detention End fitting Adaptor Tool,,j# 72776,Sept-18-26,July-17-26,,,,,,,,,,,,
+,,,RT-88030-0090-01-GA-C,CT Extension Installation Tool,,J# 72777,sept-18-26,July-17-26,,,,,,,,,,,,
+,,,RT-88080-71000-038-01-GA-E,Shield Plug Installation Tool,,j# 72778,sept-18-26,July-17-26,,,,,,,,,,,,
+,,,RT-88090-71060-2000-1-GA-D,Closure Plug Installation Tool,,j# 72779,sept-18-26,July-17-26,,,,,,,,,,,,
+,,,RT-88090-71055-2000-1-GA-D,Calibration Fixture,,j# 72780,sept-18-26,Aug-28-26,,,,,,,,,,,,
+807,RT98-88010-PN-R009,Etianne Machado,RT-87000-0097-1-GA-C,CT Removal Protective Sleeve,,J# 72580,"Jul 22, 2025","Sep 29, 2025",,,,,,,,,,,,
+808,RT98-88010-PN-R009,Etianne Machado,RT-87000-70600-6000-1-GA-B,CT Removal Thrust Sleeve,,J# 72581,"Jul 22, 2025","Sep 29, 2025",,,,,,,,,,,,
+809,RT98-88010-PN-R009,Etianne Machado,RT-88000-70067-000-1-GA-D,Leak Test Tool Check Sleeve,,J# 72582,"Jul 22, 2025","Sep 29, 2025",,,,,,,,,,,,
+810,RT98-88010-PN-R009,Etianne Machado,RT-88010-0080-01-DD-B,Bore Gauge Protective Sleeve,,J# 72583,"Jul 22, 2025","Sep 29, 2025",,,,,,,,,,,,
+,RT98-88040-PN-R004,Etianne Machado,RT98-88040-PN-R004,GROUP 5D FOR QINSHAN, ,J# 72775-72780,NEW,"1line-5line : Jul 17, 2026
+6 line : Aug 28, 2026",?, ,"1line-5line : Jul 6, 2026
+                        
+6 line : Aug 7, 2026",20%,"1line-5line : Jul 13, 2026
+                   
+6 line : Aug 14, 2026",,,,"1line-5line : Jul 27, 2026
+                
+6 line : Aug 28, 2026","FEB-6-26- NO material ordered yet
+FEb-14-26- DElivery Date- not Changed until all material received and Mfg Starts","MILESTONES:
+1)  30% Upon Submission of unpriced PO        Inv#
+2)  30% Upon Approximately 50% completion    Inv#
+3)  40% Upon delivery of all items & Doc             Inv#",
+907,RT98-88040-PN-R004,Etianne Machado,RT-88040-0020-01-GA,FC Axial Adjustment Tool,,J# 72775,"Sep 18, 2025","Jul 17, 2026",,,,,,,,,,,,
+908,RT98-88040-PN-R004,Etianne Machado,RT-88030-0007-01-GA-1,EC Spacer Detention End Fitting Adaptor Tool,,J# 72776,"Sep 18, 2025","Jul 17, 2026",,,,,,,,,,,,
+909,RT98-88040-PN-R004,Etianne Machado,RT-88030-0090-01-GA-C,CT Extension Installation Tool,,J# 72777,"Sep 18, 2025","Jul 17, 2026",,,,,,,,,,,,
+910,RT98-88040-PN-R004,Etianne Machado,RT-88080-71000-038-01-GA-E,Shield Plug Installation Tool,,J# 72778,"Sep 18, 2025","Jul 17, 2026",,,,,,,,,,,,
+911,RT98-88040-PN-R004,Etianne Machado,RT-88090-71060-2000-1-GA-D,Closure Plug Installation Tool,,J# 72779,"Sep 18, 2025","Jul 17, 2026",,,,,,,,,,,,
+912,RT98-88040-PN-R004,Etianne Machado,RT-88090-71055-2000-1-GA-D,Calibration Fixture,,J# 72780,"Sep 18, 2025","Aug 28, 2026",,,,,,,,,,,,
+,RT79-87000-PN-R020,Laila Parveen,PO# -RT79-87000-PN-R020,"BRT BELLOWS REMOVAL CUTTING TOOL FOR C1R
++Electrical", ,J# 72692-72708,"Aug 29, 2025","Apr 30, 2026",?, ,"1set :May 20, 2026
+     
+2set : Apr 30, 2026
+        ",50%,"1set :May 27, 2026
+              
+2set : May 7, 2026
+               ",,,,"1set :Jun 10, 2026
+       
+2set : May 21, 2026
+             ","FEB-3-26- Requesting Approval of  DDR-9001 & DDR-9002  ( Still Pending)
+Feb-4-26- DDR-9003  submitted ( Pending) /  Feb-9-26- DDR-9003 Revised & Submitted
+Feb-6-26- Redline BOM sent to Electrical Engineer for Confirmation- 50912-ke2000-52bx-0013-0497 -BOM # 39 & 46 & 509412-ke2000-52bx-0013-0498 BOM IT# 47,48,49 // FEB-9-26- DDR -9003 needs to be revised as CANDU Changed part # for the above two Dwgs BOM # 39,46,47,51,49 & Meltric Plug & Handles-  Spoke with Edwin , he has to requote as some parts already ordered ?
+NOTE: All pieces being made in tandum so second set can remain the same date
+Feb-9-26- E-mail status received from Edwin  J# 72704
+                  - 100% ordered-  waiting for receipt Siemens parts // Waiting for Meltric parts // All other components have been recvd // 600 to 480V testing transformer            
+                    delivered // Waiting on cutting to be completed for enclosure // Panel assy started.
+ Feb-10-26- Quote # SM-260210- Sent in for Delta for using Material per Dwg ( Pending acceptance)
+ FEb-12-26- CANDU Sent in Additional  Changes to electrical component     (Pending confirmation from Edwin & cost)// Edwin sent in E-mail stating that he tried to  get pricing for the Meltric parts and only part number is good- nothing else cross referenced
+Feb-18-26  Meeting @ 11 am to share clarification on Dwgs with Hunter & Olivier
+Feb-12-26- Request for Quote for 12 mockups for C1R & Qinshan 
+Feb-12-26- E-mail acceptance to use 304 or 304L for Dwg# RT-87000-72000-105-1-DD-D & 1006","Milestones:
+1)   30% upon submttal of Unpriced Pos'                      Inv#
+2)    30% upon completion of Purchse of Long Lead and Critical Components   & Initation of Mfg activities
+        Inv#
+3)    40% Upon Delivery of all items including  Documentation",
+865,RT79-87000-PN-R020,Laila Parveen,RT-87000-71100-1000-1-GA-E,Bellows Replacement Tool Base,,J# 72692,"Aug 29, 2025","Apr 30, 2026",,,,60%,DDR-9001,Accepted,,,,Feb-6-26-60% completed,,
+866,RT79-87000-PN-R020,Laila Parveen,RT-87000-71150-1000-1-GA-E,Plug Insertion Tool,,J# 72693,"Aug 29, 2025","Apr 30, 2026",,,,20%,,,,,,"FEb-6-26- 20% complete- Mat'l ordered, stil needs to turn , mill, edm, HT , Nickel, NDE, Paint & Inspect",,
+867,RT79-87000-PN-R020,Laila Parveen,RT-87000-71150-1021-1-DD-D,Shield Plug to Handling Tool Adapter,,J# 72694,"Aug 29, 2025","Apr 30, 2026",,,,70%,,,,,,Feb-6-26- 70% complete- Needs Insp and Nickel,,
+868,RT79-87000-PN-R020,Laila Parveen,21RT-81000-0140-001-GA-1,Shield Plug Manual Insertion Tool,,J# 72695,"Aug 29, 2025","Apr 30, 2026",,,,70%,,,,,,Feb-6-26- 70% completed,,
+869,RT79-87000-PN-R020,Laila Parveen,RT-87000-71150-1001-1-DD-D,Bellows Replacement Shield Plug,,J# 72696,"Aug 29, 2025","Apr 30, 2026",,,,60%,,,,,,"Feb-6-26-1-pcs 60% , needs to be inspected, EDM, carborize, HT, Inspect",,
+870,RT79-87000-PN-R020,Laila Parveen,RT-87000-71200-1000-1-GA-E,Bellows Removal Cutting Tool,,J# 72697,"Aug 29, 2025","Apr 30, 2026",,,,50%,,,,,,"FEb-6-26-50% completed- Waiting for Missing Dim's, Hunter & CANDU Engineer in discussion- Feb-17-26 Coference call to go over 3D models",,
+871,RT79-87000-PN-R020,Laila Parveen,RT-87000-71225-1000-1-GA-E,Bellows Removal Cutting Tool Drive,,J# 72698,"Aug 29, 2025","Apr 30, 2026",,,,50%,,,,,,Feb-6-26-50% completed,,
+872,RT79-87000-PN-R020,Laila Parveen,RT-87000-71300-1000-1-GA-E,Bellows Replacement Machine Chuck,,J# 72699,"Aug 29, 2025","Apr 30, 2026",,,,50%,,,,,,FEb-6-26- 50% completed,,
+873,RT79-87000-PN-R020,Laila Parveen,RT-87000-72000-1000-1-GA-E,Tool Mockup Components,,J# 72700,"Aug 29, 2025","Apr 30, 2026",,,,,,,,,,"
+Feb-10-26 - quoted submited SM-260210 ( Pending )",,
+874,RT79-87000-PN-R020,Laila Parveen,RT-87000-0223-1-GA-2,ALT. weld head Mounting Tool,,J# 72701,"Aug 29, 2025","Apr 30, 2026",,,,95%,,,,,,FEb-6-26-  95% completed- Needs to be Inspection,,
+875,RT79-87000-PN-R020,Laila Parveen,RT-87000-0300-1-GA-D,Tool Alignment Tool,,J# 72702,"Aug 29, 2025","Apr 30, 2026",,,,,,,,,,,,
+876,RT79-87000-PN-R020,Laila Parveen,RT-87000-0166-1-GA-C,Extension Adaptor,,J# 72703,"Aug 29, 2025","Apr 30, 2026",,,,50%,,,,,,FEb-6-26- 50% completed,,
+877,RT79-87000-PN-R020,Laila Parveen,RT38-15200-014-00-GA00-001,Junction Control Box  ( with Cables),,J# 72704,"Aug 29, 2025","Apr 30, 2026",,,,,,,,,,,,
+878,RT79-87000-PN-R020,Laila Parveen,RT-87000-0165-1-SK-C,Tool Ring Gauges ( Set),,J# 72705,"Aug 29, 2025","Apr 30, 2026",,,,90%,,,,,,FEb-6-26- 90% completed,,
+879,RT79-87000-PN-R020,Laila Parveen,RT-87000-71200-1004-1-DD-B,Axial Wear Ring .633,,J# 72706,"Aug 29, 2025","Apr 30, 2026",,,,90%,,,,,,Feb-6-26- 90% complete,,
+880,RT79-87000-PN-R020,Laila Parveen,RT-87000-71230-1011-1-DD-B,Axial Wera Ring Cut 1,,J# 72707,"Aug 29, 2025","Apr 30, 2026",,,,90%,,,,,,Feb-6-26- 90% complete,,
+881,RT79-87000-PN-R020,Laila Parveen,RT-87000-71230-1012-1-DD-B,Azial Wear Ring Cut 2,,J# 72708,"Aug 29, 2025","Apr 30, 2026",,,,90%,,,,,,FEb-6-26- 90% completed,,
+,RT79-87540-PN-R001-R3,Laila Parveen,RT79-87540-PN-R001-R3,,,,"Jan 29, 2026","May 14, 2026",,,,,,,,,,,,
+1446,RT79-87540-PN-R001-R3,,RT-87600-0250-1-GA-E,Lattice Sleeve Removal Tool,,J#73068,"Jan 29, 2026","May 14, 2026",,,,,,,,,,,,
+,RT79-87550-PN-R001- Rev.1,Laila Parveen,RT79-87550-PN-R001- Rev.1,MANUFACTURE OF SFCR BELLOWS CUT TOOL FOR C1R     ,0,"( J# 71851 & 71873 - SPARES)
+J# 72330 (2)","Dec 30, 2024","Jul 4, 2025",?, ,"Mar 25, 2026",75%,"Apr 1, 2026",,,,"Apr 15, 2026
+","
+","Milestone:
+1 -   25 % submit Unpriced PO                       Inv#  52642
+2-   15%  Receipt oof Major lead it          Inv#  52875
+3     15%  Ready for Assy                               Inv#
+4-    15% -Ready for function/accept. test       Inv#
+5-    15% successful function test                  Inv#
+6-    15% completeion & delivery                    Inv#",
+743,RT79-87550-PN-R001- Rev.1,,RT-87550-0100-01-GA-E,Bellows Cutting Tool (SFCR),,J# 71851,"Dec 30, 2024","Jul 4, 2025",,,,60%,,,,,,"FEb-14-26- Due to original EDM issue for DWG# RT-87550-0330-01-DD-E & DR-87550-0117-01-DD-E, part were scrapped and need to be remade.  M/C complete, need inpection, then send for EDM,  (Approx- 2 Wksk) when return need to be inspected and Assembled",,
+746,RT79-87550-PN-R001- Rev.1,,Spare parts,To Capture cost for Spare parts,,J# 71873,"Jan 9, 2025","Jul 4, 2025",,,,90%,,,,,,Completed,,
+786,RT79-87550-PN-R001- Rev.1,,RT-87550-0145-01-GA-E,Shell Installation Tool Assy,,J# 72330,"Apr 24, 2025","Jul 21, 2025",,,,90%,,,,,,FEb-14-26- Need to be assembled,,
+,,Laila Parveen,RT79-87630-PN-R005- Rev.1,,,,,,,,,,,,,,,,,
+791,RT79-87630-PN-R005,,"
+RT-87630-71254-1000-1-GA-D",VRS MANUAL RETRIEVAL TOOL,0,J# 72395,"May 1, 2025","Aug 27, 2025",N/A, ,"Feb 13, 2026",75%,"Feb 20, 2026",,,,"Mar 6, 2026","Feb-6-26-Al m/c completed- Inspect , Assemble & QA Docs
+Feb-5-26- DDR-9006 Submitted ( Pending ) BOM It # 1024 changed from Devcon to Plexus","Milestone:
+1) 30% upon submittal of Unpriced PO             05/27/25           INV# 52865
+2) 70% Upon Delivery of Deliverable & Documents  8/27/25  INV#",
+,RT79-87630-PN-R011,Laila Parveen,RT79-87630-PN-R011, VRS PT LUNCHBOX FOR C1R, ,J#72645-72647,"Aug 14, 2025","Dec 11, 2025",?,"Feb 25, 2026","Feb 20, 2026
+",70%,"Feb 27, 2026
+",,,,"Mar 13, 2026
+",,"1) 20% Upon submission of Procedures     Inv#
+2) 20% Upon Submission of Unpriced PO   Inv#
+3)  60% upon delivery & Doc                          Inv#
+
+KICK OFF MEETING: SEPT-10-25- @ 10 AM",
+848,RT79-87630-PN-R011,,RT-87630-71521-1000-1-GA-E,VRS PT Lunchbox,,J# 72645,,,,,,70%,,,,,,"FEb-6-26 J# 72645- Dwg# 12995-1521-0011- Bottom Plate- Out at chrome - Expected by Feb-13-26- need this plate for assembly.
+",,
+849,RT79-87630-PN-R011,,RT-87630-71622-1000-1-GA-E,VRS Baseline- PT Small OD Gripper Hd,,J# 72646,,,,,,80%,,,,,,J#72646- Dwg # 12995-1622-0000- Gripper Hd Assy ,,
+850,RT79-87630-PN-R011,,RT-87630-71522-1000-1GA-E,VRS Swab Loader- Mark 2,,J# 72647,,,,,,90%,,,,,,J# 72647- ,,
+,RT79-87840-PN-R002,Laila Parveen,RT79-87840-PN-R002,CV FME INSPECTION TOOL,0,"J# 72517,72906","Jun 27, 2025","Nov 17, 2025",?,Yes,"Feb 13, 2026",70%,"Feb 20, 2026",,,,"Mar 6, 2026","FEb-6-26-  J# 72517- M/C & ASSy Complet Finding Centre of gravity
+J# 72906- DWg# RT-87840-0220-01-GA-2- Bearing Assy-  70% Complete- Assembly & Final Inspection","Milestones:
+1)  30% upon submission of Unpriced PO:       Inv# 52867
+2)  30% Upon Completion of approx. 50% of project     Inv#
+3)  15% Upon receipt of Camera, etc. related equop     Inv#
+4)  25% Upon Delivery of all items & QA Doc                 Inv#",
+802,RT79-87840-PN-R002,,RT-87840-70000-1000-1-GA-B,,,J# 72517,"Jun 27, 2025","Nov 17, 2025",,,,80%,,,,,,,,
+1083,RT79-87840-PN-R002,,RT-87840-0220-01-GA-2,Bearing Assy,,J# 72906,"Oct 30, 2025","Jan 5, 2026",,,,90%,,,,,,,,
+,RT79-87900-PN-R003,Laila Parveen,RT79-87900-PN-R003,C6-BORE GAUGE AND C6-BORE GAUGE-NARROW LANDING FOR C1R,0,J# 71852-71853,"Dec 30, 2024","Jul 31, 2025",?,"Feb 13, 2026","Jan 23, 2026
+",95%,"Jan 30, 2026
+
+",,,,"Feb 13, 2026
+","
+Feb-06  - Witness notification sent out for FAT testing , on Feb. 13 th","Milestone
+1-     30%  of Unpriced PO                    Inv#     52795                                                          
+2-    70%  competion / Delv          Inv#
+Feb-26-25-  All procedures received approved",
+744,RT79-87900-PN-R003,,RT-87900-0400-1-GA-E,C6- Bore Gauge,,J# 71852,"Dec 30, 2024","Jul 31, 2025",,,,,,,,,,,,
+745,RT79-87900-PN-R003,,RT-87900-0500-01-GA-E,C6 Bore Gauge- Narrow Landing,,J# 71853,"Dec 30, 2024","Jul 31, 2025",,,,,,,,,,,,
+,RT79-88010-PN-R003- R.2,Laila Parveen,RT79-88010-PN-R003- R.2,GROUP 8 TOOLS FOR C1R, ,J# 73007-73008,"Dec 24, 2025", , , ,"Mar 6, 2026",60%,"Mar 13, 2026",,,,"Mar 27, 2026","Feb-6-26- J# 73007- Tapes still to be mfg. ( 2 Weeks)
+","MILESTONE:
+1) 25% upon submission for procedures
+2) 25% Upon receipt of Major Materials
+3) 25% Upon start of assy
+4) 25% Upon delivery of Equipment & Docs",
+1094,RT79-88010-PN-R003- R.2,,RT-88010-0005-01-GA-E,Calibrated Measuring Tape-BOM#6,,J# 73007,"Dec 24, 2025","Feb 20, 2026",,,,40%,,,,,,,,
+1095,RT79-88010-PN-R003- R.2,,RT-88000-70210-044-1-DD-D,E/F Protective Cap for Plug Gaug'g,,J# 73008,"Dec 24, 2025","Feb 20, 2026",,,,80%,,,,,,FEb-14-26- in QC Dept,,
+,RT79-88230-PN-R012,Laila Parveen,RT79-88230-PN-R012,FEEDER TEMPLATES,0, J# 72139-72147,"Mar 4, 2025","Oct 17, 2025",N/A, ,"Mar 27, 2026",55%,"Apr 6, 2026",,,,"Apr 27, 2026","FEb-6-26-  Still in process of Assembly- Need to r/w identification due Puck sizes- CAusing Extra Delay
+fEB-10-26 dRAFT aCCEPTANCE TEST pROCEDURE - WEEK","  Milestone:
+1) 30% upon submittal of Unpriced PO                           Inv# 52699
+2) 15% upon 40% ave.comp of MFG              Inv# 52863
+3) 15% upon 75% average completion of MFG                 Inv#
+4) 40% Upon Delivery of items and Docs                           Inv#",
+761,RT79-88230-PN-R012,,RT-88230-0245-01-GA-E,"Large Template , MK TP-1A",,J# 72139,"Mar 4, 2025","Nov 24, 2025",,,,60%,,,,,,"
+fEB-12-26- e-mail recvd for CANDU-Sudipto-stating the following dwgs RT-88230-0232, -0233, -0276 & -0278 the CAD professional s evaluated and believes the additional holes are not required - Applicable to DDR -9005
+Feb-14-26 Platform completed & Pucks installed",,
+762,RT79-88230-PN-R012,,RT-88230-0246-01-GA-E,"Large Template , MK TP-1C",,J# 72140,"Mar 4, 2025","Nov 24, 2025",,,,60%,,,,,,Platform completed & Pucks installed,,
+763,RT79-88230-PN-R012,,RT-88230-0247-01-GA-E,"Large Template , MK TP-2A",,J# 72141,"Mar 4, 2025","Nov 24, 2025",,,,45%,,,,,,Platforms & Id still in process,,
+764,RT79-88230-PN-R012,,RT-88230-0248-01-GA-E,"Large Template , MK TP-2C",,J# 72142,"Mar 4, 2025","Nov 24, 2025",,,,45%,,,,,,Platforms & Id still in process,,
+765,RT79-88230-PN-R012,,RT-88230-0249-01-GA-D,"Small Template , MK TP-3A",,J# 72143,"Mar 4, 2025","Nov 24, 2025",,,,50%,,,,,,Platforms & Id still in process,,
+766,RT79-88230-PN-R012,,RT-88230-0250-01-GA-D,"Small Template , MK TP-3C",,J# 72144,"Mar 4, 2025","Nov 24, 2025",,,,50%,,,,,,Platforms & Id still in process,,
+767,RT79-88230-PN-R012,,RT-88230-0251-01-GA-D,"Small Template , MK TP-4A",,J# 72145,"Mar 4, 2025","Nov 24, 2025",,,,45%,,,,,,Platforms & Id still in process,,
+768,RT79-88230-PN-R012,,RT-88230-0252-01-GA-D,"Small Template , MK TP-4C",,J# 72146,"Mar 4, 2025","Nov 24, 2025",,,,45%,,,,,,"Platforms & Id still in process
+Feb-13-26- M/U Acceptance plan sent back to RTD to be Revised",,
+769,RT79-88230-PN-R012,,RT-88230-0200-01-GA-E,Upper Feeder Template Assy,,J# 72147,"Mar 4, 2025","Nov 24, 2025",,,,0%,,,,,,,,
+,RT98-87000-PN-R012,Laila Parveen,"RT98-87000-PN-R012
+","PITCH-YAW MOUNTING TABLE AND PITCH YAW MOUNTING FRAME TOOL
+- Handle Wheel - 1+1 pcs Completed)
+-Hand wheel Extenison Long /Short 1+1
+
+",0,J# 72367-72368,"May 5, 2025","Jul 29, 2026",?, ,"1set : Mar 19, 2026
+           Pending
+2set : Jul 8, 2026","1 set : 40%
+2 set : 10%","1set : Mar 26, 2026
+         Pending
+2set : Jul 15, 2026",,,,"1set : Apr 9, 2026
+            Pending
+2set : Jul 29, 2026",,"MileStone:
+1) 30% Upon submission of Unpriced PO's   05/30/25             Inv#   52946
+2) 25% Upon completion of  50% of Project  08/29/25            Inv#
+3) 20% Upon Completion of 80% of Project   02/13/26             Inv#
+4) 25% Upon Delivery                                            07/29/25           Inv# ",
+788,RT98-87000-PN-R012,,RT-87250-74016-000-1-GA-E,Pitch Yaw Mounting Frame Tool,,J# 72367,"May 2, 2025","Jul 29, 2026",,,,35%,,,,,,feb-14-26- Pitch Yaw Frame - Moved  during machining- have to correct before installing the THK Rails- Still trying to correct,,
+789,RT98-87000-PN-R012,,RT-87250-74010-000-1-GA-E,Pitch Yaw Mounting Table,,J# 72368,"May 2, 2025","Jul 29, 2026",,,,50%,,,,,,FEb-,,
+,RT98-87000-PN-R018,Laila Parveen,RT98-87000-PN-R018,BRT BELLOWS REMOVAL CUTTING TOOL FOR QINSHAN, ,J# 72924-72940,NEW, , , ,"Jul 20, 2026
+Pending",5%,"Jul 27, 2026",,,,"Aug 10, 2026","Dec-2-25- Kick off meeting @10am
+Jan-19-26- Procedures submitted except Continuty Test and Megger Test
+feb-14-26- Material still being ordered/ Not processed Yet
+Feb-15-26- Same information applies for RT98 as per RT79-  Electrical issues", ,
+989,RT98-87000-PN-R018,,RT-87000-71100-1000-1-GA-E,Bellows Replacement Tool Base,,J# 72924,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+990,RT98-87000-PN-R018,,RT-87000-71150-1000-1-GA-E,Plug Insertion Tool,,J# 72925,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+991,RT98-87000-PN-R018,,RT-87000-71150-1021-1-DD-D,Shield Plug to Handling Tool Adapter,,J# 72926,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+992,RT98-87000-PN-R018,,21RT-81000-0140-001-GA-1,Shield Plug Manual Insertion Tool,,J# 72927,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+993,RT98-87000-PN-R018,,RT-87000-71150-1001-1-DD-D,Bellows Replacement Shield Plug,,J# 72928,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+994,RT98-87000-PN-R018,,RT-87000-71200-1000-1-GA-E,Bellows Removal Cutting Tool,,J# 72929,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+995,RT98-87000-PN-R018,,RT-87000-71225-1000-1-GA-E,Bellows Removal Cutting Tool Drive,,J# 72930,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+996,RT98-87000-PN-R018,,RT-87000-71300-1000-1-GA-E,Bellows Replacement Machine Chuck,,J# 72931,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+997,RT98-87000-PN-R018,,RT-87000-72000-1000-1-GA-E,Tool Mockup Components,,J# 72932,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+998,RT98-87000-PN-R018,,RT-87000-0223-1-GA-2,ALT. weld head Mounting Tool,,J# 72933,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+999,RT98-87000-PN-R018,,RT-87000-0300-1-GA-D,Tool Alignment Tool,,J# 72934,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+1000,RT98-87000-PN-R018,,RT-87000-0166-1-GA-C,Extension Adaptor,,J# 72935,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+1001,RT98-87000-PN-R018,,RT38-15200-014-00-GA00-001,Junction Control Box  ( with Cables),,J# 72936,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+1002,RT98-87000-PN-R018,,RT-87000-0165-1-SK-C,Tool Ring Gauges ( Set),,J# 72937,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+1003,RT98-87000-PN-R018,,RT-87000-71200-1004-1-DD-B,Axial Wear Ring .633,,J# 72938,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+1004,RT98-87000-PN-R018,,RT-87000-71230-1011-1-DD-B,Axial Wear Ring Cut 1,,J# 72939,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+1005,RT98-87000-PN-R018,,RT-87000-71230-1012-1-DD-B,Axial Wear Ring Cut 2,,J# 72940,"Nov 13, 2025","Aug 10, 2026",,,,,,,,,,,,
+,RT98-87250-PN-R007,Laila Parveen,RT98-87250-PN-R007,INSTALLATION WORKTABLE AND INSTALLATION WORKTABLE SUPPORT FRAME ,0,J# 72438-72441,"Jun 2, 2025","Oct 16, 2026",N/A, ,"1set : Apr 30, 2026
+Pending
+2set : Sep 25, 2026",15%,"1set : May 7, 2026
+2set : Oct 2, 2026",,,,"1set : May 21, 2026
+          
+2set : Oct 16, 2026",Feb-12-26- Approved DDR-9001 received  ,"Milestone:
+1) 30% upon submittal of Unpriced PO             06/27/25        INV#
+2) 30% Upon 50% compltetion of PO                 12/12/25           INV#
+3) 20% When ready for Function Test                08/28/26          INV#
+4) 10%  After del'v of 1 Worktable & Supt frame   02/816/26    INV#
+5) 10%    After delivery of remain'g Items          10/16/26            INV#",
+794,RT98-87250-PN-R007,,RT-87250-0400-01-GA-E,Installation Worktable,,J# 72438,"Jun 2, 2025","Oct 16, 2026",,,,30%,,,,,"Oct 16, 2026",FEb-14-26- Still in process of MFg,FEb-6-26-  First set- NOt possible for April-30-26  - Still working out schedule to confirm ,
+795,RT98-87250-PN-R007,,RT-87250-70000-5000-1-GA-B,Inst. Worktable Support Frame,,J# 72439,"Jun 2, 2025","Oct 16, 2026",,,,30%,,,,,,,,
+796,RT98-87250-PN-R007,,RT-87920-0303-01-GA-D,CT Shield Sleeve- Short,,J# 72440,"Jun 2, 2025","Oct 16, 2026",,,,40%,,,,,,,,
+797,RT98-87250-PN-R007,,RT-87920-0051-01-DD-C,Hook Assy For Extension Tool,,J# 72441,"Jun 2, 2025","Oct 16, 2026",,,,,,,,,,,Check,
+,RT98-87530-PN-R001,Laila Parveen,RT98-87530-PN-R001,GROUP 2G FOR QINSHAN, ,J# 72602-72604,"Jul 25, 2025","Oct 28, 2025",?, ,"Pending
+
+",80%,"Feb 20, 2026
+",,,,"Mar 6, 2026
+
+","
+
+j# 72604- DWG# 98-31952-69-1-GA-E- Closure Dismanteling Tool -  95% Completed
+NO Change
+Feb-12-26- 2X dimensions in the ass'y drawing (98-31952-83-1-GA-E Rev.1) cannot be met; email sent to Sudipto.","Milestone:  ( KICK OFF MEETING- SEPT-4-25)
+1) 30% upon submission of Unpriced PO                  Inv#
+2) 70% delivery of all item and Docs                           Inv#",
+825,RT98-87530-PN-R001,,RT-87530-70001-1-GA-D,Enhanced FIF Tool,,J# 72602,"Jul 25, 2025","Oct 28, 2025",,,,90%%,,,,,,,,
+826,RT98-87530-PN-R001,,98-31952-83-1-GA-E,General Inspection Fixture,,J# 72603,"Jul 25, 2025","Oct 28, 2025",,,,75%,,,,,,Assembly issues- cannot achinve dimension per daw,,
+827,RT98-87530-PN-R001,,98-31952-69-1-GA-E,Tool Channel Closure Dismantling Tool,,J# 72604,"Jul 25, 2025","Oct 28, 2025",,,,90%,,,,,,Feb-12-26- Two dim on Dwgs we are unable to meet per Dwg Requirements - All items mfg per specified Tolerande and assy instructions ( Pending Directions),,
+,,,PO# -RT98-88010-PN-R001- Rev.3,,,,,,,,,,,,,,,,,
+,,,RT-88000-70047-000-1-GA-D,Protective sleeve,,J# 73050,Jan-19-26,April-3-26,,,Mar-13-26,,Mar-20-26,,,,April-3-26,,,
+,,Laila Parveen,RT79-88010-PN-R003- Rev.2,GROUP 15 TOOLS FOR QINSHAN,,,,,,,,,,,,,,,,
+1096,RT98-87540-PN-R002- Rev.1,,"
+RT-87600-0250-1-GA-C",Lattice Sleeve Removal Tool HWT, ,J# 73009,"Dec 24, 2025", , , ,"Apr 10, 2026",10%,"Apr 17, 2026",,"Apr 24, 2026",,"May 8, 2026","New order
+Feb-6-26- All mat'l ordered - 
+Feb-14-26- NO Change to Delivery Date",NO MILESTONES-  CHANGE ORDER # 1,
+,RT98-87550-PN-R004- Rev.1,Laila Parveen,RT98-87550-PN-R004- Rev.1,MANUFACTURE OF SFCR BELLOWS CUT TOOL FOR- Qinshan,0,"J# 72023-72024 (Spares)
+J# 72331 (2)","Feb 11, 2025","Feb 11, 2025",?, ,"Mar 11, 2026",75%,"Mar 18, 2026",,,,"Apr 1, 2026","FEb-6-26- J# 72023- RT-87550-0330-01-DD-E- Carrier shell Segment top/Bottom- Mill,complete, db, Inspect and sent out for EDM on FEB-17-26  ( 1.1/2 TEntative) back on March-2-26 Inspect  & Assemby ( about 1 Week)","Feb-15-2025-  Order Processed with RT79-   
+Milestone 
+1 )   25 % submit Unpriced PO                       Inv#   52643
+2)   15%  Receipt oof Major lead it                  Inv#  52859
+3 )    15%  Ready for Assy                               Inv#
+4)    15% -Ready for function/accept. test       Inv#
+5)    15% successful function test                  Inv#
+6)    15% completeion & delivery                    Inv#",
+748,RT98-87550-PN-R004- Rev.1,,RT-87550-0100-01-GA-E,Bellows Cutting Tool (SFCR),,J# 72023,"Feb 11, 2025","Sep 19, 2025",,,,,,,,,,,,
+749,RT98-87550-PN-R004- Rev.1,,Spare parts,To Capture cost for Spare parts,,J# 72024,"Feb 11, 2025","Sep 19, 2025",,,,,,,,,,,,
+787,RT98-87550-PN-R004- Rev.1,,RT-87550-0145-01-GA-E,Shell Installatin Tool Assy,,J# 72331,"Apr 24, 2025","Sep 19, 2025",,,,,,,,,,,,
+,RT98-87590-PN-R007,Laila Parveen,RT98-87590-PN-R007,MOCKUP LWTF TROLLEY FOR QINSHAN,0,"J# 72280
+J# 72948","Apr 1, 2025","Aug 15, 2025",N/A, ,"Mar 16, 2026",50%,"Mar 23, 2026
+",,,,"Apr 6, 2026
+","Feb-6-26- J# 72280- Dwg# RT-87640-70300-000-1-GA-E- Details on this drawing completed-100%
+J# 72940- DWG# RT-87640-70300-001--1-DD-D- Mockup Trolley frame- 20%","Milestones:
+1)  0%- Upon Submission of Unpriced PO: May-9-25       Inv#. 52759
+2) 70%- Upon Delivery of Equipment % Doc: Aug-15-25  Inv# ",
+781,RT98-87590-PN-R007,,RT-87640-70300-000-1-GA-E,Mockup LWTF Trolley,,J# 72280,"Apr 1, 2025","Aug 15, 2025",,,"Feb 20, 2026",100%,,,,,,,,
+1013,RT98-87590-PN-R007,,RT-87640-70300-000-1-GA-E,LWTF Mock-UP Trolley Frame,,J# 72948,"Nov 18, 2025","Mar 13, 2026",,,,,,,,,,feB-10-26- reQUIRE 3d moDEL FOR aSY & m/c ,,
+,RT98-87600-PN-R008,Laila Parveen,RT98-87600-PN-R008,,0,,"Feb 2, 2026","Mar 16, 2026",,,,,,,,,,,,
+1448,RT98-87600-PN-R008,,RT-87600-051-01-GA-D,Lattice Sleeve ID Plug Gauge,0,J# 73071,"Feb 2, 2026","Mar 16, 2026",,,,,,,,,,,,
+,RT98-87640-PN-R005,Laila Parveen,RT98-87640-PN-R005,GROUP 7D (CARTS & RACK) FOR QINSHAN, ,"J#72818-72820
+J# 72967","Sep 29, 2025","Jan 30, 2026",?, ,"
+
+-
+Apr 1, 2026",45%,"
+-
+Apr 8, 2026",,,,"-
+Apr 22, 2026",,"Milestones:
+30% Submission of Unpriced PO:
+30% - Completion of Long lead Items
+40%  Upon completeion & Delivury",
+925,RT98-87640-PN-R005,,RT-88000-0300-000-01-GA-E,Tool EF Tool Rack,,J# 72818,"Sep 29, 2025","Feb 27, 2026",,,,50%,,,,,,,,
+926,RT98-87640-PN-R005,,RT-87600-70050-1-GA-B,Transfer Carts for Lattice Sleeve & Plugs,,J# 72819,"Sep 29, 2025","Feb 27, 2026",,,,50%,,,,,,"feB-14-26- WAITING FOR nde, THEN PAINT , ASSY & qa dOC",,
+927,RT98-87640-PN-R005,,RT-87910-0110-1-GA-0,CT Storage Rack,,J# 72820,"Sep 29, 2025","Feb 27, 2026",,,,?,,,,,,,,
+1092,RT98-87640-PN-R005,,RT-88000-0300-000-01-GA-E,Tool EF Tool Rack,,J# 72967,"Dec 4, 2025","Apr 22, 2026",,,,,,,,,,,,
+,,Laila Parveen,RT98-87710-PN-R006,,,J# 72621,,,,,,,Doc Pack (2/17/2026),,,,,,,
+831,RT98-87710-PN-R006,,"
+RT-87713-0001-1-GA-D",END SHIELD MEASUREMENT TOOL FOR QINSHAN,0,J# 72621,"Aug 1, 2025","Nov 14, 2025",N/A, ,"Dec 22, 2025Jan 5, 2026",95%,"
+Jan 15, 2026",,"Jan 30, 2026",,"Feb 13, 2026",Jan-30-26- QA Doc Package Submitted Waiting for Approval& Shipping RElease-,NO MILESTONES,
+,RT98-87920-PN-R015,Laila Parveen,RT98-87920-PN-R015,GROUP 5F FOR QINSHAN, ,J#72811-72817,"Sep 29, 2025","Feb 5, 2026",?, ,"Mar 6, 2026
+Feb 5, 2026",10%,"Mar 13, 2026
+Feb 12, 2026",,,,"Mar 27, 2026
+Feb 23, 2026",,"Milestone:
+30% Upon Submission of Unpriced PO:
+30%  Completion of Long Lead Time
+40% Upon Completion and Delivery:",
+918,RT98-87920-PN-R015,,RT-88000-70057-020-1-GA-D,PT Expander Mandrel Clamp,,J# 72811,"Sep 29, 2025","Feb 23, 2026",,,,,,,,,,,,
+919,RT98-87920-PN-R015,,RT-88010-0160-1-DD-C,End Fitting E-Face Inspecton Ring,,J# 72812,"Sep 29, 2025","Feb 23, 2026",,,,,,,,,,,,
+920,RT98-87920-PN-R015,,RT-88000-70047-000-1-GA-D,Seal Face Protective Sleeve ( Reactor Face),,J# 72813,"Sep 29, 2025","Feb 23, 2026",,,,,,,,,,,,
+921,RT98-87920-PN-R015,,RT-88040-0005-01-GA-E,Top EF Levelling Tool,,J# 72814,"Sep 29, 2025","Feb 23, 2026",,,,,,,,,,,,
+922,RT98-87920-PN-R015,,RT-87600-0220-1-GA-E,Lattice Sleeve Removal Tool,,J# 72815,"Sep 29, 2025","Feb 23, 2026",,,,,,,,,,,,
+923,RT98-87920-PN-R015,,RT-87920-74105-000-1-GA-E,Tool Extension Tool,,J# 72816,"Sep 29, 2025","Feb 23, 2026",,,,,,,,,,,,
+924,RT98-87920-PN-R015,,RT-88030-0140-1-DD-C,PT Protective Sleeve For Annulus Spacer,,J# 72817,"Sep 30, 2025","Feb 23, 2026",,,,,,,,,,,,
+,RT98-87920-PN-R017,Laila Parveen,RT98-87920-PN-R017,GROUP 7C ( LIFTING BEAMS ) FOR QINSHAN, ,J#72840-72844,"Oct 3, 2025","Feb 13, 2026",?, ,"Mar 13, 2026
+",60%,"Mar 20, 2026
+",,,,"Apr 9, 2026
+","FEb-6-26- J#72840 DWG# RT-88000-70010-001-1-DD-D- End Fitting Lifting Beam-  60% - Needs Insp. & Paint
+J# 72841- DWG# RT-88000-70018-00-1-GA-E- Measuring Bench-  60% - still need insp & Assy
+J# 72842- DWG# RT-87290-7020-1-GA-D- 15T Lifting Beam-  Matl recv - , Drill , NDE. Load Test- 20%
+J# 72843- DWG- RT-87250-0280-1-DD-C- Lifting Beam Weldment- 70% Complete, Inspect & Load Test
+J# 72844- DWG- RT-87290-7024-1-GA-D- 6T  Liftimng Beam- still to Mill , NDE, S/R, Load Testing  -50%
+feb-14-26 NO Change  on Delivery dependant on Load testing delivery", ,
+942,RT98-87920-PN-R017,,RT-88000-70010-000-1-GA-E,Tool E/F Lifting Beam,,J# 72840,"Oct 3, 2025","Feb 13, 2026",,,,60%,,,,,,,,
+943,RT98-87920-PN-R017,,RT-88000-70018-000-1-GA-E,Tool Lifting Rig for Measuring  Bench,,J# 72841,"Oct 3, 2025","Feb 13, 2026",,,,60%,,,,,,,,
+944,RT98-87920-PN-R017,,RT-87290-7020-1-GA-D,15T Spreader Beam for Fuel Channel,,J# 72842,"Oct 3, 2025","Feb 13, 2026",,,,50%,,,,,,,,
+945,RT98-87920-PN-R017,,RT-8725-0280-1-DD-C,5.5 Ton Heavy Worktable Spreader Beam,,J# 72843,"Oct 3, 2025","Feb 13, 2026",,,,70%,,,,,,,,
+946,RT98-87920-PN-R017,,RT-87290-7024-1-GA-D,6T Spreader Beam for  EFSP Removal,,J# 72844,"Oct 3, 2025","Feb 13, 2026",,,,50%,,,,,,,,
+,RT98-88010-PN-R010,Laila Parveen,RT98-88010-PN-R010,GROUP 7A OF TOOLS FOR QINSHAN, ,J# 72713-72726,"Jul 24, 2025","Mar 16, 2026",?, ,"Pending
+
+",5%,Pending,,,,Pending,FEb-6-26- Mat;l on order < Mfg Not started- Still to confirm Deliveruy,"Milestones:
+30%- Unpriced PO:
+30%- Completion fo r50% of Project
+40%- Upon completion- Delivery:",
+883,RT98-88010-PN-R010,,RT-87910-0130-1-GA-D,Measure/Cut off Bench,,J# 72713,"Sep 8, 2025","Mar 16, 2026",,,,0%,,,,,,,,
+884,RT98-88010-PN-R010,,RT-87910-0133-1-GA-0,Scribing Tool,,J# 72714,"Sep 8, 2025","Mar 17, 2026",,,,0%,,,,,,,,
+885,RT98-88010-PN-R010,,RT-88000-70059-000-1-GA-E,Bore Gague & Ring Gauge Cal. Stor Trough,,J# 72715,"Sep 8, 2025","Mar 18, 2026",,,,0%,,,,,,,,
+886,RT98-88010-PN-R010,,RT-88000-70011-000-1-GA-E,Tool E/F Assy Bench,,J# 72716,"Sep 8, 2025","Mar 19, 2026",,,,0%,,,,,,,,
+887,RT98-88010-PN-R010,,RT-88000-70036-002-2-DD-D,Tool End Stop Bench (RH),,J# 72717,"Sep 8, 2025","Mar 20, 2026",,,,0%,,,,,,,,
+888,RT98-88010-PN-R010,,RT-88000-70012-000-1-GA-E,Tool P/T Measuring Bench,,J# 72718,"Sep 8, 2025","Mar 21, 2026",,RT-88000-73530-,,0%,,,,,,,,
+889,RT98-88010-PN-R010,,RT-88000-70035-000-1-GA-E,S/A Preparation Bench ( LH),,J# 72719,"Sep 8, 2025","Mar 22, 2026",,,,0%,,,,,,,,
+890,RT98-88010-PN-R010,,RT-88000-70036-000-1-GA-E,S/A Preparation Bench ( RH),,J# 72720,"Sep 8, 2025","Mar 23, 2026",,,,0%,,,,,,,,
+891,RT98-88010-PN-R010,,RT-88000-70050-000-1-GA-E,Expander Support Stand,,J# 72721,"Sep 8, 2025","Mar 24, 2026",,,,0%,,,,,,,,
+892,RT98-88010-PN-R010,,RT-88000-0013-01-GA-C,Roller Supports for Measuring Bench,,J# 72722,"Sep 8, 2025","Mar 25, 2026",,,,0%,,,,,,,,
+893,RT98-88010-PN-R010,,RT-88000-73530-100-1-DD-E,Roller Support Frame,,J# 72723,"Sep 8, 2025","Mar 26, 2026",,,,0%,,,,,,,,
+894,RT98-88010-PN-R010,,RT-88000-70035-002-1-DD-D,End Stop Bench ( LH),,J# 72724,"Sep 8, 2025","Mar 27, 2026",,,,0%,,,,,,,,
+895,RT98-88010-PN-R010,,RT-88000-70036-011-1-DD-D,SA Prep Bench (RH) Supt Stand,,J# 72725,"Sep 8, 2025","Mar 28, 2026",,,,0%,,,,,,,,
+896,RT98-88010-PN-R010,,RT-88000-70035-011-1-DD-D,Prep Bench ( LH) Supt Stand,,J# 72726,"Sep 8, 2025","Mar 29, 2026",,,,0%,,,,,,,,
+,,,RT98-88010-PN-R010- REV.1,GROUP 7A OF TOOLS FOR QINSHAN,,J# 73061-73062,,,,,,,,,,,,,,
+,,,RT-88000-70059-000-1-GA-E,Bore Gauge & Ring Gauge Cal. store Trough,,73061,Jan-26-26,July-17-26,,,June-12-26,,June26-26,,,,July-17-26,,NO Milestone,
+,,,RT-88000-73530-100-1-D-E,Rolle Support Frame,,73062,Jan-26-26,July-17-26,,,June-12-26,,June-26-26,,,,July-17-26,,,
+,RT98-88230-PN-R010,Laila Parveen,RT98-88230-PN-R010,FEEDER TEMPLATES,0,J# 72234-72242,"Mar 20, 2025","Oct 17, 2025",N/A, ,"Mar 13, 2026
+Feb 13, 2026",70%,"Mar 20, 2026
+Feb 20, 2026",,,,"Apr 3, 2026
+Mar 6, 2026",Feb-13-26- Marked up acceptnce Test Procedure returned to RTD for Correction ( Pending),"Milestone:
+1) 30% upon submittal of Unpriced PO                           Inv# 52700
+2) 15% upon 40% average compltn of MFG           Inv# 52864
+3) 15% upon 75% average completion of MFG                 Inv#
+4) 40% Upon Delivery of items and Docs                           Inv#",
+770,RT98-88230-PN-R010,,RT-88230-0245-01-GA-E,"Large Template , MK TP-1A",,J# 72234,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+771,RT98-88230-PN-R010,,RT-88230-0246-01-GA-E,"Large Template , MK TP-1C",,J# 72235,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+772,RT98-88230-PN-R010,,RT-88230-0247-01-GA-E,"Large Template , MK TP-2A",,J# 72236,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+773,RT98-88230-PN-R010,,RT-88230-0248-01-GA-E,"Large Template , MK TP-2C",,J# 72237,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+774,RT98-88230-PN-R010,,RT-88230-0249-01-GA-D,"Small Template , MK TP-3A",,J# 72238,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+775,RT98-88230-PN-R010,,RT-88230-0250-01-GA-D,"Small Template , MK TP-3C",,J# 72239,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+776,RT98-88230-PN-R010,,RT-88230-0251-01-GA-D,"Small Template , MK TP-4A",,J# 72240,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+777,RT98-88230-PN-R010,,RT-88230-0252-01-GA-D,"Small Template , MK TP-4C",,J# 72241,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+778,RT98-88230-PN-R010,,RT-88230-0200-01-GA-E,Upper Feeder Template Assy,,J# 72242,"Mar 20, 2025","Nov 24, 2025",,,,,,,,,,,,
+,RT98-87920-PN-R013,Maryam Shafi,RT98-87920-PN-R013,GROUP 5B FOR QINSHAN, ,J# 72625-72635,"Aug 8, 2025","May 28, 2026",?, ,"Jun 26, 2026",10%,"Jul 3, 2026",,,,"Jul 17, 2026",,NO Milestone,
+835,RT98-87920-PN-R013,,RT-88030-0053-01-GA-D,Calandria Tube Extension Sleeve,,J# 72625,"Aug 8, 2025","May 28, 2026",,,,20%,,,,,,,,
+836,RT98-87920-PN-R013,,RT-88020-0200-1-GA-C,Feeder Port Angle Adjustment Tool,,J# 72626,"Aug 8, 2025","May 28, 2026",,,,50%,,,,,,,,
+837,RT98-87920-PN-R013,,RT-87920-74112-000-1-GA-E,Lifting Grapple,,J# 72627,"Aug 8, 2025","May 28, 2026",,,,30%,,,,,,,,
+838,RT98-87920-PN-R013,,RT-87920-74107-000-1-GA-E,Extension Trolley,,J# 72628,"Aug 8, 2025","May 28, 2026",,,,10%,,,,,,fEb-10-26- E-mail sent to  Confirm if BOM it# 1011 needs 1- Spare,,
+839,RT98-87920-PN-R013,,21RT-88070-0326-001-GA-1,Cart Closure Plug Cart,,J# 72629,"Aug 8, 2025","May 28, 2026",,,,10%,,,,,,"Feb-14-26- Still need to cut, weld , mill, Inspect, Paint & Asssy",,
+840,RT98-87920-PN-R013,,RT-87920-74104-000-1-GA-E,Insertion Trolley & Handle,,J# 72630,"Aug 8, 2025","May 28, 2026",,,,10%,,,,,,Feb-14-26- Still ordering mat'l,,
+841,RT98-87920-PN-R013,,RT-87590-0250-1-GA-0,EF in Shuttle Flask Tool,,J# 72631,"Aug 8, 2025","May 28, 2026",,,,0%,,,,,,,,
+842,RT98-87920-PN-R013,,RT-87500-0108-1-GA-0,EF Rotation Tool,,J# 72632,"Aug 8, 2025","May 28, 2026",,,,0%,,,,,,,,
+843,RT98-87920-PN-R013,,RT-87590-70201-4000-1-GA-B,Manual Bellows Push Tool,,J# 72633,"Aug 8, 2025","May 28, 2026",,,,0%,,,,,,,,
+844,RT98-87920-PN-R013,,RT-79100-0100-01-GA-E,Closure Plug Shuttle Box,,J# 72634,"Aug 8, 2025","May 28, 2026",,,,0%,,,,,,,,
+845,RT98-87920-PN-R013,,RT-87000-0480-1-GA-D,Tool Delivery  Trough,,J# 72635,"Aug 8, 2025","May 28, 2026",,,,0%,,,,,,,,
+,RT98-87540-PN-R003,Raza Talpur,RT98-87540-PN-R003,PA STUD INSTALLATION TOOL & SPRING PIN INSTALLATION TOOL-HARDWARE TOOL QINSHAN, ,J# 73038-73040,"Jan 7, 2026", , , ,"Mar 9, 2026",20%,"Mar 23, 2026",,,,"Mar 30, 2026","J# 73039- DWG# RT-87540-0211-01-DD-C- Support Brkt- 20% 
+J# 73040- DWG RT-87540-0212-01-GA-C- Spring Pin Tool-20%",NO MILESTONE- DELIVERY COMPLETE WITH QA DOC'S,
+1124,RT98-87540-PN-R003,,RT-87540-0210-01-GA-C,PA Stud Installation Tool,,J# 73038,"Jan 7, 2026","Mar 30, 2026",,,,60%,,,,,,"Feb-14-26- Need inspect, anodize , Assy",,
+1125,RT98-87540-PN-R003,,RT-87540-0211-01-DD-C,Support Brkt for spring Inst Tool,,J# 73039,"Jan 7, 2026","Mar 30, 2026",,,,20%,,,,,,,,
+1126,RT98-87540-PN-R003,,RT-87540-0212-01-GA-C,Hardware for Spring Pin Inst Tool,,J# 73040,"Jan 7, 2026","Mar 30, 2026",,,,20%,,,,,,,,
+,,Amritha Gopan,RT79-88010-PN-R015,AIR MOTOR ADAPTER & AIR MOTOR SUPPORT,,73085-73086,,,,,,,,,,,,,,
+1462,RT79-88010-PN-R015,,RT-88000-70097-045-1-DD-C,Coupling Adapter,,J# 73085,"Feb 6, 2026","May 15, 2026",,,April-30-2026,5%,May-7-26,,,,May-28-26,,,
+1463,RT79-88010-PN-R015,,RT-88000-70056-000-1-GA-E,Air Motor Support c/w Stabilizer,,J# 73086,"Feb 6, 2026","May 15, 2026",,,April-30-26,5%,May-7-26,,,,May-28-26,,,
+,,,PO#-  RT-87540-PN-R003- Rev.1,POSITIONING ASSEMBLY ( PA) HARDWARE REMOVAL TOOL FOR CIR,,J# 72944,,,,,,,,,,,,,,
+,,,RT-87540-0200-1-GA-0,PA Removal Cart,,J# 72944,Nov-15-25,Jan-30-26,,,,,,,,,?,,,
+,,Wendy Wu,RT79-87540-PN-R004,,,,,,,,,,,,,,,,,
+1030,RT79-87540-PN-R004,Wendy Wu,"
+RT-87540-0210-01-GA-C",STUD INSTRATION TOOL, ,J# 72966,"Dec 4, 2025","Feb 9, 2026", , ,"Feb 13, 2026
+",20%,"Feb 20, 2026
+",,,,"Mar 6, 2026
+",FEB-6-26-  Same info as 72038, ,
+,RT98-87000-PN-R021,Wendy Wu,PO# -RT98-87000-PN-R021,FEEDER COUPLING ASSY FOR QINSHAN, ,J# 73001-73004,"Dec 23, 2025", , , ,"Feb 27, 2026",60%,"Mar 6, 2026",Y,,,"Mar 20, 2026",Feb-14-26- NO Change at this time to delivery,NO MILESTONE:  DELIVERY OF ALL ITEM + DOCUMENTS,
+1065,RT98-87000-PN-R021,,RT-87120-70184-003-1-DD-B,Seal Ring Washer Mockup,,J# 73001,"Dec 23, 2025","Feb 24, 2026",,,,30%,,,,,,,,
+1066,RT98-87000-PN-R021,,RT-87120-70184-002-1-DD-B,Graylock Hub Mockup,,J# 73002,"Dec 23, 2025","Feb 24, 2026",,,,30%,,,,,,,,
+1067,RT98-87000-PN-R021,,RT-87120-70184-001-1-DD-B,Flange,,J# 73003,"Dec 23, 2025","Feb 24, 2026",,,,80%,,,,,,Parts completed- Still to be Inspected,,
+1068,RT98-87000-PN-R021,,RT-87120-70184-004-1-DD-B,Lock Plate,,J# 73004,"Dec 23, 2025","Feb 24, 2026",,,,90%,,,,,,Parts completed- still to be inspected,,

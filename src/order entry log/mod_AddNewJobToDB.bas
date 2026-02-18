@@ -471,8 +471,20 @@ Function CreateOrderItem(jobId As Long, partId As Variant, lineNumber As String,
 
     ' Convert price and quantity to numeric values
     Dim qtyValue As Long, priceValue As Double
-    qtyValue = IIf(quantity = "", 0, CLng(quantity))
-    priceValue = IIf(actualPrice = "", 0, CDbl(actualPrice))
+    
+    ' Use If/Else instead of IIf to avoid evaluating both branches
+    ' IIf always evaluates both branches, which causes Type Mismatch on empty strings
+    If quantity = "" Then
+        qtyValue = 0
+    Else
+        qtyValue = CLng(quantity)
+    End If
+    
+    If actualPrice = "" Then
+        priceValue = 0
+    Else
+        priceValue = CDbl(actualPrice)
+    End If
 
     ' Check if order item with same job_id and line_number already exists
     results = mod_SQLite.ExecuteQuery("SELECT id FROM order_item WHERE job_id = " & jobId & " AND line_number = '" & Replace(lineNumber, "'", "''") & "' LIMIT 1")
