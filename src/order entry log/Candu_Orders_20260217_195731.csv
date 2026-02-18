@@ -1,9 +1,4 @@
 ,,,,,,,,,,,,,,,,,,,,,,,,,,
-38608,71609,Candu,46,08-63500-0233-01-DD-2,5,Ashan Syed,2024/11/26,1,Insert Housing Size 36-NEL-IH-36-00,269,87-63500-PN-R010,,,,2025/4/14,,,,,,,,,,,730
-38608,71610,Candu,65,08-63500-0252-01-DD-2,3,Ashan Syed,2024/11/26,2,Insert Housing Size 24-NEL-IH-24-00,265,87-63500-PN-R010,,,,2025/4/14,,,,,,,,,,,731
-38608,71611,Candu,1100,08-63500-0224-01-DD-2,0,Ashan Syed,2024/11/26,4,Pin Size 16-16 - NEL-PN-00-1616,13.95,87-63500-PN-R010,,,,2025/4/14,,,,,,,,,,,732
-38608,71612,Candu,1600,08-63500-0222-01-DD-2,0,Ashan Syed,2024/11/26,5,"Pin Size 16,20 - NEL-PN-00-1620",14.49,87-63500-PN-R010,,,,2025/4/14,,,,,,,,,,,733
-38608,71613,Candu,3500,08-63500-0229-01-DD-3,2,Ashan Syed,2024/11/26,6,Contact Clip Size 16- NEL-CC-00-16,3.08,87-63500-PN-R010,,,,2025/4/14,,,,,,,,,,,734
 38619,71669,Candu,5,RT-87920-0351-01-GA-D,0,David Weldon,2024/12/3,1,CTI Bore Gauge,35171,RT79-87920-PN-R005-R.1,44964,5,53211,2025/3/21,2026/2/12,328,,,,,,,,,735
 38647,71742,Candu,5,RT-87920-0351-01-GA-D,0,David Weldon,2024/12/3,1,CTI Bore Gauge,35171,RT98-87920-PN-R006-R.2,,,,2025/3/21,,,,,,,,,,,741
 38669,71829,Candu,9,RT-87540-0200-01-GA-E,1,David Weldon,2024/12/23,1,Removal PA Tool Cart-RT-7538-000-PRT,16293,RT98-87540-PN-R001,,,,2025/5/2,,,,,,,,,,,742
@@ -79,7 +74,6 @@
 38990,72633,Candu,5,RT-87590-70201-4000-1-GA-B,,Angelica de la Barrera,2025/8/5,9,Manual Bellows Push Tool,46607,RT98-87920-PN-R013,,,,2026/5/28,,,,,,,,,,,843
 38990,72634,Candu,6,RT-79100-0100-01-GA-E,,Angelica de la Barrera,2025/8/5,10,Closure Plug Shuttle Box,4517,RT98-87920-PN-R013,,,,2026/5/28,,,,,,,,,,,844
 38990,72635,Candu,4,RT-87000-0480-1-GA-D,,Angelica de la Barrera,2025/8/5,11,Tool Delivery  Trough,12782,RT98-87920-PN-R013,,,,2026/5/28,,,,,,,,,,,845
-38993,72638,Candu,1000,08-63500-0223-01-GA-2,,Cindy Weng,2025/8/8,1,"Socket Size 16, 16 AWG Barrel",48.94,87-63500-PN-R013,,,,2025/10/30,,,,,,,,,,,846
 38998,72643,Candu,8,RT-87290-7002-1-GA-D,0,Brandon Kwakye-Longdon,2025/8/12,1,Material Handling Carts,14955,RT98-87290-PN-R004,44952,8,,2025/12/17,2029/2/6,1147,,,,,,,,,847
 39000,72645,Candu,1,RT-87630-71521-1000-1-GA-E,,Angelica de la Barrera,2025/8/14,1,VRS PT Lunchbox,49980,RT79-87630-PN-R011,,,,2025/12/11,,,,,,,,,,,848
 39000,72646,Candu,1,RT-87630-71622-1000-1-GA-E,3,Angelica de la Barrera,2025/8/14,2,VRS Baseline- PT Small OD Gripper Hd,44970,RT79-87630-PN-R011,,,,2025/12/11,,,,,,,,,,,849
@@ -153,14 +147,7 @@
 39082,72842,Candu,1,RT-87290-7020-1-GA-D,,Sanchia Bartley-Nidaye,2025/10/3,3,15T Spreader Beam for Fuel Channel,15491,RT98-87920-PN-R017,,,,2026/2/13,,,,,,,,,,,944
 39082,72843,Candu,1,RT-8725-0280-1-DD-C,,Sanchia Bartley-Nidaye,2025/10/3,4,5.5 Ton Heavy Worktable Spreader Beam,10117,RT98-87920-PN-R017,,,,2026/2/13,,,,,,,,,,,945
 39082,72844,Candu,2,RT-87290-7024-1-GA-D,,Sanchia Bartley-Nidaye,2025/10/3,5,6T Spreader Beam for  EFSP Removal,20286,RT98-87920-PN-R017,,,,2026/2/13,,,,,,,,,,,946
-39084,72846,Candu,2,MCR-17300-033-000009-01-GA-E,1,Cheryl Lewis,2025/10/3,1,U4 Single Spacer Drop off Tool,20528,MCR-17000-PN-R054,,,,2026/1/10,,,,,,,,,,,947
-39084,72846,Candu,2,MCR-17300-033-000009-01-GA-E,1,Cheryl Lewis,2025/10/3,1,U4 Single Spacer Drop off Tool,20528,MCR-17000-PN-R054,,,,2026/1/22,,,,,,,,,,,947
-39084,72846,Candu,3,MCR-17300-033-000009-01-GA-E,1,Cheryl Lewis,2025/10/3,1,U4 Single Spacer Drop off Tool,,MCR-17000-PN-R054,,,,2026/2/5,,,,,,,,,,,947
-39087,72850,Candu,2,MCR-17300-032-000002-01-GA-E,,Cindy Weng,2025/10/4,1,U4 Annulus Spacer Detection Tool,43995.5,MCR-17000-PN-R053,,,,2025/12/15,,,,,,,,,,,949
-39128,72901,Candu,32,MCR-17200-003-000000-01-GA-E,3,Cheryl Lewis,2025/10/27,1,Protective Sleeve & Guide Tool,7316,MCR-17000-PN-R056,,,,2026/3/30,,,,,,,,,,,971
 39132,72906,Candu,3,RT-87840-0220-01-GA-2,0,Laila Parveen,2025/10/30,1,Bearing Assy,29698,RT79-87840-PN-R002-R1,,,,2026/2/27,,,,,,,,,,,1083
-39141,72922,Candu,2,RT-88000-70047-004-1-DD-B,,Cindy Weng,2025/11/13,1,Retaining Latch,498,216-02123-PN-T129,,,,2025/12/4,,,,,,,,,,,987
-39141,72923,Candu,1,RT-88000-70047-003-1-DD-B,,Cindy Weng,2025/11/13,2,Sleeve Guide,707,216-02123-PN-T129,,,,2026/1/16,,,,,,,,,,,988
 39142,72924,Candu,2,RT-87000-71100-1000-1-GA-E,,Angelica de la Barrera,2025/11/13,1,Bellows Replacement Tool Base,17821,RT98-87000-PN-R018,,,,2026/8/10,,,,,,,,,,,989
 39142,72925,Candu,2,RT-87000-71150-1000-1-GA-E,,Angelica de la Barrera,2025/11/13,2,Plug Insertion Tool,38376,RT98-87000-PN-R018,,,,2026/8/10,,,,,,,,,,,990
 39142,72926,Candu,2,RT-87000-71150-1021-1-DD-D,,Angelica de la Barrera,2025/11/13,3,Shield Plug to Handling Tool Adapter,2911,RT98-87000-PN-R018,,,,2026/8/10,,,,,,,,,,,991
@@ -178,11 +165,7 @@
 39142,72938,Candu,2,RT-87000-71200-1004-1-DD-B,,Angelica de la Barrera,2025/11/13,16,Axial Wear Ring .633,660,RT98-87000-PN-R018,,,,2026/8/10,,,,,,,,,,,1003
 39142,72939,Candu,2,RT-87000-71230-1011-1-DD-B,,Angelica de la Barrera,2025/11/13,17,Axial Wear Ring Cut 1,662,RT98-87000-PN-R018,,,,2026/8/10,,,,,,,,,,,1004
 39142,72940,Candu,2,RT-87000-71230-1012-1-DD-B,,Angelica de la Barrera,2025/11/13,18,Axial Wear Ring Cut 2,657,RT98-87000-PN-R018,,,,2026/8/10,,,,,,,,,,,1005
-39144,72942,Candu,700,XX-31124-9-1-DD-C,4,Nena Nicko,2025/11/15,1,Spacer Clips,14.98,79-31124-PN-R003-CMMS,,,,2026/2/13,,,,,,,,,,,1007
-39144,72942,Candu,10+10,79F-31124-0008-01-DD-C,1,Olivier,2025/11/15,2,Spacer Clips ( Stock per Olivier),,NPO,,,,2026/2/13,,,,,,,,,,,1007
 39146,72944,Candu,1,RT-87540-0200-1-GA-0,2,David Weldon,2025/11/15,01A,PA Removal Tool Cart,18991,RT79-87540-PN-R003-R1,,,,2026/1/30,,,,,,,,,,,1010
-39151,72950,Candu,1,29-31913-2504-01-DD-D,3,Nena Nicko,2025/11/19,1,Connector Sleeve B,1787,201-31915-PN-R978,,,,2026/1/12,,,,,,,,,,,1015
-39151,72951,Candu,1,29-31913-2505-01-DD-D,3,Nena Nicko,2025/11/19,2,Connector Sleeve A,1967,201-31915-PN-R978,,,,2026/1/12,,,,,,,,,,,1016
 39163,72966,Candu,3,RT-87540-0210-01-GA-C,0,Sanchia Bartley- Ndiaye,2025/12/4,1,PA Stud Installation Tool,1847,RT79-87540-PN-R004,,,,2026/2/9,,,,,,,,,,,1030
 39174,73001,Candu,4,RT-87120-70184-003-1-DD-B,,Angelica de la Barrera,2025/12/23,1,Seal Ring Washer Mockup,810,RT98-87000-PN-R021,,,,2026/2/24,,,,,,,,,,,1065
 39174,73002,Candu,4,RT-87120-70184-002-1-DD-B,,Angelica de la Barrera,2025/12/23,2,Graylock Hub Mockup,618,RT98-87000-PN-R021,,,,2026/2/24,,,,,,,,,,,1066
@@ -191,10 +174,6 @@
 39177,73007,Candu,2,RT-88010-0005-01-GA-E,1,Sachin Miranda,2025/12/24,08A,Calibrated Measuring Tape-BOM#6,2998,RT79-88010-PN-R003-R.2,,,,2026/2/20,,,,,,,,,,,1071
 39177,73008,Candu,16,RT-88000-70210-044-1-DD-D,,Sachin Miranda,2025/12/24,11A,E/F Protective Cap for Plug Gaug'g,456,RT79-88010-PN-R003-R.2,,,,2026/2/20,,,,,,,,,,,1072
 39178,73009,Candu,1,RT-87600-0250-1-GA-C,,Sachin Miranda,2025/12/24,10A,Lattice Sleeve Removal Tool HWT,43580,RT79-88010-PN-R003-R.2,,,,2026/5/8,,,,,,,,,,,1073
-39192,73023,Candu,260,79RF-31170-0002-01-DD-2,,Padmashri Paranjape,2025/12/29,1,Screw Feeder Coupling Cap Scerw,706.1,RT30-12100-PN-R002,,,,2026/5/11,,,,,,,,,,,1110
-39192,73024,Candu,30,RT-87120-70184-001-1-DD-B,,Padmashri Paranjape,2025/12/29,2,Flange Feeder Mock-up,1112,RT30-12100-PN-R002,,,,2026/5/11,,,,,,,,,,,1111
-39192,73025,Candu,30,RT-87120-70184-002-1-DD-B,,Padmashri Paranjape,2025/12/29,3,"Hub Feeder Mock up -2.1/2""",473,RT30-12100-PN-R002,,,,2026/5/11,,,,,,,,,,,1112
-39192,73026,Candu,95,RT-87120-70184-003-01-DD-B,,Padmashri Paranjape,2025/12/29,4,Washer Feeder Mock-up Seal Ring,456,RT30-12100-PN-R002,,,,2026/5/11,,,,,,,,,,,1113
 39193,73027,Candu,1+1,XX-31912-959-1-GA-E,1,Ashna Irani-Kavasji,2025/12/30,1+ 4,Flask and Trolley for Garter Spring,"$49,452/$ 47,452",RT79-31912-PN-R006,,,,2026/4/22,,,,,,,,,,,1114
 39198,73038,Candu,3,RT-87540-0210-01-GA-C,,Sanchia Bartley- Ndiaye,2026/1/7,1,PA Stud Installation Tool,1847,RT98-87540-PN-R003,,,,2026/3/30,,,,,,,,,,,1124
 39198,73039,Candu,7,RT-87540-0211-01-DD-C,,Sanchia Bartley- Ndiaye,2026/1/7,2,Support Brkt for spring Inst Tool,449,RT98-87540-PN-R003,,,,2026/3/30,,,,,,,,,,,1125
@@ -205,5 +184,4 @@
 39221,73071,Candu,2,RT-87600-051-01-GA-D,0,Laila Parveen,2026/2/2,1,Lattice Sleeve ID Plug Gauge,1967,RT98-87600-PN-R008,,,,2026/3/16,,,,,,,,,,,1448
 39227,73085,Candu,4,RT-88000-70097-045-1-DD-C,0,Sanchia Bartley-Ndiaye,2026/2/6,1,Coupling Adapter,2154,RT79-88010-PN-R015,,,,2026/5/15,,,,,,,,,,,1462
 39227,73086,Candu,1,RT-88000-70056-000-1-GA-E,1,Sanchia Bartley-Ndiaye,2026/2/6,2,Air Motor Support c/w Stabilizer,17784,RT79-88010-PN-R015,,,,2026/5/15,,,,,,,,,,,1463
-39234,73093,Candu,1,RT-88000-70097-045-1-DD-C,1,test,2026/2/14,1,test,1,,,,,2026/2/14,,,,,,,,,,,1470
 

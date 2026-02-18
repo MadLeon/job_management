@@ -1,0 +1,254 @@
+/**
+ * PO 数据项目接口
+ */
+interface POItem {
+    [key: string]: string | undefined;
+}
+
+/**
+ * 规范化 JSON 字符串，处理多层转义和嵌套数组格式
+ */
+function normalizeSourceData(data: string): unknown {
+    try {
+        const trimmed = data.trim();
+
+        // 情况 1：处理 ["..."] 这种 stringify 格式
+        if (trimmed.startsWith('[')) {
+            const parsed: unknown = JSON.parse(trimmed);
+            if (Array.isArray(parsed) && parsed.length > 0 && typeof parsed[0] === 'string') {
+                console.log("⚠️  检测到 JSON 序列化的字符串数组格式，正在解析...");
+                // 递归处理，可能有多层转义
+                return normalizeSourceData(parsed[0]);
+            }
+        }
+
+        // 情况 2：处理双层转义的 JSON
+        if (trimmed.startsWith('"[')) {
+            const unescaped: unknown = JSON.parse(trimmed);
+            if (typeof unescaped === 'string') {
+                console.log("⚠️  检测到转义的 JSON 字符串，正在解析...");
+                return normalizeSourceData(unescaped);
+            }
+        }
+
+        // 情况 3：直接解析 JSON
+        return JSON.parse(trimmed);
+    } catch (e) {
+        console.log(`❌ normalizeSourceData 出错:`, e);
+        throw e;
+    }
+}
+
+/**
+ * 解析 PO 数据数组，提取每个 PO 项目
+ */
+function parsePODataArray(jsonString: string): Array<{
+    [key: string]: string;
+}> {
+    try {
+        const data = normalizeSourceData(jsonString);
+
+        if (!Array.isArray(data)) {
+            console.log(`❌ 期望数组格式，但收到: ${typeof data}`);
+            throw new Error("Expected array of PO objects");
+        }
+
+        console.log(`✓ 解析 PO 数据数组，共 ${data.length} 项`);
+
+        const poItems = data.map((item: unknown, index: number) => {
+            try {
+                if (typeof item !== 'object' || item === null) {
+                    throw new Error(`项目 ${index} 不是对象`);
+                }
+
+                const po = item as POItem;
+                
+                // 建立新对象，保留所有字段并 trim 字符串值
+                const result: { [key: string]: string } = {};
+                for (const key in po) {
+                    const value = po[key];
+                    result[key] = (typeof value === 'string') ? value.trim() : (value ?? '');
+                }
+                
+                return result;
+            } catch (e) {
+                console.log(`  ⚠️  处理项目 ${index} 时出错:`, e);
+                throw e;
+            }
+        });
+
+        return poItems;
+    } catch (e) {
+        console.log(`❌ parsePODataArray 出错:`, e);
+        throw e;
+    }
+}
+
+function main(
+    workbook: ExcelScript.Workbook,
+    sourceData: string[]
+) {
+
+    // ============ 调试：检查传入的数据结构 ============
+    console.log(`📊 sourceData 类型: ${typeof sourceData}, isArray: ${Array.isArray(sourceData)}`);
+    console.log(`📊 sourceData.length: ${sourceData.length}`);
+    
+    if (sourceData.length > 0) {
+        console.log(`📊 sourceData[0] 类型: ${typeof sourceData[0]}`);
+        console.log(`📊 sourceData[0] 长度: ${sourceData[0]?.length || 0}`);
+        console.log(`📊 sourceData[0] 前 200 字符: ${sourceData[0]?.substring(0, 200)}...`);
+        
+        // 尝试解析第一项
+        try {
+            const parsed: unknown = JSON.parse(sourceData[0]);
+            console.log(`✓ JSON 解析成功`);
+            console.log(`✓ 解析结果类型: ${typeof parsed}`);
+            console.log(`✓ 是数组: ${Array.isArray(parsed)}`);
+            if (Array.isArray(parsed)) {
+                console.log(`✓ 数组长度: ${parsed.length}`);
+                if (parsed.length > 0) {
+                    console.log(`✓ 第一项类型: ${typeof parsed[0]}`);
+                    if (typeof parsed[0] === 'string') {
+                        console.log(`✓ 第一项值（前 100 字符）: ${parsed[0].substring(0, 100)}...`);
+                    }
+                }
+            }
+        } catch (parseError) {
+            console.log(`⚠️  JSON 解析失败: ${parseError}`);
+        }
+    }
+
+    // ============ 阶段 1：解析 PO 数据 ============
+    if (!sourceData || sourceData.length === 0) {
+        console.log("❌ 错误：sourceData 为空");
+        return;
+    }
+
+    try {
+        console.log("📋 [阶段 1] 解析 PO 数据...");
+        
+        // 先检查原始数据的长度
+        const rawData: unknown = normalizeSourceData(sourceData[0]);
+        let rawDataCount = 0;
+        if (Array.isArray(rawData)) {
+            rawDataCount = rawData.length;
+            console.log(`✓ 原始数据数组长度: ${rawDataCount} 项`);
+        }
+        
+        const poItems = parsePODataArray(sourceData[0]);
+        console.log(`✓ 成功解析 ${poItems.length} 个 PO 项目`);
+        
+        // 检查数据是否丢失
+        if (rawDataCount !== poItems.length) {
+            console.log(`⚠️  警告：数据丢失！原始 ${rawDataCount} 项 → 解析后 ${poItems.length} 项（丢失 ${rawDataCount - poItems.length} 项）`);
+        }
+
+        // 输出前 5 个项目作为示例
+        console.log("\n📌 前 5 个 PO 项目：");
+        poItems.slice(0, 5).forEach((po, index) => {
+            console.log(`  【${index}】 PO=${po['PO']}, OrderItemID=${po['Order Item ID']}, Title=${po['Title']}`);
+        });
+
+        // ============ 阶段 2：创建备份 Sheet ============
+        console.log("\n📋 [阶段 2] 创建备份 Sheet...");
+        
+        const PREFIX = "Backup_";
+        const MAX_SHEETS = 30;
+
+        // 生成 Sheet 名称（格式: Backup_yyyymmdd_hhmm）
+        const now = new Date();
+        const sheetName = PREFIX +
+            now.getFullYear() +
+            String(now.getMonth() + 1).padStart(2, '0') +
+            String(now.getDate()).padStart(2, '0') + "_" +
+            String(now.getHours()).padStart(2, '0') +
+            String(now.getMinutes()).padStart(2, '0');
+
+        console.log(`✓ 生成 Sheet 名称: ${sheetName}`);
+
+        // 创建新 Sheet
+        const newSheet = workbook.addWorksheet();
+        newSheet.setName(sheetName);
+        console.log(`✓ 已创建新 Sheet`);
+
+        // ============ 阶段 3：构造表头和数据 ============
+        console.log("\n📋 [阶段 3] 构造表头和数据...");
+        
+        // 从第一个 PO 对象动态提取所有字段作为表头
+        let headers: string[] = [];
+        if (poItems.length > 0) {
+            // 解析原始数据来获取所有字段名
+            const rawData: unknown = normalizeSourceData(sourceData[0]);
+            if (Array.isArray(rawData) && typeof rawData[0] === 'object' && rawData[0] !== null) {
+                headers = Object.keys(rawData[0] as Record<string, unknown>)
+                    .filter((key) => key !== '@odata.etag' && key !== 'ItemInternalId');
+            }
+        }
+
+        if (headers.length === 0) {
+            console.log("❌ 错误：无法提取表头");
+            return;
+        }
+
+        console.log(`✓ 提取表头成功: ${headers.length} 列`);
+
+        // 构造二维数组（包含表头）
+        const data: (string | number | boolean)[][] = [headers as (string | number | boolean)[]];
+
+        poItems.forEach((po) => {
+            const row: (string | number | boolean)[] = [];
+            headers.forEach((header) => {
+                row.push(po[header] ?? '');
+            });
+            data.push(row);
+        });
+
+        console.log(`✓ 数据构造完毕: ${data.length} 行（含表头），${headers.length} 列`);
+
+        // ============ 阶段 4：写入 Sheet ============
+        console.log("\n📋 [阶段 4] 写入数据...");
+        
+        const range = newSheet.getRangeByIndexes(0, 0, data.length, headers.length);
+        range.setValues(data);
+        console.log(`✓ 数据已写入 Sheet`);
+
+        // ============ 阶段 5：检查并清理旧备份 ============
+        console.log("\n📋 [阶段 5] 检查并清理旧备份...");
+        
+        const sheets = workbook.getWorksheets();
+        const backupSheets: string[] = [];
+
+        for (let i = 0; i < sheets.length; i++) {
+            const name = sheets[i].getName();
+            if (name.startsWith(PREFIX)) {
+                backupSheets.push(name);
+            }
+        }
+
+        console.log(`✓ 当前备份数量: ${backupSheets.length}`);
+
+        // 按名称排序（时间格式字符串可以直接排序）
+        backupSheets.sort();
+
+        // 如果超出限制，删除最老的
+        if (backupSheets.length > MAX_SHEETS) {
+            const deleteCount = backupSheets.length - MAX_SHEETS;
+            console.log(`⚠️  超过限制 ${MAX_SHEETS}，将删除 ${deleteCount} 个最旧的备份`);
+
+            for (let i = 0; i < deleteCount; i++) {
+                const sheetToDelete = workbook.getWorksheet(backupSheets[i]);
+                if (sheetToDelete) {
+                    console.log(`  🗑️  删除: ${backupSheets[i]}`);
+                    sheetToDelete.delete();
+                }
+            }
+        }
+
+        console.log(`\n✅ 备份完成！新 Sheet: ${sheetName}`);
+
+    } catch (e) {
+        console.log(`❌ 脚本执行出错: ${e}`);
+        return;
+    }
+}
+

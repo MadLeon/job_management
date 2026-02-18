@@ -53,7 +53,7 @@ Sub EMT()
     Dim vNewRow As Long
     
     ' Find the first empty row in the data table
-    vNewRow = Sheets("DELIVERY SCHEDULE").Cells(Rows.Count, 1).End(xlUp).Offset(1, 0).Row
+    vNewRow = Sheets("DELIVERY SCHEDULE").Cells(Rows.Count, 1).End(xlUp).Offset(2, 0).Row
     
     ' Check for data in OE field
     If Trim(Range("OE").Value) = "" Then

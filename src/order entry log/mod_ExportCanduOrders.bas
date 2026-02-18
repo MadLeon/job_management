@@ -54,9 +54,13 @@ Sub ExportCanduOrders()
     ' 7. Iterate through data rows and filter for Candu orders
     For r = 2 To lastRow ' Start from row 2 (skip header)
         customerName = Trim(deliveryWS.Cells(r, 3).Value) ' Column C: Customer
+        Dim poNumber As String
+        poNumber = Trim(deliveryWS.Cells(r, 12).Value) ' Column L: PO Number
         
         ' Check if customer name contains "Candu" (case-insensitive)
-        If InStr(1, customerName, "Candu", vbTextCompare) > 0 Then
+        ' AND PO number starts with "rt79" or "rt98" (case-insensitive)
+        If InStr(1, customerName, "Candu", vbTextCompare) > 0 And _
+           (InStr(1, poNumber, "rt79", vbTextCompare) = 1 Or InStr(1, poNumber, "rt98", vbTextCompare) = 1) Then
             ' Build and append data row to CSV content
             dataRow = BuildDataRow(deliveryWS, r, columnCount)
             csvContent = csvContent & dataRow & vbCrLf
