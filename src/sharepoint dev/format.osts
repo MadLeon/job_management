@@ -1,0 +1,175 @@
+function main(workbook: ExcelScript.Workbook) {
+    let sheet = workbook.getWorksheet("Report");
+
+    const targetColumns = ["H", "I", "J", "K", "L", "N", "O", "P", "Q", "R"]
+        .map(c => c.charCodeAt(0) - 65);
+
+    const usedRange = sheet.getUsedRange();
+    if (!usedRange) return;
+
+    const values = usedRange.getValues();
+
+    const monthDateRegex =
+        /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*[\s\-]*\d{1,2},?[\s\-]*\d{2,4}\b/gi;
+
+    const numericTextDateRegex =
+        /\b(\d{1,2})\/(\d{1,2})\/(\d{2,4})\b/g;
+
+    // Get column L for conditional formatting (12 = column L, 0-indexed)
+    const columnL = 11;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const twoWeeksLater = new Date(today);
+    twoWeeksLater.setDate(twoWeeksLater.getDate() + 14);
+
+    for (let r = 0; r < values.length; r++) {
+        for (const c of targetColumns) {
+            const cellValue = values[r][c];
+
+            // ✅ 情况 1：Excel 原生日期（number）
+            if (typeof cellValue === "number") {
+                // 不改值，格式化在下面统一处理
+                continue;
+            }
+
+            // 下面只处理文本
+            if (typeof cellValue !== "string") continue;
+
+            let newText = cellValue;
+
+            // ✅ 情况 2：英文月份文本日期
+            newText = newText.replace(monthDateRegex, (match) => {
+                const parsed = new Date(match);
+                if (isNaN(parsed.getTime())) return match;
+                return formatDate(parsed);
+            });
+
+            // ✅ 情况 3：文本型数字日期
+            newText = newText.replace(
+                numericTextDateRegex,
+                (_m, mm, dd, yyyy) => {
+                    const year = yyyy.length === 2 ? 2000 + Number(yyyy) : Number(yyyy);
+                    const parsed = new Date(year, Number(mm) - 1, Number(dd));
+                    if (isNaN(parsed.getTime())) return _m;
+                    return formatDate(parsed);
+                }
+            );
+
+            values[r][c] = newText;
+        }
+
+        // Mark column L cells with yellow background based on conditions
+        const cellValueL = values[r][columnL];
+        let shouldHighlight = false;
+
+        if (cellValueL !== null && cellValueL !== undefined && cellValueL !== "") {
+            const trimmedValue = String(cellValueL).trim();
+
+            // Condition 1: "pending" (case-insensitive)
+            if (trimmedValue.toLowerCase() === "pending") {
+                shouldHighlight = true;
+            }
+
+            // Condition 2: Contains date and is overdue or within 2 weeks
+            if (!shouldHighlight) {
+                shouldHighlight = shouldHighlightDates(cellValueL, twoWeeksLater);
+            }
+        }
+
+        // Apply yellow background if condition met
+        if (shouldHighlight) {
+            const cellRange = sheet.getCell(r, columnL);
+            cellRange.getFormat().getFill().setColor("#FFFF00"); // Yellow
+        }
+    }
+
+    usedRange.setValues(values);
+
+    // ⭐ 对真正的日期统一格式化
+    for (const c of targetColumns) {
+        sheet
+            .getRangeByIndexes(0, c, usedRange.getRowCount(), 1)
+            .setNumberFormat("mmm d, yyyy");
+    }
+}
+
+function formatDate(date: Date): string {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+/**
+ * Extract all dates from cell value and check if any satisfy the highlighting condition
+ * Returns true if any date is overdue or within 2 weeks
+ * Handles Excel serial numbers, "Feb 13, 2026", and "2/13/2026" formats
+ * Also handles multi-line cell content (Alt+Enter line breaks) with multiple dates
+ *
+ * @param {string|number|boolean} value - The cell value to extract dates from
+ * @param {Date} twoWeeksLater - The date representing 2 weeks from today
+ * @returns {boolean} True if any date meets the highlight condition
+ */
+function shouldHighlightDates(value: string | number | boolean, twoWeeksLater: Date): boolean {
+    if (value === null || value === undefined || value === "" || typeof value === "boolean") {
+        return false;
+    }
+
+    // Handle Excel serial number (date is stored as number)
+    // Excel dates start from 1/1/1900 = 1
+    if (typeof value === "number" && value > 0) {
+        try {
+            // Excel serial date to JavaScript date conversion
+            // The number 1 represents 1/1/1900, but Excel has a leap year bug on 2/29/1900
+            const excelDate = value;
+            const jsDate = new Date((excelDate - 25569) * 86400 * 1000);
+            if (!isNaN(jsDate.getTime())) {
+                jsDate.setHours(0, 0, 0, 0);
+                return jsDate <= twoWeeksLater;
+            }
+        } catch (e) {
+            // If conversion fails, continue to try string parsing
+        }
+    }
+
+    let text = String(value).trim();
+    
+    // Replace line breaks (Alt+Enter) with spaces to handle multi-line content
+    text = text.replace(/[\r\n]+/g, " ");
+    
+    if (!text) {
+        return false;
+    }
+
+    // Extract ALL numeric dates (e.g., "2/13/2026")
+    const numericRegex = /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/g;
+    let numericMatch: RegExpExecArray | null;
+    while ((numericMatch = numericRegex.exec(text)) !== null) {
+        const mm = numericMatch[1];
+        const dd = numericMatch[2];
+        const yyyy = numericMatch[3];
+        const year = yyyy.length === 2 ? 2000 + Number(yyyy) : Number(yyyy);
+        const parsed = new Date(year, Number(mm) - 1, Number(dd));
+        if (!isNaN(parsed.getTime())) {
+            parsed.setHours(0, 0, 0, 0);
+            if (parsed <= twoWeeksLater) {
+                return true;
+            }
+        }
+    }
+
+    // Extract ALL month-date-year formats (e.g., "Feb 13, 2026" or "Feb 13 2026")
+    const monthDateRegex =
+        /\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*[\s\-]*(\d{1,2}),?[\s\-]*(\d{2,4})\b/gi;
+    let monthMatch: RegExpExecArray | null;
+    while ((monthMatch = monthDateRegex.exec(text)) !== null) {
+        const parsed = new Date(monthMatch[0]);
+        if (!isNaN(parsed.getTime())) {
+            parsed.setHours(0, 0, 0, 0);
+            if (parsed <= twoWeeksLater) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}

@@ -1,25 +1,40 @@
 数据库是record.db, 存放在data/record.db
 
-mp schedule excel file 的业务逻辑是
-一个 Confirm 按钮触发 confirmPartRelationship 过程
-一个 Link 按钮触发 Link 过程 (具体名字后续确定)
+Manufacturing Process excel file 的总体业务逻辑是
+一个 Fetch 按钮, 用于开始绑定PDF文件的流程
+一个 Link (具体名字后续确定) 模块和 Link 按钮, 用于绑定 PDF 文件路径与 drawing number
 一个 Save 按钮触发 Save 过程 (具体名字后续确定)
 
+所有逻辑使用vba实现, 可以自由拆分模块
 查看 ./structure.txt 来了解 Manufacturing Process.xlsm 文件的结构
+阅读./summary.md作为上次的记忆
 
-confirmPartRelationship 的业务逻辑:
-- 使用 drawing number (J7) 查找 part 表
-  - 若记录存在, 检查 is_assembly 字段的值
-    - is_assembly=NULL
-      - 弹出 UI 询问是否组装件
-        - 点击否认: 更新该 part is_assembly 属性为 0
-        - 点击确认: 
-    - is_assembly=0
-    - is_assembly=1
-
-先阅读上个session的记忆
 本session主要任务:
-1. 协助我编写 confirmPartRelationship 过程
+协助我编写 link 过程
+该 link 的具体逻辑是:
+- 当点击Fetch按钮后, 根据drawing number (J7), 查找drawing_file表, 具体逻辑为
+  查找 drawing file 的逻辑是
+  - 在part表查找J7的值, 若找到则记录, 则记录该part.id
+    (该步骤存在缺陷, 例如有多个结果, 不同revision; previous/next_id的接入等. 但目前没有影响, 可以在未来进一步完善)
+  - 在drawing file表的file_name列查找drawing number (J7)
+    - 记录所有找到的drawing_number.id
+    - 若找到的结果有且仅有一条记录is_active=1, 则直接使用变量标记该条记录为最可能记录
+    - 若不存在上述的完美情况, 则检查所有找到的记录的file_path, 是否包含当前PO (B7)
+      - 若找到包含PO的记录, 则标记最新的那个
+      - 若没有找到包含PO的记录, 则标记last_modified最新的那个
+- 将所有找到的记录在X列列出, 从2行向下. 
+  - 每行内容包含一个radio和一个超链接文本 (路径为file_path), 点击文本应该可以使用acrobat打开目标文职的文件
+  - 被标记的那条记录对应的radio应该被默认选中
+- 点击 Link 按钮, 更新数据库drawing_file表
+  - 将用户选择的那条记录的is_active设置为1
+  - 将其他列出的记录的is_active设置为0
+  - 如果之前有在part表中找到part.id
+    - 找到所有列出记录中part_id为空的记录
+    - 将所有上一步找的记录的part_id字段更新为我们记录过的part.id
+- 若未能找到任何记录, 则输出 Drawing not found.
+文本输出
+- 文本输出的位置在T8
+- 若更新成功将data sheet中的Picture 1复制到sheet 1的S7格
 先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
 
 在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
@@ -27,4 +42,4 @@ confirmPartRelationship 的业务逻辑:
 本session todos包括 (简单bullet points)
 操作及变更细节 (简单bullet points)
 未来注意 (一句话)
-将该总结并入 mp schedule/summary.md, 尽量简短, 如果没有该文件则创建
+将该总结并入 manufacturing process/summary.md, 尽量简短, 如果没有该文件则创建

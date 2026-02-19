@@ -120,8 +120,8 @@ TODOs
 
 ### oe文件
 !!! 询问是否需要自动添加hyperlink, 因为会很慢
-修复export candu Order
-修复add next new record
+
+
 1. is_assembly字段的默认值为0, 这很影响后续的判断, 应将其改为1.
   - 使用016 migration可以将该字段的默认值改为NULL
   - 使用017 migration可以将该字段的所有非Candu的零件的值从0改为NULL

@@ -271,7 +271,7 @@ Public Function SQLite3Initialize(Optional ByVal libDir As String) As Long
     If hSQLiteLibrary = 0 Then
         hSQLiteLibrary = LoadLibrary(libDir + "SQLite3.dll")
         If hSQLiteLibrary = 0 Then
-            Debug.Print "SQLite3Initialize Error Loading " + libDir + "SQLite3.dll:", Err.LastDllError
+            LogError "SQLite3Initialize Error Loading " + libDir + "SQLite3.dll: " & Err.LastDllError
             SQLite3Initialize = SQLITE_INIT_ERROR
             Exit Function
         End If
@@ -282,7 +282,7 @@ Public Function SQLite3Initialize(Optional ByVal libDir As String) As Long
     If hSQLiteStdCallLibrary = 0 Then
         hSQLiteStdCallLibrary = LoadLibrary(libDir + "SQLite3_StdCall.dll")
         If hSQLiteStdCallLibrary = 0 Then
-            Debug.Print "SQLite3Initialize Error Loading " + libDir + "SQLite3_StdCall.dll:", Err.LastDllError
+            LogError "SQLite3Initialize Error Loading " + libDir + "SQLite3_StdCall.dll: " & Err.LastDllError
             SQLite3Initialize = SQLITE_INIT_ERROR
             Exit Function
         End If
@@ -297,14 +297,14 @@ Public Sub SQLite3Free()
         refCount = FreeLibrary(hSQLiteStdCallLibrary)
         hSQLiteStdCallLibrary = 0
         If refCount = 0 Then
-            Debug.Print "SQLite3Free Error Freeing SQLite3_StdCall.dll:", refCount, Err.LastDllError
+            LogError "SQLite3Free Error Freeing SQLite3_StdCall.dll: refCount=" & refCount & ", LastDllError=" & Err.LastDllError
         End If
     End If
     If hSQLiteLibrary <> 0 Then
         refCount = FreeLibrary(hSQLiteLibrary)
         hSQLiteLibrary = 0
         If refCount = 0 Then
-            Debug.Print "SQLite3Free Error Freeing SQLite3.dll:", refCount, Err.LastDllError
+            LogError "SQLite3Free Error Freeing SQLite3.dll: refCount=" & refCount & ", LastDllError=" & Err.LastDllError
         End If
     End If
 End Sub
@@ -669,7 +669,7 @@ Function Utf8PtrToString(ByVal pUtf8String As Long) As String
     Utf8PtrToString = String(cSize - 1, "*") ' and a termintating null char.
     RetVal = MultiByteToWideChar(CP_UTF8, 0, pUtf8String, -1, StrPtr(Utf8PtrToString), cSize)
     If RetVal = 0 Then
-        Debug.Print "Utf8PtrToString Error:", Err.LastDllError
+        LogError "Utf8PtrToString Error: LastDllError=" & Err.LastDllError
         Exit Function
     End If
 End Function
@@ -687,7 +687,7 @@ Function StringToUtf8Bytes(ByVal str As String) As Variant
     ReDim buf(bSize)
     RetVal = WideCharToMultiByte(CP_UTF8, 0, StrPtr(str), -1, VarPtr(buf(0)), bSize, 0, 0)
     If RetVal = 0 Then
-        Debug.Print "StringToUtf8Bytes Error:", Err.LastDllError
+        LogError "StringToUtf8Bytes Error: LastDllError=" & Err.LastDllError
         Exit Function
     End If
     StringToUtf8Bytes = buf

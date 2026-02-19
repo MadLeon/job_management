@@ -1,0 +1,149 @@
+[2026-02-19 17:26:53] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 17:26:53] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 17:26:53] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:26:53] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:26:53] [DEBUG] Querying drawing_file table
+[2026-02-19 17:26:53] [DEBUG] SQLite is already initialized.
+[2026-02-19 17:26:53] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 17:26:53] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:26:53] [DEBUG] Found 4 results
+[2026-02-19 17:26:53] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 17:26:53] [DEBUG] Cleared results from columns W, X, Y
+[2026-02-19 17:26:53] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 17:26:53] [ERROR] Error in DisplayQueryResults: Object doesn't support this property or method
+[2026-02-19 17:26:53] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 17:22:48] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 17:22:48] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 17:22:48] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:22:48] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:22:48] [DEBUG] Querying drawing_file table
+[2026-02-19 17:22:48] [DEBUG] SQLite is already initialized.
+[2026-02-19 17:22:48] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 17:22:48] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:22:48] [DEBUG] Found 4 results
+[2026-02-19 17:22:48] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 17:22:48] [DEBUG] Cleared results from columns W, X, Y and removed OptionButton controls
+[2026-02-19 17:22:48] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 17:22:48] [ERROR] Error in CreateOptionButton: Cannot insert object.
+[2026-02-19 17:22:48] [DEBUG] Displayed result 1 at W2 (option button), X2 (hyperlink), Y2 (path): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:22:48] [ERROR] Error in CreateOptionButton: Cannot insert object.
+[2026-02-19 17:22:48] [DEBUG] Displayed result 2 at W3 (option button), X3 (hyperlink), Y3 (path): RT-88000-70097-045-1-DD-C -Rev
+[2026-02-19 17:22:48] [ERROR] Error in CreateOptionButton: Cannot insert object.
+[2026-02-19 17:22:48] [DEBUG] Displayed result 3 at W4 (option button), X4 (hyperlink), Y4 (path): RT-88000-70097-045-1-DD-C Rev
+[2026-02-19 17:22:48] [ERROR] Error in CreateOptionButton: Cannot insert object.
+[2026-02-19 17:22:48] [DEBUG] Displayed result 4 at W5 (option button), X5 (hyperlink), Y5 (path): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:22:48] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 17:19:58] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 17:19:58] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 17:19:58] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:19:58] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:19:58] [DEBUG] Querying drawing_file table
+[2026-02-19 17:19:58] [DEBUG] SQLite is already initialized.
+[2026-02-19 17:19:58] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 17:19:58] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:19:58] [DEBUG] Found 4 results
+[2026-02-19 17:19:58] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 17:19:58] [DEBUG] Cleared results from columns W, X, Y and legacy columns Z-AB
+[2026-02-19 17:19:58] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 17:19:58] [DEBUG] Displayed result 1 at W2 (radio), X2 (hyperlink), Y2 (path): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:19:58] [DEBUG] Displayed result 2 at W3 (radio), X3 (hyperlink), Y3 (path): RT-88000-70097-045-1-DD-C -Rev
+[2026-02-19 17:19:59] [DEBUG] Displayed result 3 at W4 (radio), X4 (hyperlink), Y4 (path): RT-88000-70097-045-1-DD-C Rev
+[2026-02-19 17:19:59] [DEBUG] Displayed result 4 at W5 (radio), X5 (hyperlink), Y5 (path): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:19:59] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 17:16:44] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 17:16:44] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 17:16:44] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:16:44] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:16:44] [DEBUG] Querying drawing_file table
+[2026-02-19 17:16:44] [DEBUG] SQLite is already initialized.
+[2026-02-19 17:16:44] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 17:16:44] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:16:44] [DEBUG] Found 4 results
+[2026-02-19 17:16:44] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 17:16:44] [DEBUG] Cleared results from columns W, X, AB and legacy columns Y-Z
+[2026-02-19 17:16:44] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 17:16:44] [DEBUG] Displayed result 1 at W2 (radio), X2 (hyperlink), AB2 (path): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:16:44] [DEBUG] Displayed result 2 at W3 (radio), X3 (hyperlink), AB3 (path): RT-88000-70097-045-1-DD-C -Rev
+[2026-02-19 17:16:44] [DEBUG] Displayed result 3 at W4 (radio), X4 (hyperlink), AB4 (path): RT-88000-70097-045-1-DD-C Rev
+[2026-02-19 17:16:44] [DEBUG] Displayed result 4 at W5 (radio), X5 (hyperlink), AB5 (path): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:16:44] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 17:10:36] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 17:10:36] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 17:10:36] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:10:37] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:10:37] [DEBUG] Querying drawing_file table
+[2026-02-19 17:10:37] [DEBUG] SQLite is already initialized.
+[2026-02-19 17:10:37] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 17:10:37] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:10:37] [DEBUG] Found 4 results
+[2026-02-19 17:10:37] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 17:10:37] [DEBUG] Cleared results from column W, AB, and legacy columns X-Z
+[2026-02-19 17:10:37] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 17:10:37] [DEBUG] Displayed result 1 at W2 (radio) and AB2 (hyperlink): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:10:37] [DEBUG] Displayed result 2 at W3 (radio) and AB3 (hyperlink): RT-88000-70097-045-1-DD-C -Rev
+[2026-02-19 17:10:37] [DEBUG] Displayed result 3 at W4 (radio) and AB4 (hyperlink): RT-88000-70097-045-1-DD-C Rev
+[2026-02-19 17:10:37] [DEBUG] Displayed result 4 at W5 (radio) and AB5 (hyperlink): rt-88000-70097-045-1-dd-c
+[2026-02-19 17:10:37] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 17:02:39] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 17:02:39] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 17:02:39] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:02:39] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:02:39] [DEBUG] Querying drawing_file table
+[2026-02-19 17:02:39] [DEBUG] SQLite is already initialized.
+[2026-02-19 17:02:39] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 17:02:39] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 17:02:39] [DEBUG] Found 4 results
+[2026-02-19 17:02:39] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 17:02:39] [DEBUG] Cleared results from column W
+[2026-02-19 17:02:39] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 17:02:39] [DEBUG] Best match marked at row 2
+[2026-02-19 17:02:39] [DEBUG] Displayed result 1 at W2: rt-88000-70097-045-1-dd-c.pdf
+[2026-02-19 17:02:39] [DEBUG] Displayed result 2 at W3: RT-88000-70097-045-1-DD-C -Rev.0 Coupling Weldment.pdf
+[2026-02-19 17:02:39] [DEBUG] Displayed result 3 at W4: RT-88000-70097-045-1-DD-C Rev.0.pdf
+[2026-02-19 17:02:39] [DEBUG] Displayed result 4 at W5: rt-88000-70097-045-1-dd-c.pdf
+[2026-02-19 17:02:39] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 16:54:16] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 16:54:16] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 16:54:16] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 16:54:16] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 16:54:16] [DEBUG] Querying drawing_file table
+[2026-02-19 16:54:16] [DEBUG] SQLite is already initialized.
+[2026-02-19 16:54:16] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 16:54:16] [DEBUG] Found 4 drawing files for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 16:54:16] [DEBUG] Found 4 results
+[2026-02-19 16:54:16] [DEBUG] GlobalState: Stored 4 results
+[2026-02-19 16:54:16] [DEBUG] Cleared results from column X
+[2026-02-19 16:54:16] [DEBUG] Best matching result is at index 0 with priority=1
+[2026-02-19 16:54:16] [ERROR] Error in DisplayQueryResults: Unable to set the Hidden property of the Range class
+[2026-02-19 16:54:16] [INFO] FetchDrawingFiles_Main completed - Found 4 results
+
+[2026-02-19 16:51:56] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 
+[2026-02-19 16:51:56] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 16:51:56] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 16:51:57] [DEBUG] Found part.id=5271 for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 16:51:57] [DEBUG] Querying drawing_file table
+[2026-02-19 16:51:57] [DEBUG] SQLite is already initialized.
+[2026-02-19 16:51:57] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 16:51:57] [ERROR] Error in QueryDrawingFiles: Subscript out of range
+[2026-02-19 16:51:57] [DEBUG] Found 0 results
+[2026-02-19 16:51:57] [DEBUG] Cleared results from column X
+[2026-02-19 16:51:57] [INFO] No drawing files found for RT-88000-70097-045-1-DD-C
+
+[2026-02-19 14:48:09] [INFO] No drawing files found for RT-88000-70097-045-1-DD-C
+[2026-02-19 14:48:09] [DEBUG] Cleared results from column X
+[2026-02-19 14:48:09] [DEBUG] Found 0 results
+[2026-02-19 14:48:09] [ERROR] Error in QueryDrawingFiles: Subscript out of range
+[2026-02-19 14:48:09] [DEBUG] Executing query: SELECT id, part_id, file_name, file_path, is_active, last_modified_at, revision FROM drawing_file WHERE file_name LIKE '%RT-88000-70097-045-1-DD-C%' ORDER BY   is_active DESC,   (CASE WHEN file_path LIKE '%%' THEN 1 ELSE 0 END) DESC,   last_modified_at DESC LIMIT 8
+[2026-02-19 14:48:09] [DEBUG] SQLite is already initialized.
+[2026-02-19 14:48:09] [DEBUG] Querying drawing_file table
+[2026-02-19 14:48:09] [ERROR] Error in QueryPartByDrawingNumber: Subscript out of range
+[2026-02-19 14:48:09] [DEBUG] SQLite is already initialized.
+[2026-02-19 14:48:09] [DEBUG] Querying part table for drawing_number=RT-88000-70097-045-1-DD-C
+[2026-02-19 14:48:09] [DEBUG] PO number is empty. This is OK, will search without PO filter.
+[2026-02-19 14:48:09] [INFO] FetchDrawingFiles_Main started - Drawing: RT-88000-70097-045-1-DD-C, PO: 

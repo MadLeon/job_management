@@ -1,0 +1,90 @@
+============================================================
+Logger Module Setup Guide
+============================================================
+
+Module Name: lib_logger.bas
+Location: Same directory as Manufacturing Process.xlsm
+Log File: mp_log.txt (auto-created in Excel folder)
+
+============================================================
+Quick Start
+============================================================
+
+1. Test the Logger Module
+   - Open the Excel file
+   - Press Ctrl+J to open the Immediate Window
+   - Type: TestLogger()
+   - Press Enter
+   - Check the mp_log.txt file in the same folder
+
+2. Using the Logger in Your Code
+   - LogDebug "Your debug message"
+   - LogError "Your error message"
+   - LogInfo "Your info message"
+   - LogInfo "Custom message", "CUSTOM_CATEGORY"
+
+3. Clear Log File
+   - ClearLog() in Immediate Window
+   - This will delete the mp_log.txt file
+
+============================================================
+Log Format
+============================================================
+
+All logs follow this format:
+[YYYY-MM-DD HH:MM:SS] [CATEGORY] Message
+
+Example:
+[2026-02-19 14:30:45] [ERROR] Database connection failed
+[2026-02-19 14:30:44] [DEBUG] Current row: 5
+[2026-02-19 14:30:43] [INFO] Data saved
+[2026-02-19 14:30:42] [SUCCESS] Processing completed
+
+============================================================
+Available Functions
+============================================================
+
+Public Functions:
+- LogDebug(message As String)
+  Records debug information during execution
+
+- LogError(message As String)
+  Records error information when problems occur
+
+- LogInfo(message As String, Optional category As String = "INFO")
+  Records general information with custom category
+
+- ClearLog() As Boolean
+  Clears the log file (returns True if successful)
+
+- GetLogFileFullPath() As String
+  Returns the full path to the log file
+
+- LogFileExists() As Boolean
+  Checks if log file exists
+
+- TestLogger()
+  Tests the logger module with sample messages
+
+============================================================
+Log File Location
+============================================================
+
+Windows: C:\Users\[YourUsername]\[ExcelFolderPath]\mp_log.txt
+
+The file is created automatically when the first log is written.
+Each new log is inserted at the beginning, so newest logs appear first.
+
+============================================================
+Integration Status
+============================================================
+
+The following modules have been integrated with the logger:
+- sqlite.bas (All Debug.Print and MsgBox → LogDebug/LogError)
+- lib_sqlite3_64.bas (All Debug.Print → LogError)
+
+This means database-related errors and debug info will be
+automatically logged to mp_log.txt instead of just appearing
+in the Immediate Window or MsgBox dialogs.
+
+============================================================
