@@ -1,0 +1,157 @@
+数据库是 record.db, 存放在 data/record.db
+dat_public_data.bas 为存放全局常量变量的位置
+lib_logger.bas 为日志模块, 常用功能
+
+所有逻辑使用vba实现, 可以自由拆分模块
+查看 ./structure.txt 来了解 Manufacturing Process.xlsm 文件的结构
+阅读./summary.md作为上次的记忆
+
+本session主要任务: 实现 display 区域, 该区域动态显示内容, 随着 U9 内所选内容的不同
+
+1. 定义 data 区域
+- 在 ThisWorkbook 中添加文件打开时触发的函数
+- 该函数逻辑如下:
+  - 定位 data 工作表
+  - 从最后一行往上找到最后编辑的行
+  - 从第16行到这一行的区域既是 data 区域
+  - (未决定)使用一个数据结构保存 code 与 type 间的一对多关系, 或者, 使用数据结构保存整个 data 区域供后续是哦那个
+  - 将这个数据结构的具体值转存到 dat_public_data.bas 中添加文件打开时触发的函数
+  - 添加 log, 以便在输出中进行调试
+- FYI, data 区域的列为
+  (1) code
+  - 可能的值为 P FI RT SC I H W PI
+  - 具体的意义:
+    - P  = Purchase
+    - FI = Free Issued Mat'l
+    - RT = Record to Manufacture
+    - SC = Subcontract
+    - I  = Inspect
+    - H  = Hold
+    - W  = Witness
+    - PI = Packaging Inspection
+  (2) type
+  - 标注了当前 process 的类别
+  (3) link
+  - 后续指定具体功能, 目前仅作为介绍
+  - 有两种形式: Comb 行号; Hint 行号
+  - Comb 行号 标注当前行与指定行形成 combo, 即如果本行被选择, 那么指定行也会同时出现在当前行下面
+  - Hint 行号 标注当前行与指定行形成 hint, 即如果本行被选择, 那么指定行会作为 hint 提示在下方显示
+  (4) process
+  - 过程的具体内容
+  - 可能包含类似 python 的占位符 {1}
+  - 此类占位符提示该处存在由用户决定的具体字符串
+2. 添加 type 下拉列表
+  - 在 sheet1 模块中添加函数监控 U9 的变化
+  - U9 为下拉列表, 取值为:
+    - P  = Purchase
+    - FI = Free Issued Mat'l
+    - RT = Record to Manufacture
+    - SC = Subcontract
+    - I  = Inspect
+    - H  = Hold
+    - W  = Witness
+    - PI = Packaging Inspection
+  - 根据值的变化内容, 读取 dat_public_data.bas 中该取值对应的所有 type, 在 W9 处构建下拉列表
+3. 添加 process 显示功能
+  - 根据 U9 和 W9 的值, 找到对应的所有 process, 以 U13 为第一行第一格, 逐行罗列 process
+  - 若该 process 存在 Comb/Hint, 将该对应的行紧挨着显示在该 process 的下方
+  - 若该 process 中存在占位符 {数字}, 将所有占位符转换成 "_____"
+
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+指定 todos 时, 帮我决定使用何种数据结构
+
+在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+总结本session主要任务 (一句话)
+本session todos包括 (简单bullet points)
+操作及变更细节 (简单bullet points)
+未来注意 (一句话)
+将该总结并入 manufacturing process/summary.md, 尽量简短, 如果没有该文件则创建
+
+----------------------------------------------------------------------------------------------
+
+本session主要任务:
+1. 行号更新功能
+- 为当前 Sheet1 的工作表级模块添加代码. 
+- 监控 D11 - D39 区域, 当有值变化时, 触发 update_row_number 函数.
+- 添加一个函数 update_row_number
+
+update_row_number:
+- 从 D11 到 D39, 为每个有内容的行的 E 格添加行号, 允许有空洞行的存在
+- 空洞行的定义: 例如, 1-10行有内容, 12-15行有内容; 2-5行有内容7-10行有内容
+- 具体算法如下:
+- 遍历 D11-D39, 并维护累加器, 累加器初始为0
+- 然后检查当前行 D 格是否有值, 且该值属于 D 列下拉列表的一个选项则:
+  - 将累加器 +10, 
+  - 赋值累加器的值到该行 E 格
+- 没有值则跳过
+
+2. 行号更新触发 U9 内容更新
+- 当前, U9 为一个 data validation 的下拉列表, 其列表的内容为:
+P  = Purchase
+FI = Free Issued Mat'l
+RT = Record to Manufacture
+SC = Subcontract
+I  = Inspect
+H  = Hold
+W  = Witness
+PI = Packaging Inspection
+- D 列也是一个下拉列表, 内容为
+P
+FI
+RT
+SC
+I
+H
+W
+PI
+- 现在我希望在工作表级别的模块中添加从 D11 到 D39 的内容变化监控
+- 每当范围内的值改变后, U9 的内容做相应变动
+- 例如, D11 选择 P 项, 则 U9 变为对应的 P  = Purchase 选项
+
+数据库是record.db, 存放在data/record.db
+
+Manufacturing Process excel file 的总体业务逻辑是
+一个 Fetch 按钮, 用于开始绑定PDF文件的流程
+一个 Link (具体名字后续确定) 模块和 Link 按钮, 用于绑定 PDF 文件路径与 drawing number
+一个 Save 按钮触发 Save 过程 (具体名字后续确定)
+
+所有逻辑使用vba实现, 可以自由拆分模块
+查看 ./structure.txt 来了解 Manufacturing Process.xlsm 文件的结构
+阅读./summary.md作为上次的记忆
+
+----------------------------------------------------------------------------------------------
+
+本session主要任务:
+协助我编写 link 过程
+该 link 的具体逻辑是:
+- 当点击Fetch按钮后, 根据drawing number (J7), 查找drawing_file表, 具体逻辑为
+  查找 drawing file 的逻辑是
+  - 在part表查找J7的值, 若找到则记录, 则记录该part.id
+    (该步骤存在缺陷, 例如有多个结果, 不同revision; previous/next_id的接入等. 但目前没有影响, 可以在未来进一步完善)
+  - 在drawing file表的file_name列查找drawing number (J7)
+    - 记录所有找到的drawing_number.id
+    - 若找到的结果有且仅有一条记录is_active=1, 则直接使用变量标记该条记录为最可能记录
+    - 若不存在上述的完美情况, 则检查所有找到的记录的file_path, 是否包含当前PO (B7)
+      - 若找到包含PO的记录, 则标记最新的那个
+      - 若没有找到包含PO的记录, 则标记last_modified最新的那个
+- 将所有找到的记录在X列列出, 从2行向下. 
+  - 每行内容包含一个radio和一个超链接文本 (路径为file_path), 点击文本应该可以使用acrobat打开目标文职的文件
+  - 被标记的那条记录对应的radio应该被默认选中
+- 点击 Link 按钮, 更新数据库drawing_file表
+  - 将用户选择的那条记录的is_active设置为1
+  - 将其他列出的记录的is_active设置为0
+  - 如果之前有在part表中找到part.id
+    - 找到所有列出记录中part_id为空的记录
+    - 将所有上一步找的记录的part_id字段更新为我们记录过的part.id
+- 若未能找到任何记录, 则输出 Drawing not found.
+文本输出
+- 文本输出的位置在T8
+- 若更新成功将data sheet中的Picture 1复制到sheet 1的S7格
+先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+
+在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+总结本session主要任务 (一句话)
+本session todos包括 (简单bullet points)
+操作及变更细节 (简单bullet points)
+未来注意 (一句话)
+将该总结并入 manufacturing process/summary.md, 尽量简短, 如果没有该文件则创建

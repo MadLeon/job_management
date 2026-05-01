@@ -1,45 +1,49 @@
-数据库是record.db, 存放在data/record.db
-
-Manufacturing Process excel file 的总体业务逻辑是
-一个 Fetch 按钮, 用于开始绑定PDF文件的流程
-一个 Link (具体名字后续确定) 模块和 Link 按钮, 用于绑定 PDF 文件路径与 drawing number
-一个 Save 按钮触发 Save 过程 (具体名字后续确定)
+数据库是 record.db, 存放在 data/record.db
+dat_public_data.bas 为存放全局常量变量的位置
+lib_logger.bas 为日志模块, 常用功能
 
 所有逻辑使用vba实现, 可以自由拆分模块
 查看 ./structure.txt 来了解 Manufacturing Process.xlsm 文件的结构
-阅读./summary.md作为上次的记忆
+阅读 ./summary.md 和 sessions/*.md 作为前面 session 的记忆
+阅读 lib_logger.bas 学习日志功能的用法
+阅读 dat_public_data.bas 了解所有全局变量
 
-本session主要任务:
-协助我编写 link 过程
-该 link 的具体逻辑是:
-- 当点击Fetch按钮后, 根据drawing number (J7), 查找drawing_file表, 具体逻辑为
-  查找 drawing file 的逻辑是
-  - 在part表查找J7的值, 若找到则记录, 则记录该part.id
-    (该步骤存在缺陷, 例如有多个结果, 不同revision; previous/next_id的接入等. 但目前没有影响, 可以在未来进一步完善)
-  - 在drawing file表的file_name列查找drawing number (J7)
-    - 记录所有找到的drawing_number.id
-    - 若找到的结果有且仅有一条记录is_active=1, 则直接使用变量标记该条记录为最可能记录
-    - 若不存在上述的完美情况, 则检查所有找到的记录的file_path, 是否包含当前PO (B7)
-      - 若找到包含PO的记录, 则标记最新的那个
-      - 若没有找到包含PO的记录, 则标记last_modified最新的那个
-- 将所有找到的记录在X列列出, 从2行向下. 
-  - 每行内容包含一个radio和一个超链接文本 (路径为file_path), 点击文本应该可以使用acrobat打开目标文职的文件
-  - 被标记的那条记录对应的radio应该被默认选中
-- 点击 Link 按钮, 更新数据库drawing_file表
-  - 将用户选择的那条记录的is_active设置为1
-  - 将其他列出的记录的is_active设置为0
-  - 如果之前有在part表中找到part.id
-    - 找到所有列出记录中part_id为空的记录
-    - 将所有上一步找的记录的part_id字段更新为我们记录过的part.id
-- 若未能找到任何记录, 则输出 Drawing not found.
-文本输出
-- 文本输出的位置在T8
-- 若更新成功将data sheet中的Picture 1复制到sheet 1的S7格
-先制定todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+本session主要任务: 添加插入行和移除行按钮
+- 添加一个module, 包含两个过程, 我将使用按钮调用他们
+- 在全局公共数据模块中添加输出区域的范围(A11-R39)
 
-在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+插入行逻辑
+- 检测当前选中格子是否在输出区域, 如果不在则直接结束
+- 检测输出区域的最后一行是否为空行, 如果不是则直接结束
+- 找到输出区域的最后一个有内容的行L
+- 复制当前选中格子所在行S与L之间(包含S和L行)的, A-N列(包含A和N列)的所有单元格
+- 将他们粘贴到S+1行, 复制粘贴的行为与ctrl + C/V相同
+- 清空S行A-N列的所有内容, 以实现插入一个空行
+
+移除行逻辑
+- 检测当前选中格子是否在输出区域, 如果不在则直接结束
+- 找到输出区域的最后一个有内容的行L
+- 复制当前选中格子所在行S的下一行(S+1)与L之间(包含S+1和L行)的, A-N列(包含A和N列)的所有单元格
+- 将他们粘贴到S行, 复制粘贴的行为与ctrl + C/V相同
+- - 清空L行A-N列的所有内容, 以实现移除一个已有内容的行
+
+本session主要任务: 优化行号的显示逻辑
+- 目前行号的计算方式是从10开始, 每一行递增10
+- 这无法适应多页的情况, 因为从第二页开始, 应该继续第一页的最后一个数字, 而不能从10再来一次
+- 修改逻辑, 现在, 起始的数字从输出区域的第一行的C列的值开始
+- 举例第一行的数字为90, 则下一行的行号应该是100, 以此类推
+
+首先, 在 manufacturing process/sessions 新建 session{顺序数字}.md, 若文件夹不存在则新建
+然后, 将本文件的内容原样复制到该文件
+接下来, 将目前你对于本session任务的理解, 使用中文进行极度简短的总结, 格式如下:
 总结本session主要任务 (一句话)
-本session todos包括 (简单bullet points)
+你对于任务的理解与推断 (简单bullet points)
+将符合格式的任务理解保存到该文件中
+
+上面的步骤结束后, 添加todos, 并在todos的每一步暂停, 由我来核对, 获得许可后方能继续执行
+
+最后, 在session结束时, 请使用中文总结当前session的内容, 尽量简短, 格式如下:
+本 session 的 todos (简单bullet points)
 操作及变更细节 (简单bullet points)
 未来注意 (一句话)
-将该总结并入 manufacturing process/summary.md, 尽量简短, 如果没有该文件则创建
+将该总结并入 manufacturing process/sessions/中当前的session文件, 尽量简短

@@ -14,17 +14,21 @@
 ### 核心成果
 
 #### ✅ 第一部分：NPO格式修复
+
 **问题描述**:
+
 - 32条旧格式NPO: `NPO-YYYYMMDD-COMPANY-SEQ` 格式不规范
 - 存在9条重复PO（同一OE号对应多条PO）
 - 存在2条NPO变体格式: `NPO#` 和 `NPO ` 不规范
 
 **修复方案**:
+
 1. 将所有旧格式NPO转换为 `NPO-{oe_number}` 新格式（简洁、幂等、无重复）
 2. 合并重复PO：保留最早创建的PO，删除重复，重定向关联job
 3. 规范化NPO变体格式
 
 **执行结果**:
+
 ```
 ✅ 旧NPO格式转换: 18条
    - NPO-20260120-* 和 NPO-20260127-* 全部转换为 NPO-{oe_number}
@@ -43,12 +47,15 @@
 ```
 
 #### ✅ 第二部分：正常PO号规范化
+
 **问题描述**:
+
 - 16条正常PO号含有空格和小写
 - 3条额外问题：R.0N格式有前导零、R.N格式缺少连字符
 - 格式不统一："Rev." 混用小写
 
 **修复方案**:
+
 1. 移除PO号中的所有空格
 2. 将 "Rev." 简化为 "R."（保持大写）
 3. 确保 "R." 前有 "-"（补充缺失的连字符）
@@ -56,46 +63,51 @@
 5. 转换为大写字母确保一致性
 
 **执行结果**:
+
 ```
 ✅ 规范化的PO: 22条
    首次规范化: 16条
    - "7000543134- Rev.1" → "7000543134-R.1"
    - "634828-18000-52X-R231- R.03" → "634828-18000-52X-R231-R.03"
    - "RT98-88040-PN-R004 R. 1" → "RT98-88040-PN-R004R.1"
-   
+
    额外规范化（第1轮）: 3条
    - "634828-15000-52BX-R079-R.07" → "634828-15000-52BX-R079-R.7" (去前导零)
    - "634828-18000-52X-R231-R.03" → "634828-18000-52X-R231-R.3" (去前导零)
    - "RT98-88040-PN-R004R.1" → "RT98-88040-PN-R004-R.1" (补充连字符)
-   
+
    额外规范化（第2轮）: 3条
    - "RT79-87540-PN-R003-R1" → "RT79-87540-PN-R003-R.1" (补充小数点)
    - "RT98-87540-PN-R002-R1" → "RT98-87540-PN-R002-R.1" (补充小数点)
    - "RT98-87590-PN-R007-R1" → "RT98-87590-PN-R007-R.1" (补充小数点)
    - "RT98-87640-PN-R005-R1" → "RT98-87640-PN-R005-R.1" (补充小数点)
-   
+
 ✅ 无需更改的PO: 128条（已规范）
 ```
 
 #### ✅ 修复脚本
-**主脚本**: 
+
+**主脚本**:
+
 - [scripts/fix-npo-format.js](scripts/fix-npo-format.js) - NPO格式修复
 - [scripts/normalize-po-numbers.js](scripts/normalize-po-numbers.js) - PO号规范化
 
 **注**: 迁移脚本不需要，直接修复了数据库（一次性修复）
 
 #### ✅ 最终数据库统计
-| 指标 | 修复前 | 修复后 | 备注 |
-|------|-------|-------|------|
-| 总PO数 | 184 | 175 | 删除9条重复NPO |
-| NPO数 | 32 (旧格式) | 25 (规范化) | NPO-{oe_number}格式 |
-| 真实客户PO | 152 | 150 | 规范化格式 |
-| PO格式问题 | 含空格16 + 小写11 + 前导零2 + 缺-1 | 0 | 全部修复 |
-| Job总数 | 383 | 383 | 重定向完整 |
-| OrderItem总数 | 412 | 412 | 无变化 |
-| 关联完整性 | ❌ | ✅ | 全部修复 |
+
+| 指标          | 修复前                             | 修复后      | 备注                |
+| ------------- | ---------------------------------- | ----------- | ------------------- |
+| 总PO数        | 184                                | 175         | 删除9条重复NPO      |
+| NPO数         | 32 (旧格式)                        | 25 (规范化) | NPO-{oe_number}格式 |
+| 真实客户PO    | 152                                | 150         | 规范化格式          |
+| PO格式问题    | 含空格16 + 小写11 + 前导零2 + 缺-1 | 0           | 全部修复            |
+| Job总数       | 383                                | 383         | 重定向完整          |
+| OrderItem总数 | 412                                | 412         | 无变化              |
+| 关联完整性    | ❌                                 | ✅          | 全部修复            |
 
 ### 📋 操作清单
+
 - ✅ 分析旧NPO格式和重复情况
 - ✅ 创建NPO修复脚本
 - ✅ 执行NPO修复（2次处理所有变体）
@@ -112,6 +124,7 @@
 - ✅ 数据库备份: `data/record.db.backup.before_npo_fix`
 
 ### ✅ 验证清单
+
 ```
 【格式检查】
   ✅ 无旧格式NPO (NPO-202*-*-*)
@@ -140,29 +153,35 @@
 ### 核心成果
 
 #### ✅ NPO生成逻辑优化
+
 **问题根源**: 旧的NPO格式 `NPO-YYYYMMDD-COMPANY-SEQ` 每次运行时递增序号，导致同一OE号多次创建不同的PO
 
-**解决方案**: 
+**解决方案**:
+
 - 修改 [update-oe-database.js](scripts/one-time-scripts/update-oe-database.js) 第314-318行：`NPO-${oe_number}`
 - 修改 [mod_AddNewJobToDB.bas](src/order%20entry%20log/mod_AddNewJobToDB.bas) 第68-72行：VBA对齐
 - **新格式特性**: 幂等性 - 相同oe_number始终生成相同PO号
 
 #### ✅ 数据清理脚本 - clean-duplicate-order-items.js
+
 **功能**: 自动识别和清理重复order_item记录
+
 - 按(oe_number, line_number)组合查找重复项
 - 保留最早创建的order_item，删除其他副本
 - 级联删除孤立job和purchase_order
 - 自动激活所有保留PO的is_active=1
 
 **执行结果**:
+
 ```
 ✓ 发现12个重复(oe_number, line_number)组合
-✓ 删除13条重复purchase_order记录  
+✓ 删除13条重复purchase_order记录
 ✓ 清理后已激活184个PO (is_active=1)
 ✓ 零孤立数据 (无orphaned job, PO)
 ```
 
 #### ✅ 全数据库诊断与验证
+
 **创建诊断脚本**: [diagnose-full-database.js](scripts/diagnose-full-database.js)
 
 **诊断结果**:
@@ -175,12 +194,14 @@
 | 数据完整性 | ✅ | 完全一致 |
 
 **数据统计**:
+
 - PO总数: 184个 (其中152个非NPO格式的真实客户PO)
 - Job总数: 383个
 - Order Item总数: 412个
 - 关键发现: 1个PO可能关联多个job和order_item (正常业务设计)
 
 ### 📋 操作清单
+
 - ✅ 修复NPO生成逻辑 (update-oe-database.js, mod_AddNewJobToDB.bas)
 - ✅ 创建并执行清理脚本 (clean-duplicate-order-items.js)
 - ✅ 修复脚本语法错误 (函数结构)
@@ -198,9 +219,11 @@
 ### 核心成果
 
 #### ✅ 主同步脚本: update-oe-database.js
+
 **位置**: `scripts/update-oe-database.js` (791行)
 
 **功能概览**:
+
 - 从Order Entry Log.xlsm读取381行数据(DELIVERY SCHEDULE表)
 - 使用(oe_number, line_number)组合唯一匹配OE行
 - 级联插入Customer→Contact→PO→Job→Part→OrderItem(7步)
@@ -220,11 +243,13 @@
 | 过期标记 | ✅ | is_active=0自动标记 |
 
 **三个核心场景**:
+
 1. **已存在**: OE中的行在DB存在 → 记录order_item_id
 2. **新增**: 不存在 → 级联插入 → 返回新order_item_id
 3. **过期**: DB中的PO不在OE中 → 标记is_active=0
 
 **运行效果** (测试结果):
+
 ```
 ✓ 读取Excel: 381行
 ✓ 处理数据: 2行已存在匹配
@@ -233,6 +258,7 @@
 ```
 
 #### ✅ 单元测试验证
+
 - ✅ 临时PO号生成(NPO格式验证)
 - ✅ 数据匹配逻辑(oe_number+line_number查询)
 - ✅ 级联插入逻辑(7步完整+Part表)
@@ -240,6 +266,7 @@
 - **总计: 4/4通过** ✓
 
 #### ✅ 事务和回滚机制
+
 - SQLite IMMEDIATE隔离级别
 - 单一事务内所有操作
 - 任何错误自动ROLLBACK
@@ -250,25 +277,26 @@
 ### 📊 项目进度更新
 
 **Session 11改进**:
+
 - 修复Excel表头识别(第3行而非第1行)
 - 实现PowerShell AA列直接写入Excel ✓
 - 完成端到端流程: Excel→DB→Excel
 - 验证381行数据的完整处理
 
 **文档整理**:
+
 - 所有文档统一存放至 `scripts/oe-sync-docs/`
 - 包含使用指南、验证报告、运行日志
 - 删除所有临时调试文件
 
 ---
 
-
-
 ---
 
 ## 📝 Session 9: Drawing File 智能匹配系统 (本session)
 
-**主要任务**: 
+**主要任务**:
+
 1. 创建可复用的图纸匹配脚本
 2. 批量更新 drawing_file 表的 part_id
 3. 改进API，使用数据库存储数据 + 动态匹配备用方案
@@ -276,20 +304,24 @@
 ### 核心成果
 
 #### ✅ 1. match-part-drawing.js 脚本
+
 **位置**: `scripts/match-part-drawing.js`
 
 **功能**: 根据 part 的 drawing_number 智能匹配 drawing_file
 
 **匹配流程**:
+
 1. 模糊搜索: file_name 包含 drawing_number
 2. 精确验证: 使用 folder_mapping 检查文件路径
 3. 结果优先级: 优先返回 is_active=1 的结果，否则返回最新修改的
 
 **导出函数**:
+
 - `matchPartToDrawing(db, part, customer_id)` - 主匹配函数，返回 { success, file_id, confidence, reason }
 - `getCustomerIdFromOrderItem(db, order_item_id)` - 获取customer_id，通过 order_item→job→purchase_order→customer_contact→customer
 
 **匹配结果置信度级别**:
+
 - `verified` - 通过 folder_mapping 精确验证成功（最高）
 - `fuzzy_no_folder` - 客户无 folder_mapping，返回模糊匹配结果
 - `fuzzy_folder_mismatch` - folder_mapping 验证失败，返回模糊匹配结果
@@ -297,11 +329,13 @@
 - `none` - 未找到任何匹配
 
 #### ✅ 2. 迁移脚本 012_populate_drawing_file_part_id.js
+
 **位置**: `scripts/migrations/012_populate_drawing_file_part_id.js`
 
 **功能**: 批量遍历 order_item，调用脚本1进行匹配，更新 drawing_file 的 part_id
 
 **执行结果** (2026-01-12 11:00):
+
 ```
 已处理 order_item: 358
 成功匹配: 226 (74.83%)
@@ -313,17 +347,20 @@
 **匹配覆盖率**: 224/137,399 = 0.16%（低覆盖率原因：大多数part无order_item关联，或order_item对应的customer无folder_mapping）
 
 #### ✅ 3. drawing-file-helper.js 辅助函数库
+
 **位置**: `src/lib/drawing-file-helper.js` (新建)
 
 **功能**: 为API提供统一的图纸查找接口
 
 **导出函数**:
-- `findDrawingFile(db, drawingNumber, customerId = null)` 
+
+- `findDrawingFile(db, drawingNumber, customerId = null)`
   - 先查数据库（part_id已填充的记录）
   - 如不存在，调用 matchPartToDrawing 动态匹配
   - 匹配成功则更新数据库，持久化结果
 
-**设计理念**: 
+**设计理念**:
+
 - 数据库优先：已匹配的数据直接返回，无延迟
 - 动态补充：对未匹配的记录，实时调用匹配脚本
 - 持久化学习：每次动态匹配成功都更新数据库，积累历史数据
@@ -341,6 +378,7 @@
    - 改进：调用 findDrawingFile，支持精确验证 + 客户名称过滤
 
 **API调用流程图**:
+
 ```
 API 请求 (drawing_number, 可选: customer_name)
   ↓
@@ -358,12 +396,12 @@ findDrawingFile() [drawing-file-helper.js]
 
 ### 📊 数据对比
 
-| 指标 | Session 8 | Session 9 | 变化 |
-|------|----------|----------|------|
-| drawing_file part_id已填充 | 0 | 224 | +224 |
-| order_item 覆盖率 | 0% | 63% (226/358) | +63% |
-| folder_mapping 参与度 | 66/79 | 用于验证 | 精确验证 |
-| API 智能程度 | 简单模糊 | 优先级+动态 | 大幅提升 |
+| 指标                       | Session 8 | Session 9     | 变化     |
+| -------------------------- | --------- | ------------- | -------- |
+| drawing_file part_id已填充 | 0         | 224           | +224     |
+| order_item 覆盖率          | 0%        | 63% (226/358) | +63%     |
+| folder_mapping 参与度      | 66/79     | 用于验证      | 精确验证 |
+| API 智能程度               | 简单模糊  | 优先级+动态   | 大幅提升 |
 
 ### 🔧 技术亮点
 
@@ -381,7 +419,8 @@ findDrawingFile() [drawing-file-helper.js]
 
 ---
 
-**返回值**: 
+**返回值**:
+
 ```javascript
 {
   success: boolean,
@@ -392,9 +431,11 @@ findDrawingFile() [drawing-file-helper.js]
 ```
 
 #### ✅ 2. 迁移脚本 012_populate_drawing_file_part_id.js
+
 **位置**: `scripts/migrations/012_populate_drawing_file_part_id.js`
 
 **执行结果**:
+
 ```
 📊 迁移统计:
    总 order_item 数: 358
@@ -407,7 +448,8 @@ findDrawingFile() [drawing-file-helper.js]
 
 **成功率**: 74.83% (226 / (358-56))
 
-**说明**: 
+**说明**:
+
 - 226 条记录成功获得 part_id
 - 56 条记录已有 part_id，被跳过
 - 76 条记录无法匹配（可能是数据质量问题或客户无folder_mapping）
@@ -421,15 +463,16 @@ function findDrawingFile(db, drawingNumber, customerId = null)
 ```
 
 **查询策略** (按优先级):
+
 1. **已存储**: part_id不为NULL → 直接返回
 2. **动态匹配**: 模糊搜索 + 自动填充part_id
 3. **精确过滤**: 若提供customer_id，进行customer关联过滤
 
 **改进的API**:
+
 - `GET /api/drawings/detail`
   - 新参数: `customer_id` (可选)
   - 使用 findDrawingFile 替代原始查询
-  
 - `GET /api/jobs/drawing-file-location`
   - 新返回字段: `partId` (获取到的part_id)
   - 优先返回已存储的 part_id 结果
@@ -439,16 +482,17 @@ function findDrawingFile(db, drawingNumber, customerId = null)
 
 **单元测试**: ✅ 4/4 通过
 
-| 测试用例 | 结果 | 说明 |
-|--------|------|------|
-| 有part_id且customer匹配 | ✅ | 文件id=151593 (GM223-1314-9) |
-| 有part_id且customer匹配 | ✅ | 文件id=163883 (K125912-003) |
-| 无part_id的drawing | ✅ | 动态匹配找到: 文件id=167349 (052PLNAY01) |
-| 不存在的drawing_number | ✅ | 正确返回null |
+| 测试用例                | 结果 | 说明                                     |
+| ----------------------- | ---- | ---------------------------------------- |
+| 有part_id且customer匹配 | ✅   | 文件id=151593 (GM223-1314-9)             |
+| 有part_id且customer匹配 | ✅   | 文件id=163883 (K125912-003)              |
+| 无part_id的drawing      | ✅   | 动态匹配找到: 文件id=167349 (052PLNAY01) |
+| 不存在的drawing_number  | ✅   | 正确返回null                             |
 
 ### 📊 数据覆盖分析
 
 **drawing_file 表状态**:
+
 ```
 总记录数: 137,399
 已有part_id: 224 (0.16%)
@@ -456,6 +500,7 @@ function findDrawingFile(db, drawingNumber, customerId = null)
 ```
 
 **匹配覆盖率分析**:
+
 - 358 个 order_item 对应的 part
 - 其中 226 个成功匹配 (63.1%)
 - 这意味着相关的 226 个 drawing_file 已建立 part_id 关联
@@ -477,20 +522,20 @@ function findDrawingFile(db, drawingNumber, customerId = null)
 
 ### 核心操作
 
-| 步骤 | 细节 | 结果 |
-|------|------|------|
-| ✅ 扫描G盘 | 获取G:\一级文件夹列表 | 315个文件夹 |
-| ✅ 模糊匹配 | 使用Levenshtein距离+包含匹配算法 | 59个自动匹配，20个未匹配 |
-| ✅ 用户确认 | 手动审查和确认，指定正确的映射关系 | 66个关系已确认 |
-| ✅ 数据导入 | 创建011迁移脚本，填充folder_mapping表 | 66个关系插入成功 |
+| 步骤        | 细节                                  | 结果                     |
+| ----------- | ------------------------------------- | ------------------------ |
+| ✅ 扫描G盘  | 获取G:\一级文件夹列表                 | 315个文件夹              |
+| ✅ 模糊匹配 | 使用Levenshtein距离+包含匹配算法      | 59个自动匹配，20个未匹配 |
+| ✅ 用户确认 | 手动审查和确认，指定正确的映射关系    | 66个关系已确认           |
+| ✅ 数据导入 | 创建011迁移脚本，填充folder_mapping表 | 66个关系插入成功         |
 
 ### 匹配统计
 
-| 分类 | 数量 | 覆盖率 |
-|------|------|--------|
-| 已匹配且确认 | 66 | 83.5% (66/79) |
-| 未匹配 | 13 | 16.5% |
-| 总客户数 | 79 | 100% |
+| 分类         | 数量 | 覆盖率        |
+| ------------ | ---- | ------------- |
+| 已匹配且确认 | 66   | 83.5% (66/79) |
+| 未匹配       | 13   | 16.5%         |
+| 总客户数     | 79   | 100%          |
 
 ### 数据验证
 
@@ -505,6 +550,7 @@ Blenheim, Buffalo, DieMax, Hunstville, Kipling, Lux, Motion Ind, Nuclear Waste M
 ---
 
 ## 📝 Session 7: 客户表扩展
+
 | ✅ 文档更新 | structure.txt及session总结 | 完成 |
 
 ---
@@ -515,30 +561,31 @@ Blenheim, Buffalo, DieMax, Hunstville, Kipling, Lux, Motion Ind, Nuclear Waste M
 
 ### 核心问题与解决方案
 
-| 问题 | 根本原因 | 解决方案 | 影响范围 |
-|------|---------|---------|---------|
-| 下拉箭头不显示 | API缺少 `has_assembly_details` 字段 | 在 `/api/order-items` 中添加 LEFT JOIN part_tree + CASE WHEN 逻辑 | 358个order_items |
-| 展开内容为空 | useAssemblies hook调用不存在的API + 使用错误参数(part_number) | 创建 `/api/parts/[id]/children` API + 修改hook使用part_id + 添加orderItemId | 所有assembly item |
-| Sticky header冲突 | JobDetailTable无sticky定位，导致滚动时header混乱 | 添加 sticky + zIndex=5（低于JobTable的10） | 所有行展开时 |
-| 客户名称为空（Job72297） | 006迁移脚本bug：步骤4重新创建临时PO时contact_id设为NULL | 修复脚本行254-262，添加contact_id映射逻辑 | 30个受影响的PO |
+| 问题                     | 根本原因                                                      | 解决方案                                                                    | 影响范围          |
+| ------------------------ | ------------------------------------------------------------- | --------------------------------------------------------------------------- | ----------------- |
+| 下拉箭头不显示           | API缺少 `has_assembly_details` 字段                           | 在 `/api/order-items` 中添加 LEFT JOIN part_tree + CASE WHEN 逻辑           | 358个order_items  |
+| 展开内容为空             | useAssemblies hook调用不存在的API + 使用错误参数(part_number) | 创建 `/api/parts/[id]/children` API + 修改hook使用part_id + 添加orderItemId | 所有assembly item |
+| Sticky header冲突        | JobDetailTable无sticky定位，导致滚动时header混乱              | 添加 sticky + zIndex=5（低于JobTable的10）                                  | 所有行展开时      |
+| 客户名称为空（Job72297） | 006迁移脚本bug：步骤4重新创建临时PO时contact_id设为NULL       | 修复脚本行254-262，添加contact_id映射逻辑                                   | 30个受影响的PO    |
 
 ### 完成工作清单
 
-| 功能 | 细节 | 状态 |
-|------|------|------|
-| ✅ API: /api/order-items/index.js | 新建。LEFT JOIN part_tree查询has_assembly_details | 完成 |
-| ✅ API: /api/parts/[id]/children.js | 新建。返回子组件，继承parent order_item的timing/status | 完成 |
-| ✅ Hook: useJobs.js | 修改fetch URL：`/api/jobs` → `/api/order-items` | 完成 |
-| ✅ Hook: useAssemblies.js | 改参数(partNumber→partId)，添加orderItemId，新endpoint | 完成 |
-| ✅ Component: JobTableRow.jsx | 传递row.part_id和row.order_item_id给useAssemblies | 完成 |
-| ✅ Component: JobDetailTable.jsx | 添加sticky header：position+top+zIndex+bgColor | 完成 |
-| ✅ Migration: 006_migrate_data_from_jobs_db.js | 修复step4的contact_id映射（行254-262） | 完成 |
-| ✅ 数据库恢复 | 回滚→修复→重新迁移006-009 | 完成 |
-| ✅ 文档更新 | structure.txt已更新，session总结已补充 | 完成 |
+| 功能                                           | 细节                                                   | 状态 |
+| ---------------------------------------------- | ------------------------------------------------------ | ---- |
+| ✅ API: /api/order-items/index.js              | 新建。LEFT JOIN part_tree查询has_assembly_details      | 完成 |
+| ✅ API: /api/parts/[id]/children.js            | 新建。返回子组件，继承parent order_item的timing/status | 完成 |
+| ✅ Hook: useJobs.js                            | 修改fetch URL：`/api/jobs` → `/api/order-items`        | 完成 |
+| ✅ Hook: useAssemblies.js                      | 改参数(partNumber→partId)，添加orderItemId，新endpoint | 完成 |
+| ✅ Component: JobTableRow.jsx                  | 传递row.part_id和row.order_item_id给useAssemblies      | 完成 |
+| ✅ Component: JobDetailTable.jsx               | 添加sticky header：position+top+zIndex+bgColor         | 完成 |
+| ✅ Migration: 006_migrate_data_from_jobs_db.js | 修复step4的contact_id映射（行254-262）                 | 完成 |
+| ✅ 数据库恢复                                  | 回滚→修复→重新迁移006-009                              | 完成 |
+| ✅ 文档更新                                    | structure.txt已更新，session总结已补充                 | 完成 |
 
 ### 迁移BUG详细分析
 
 **原始问题场景**：
+
 ```
 Job 72297 → PO_id=317 → contact_id=NULL → customer_name缺失 → UI显示为空
 ```
@@ -546,6 +593,7 @@ Job 72297 → PO_id=317 → contact_id=NULL → customer_name缺失 → UI显示
 **Bug位置**: `006_migrate_data_from_jobs_db.js` 第254-262行
 
 **原始错误代码**:
+
 ```javascript
 // 步骤4：创建job时重新创建临时PO
 // 问题：contact_id没有从原数据映射，直接设为NULL
@@ -556,6 +604,7 @@ newDb.prepare(`
 ```
 
 **修复后代码**:
+
 ```javascript
 // 从oldDb获取原customer_contact字段
 const jobContactInfo = oldDb.prepare(`
@@ -563,7 +612,7 @@ const jobContactInfo = oldDb.prepare(`
 `).get(job_number);
 
 // 通过contactMap映射得到正确的contact_id
-const contactId = jobContactInfo?.customer_contact 
+const contactId = jobContactInfo?.customer_contact
   ? contactMap.get(`${customer_name}|${jobContactInfo.customer_contact}`)
   : null;
 
@@ -577,6 +626,7 @@ newDb.prepare(`
 **影响范围**: 30个PO记录（占总数 172 的 17%）
 
 **恢复过程**:
+
 1. ✅ 执行4次 `npm run db:migrate:down` (006→009回滚到005)
 2. ✅ 修改脚本并保存
 3. ✅ 执行 `npm run db:migrate` (006-009全量重新执行)
@@ -585,6 +635,7 @@ newDb.prepare(`
 ### 数据验证结果
 
 **迁移后数据完整性** (2025-01-11 14:30):
+
 ```
 ✅ 339 jobs 完整导入
 ✅ 172 purchase_orders (含46个临时PO) ✅
@@ -595,6 +646,7 @@ newDb.prepare(`
 ```
 
 **特验证样本**:
+
 - Job 72297: po_id=317, contact_id=78 (Nesha), customer_id=30 (Bombardier) ✅
 
 ---
@@ -603,23 +655,23 @@ newDb.prepare(`
 
 ### 数据库迁移与扫描系统 ✅
 
-| 功能 | 成果 | 量级 |
-|------|------|------|
-| 业务数据迁移 | 24 客户 + 339 作业 + 358 订单 | 100% |
-| G盘扫描导入 | PowerShell bug 修复 + 全量扫描 | 137,399 文件 |
-| Assemblies 迁移 | 缺失零件补全 + BOM 关系建立 | 1,460 关系 |
-| 数据库表 | 20 个表，141,493 条记录 | ✅ |
+| 功能            | 成果                           | 量级         |
+| --------------- | ------------------------------ | ------------ |
+| 业务数据迁移    | 24 客户 + 339 作业 + 358 订单  | 100%         |
+| G盘扫描导入     | PowerShell bug 修复 + 全量扫描 | 137,399 文件 |
+| Assemblies 迁移 | 缺失零件补全 + BOM 关系建立    | 1,460 关系   |
+| 数据库表        | 20 个表，141,493 条记录        | ✅           |
 
 ### Session 5: API 改写 (本session) 🚀
 
-| 类别 | API数量 | 状态 |
-|------|--------|------|
-| 基础查询 | 8个 | ✅ 完成 |
-| 复杂联查 | 3个 | ✅ 完成 |
-| Part管理 | 2个 | ✅ 完成 |
-| 其他功能 | 3个 | ✅ 完成 |
-| 删除旧API | 4个 | ✅ 完成 |
-| **合计** | **20个** | **✅ 100%** |
+| 类别      | API数量  | 状态        |
+| --------- | -------- | ----------- |
+| 基础查询  | 8个      | ✅ 完成     |
+| 复杂联查  | 3个      | ✅ 完成     |
+| Part管理  | 2个      | ✅ 完成     |
+| 其他功能  | 3个      | ✅ 完成     |
+| 删除旧API | 4个      | ✅ 完成     |
+| **合计**  | **20个** | **✅ 100%** |
 
 ---
 
@@ -651,16 +703,19 @@ newDb.prepare(`
 ### ✅ 第一批：基础查询 (8个API)
 
 **Customers 相关**：
+
 - GET /api/customers → `customer` 表查询
 - GET/POST/PUT /api/customers/[id] → `customer` 表 CRUD
 - PUT /api/customers/[id]/usage → 更新使用计数
 
 **Contacts 相关**：
+
 - GET /api/contacts → `customer_contact` 表查询（改用 customer_id 过滤）
 - GET/POST/PUT /api/contacts/[id] → `customer_contact` 表 CRUD
 - PUT /api/contacts/[id]/usage → 更新使用计数
 
 **Jobs 相关**：
+
 - GET /api/jobs → 联查 job + order_item + part + purchase_order + customer
 - GET /api/jobs/next-numbers → 从 job 表获取，改为返回 po_number
 
@@ -707,43 +762,49 @@ newDb.prepare(`
 
 ### Customers & Contacts
 
-| 旧表 | 旧字段 | 新表 | 新字段 | 变更 |
-|------|--------|------|--------|------|
-| customers | customer_id | customer | id | 字段改名 |
-| - | is_active | - | - | 删除 |
-| - | customer_name | customer | customer_name | 保留 |
-| contacts | contact_id | customer_contact | id | 字段改名 |
-| - | customer_name | customer_contact | customer_id | 改为关联 |
-| - | - | customer_contact | contact_email | 新增 |
+| 旧表      | 旧字段        | 新表             | 新字段        | 变更     |
+| --------- | ------------- | ---------------- | ------------- | -------- |
+| customers | customer_id   | customer         | id            | 字段改名 |
+| -         | is_active     | -                | -             | 删除     |
+| -         | customer_name | customer         | customer_name | 保留     |
+| contacts  | contact_id    | customer_contact | id            | 字段改名 |
+| -         | customer_name | customer_contact | customer_id   | 改为关联 |
+| -         | -             | customer_contact | contact_email | 新增     |
 
 ### Jobs & Parts
 
-| 旧表 | 旧结构 | 新表 | 新结构 | 变更 |
-|------|--------|------|--------|------|
-| jobs | 单表 | job + order_item + part | 多表 | 规范化分解 |
-| assembly_detail | - | part (is_assembly=1) | - | 轮换 |
-| detail_drawing | - | drawing_file | - | 轮换 |
-| drawings | - | drawing_file | - | 轮换 |
+| 旧表            | 旧结构 | 新表                    | 新结构 | 变更       |
+| --------------- | ------ | ----------------------- | ------ | ---------- |
+| jobs            | 单表   | job + order_item + part | 多表   | 规范化分解 |
+| assembly_detail | -      | part (is_assembly=1)    | -      | 轮换       |
+| detail_drawing  | -      | drawing_file            | -      | 轮换       |
+| drawings        | -      | drawing_file            | -      | 轮换       |
 
 ---
 
 ## 🐛 关键改写点
 
 ### 时间戳函数
+
 所有时间字段使用：
+
 ```sql
 datetime('now', 'localtime')  -- 替代 CURRENT_TIMESTAMP
 ```
 
 ### 外键关联
+
 从直接名称关联改为 ID 关联：
+
 ```javascript
 // 旧: WHERE customer_name = ?
 // 新: WHERE customer_id = ?
 ```
 
 ### 多步事务流程
+
 创建作业时按序：
+
 1. 验证/获取 customer (by id)
 2. 获取/创建 purchase_order
 3. 创建 job
@@ -785,12 +846,12 @@ datetime('now', 'localtime')  -- 替代 CURRENT_TIMESTAMP
 
 ### 数据库迁移与扫描系统 ✅
 
-| 功能 | 成果 | 量级 |
-|------|------|------|
-| 业务数据迁移 | 24 客户 + 339 作业 + 358 订单 | 100% |
-| G盘扫描导入 | PowerShell bug 修复 + 全量扫描 | 137,399 文件 |
-| Assemblies 迁移 | 缺失零件补全 + BOM 关系建立 | 1,460 关系 |
-| 数据库表 | 20 个表，141,493 条记录 | ✅ |
+| 功能            | 成果                           | 量级         |
+| --------------- | ------------------------------ | ------------ |
+| 业务数据迁移    | 24 客户 + 339 作业 + 358 订单  | 100%         |
+| G盘扫描导入     | PowerShell bug 修复 + 全量扫描 | 137,399 文件 |
+| Assemblies 迁移 | 缺失零件补全 + BOM 关系建立    | 1,460 关系   |
+| 数据库表        | 20 个表，141,493 条记录        | ✅           |
 
 ### 关键统计
 
@@ -844,6 +905,7 @@ datetime('now', 'localtime')  -- 替代 CURRENT_TIMESTAMP
 ## 🐛 重要修复
 
 ### Session 3: PowerShell Bug Fix
+
 - **问题**: 扫描文件缺失 (49% 覆盖率)
 - **原因**: return 语句导致函数提前退出
 - **修复**: return → continue
@@ -854,6 +916,7 @@ datetime('now', 'localtime')  -- 替代 CURRENT_TIMESTAMP
 ## 📝 Session 4 文档与数据库设计规范化
 
 ### 完成工作
+
 - ✅ 修复 check-db.js (支持 record.db)
 - ✅ 创建 structure.txt (完整数据库文档)
 - ✅ 调整 refactor.md (反映实际数据状态)
@@ -862,23 +925,27 @@ datetime('now', 'localtime')  -- 替代 CURRENT_TIMESTAMP
 - ✅ 更新 updates.json
 
 ### 代码规范确立
+
 所有CREATE TABLE采用统一格式：
+
 ```sql
 CREATE TABLE xxx (
 	字段名				类型		约束,				-- 字段说明
 	关联字段			类型		NOT NULL,			-- 关联说明
 	...
-	
+
 	-- 外键约束
 	FOREIGN KEY (field)		REFERENCES other_table(id)	ON DELETE CASCADE
 );
 ```
 
 ### Note表拆分
+
 旧：通用 note 表（多维关联）
 新：6 个独立表（单一职责）
+
 - po_note: 采购订单备注
-- job_note: 作业备注  
+- job_note: 作业备注
 - order_item_note: 订单明细备注
 - part_note: 零件备注
 - shipment_note: 发货单备注
@@ -953,31 +1020,38 @@ part:            1894条 (其中1603条unit_price=0)
 ### 已完成的修复
 
 ✅ **修复const/let错误**
+
 - findOrderItem: const query → let query
 - syncDatabase: const markedInactiveOes → let markedInactiveOes
 
 ✅ **修复文件路径**
+
 - Excel路径: `data/Order Entry Log.xlsm` → `src/order entry log/Order Entry Log.xlsm`
 
 ✅ **添加UNIQUE约束预检查**
+
 - insertNewOrderItem中添加pre-check: (job_id, line_number)
 - 如果已存在，返回现有ID而非重复插入
 
 ### 需要在下个Session完成的工作
 
 #### TODO #1: 修复 `insertNewOrderItem` 的unit_price填充
+
 **优先级**: 🔴 高
 
 在insertNewOrderItem函数中：
+
 1. 从rowData.price（OE数据）读取unit_price
 2. 在insertPart时填充unit_price（不能为0）
 3. 同时更新order_item.actual_price
 
-**改动点**: 
+**改动点**:
+
 - 行308-330: insertPart部分需要增加unit_price参数
 - 行380-410: part表的INSERT需要包含unit_price
 
 #### TODO #2: 修复order_item日期处理
+
 **优先级**: 🔴 高
 
 1. 检查OE文件(列号?)中日期的实际格式
@@ -985,41 +1059,47 @@ part:            1894条 (其中1603条unit_price=0)
 3. 确保drawing_release_date和delivery_required_date正确填充
 
 **改动点**:
+
 - 行475-495: normalizeDate函数需要增强
 - 行449-451: INSERT语句确保日期参数正确
 
 #### TODO #3: 排查PO数据同步逻辑
+
 **优先级**: 🟡 中
 
 需要理解为什么236个active PO < 350行OE数据：
+
 1. 可能是1个PO对应多个Job
 2. 需要验证OE文件中是否有重复的PO号
 3. 确认update-oe-database.js中PO创建/查找的逻辑
 
 **改动点**:
+
 - 行333-380: findOrCreatePurchaseOrder逻辑审查
 - 需要与OE文件结构对应
 
 ### 关键代码位置
 
-| 函数 | 位置 | 作用 | 状态 |
-|------|------|------|------|
-| insertNewOrderItem | 307-487 | 核心级联插入 | 🔴 需改进 |
-| insertPart | 360-410 | Part表插入 | 🔴 缺unit_price |
-| normalizeDate | 475-495 | 日期格式转换 | 🔴 需改进 |
-| findOrCreatePurchaseOrder | 333-380 | PO查找/创建 | 🟡 需审查 |
-| syncDatabase | 630-750 | 主事务流程 | ✅ 基本正确 |
+| 函数                      | 位置    | 作用         | 状态            |
+| ------------------------- | ------- | ------------ | --------------- |
+| insertNewOrderItem        | 307-487 | 核心级联插入 | 🔴 需改进       |
+| insertPart                | 360-410 | Part表插入   | 🔴 缺unit_price |
+| normalizeDate             | 475-495 | 日期格式转换 | 🔴 需改进       |
+| findOrCreatePurchaseOrder | 333-380 | PO查找/创建  | 🟡 需审查       |
+| syncDatabase              | 630-750 | 主事务流程   | ✅ 基本正确     |
 
 ### 修复策略
 
 **不创建迁移脚本** - 直接在update-oe-database.js中修复（一次性脚本）
 
 **修改顺序**:
+
 1. 先修复unit_price（最直接）
 2. 再修复日期处理
 3. 最后验证PO逻辑
 
 **验证方式**:
+
 - 重新运行: `node scripts/update-oe-database.js`
 - 检查output: 348 inserted + 2 matched = 350 total ✓
 - 验证数据库:
@@ -1030,6 +1110,7 @@ part:            1894条 (其中1603条unit_price=0)
 ### 当前代码问题总结
 
 **insertNewOrderItem问题**:
+
 ```javascript
 // 第360-410行的insertPart缺少unit_price
 const insertPartStmt = db.prepare(`
@@ -1040,6 +1121,7 @@ const insertPartStmt = db.prepare(`
 ```
 
 **normalizeDate问题**:
+
 ```javascript
 // 第475-495行只能处理基础格式
 function normalizeDate(dateStr) {
@@ -1058,5 +1140,3 @@ function normalizeDate(dateStr) {
 - [ ] 改进normalizeDate函数
 - [ ] 重新运行脚本并验证结果
 - [ ] 更新update-oe-database.js使其成为最终版本
-
-

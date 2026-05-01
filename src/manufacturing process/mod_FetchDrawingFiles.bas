@@ -60,23 +60,19 @@ Public Sub FetchDrawingFiles_Main()
     End If
     
     If poNumber = "" Then
-        LogDebug "PO number is empty. This is OK, will search without PO filter."
         poNumber = ""
     End If
     
     ' 3. Query part table
-    LogDebug "Querying part table for drawing_number=" & drawingNumber
     partId = QueryPartByDrawingNumber(drawingNumber)
     
     ' Store partId for later use by Link button
     m_lastPartId = partId
     
     ' 4. Query drawing_file table
-    LogDebug "Querying drawing_file table"
     resultsArray = QueryDrawingFiles(drawingNumber, poNumber)
     
     resultCount = GetResultCount(resultsArray)
-    LogDebug "Found " & resultCount & " results"
     
     ' Check if any results found
     If resultCount = 0 Then

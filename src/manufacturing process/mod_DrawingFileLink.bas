@@ -53,8 +53,6 @@ Public Sub LinkDrawingFile_Main()
     drawingNumber = ws.Range("J7").Value
     poNumber = ws.Range("B7").Value
     
-    LogDebug "LinkDrawingFile_Main started - Drawing: " & drawingNumber & ", PO: " & poNumber
-    
     ' Check if user selected a result
     If Not HasStoredResults() Then
         messageText = "No results to link. Please click Fetch first."
@@ -82,9 +80,6 @@ Public Sub LinkDrawingFile_Main()
     End If
     
     resultCount = GetStoredResultsCount()
-    
-    ' Update database
-    LogDebug "Updating drawing_file records: setting id=" & selectedResult(0) & " to is_active=1"
     
     ' 1. Set selected file as active
     If Not UpdateDrawingFileAsActive(CLng(selectedResult(0))) Then
@@ -124,7 +119,6 @@ Public Sub LinkDrawingFile_Main()
     ' Show success message
     MsgBox "Drawing file linked successfully!", vbInformation, "Success"
     
-    LogDebug "LinkDrawingFile_Main completed successfully"
     FlushLogBlock
     Exit Sub
     
@@ -166,7 +160,6 @@ Private Function UpdateDrawingFileAsActive(drawingFileId As Long) As Boolean
     
     result = ExecuteUpdate(sql)
     If result > 0 Then
-        LogDebug "Updated drawing_file id=" & drawingFileId & " to is_active=1"
         UpdateDrawingFileAsActive = True
     Else
         LogError "Failed to update drawing_file id=" & drawingFileId
@@ -209,10 +202,8 @@ Private Function UpdateDrawingFileInactive(drawingFileId As Long) As Boolean
     
     result = ExecuteUpdate(sql)
     If result > 0 Then
-        LogDebug "Updated drawing_file id=" & drawingFileId & " to is_active=0"
         UpdateDrawingFileInactive = True
     Else
-        LogDebug "No rows affected for drawing_file id=" & drawingFileId
         UpdateDrawingFileInactive = True  ' Don't fail if no rows affected
     End If
     
@@ -262,7 +253,6 @@ Private Function UpdatePartIdToSelected(partId As Variant, resultCount As Long) 
                 result = ExecuteUpdate(sql)
                 If result > 0 Then
                     updateCount = updateCount + 1
-                    LogDebug "Updated drawing_file id=" & CLng(localResults(i, 0)) & " part_id=" & partId
                 End If
             End If
         Next i
@@ -307,7 +297,6 @@ Private Sub CopyConfirmationPicture()
     On Error GoTo ErrorHandler
     
     If dataSheet Is Nothing Then
-        LogDebug "Data sheet not found. Picture copy skipped."
         Exit Sub
     End If
     
@@ -319,18 +308,15 @@ Private Sub CopyConfirmationPicture()
             thisSheet.Range("S7").Select
             thisSheet.Paste
             pictureFound = True
-            LogDebug "Copied Picture 1 from data sheet to S7"
             Exit For
         End If
     Next picture
     
     If Not pictureFound Then
-        LogDebug "Picture 1 not found in data sheet"
     End If
     
     Exit Sub
 ErrorHandler:
-    LogDebug "Error in CopyConfirmationPicture: " & Err.Description
 End Sub
 
 

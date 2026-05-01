@@ -58,6 +58,14 @@ Public Sub StartLogBlock()
 End Sub
 
 ' /**
+' * Check if a log block is currently active
+' * Returns True if buffer is not nothing and not empty
+' */
+Public Function IsLogBlockActive() As Boolean
+    IsLogBlockActive = (Not (logBuffer Is Nothing) And logBuffer.Count > 0)
+End Function
+
+' /**
 ' * Flush buffered logs as a complete block to the file
 ' * New blocks are inserted at the beginning of the file
 ' * Call this at the end of a major operation or in error handler
@@ -266,8 +274,6 @@ Public Sub TestLogger()
     ' Test Block 1: Fetch operation
     StartLogBlock
     LogInfo "FetchDrawingFiles_Main started - Drawing: ABC123, PO: PO-001"
-    LogDebug "Querying database for drawing files"
-    LogDebug "Found 3 matching results"
     LogInfo "Fetch completed successfully"
     FlushLogBlock
     
@@ -277,8 +283,6 @@ Public Sub TestLogger()
     ' Test Block 2: Link operation
     StartLogBlock
     LogInfo "LinkDrawingFile_Main started - Drawing: XYZ789, PO: PO-002"
-    LogDebug "Retrieving stored results"
-    LogDebug "Updating is_active flag"
     LogError "Warning: Some files had NULL part_id"
     LogInfo "Link completed with warnings"
     FlushLogBlock

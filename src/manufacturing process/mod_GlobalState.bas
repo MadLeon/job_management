@@ -40,8 +40,6 @@ Public Sub SetLastResults(resultsArray As Variant)
     Else
         m_lastResultsCount = 0
     End If
-    
-    LogDebug "GlobalState: Stored " & m_lastResultsCount & " results"
 End Sub
 
 '/**

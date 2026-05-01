@@ -54,14 +54,11 @@ Public Function QueryPartByDrawingNumber(drawingNumber As String) As Variant
     If IsArray(result) Then
         If UBound(result) >= 0 Then
             partId = result(0, 0)
-            LogDebug "Found part.id=" & partId & " for drawing_number=" & drawingNumber
             QueryPartByDrawingNumber = partId
         Else
-            LogDebug "No part found for drawing_number=" & drawingNumber
             QueryPartByDrawingNumber = Null
         End If
     Else
-        LogDebug "No part found for drawing_number=" & drawingNumber
         QueryPartByDrawingNumber = Null
     End If
     
@@ -122,8 +119,6 @@ Public Function QueryDrawingFiles(drawingNumber As String, poNumber As String) A
           "  last_modified_at DESC " & _
           "LIMIT 8"
     
-    LogDebug "Executing query: " & sql
-    
     results = ExecuteQuery(sql)
     
     ' Process results: add priority column (index 7) to Variant array
@@ -144,11 +139,8 @@ Public Function QueryDrawingFiles(drawingNumber As String, poNumber As String) A
             End If
         Next i
         
-        LogDebug "Found " & resultCount & " drawing files for drawing_number=" & drawingNumber
         resultsArray = results
     Else
-        LogDebug "No drawing files found for drawing_number=" & drawingNumber
-        resultsArray = Null
     End If
     
     QueryDrawingFiles = resultsArray
@@ -173,10 +165,8 @@ Public Function GetBestMatchingResultIndex(resultsArray As Variant) As Long
     On Error Resume Next
     
     If IsArray(resultsArray) And UBound(resultsArray, 1) >= 0 Then
-        LogDebug "Best matching result is at index 0 with priority=" & resultsArray(0, 7)
         GetBestMatchingResultIndex = 0
     Else
-        LogDebug "No results available"
         GetBestMatchingResultIndex = -1
     End If
 End Function

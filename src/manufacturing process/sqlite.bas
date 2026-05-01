@@ -30,7 +30,6 @@ Private thisDB As SQLiteDB
 Public Function InitializeSQLite(dbPath As String) As Boolean
     ' Initialize SQLite database connection
     If thisDB.initialized Then
-        LogDebug "SQLite is already initialized."
         InitializeSQLite = True
         Exit Function
     End If
@@ -81,7 +80,6 @@ End Sub
 Public Function ExecuteQuery(sql As String) As Variant
 
     If Not thisDB.initialized Then
-        LogDebug "SQLite is not initialized."
         ExecuteQuery = Null
         Exit Function
     End If
@@ -158,7 +156,6 @@ Public Function ExecuteNonQuery(sql As String) As Boolean
     ExecuteNonQuery = False  ' default: fail
 
     If Not thisDB.initialized Then
-        LogDebug "SQLite is not initialized."
         Exit Function
     End If
 
@@ -203,8 +200,6 @@ Public Function ExecuteUpdate(sql As String) As Long
     ExecuteUpdate = 0  ' default: no rows affected
 
     If Not thisDB.initialized Then
-        LogDebug "SQLite is not initialized."
-        Exit Function
     End If
 
     ' 1. Prepare SQL statement

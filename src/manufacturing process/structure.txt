@@ -1,4 +1,4 @@
-1. 步骤行位于文件的第11行到第39行
+1. 步骤行位于文件的第11行到第26行
 2. D和E列组成shop code
   D列是每一行步骤的类别, 具体指代如下:
     - FI = Free Issued Mat'l
@@ -11,3 +11,47 @@
     - PI = Packaging Inspection
   E列为以10为单位的递增值, 类似于行号
 3. F到N为合并左对齐的步骤内容
+4. 当前文件中共有16个步骤行（行号分别为10-160）
+5. U9为code下拉列表, 数据来自data表的D2-D9 ✓ 已配置
+  - 数据验证类型: list
+  - 数据范围: data!$D$2:$D$9
+  - 包含值: P, FI, RT, SC, I, H, W, PI
+6. W9为type下拉列表, 在U9选择code后, 会显示对应code中包含的所有type类型 ✓ 已配置
+  - 数据验证类型: list
+  - 公式: INDIRECT("Types_"&U9)
+  - 关联的命名范围: Types_P, Types_RT, Types_SC, Types_I, Types_H
+7. Display区域从第12行开始, T列为Insert按钮列, U列为process内容列, X/Y/Z列为用户输入区域, 用以替代process中占位符, 替换为具体内容
+
+## Data 工作表内容格式
+
+### 第一部分：Shop Code 定义（行 2-9）
+- A列（Code）：操作类型代码
+- D列（Detail）：代码对应的完整说明
+- 包含：P、FI、RT、SC、I、H、W、PI 八种操作类型
+
+### 第二部分：过程流程库（行 14 及之后）
+- 列A（Code）：操作类型（P、RT、SC、I、H等）
+- 列B（Type）：工艺/流程类型，例如：
+  - Material：原材料处理
+  - Cut：切割（Waterjet、Plasma等）
+  - Turn：车削
+  - Drill：钻孔
+  - Mill：铣削
+  - Grind：磨削
+  - Weldment：焊接
+  - Assemble：装配
+  - Engrave：刻蚀
+  - Finalization：最终处理
+  - Chrome、Nickel：表面处理
+  - LPI、Stress：测试和处理
+- 列C（Link）：可选链接信息（如 Comb 22、Comb 64 等）
+- 列D（Processes）：具体的流程描述
+  - 支持占位符 {1}、{2} 等用于参数化
+  - 例如："Chrome Plate to AMS 2406 as per {1}"
+
+### 流程库中的主要操作类型（Code）
+- **P（Purchase）**：材料采购，包含各种标准化采购流程
+- **RT（Record to Manufacture）**：内部加工，涵盖所有制造工艺
+- **SC（Subcontract）**：外包服务，包括镀铬、镍、焊接等
+- **I（Inspect）**：检验操作，含DIR检验和装配检验
+- **H（Hold）**：暂停/保存状态，用于创建文件包等

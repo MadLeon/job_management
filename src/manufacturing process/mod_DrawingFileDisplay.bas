@@ -60,8 +60,6 @@ Public Sub ClearResults()
     clearRange.ClearContents
     clearRange.ClearFormats
     
-    LogDebug "Cleared results from columns W, X, Y"
-    
     Exit Sub
 ErrorHandler:
     LogError "Error in ClearResults: " & Err.Description
@@ -96,13 +94,11 @@ Public Sub DisplayQueryResults(resultsArray As Variant, bestMatchIndex As Long)
     
     ' Check if results array is empty or not an array
     If Not IsArray(resultsArray) Then
-        LogDebug "No results to display - resultsArray is not an array"
         Exit Sub
     End If
     
     resultCount = UBound(resultsArray, 1) + 1
     If resultCount = 0 Then
-        LogDebug "No results to display"
         Exit Sub
     End If
     
@@ -167,8 +163,6 @@ Public Sub DisplayQueryResults(resultsArray As Variant, bestMatchIndex As Long)
             .Font.Name = "Calibri"
             .VerticalAlignment = xlTop
         End With
-        
-        LogDebug "Displayed result " & (i + 1) & " at W" & rowNum & " (radio: " & IIf(i = bestMatchIndex, "☑", "☐") & "), X" & rowNum & " (hyperlink), Y" & rowNum & " (path): " & cleanFileName
     Next i
     
     Exit Sub
@@ -226,7 +220,6 @@ Public Function GetSelectedResultIndex() As Long
     
     ' Check if selection is in results column
     If selectedCell.Column <> ws.Range(RESULTS_COL & "1").Column Then
-        LogDebug "Selection is not in results column " & RESULTS_COL
         GetSelectedResultIndex = -1
         Exit Function
     End If
@@ -234,13 +227,11 @@ Public Function GetSelectedResultIndex() As Long
     ' Calculate result index from row number
     rowNum = selectedCell.Row
     If rowNum < RESULTS_START_ROW Or rowNum > RESULTS_START_ROW + MAX_DISPLAY_ROWS - 1 Then
-        LogDebug "Selection row " & rowNum & " is outside results range"
         GetSelectedResultIndex = -1
         Exit Function
     End If
     
     resultIndex = rowNum - RESULTS_START_ROW
-    LogDebug "Selected result index: " & resultIndex
     GetSelectedResultIndex = resultIndex
     
     Exit Function

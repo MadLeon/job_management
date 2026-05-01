@@ -1,5 +1,87 @@
 # Manufacturing Process Excel 开发日志
 
+## Session 7: Process 插入按钮实现 (2026-04-21)
+
+### 总结
+
+为 U12:U39 动态显示的 process 行添加 Insert 按钮（T 列），用户点击按钮将 process 复制到 F11:F39 第一个空行，同时自动填充对应的代码（从 U9 通过 GetCodeFromDescription 转换）。
+
+### 本 Session Todos
+
+- ✅ 创建 mod_InsertProcess.bas - Insert 逻辑处理
+- ✅ 创建 mod_ButtonManager.bas - 按钮动态创建与管理
+- ✅ 创建 clsInsertButtonHandler.cls - 按钮事件委托类
+- ✅ 集成按钮初始化到 mod_DataInitialization
+- ✅ 实现完整流程（查找空行 → 代码转换 → 数据复制）
+
+### 操作及变更细节
+
+**新增模块：**
+
+- **mod_InsertProcess.bas** - OnInsertButtonClick(buttonRow)：获取 process → 转换代码 → 查找空行(F11:F39, 检查D列) → 填充 D/F 列 → 触发 update_row_number
+- **mod_ButtonManager.bas** - InitializeInsertButtons()：创建 T12:T39 中 28 个按钮，每个绑定事件处理器
+- **clsInsertButtonHandler.cls** - WithEvents 事件委托，SetButton(button, rowNumber) 绑定按钮和行号
+
+**修改模块：**
+
+- **mod_DataInitialization.bas** - InitializeOnWorkbookOpen 中添加第 5 步调用 mod_ButtonManager.InitializeInsertButtons()
+
+### 关键学习
+
+- OLE CommandButton 通过 Shapes.AddOLEObject 创建，需在类模块中用 WithEvents Object 类型绑定以支持动态事件处理
+- 按钮事件处理器对象需保存在全局数组中防止垃圾回收释放，确保事件继续有效
+- 按钮初始化应在 Workbook_Open 中执行，与其他数据初始化同时进行
+
+### 未来注意
+
+后续若需扩展功能，可添加对应的"删除行"按钮；若按钮事件不稳定，改为超链接+URL Scheme 方案；可考虑将按钮位置/数量参数化以支持动态调整。
+
+---
+
+## Session 6: 动态Display区域完整实现 (2026-04-21)
+
+### 总结
+
+完成了Manufacturing Process工作簿的三阶段开发：第一阶段数据结构定义与加载、第二阶段U9/W9下拉列表动态生成、第三阶段Display区域进程显示功能，实现了从代码选择→类型下拉列表生成→动态显示对应工艺流程的完整工作流。
+
+### 本session todos
+
+- ✅ 第一阶段：定义全局数据结构（code双向映射、ProcessData字典）
+- ✅ 实现数据加载模块（从data工作表读取16行到最后编辑行）
+- ✅ 修复lib_logger调用语法（Call statement括号问题）
+- ✅ 修复代码遍历类型转换（For Each循环变量改Variant）
+- ✅ 修改工作表名称从Sheet1到mp
+- ✅ 第二阶段：实现U9/W9下拉列表监听与动态生成
+- ✅ 修复W9下拉列表分隔符问题（从分号到逗号、去除引号包裹）
+- ✅ 实现U9改变时直接触发W9更新（bypassing事件禁用）
+- ✅ 第三阶段：实现Display区域显示功能（U13:U39）
+- ✅ 实现占位符替换（{数字}→"**\_**"）
+- ✅ 修复Variant类型转换（CStr()显式转换）
+
+### 操作及变更细节
+
+- **dat_public_data.bas** (新增)：codeToDescription/descriptionToCode双向映射字典，ProcessData结构（Dictionary[code]→Collection[entries]），初始化函数
+- **mod_DataInitialization.bas** (新增)：InitializeOnWorkbookOpen入口，LoadDataSheet读取并填充ProcessData，FindLastEditedRow工具函数
+- **thisworkbook.bas** (新增)：Workbook_Open事件触发初始化
+- **mod_DisplayDropdowns.bas** (新增)：InitializeDropdowns/OnU9Changed主函数，GetTypesForCode唯一类型提取，SetupW9Dropdown动态下拉列表，格式优化(Type:=3,Formula1)
+- **mod_DisplayProcesses.bas** (新增)：OnW9Changed事件处理，GetProcessesForCodeAndType过滤查询，DisplayProcesses区域填充，ReplacePlaceholders占位符替换
+- **sheet1.bas** (修改)：Worksheet_Change增加U9/W9监听，update_u9_content直接调用OnU9Changed确保级联更新
+- **工作表名改正**：Sheet1→mp (mod_DisplayDropdowns.bas & sheet1.bas & mod_DisplayProcesses.bas)
+
+### 关键学习
+
+- VBA数据验证列表需要用逗号分隔(非分号)、不需引号包裹
+- Call语句所有参数必须用括号括起来
+- For Each遍历字典Keys时必须用Variant/Object，不能用String
+- 事件禁用期间(Application.EnableEvents=False)的子函数调用需显式触发链式操作
+- ProcessData采用Dictionary[code]→Collection的嵌套结构最优，支持一对多关系且查询高效
+
+### 未来注意
+
+后续需补充Comb/Hint的关联显示功能，目前已预留link字段但未实现；可考虑将占位符下划线长度改为根据内容自适应；如需扩展到其他工作表应优先考虑模块化重构。
+
+---
+
 ## Session 5: UI显示优化与控件兼容性调试 (2026-02-19)
 
 ### 总结
