@@ -18,10 +18,25 @@ Quick Start
    - Check the mp_log.txt file in the same folder
 
 2. Using the Logger in Your Code
+   
+   ⚠️ IMPORTANT - VBA Syntax Rules:
+   
+   When using Call statement with parameters, ALWAYS wrap parameters in parentheses:
+   
+   ✓ CORRECT:
+   - Call LogDebug("Your debug message")
+   - Call LogError("Your error message")
+   - Call LogInfo("Your info message", "CUSTOM_CATEGORY")
+   - Call LogDebug("Value: " & variableName)
+   
+   ✗ INCORRECT (Will cause syntax error):
+   - Call LogDebug "Your debug message"
+   - Call LogError "Your error message"
+   - Call LogInfo "Your info message", "CUSTOM_CATEGORY"
+   
+   Without Call statement (direct invocation), you can omit parentheses:
    - LogDebug "Your debug message"
    - LogError "Your error message"
-   - LogInfo "Your info message"
-   - LogInfo "Custom message", "CUSTOM_CATEGORY"
 
 3. Clear Log File
    - ClearLog() in Immediate Window

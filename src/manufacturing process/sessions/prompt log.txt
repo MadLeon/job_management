@@ -1,3 +1,6 @@
+有哪些设计选择, 可以添加哪些很酷的功能
+移除在本session所产生的所有临时脚本和文件
+
 数据库是 record.db, 存放在 data/record.db
 dat_public_data.bas 为存放全局常量变量的位置
 lib_logger.bas 为日志模块, 常用功能

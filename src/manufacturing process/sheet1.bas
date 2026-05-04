@@ -16,10 +16,12 @@
 '  * Only assigns row numbers to rows where D column has a valid dropdown option
 '  * Allows gaps (rows without valid D values will not get row numbers)
 '  * Algorithm:
-'  * - Iterate D11:D39, maintain counter starting at 0
+'  * - Read the starting value from E11 (first row of output area)
+'  * - If E11 has a value, use it as the starting counter; otherwise start at 0
 '  * - For each row: check if D has a valid option (P/FI/RT/SC/I/H/W/PI)
 '  * - If valid: increment counter by 10, assign to E
 '  * - If invalid: skip (clear E)
+'  * This supports multi-page scenarios where row numbers continue from the previous page
 '  */
 Public Sub update_row_number()
     Dim ws As Worksheet
@@ -29,9 +31,18 @@ Public Sub update_row_number()
     Dim validOptions As Variant
     Dim isValid As Boolean
     Dim j As Integer
+    Dim firstRowValue As Variant
     
     Set ws = ThisWorkbook.Sheets("mp")
-    counter = 0
+    
+    ' Read the starting value from E11 (first row of output area)
+    ' If E11 has a value, use it as the starting counter; otherwise start at 0
+    firstRowValue = ws.Range("E11").value
+    If firstRowValue <> "" And IsNumeric(firstRowValue) Then
+        counter = CLng(firstRowValue)
+    Else
+        counter = 0
+    End If
     
     ' Define valid options for D column dropdown
     validOptions = Array("P", "FI", "RT", "SC", "I", "H", "W", "PI")
@@ -51,8 +62,18 @@ Public Sub update_row_number()
         
         ' If D has valid value, increment counter and assign to E
         If isValid Then
-            counter = counter + 10
-            ws.Range("E" & i).value = counter
+            ' For the first row (E11), only update if it's empty
+            If i = 11 Then
+                If firstRowValue = "" Or Not IsNumeric(firstRowValue) Then
+                    counter = counter + 10
+                    ws.Range("E" & i).value = counter
+                End If
+                ' If E11 already has a user-defined value, keep it unchanged
+            Else
+                ' For subsequent rows, increment counter and assign
+                counter = counter + 10
+                ws.Range("E" & i).value = counter
+            End If
         Else
             ' Clear E if D doesn't have valid value
             ws.Range("E" & i).value = ""
@@ -60,6 +81,15 @@ Public Sub update_row_number()
     Next i
     
 End Sub
+
+' /**
+'  * Helper function to check if a value is numeric
+'  * @param value - The value to check
+'  * @return Boolean - True if the value is numeric, False otherwise
+'  */
+Private Function IsNumeric(value As Variant) As Boolean
+    IsNumeric = Not IsError(value + 0)
+End Function
 
 ' /**
 '  * Update U9 content based on D column selection in a specific row
