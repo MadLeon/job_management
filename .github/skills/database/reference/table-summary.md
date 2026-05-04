@@ -2,39 +2,39 @@
 
 ## 概览
 
-| 指标 | 数值 |
-|------|------|
-| 总表数 | 20 |
+| 指标     | 数值    |
+| -------- | ------- |
+| 总表数   | 20      |
 | 总记录数 | 141,548 |
-| 已填充表 | 10 |
-| 空表 | 10 |
+| 已填充表 | 10      |
+| 空表     | 10      |
 
 ---
 
 ## 所有表清单
 
-| 表名 | 记录数 | 字段数 | 状态 |
-|------|--------|--------|------|
-| attachment_note | 0 | 6 | ⭘ 空 |
-| customer | 79 | 6 | ✓ |
-| customer_contact | 69 | 8 | ✓ |
-| drawing_file | 137,399 | 9 | ✓ |
-| folder_mapping | 0 | 6 | ⭘ 空 |
-| job | 339 | 6 | ✓ |
-| job_note | 0 | 6 | ⭘ 空 |
-| order_item | 358 | 13 | ✓ |
-| order_item_note | 0 | 6 | ⭘ 空 |
-| part | 1,657 | 13 | ✓ |
-| part_attachment | 0 | 10 | ⭘ 空 |
-| part_note | 0 | 6 | ⭘ 空 |
-| part_tree | 1,460 | 6 | ✓ |
-| po_note | 0 | 6 | ⭘ 空 |
-| process_template | 0 | 8 | ⭘ 空 |
-| purchase_order | 172 | 8 | ✓ |
-| shipment | 5 | 6 | ✓ |
-| shipment_item | 10 | 6 | ✓ |
-| shipment_note | 0 | 6 | ⭘ 空 |
-| step_tracker | 0 | 10 | ⭘ 空 |
+| 表名             | 记录数  | 字段数 | 状态 |
+| ---------------- | ------- | ------ | ---- |
+| attachment_note  | 0       | 6      | ⭘ 空 |
+| customer         | 79      | 6      | ✓    |
+| customer_contact | 69      | 8      | ✓    |
+| drawing_file     | 137,399 | 9      | ✓    |
+| folder_mapping   | 0       | 6      | ⭘ 空 |
+| job              | 339     | 6      | ✓    |
+| job_note         | 0       | 6      | ⭘ 空 |
+| order_item       | 358     | 13     | ✓    |
+| order_item_note  | 0       | 6      | ⭘ 空 |
+| part             | 1,657   | 13     | ✓    |
+| part_attachment  | 0       | 10     | ⭘ 空 |
+| part_note        | 0       | 6      | ⭘ 空 |
+| part_tree        | 1,460   | 6      | ✓    |
+| po_note          | 0       | 6      | ⭘ 空 |
+| process_template | 0       | 8      | ⭘ 空 |
+| purchase_order   | 172     | 8      | ✓    |
+| shipment         | 5       | 6      | ✓    |
+| shipment_item    | 10      | 6      | ✓    |
+| shipment_note    | 0       | 6      | ⭘ 空 |
+| step_tracker     | 0       | 10     | ⭘ 空 |
 
 ---
 
