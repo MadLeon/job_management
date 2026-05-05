@@ -1,3 +1,8 @@
+[2026-05-05 14:51:29] [INFO] Workbook_Open: Initialization started
+[2026-05-05 14:51:29] [INFO] LoadDataSheet: Total entries loaded: 41
+[2026-05-05 14:51:29] [INFO] LoadDataSheet: Entries with link values: 11
+[2026-05-05 14:51:29] [INFO] Data sheet loaded successfully
+
 [2026-05-04 14:58:21] [IMAGE_INSERT_START] Inserting QR code image into worksheet
 [2026-05-04 14:58:21] [DEBUG] Target cell: A1 | Size: 75x75
 [2026-05-04 14:58:21] [DEBUG] QR image downloaded and saved to: C:\Users\ee\AppData\Local\Temp\QRCode_20260504_145821_5334.png
