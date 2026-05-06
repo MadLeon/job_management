@@ -36,7 +36,7 @@ Option Explicit
 '  *       LogDebug "Detailed operation info: " & someValue
 '  *   End If
 '  */
-Public DEBUG_MODE As Boolean = True
+Public Const DEBUG_MODE As Boolean = True
 
 ' /**
 '  * DISABLE_LOGGER: Completely disable all logger functionality
@@ -60,4 +60,4 @@ Public DEBUG_MODE As Boolean = True
 '  *   - No need to check this flag explicitly
 '  *   - Logger module handles it automatically
 '  */
-Public DISABLE_LOGGER As Boolean = False
+Public Const DISABLE_LOGGER As Boolean = False
